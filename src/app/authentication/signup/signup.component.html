@@ -1,0 +1,53 @@
+<div class="login-register" style="background-image:url(assets/images/background/login-register.jpg);">
+  <div class="login-box card">
+    <div class="card-body">
+      <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarUsuario()" class="form-horizontal form-material" id="loginform">
+        <h3 class="box-title m-b-20">Sign Up</h3>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <input formControlName="nombre" name="nombre" class="form-control" required type="text" placeholder="Name">
+          </div>
+        </div>
+        <div class="form-group ">
+          <div class="col-xs-12">
+            <input formControlName="correo" name="correo" class="form-control" required type="email" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group ">
+          <div class="col-xs-12">
+            <input formControlName="password" name="password" class="form-control" required type="password" placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <input formControlName="password2" name="password2" class="form-control" required type="password" placeholder="Confirm Password">
+          </div>
+        </div>
+        <div class="form-group" *ngIf="forma.errors?.sonIguales && !forma.pristine">
+          <p class="text-danger">
+            Las contraseñas deben ser iguales
+          </p> 
+        </div>
+        <!-- {{ forma.errors | json }} --> <!-- para ver errores del formulario -->
+        <div class="form-group row">
+          <div class="col-md-12">
+            <div class="checkbox checkbox-success p-t-0">
+              <input formControlName="condiciones" name="condiciones" id="checkbox-signup" type="checkbox"  class="filled-in chk-col-light-blue">
+              <label for="checkbox-signup"> I agree to all <a href="javascript:void(0)">Terms</a></label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group text-center p-b-20">
+          <div class="col-xs-12">
+            <button  class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit">Sign Up</button>
+          </div>
+        </div>
+        <div class="form-group m-b-0">
+          <div class="col-sm-12 text-center">
+            Already have an account? <a class="text-info m-l-5" [routerLink]="['/authentication/login']"><b>Sign In</b></a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
