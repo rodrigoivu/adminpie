@@ -1,0 +1,103 @@
+<div class="fondo-negro animated fadeIn" [ngClass]="_modalReservaService.oculto" >
+	<div class="modal" style="display: block;" tabindex="-1" role="dialog">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	      	<h5 class="modal-title">Reservar Hora con {{_modalReservaService.nombre}}</h5>
+	      	<button (click)="cerrarModal()" type="button" class="close"  aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	        
+	      </div>
+	      
+	      <div class="modal-body modal-body-i" >
+	      	<div class="row">
+	      		<div class="col-lg-5 text-center">
+	      			<div class="card">
+			            <div class="card-body">
+
+			                <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" (ngModelChange)="onDateChange($event)" [displayMonths]="displayMonths" [navigation]="navigation" [showWeekNumbers]="showWeekNumbers" [outsideDays]="outsideDays"></ngb-datepicker>
+			                
+			                <div class="m-t-20">
+			                    <button class="btn btn-sm btn-outline-info" (click)="selectToday()" (click)="dp.navigateTo()">Hoy</button>
+			                </div>
+			            </div>
+                    </div>
+	      			
+	      			
+	      		</div>
+	      		<div class="col-lg-7 ">
+	      			<form class="form-vertical">
+	      				<div class="row container text-center">
+	      					{{ stringDate }}
+	      				</div>
+	      				<div class="listado">
+		      				<table class="table table-bordered table-sm num_hora">
+		      					<tbody>
+		      						<tr *ngFor='let hora of listaReservadoTotal' >
+		      							<td>
+		      								<div class="row ">
+		      									<div class="col-2">
+		      										<p class="text-left">{{hora.horaDisponible}}:00 </p>
+		      									</div>
+		      									<div class="col-10 ">
+		      										<div  *ngFor='let item of hora.pacientesPorHoraDisponible; let last=last' >
+		      											<div [ngClass]="last? item_hora_ultimo:item_hora" class="row">
+			      											
+				      											<div *ngIf="!item.btnReserva" class="col-9 ">
+				      												<h6>{{item.nombrePaciente}}</h6>
+				      												<p>{{item.nombreEstablecimiento}}</p>
+				      											</div>
+				      											<div *ngIf="!item.btnReserva" class="col-3">
+				      												<div>
+					      												{{item.horaReservado}}
+					      												<br>
+					      												{{item.minReservado}}
+				      											    </div>
+				      								
+			      											</div>
+			      											<div>
+			      												<button (click)="accionReservar(item.posEnLista,item.poshora,hora.horaDisponible)" *ngIf="item.btnReserva" class="btn btn-success btn-sm">
+												            		Reservar
+												            	</button>
+			      											</div>
+		      											</div>
+		      										</div>
+		      										<!-- <div class="row item_hora_ultimo">
+		      											<div class="col-9">
+		      												<h6>Nombre Paciente 1</h6>
+		      												<p>Escuela 2</p>
+		      											</div>
+		      											<div class="col-3">
+		      												
+			      												11:00
+			      												<br>
+			      												30min
+		      											    
+		      											</div>
+		      										</div> -->
+
+		      									</div>
+		      								</div>
+     										
+
+		      							</td>
+		      						</tr>
+
+		      					</tbody>
+		      				</table>
+	      				</div>
+	      			</form>
+	      		</div>
+	      	</div>
+	      	
+
+	      </div>
+	      <div class="modal-footer">
+	        <button (click)="cerrarModal()" type="button" class="btn btn-secondary" >Cerrar</button>
+	        <button (click)="btnGuardar()"  type="button" class="btn btn-primary">Guardar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>

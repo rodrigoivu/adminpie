@@ -1,0 +1,33 @@
+<div class="fondo-negro animated fadeIn" [ngClass]="_modalEditProfesionalService.oculto" >
+	<div class="modal" style="display: block;" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	      	<h5 class="modal-title">Configura la profesión de {{_modalEditProfesionalService.nombre}}</h5>
+	      	
+	        <button (click)="cerrarModal()" type="button" class="close"  aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      
+	      <div class="modal-body" >
+            <div class="form-group">
+	            <label for="selectProf">Seleccionar profesión</label>
+		      	<select [(ngModel)]="tipoProfesion" name="profesion" class="form-control" id="selectProf" >
+	            	<option value="prof1">Medicina</option>
+	            	<option value="prof2">Fonoaudiología</option>
+	            	<option value="prof3">Kinesiología</option>
+	            	<option value="prof4">Terapeuta ocupacional</option>
+	            	<option value="prof5">Psicología</option>
+	            	<option value="prof6">Audiometría</option>
+	            </select>
+            </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button (click)="cerrarModal()" type="button" class="btn btn-secondary" >Cerrar</button>
+	        <button (click)="btnGuardar()"  type="button" class="btn btn-primary">Guardar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>

@@ -1,0 +1,109 @@
+<div class="fondo-negro animated fadeIn" [ngClass]="_modalSemanaProfesionalService.oculto" >
+	<div class="modal" style="display: block;" tabindex="-1" role="dialog">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+
+	      	<h5 class="card-title">Configura disponibilidad semanal de {{_modalSemanaProfesionalService.nombre}}</h5>
+
+	        <button (click)="cerrarModal()" type="button" class="close"  aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      
+	      <div class="modal-body modal-body-i" >
+	      	<div class="row container">
+                <div class="col">
+                	
+	      			<form class="" (ngSubmit)="registrarHoraSem()">
+	      				<div class="">
+		      				<table class="table table-bordered table-sm">
+		      					<thead class="thead-light" >
+			            			<tr>
+			            				<th >Lunes</th>
+			            				<th >Martes</th>
+			            				<th >Miercoles</th>
+			            				<th >Jueves</th>
+			            				<th >Viernes</th>
+			            				<th >Sábado</th>
+			            				<th >Domingo</th>
+			            			</tr>
+			            		</thead>
+		      					<tbody>
+		      						<tr *ngFor='let hora of horasListaSem' >
+		      							<td>
+		      								<div class="form-check">
+											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombreLu">
+											  <label class="form-check-label" [for]="hora.nombreLu">
+											    {{hora.hora}}
+											  </label>
+											</div>
+		      							</td>
+		      							<td>
+		      								<div class="form-check">
+											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombreMa">
+											  <label class="form-check-label" [for]="hora.nombreMa">
+											    {{hora.hora}}
+											  </label>
+											</div>
+		      							</td>
+		      							<td>
+		      								<div class="form-check">
+											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombreMi">
+											  <label class="form-check-label" [for]="hora.nombreMi">
+											    {{hora.hora}}
+											  </label>
+											</div>
+		      							</td>
+		      							<td>
+		      								<div class="form-check">
+											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombreJu">
+											  <label class="form-check-label" [for]="hora.nombreJu">
+											    {{hora.hora}}
+											  </label>
+											</div>
+		      							</td>
+		      							<td>
+		      								<div class="form-check">
+											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombreVi">
+											  <label class="form-check-label" [for]="hora.nombreVi">
+											    {{hora.hora}}
+											  </label>
+											</div>
+		      							</td>
+		      							<td>
+		      								<div class="form-check">
+											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombreSa">
+											  <label class="form-check-label" [for]="hora.nombreSa">
+											    {{hora.hora}}
+											  </label>
+											</div>
+		      							</td>
+		      							<td>
+		      								<div class="form-check">
+											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombreDo">
+											  <label class="form-check-label" [for]="hora.nombreDo">
+											    {{hora.hora}}
+											  </label>
+											</div>
+		      							</td>
+
+		      						</tr>
+		      						
+
+		      					</tbody>
+		      				</table>
+	      				</div>
+
+	      			</form>
+	      		</div>	
+	      	</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button (click)="cerrarModal()" type="button" class="btn btn-secondary" >Cerrar</button>
+	        <button   type="submit" class="btn btn-primary">Guardar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>

@@ -109,8 +109,9 @@ export class CrearusuariosComponent implements AfterViewInit, OnInit {
 
 		  if (borrar) {
 		  	this._usuarioService.borrarUsuario( usuario._id )
-		  			.subscribe( borrado => {
+		  			.subscribe( (borrado: any) => {
 		  				console.log( borrado );
+              this.borrarProfesional(usuario);
 		  				this.cargarUsuarios();	
 		  			});
 		  } 
@@ -136,7 +137,18 @@ export class CrearusuariosComponent implements AfterViewInit, OnInit {
       
       this._profesionalService.crearProfesional(usuario._id)
             .subscribe();
+    }else{
+      this._profesionalService.borrarProfesional(usuario._id)
+            .subscribe();
     }
+  }
+
+  borrarProfesional(usuario:User){
+
+       this._profesionalService.borrarProfesional(usuario._id)
+            .subscribe(()=>{
+             // this.cargarUsuarios();  
+       });
   }
 
 }

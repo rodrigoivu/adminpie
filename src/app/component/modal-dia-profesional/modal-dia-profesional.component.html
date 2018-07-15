@@ -1,0 +1,74 @@
+<div class="fondo-negro animated fadeIn" [ngClass]="_modalDiaProfesionalService.oculto" >
+	<div class="modal" style="display: block;" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+
+	      	<div class="row container">
+		        <h3 class="card-title">Horario día de {{_modalDiaProfesionalService.nombre}}</h3>
+			    <h6 class="card-subtitle">Configura disponibilidad de día específico</h6>
+            </div>
+
+	        <button (click)="cerrarModal()" type="button" class="close"  aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	        
+	      </div>
+	      
+	      <div class="modal-body modal-body-i" >
+	      	<div class="row">
+	      		<div class="col-sm-8 ">
+	      			<div class="card">
+			            <div class="card-body">
+
+			                <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" (ngModelChange)="onDateChange($event)" [displayMonths]="displayMonths" [navigation]="navigation" [showWeekNumbers]="showWeekNumbers" [outsideDays]="outsideDays"></ngb-datepicker>
+			                
+			                <div class="m-t-20">
+			                    <button class="btn btn-sm btn-outline-info" (click)="selectToday()" (click)="dp.navigateTo()">Hoy</button>
+			                </div>
+			            </div>
+                    </div>
+	      			
+	      			
+	      		</div>
+	      		<div class="col-sm-4 ">
+	      			<form class="form-vertical">
+	      				<div class="row container text-center">
+	      					{{ stringDate }}
+	      				</div>
+	      				<div class="listado">
+		      				<table class="table table-hover table-sm">
+		      					<thead class="thead-light" >
+			            			<tr>
+			            				<th ><p><small>Hora disponible</small></p></th>
+			            			</tr>
+			            		</thead>
+		      					<tbody>
+		      						<tr *ngFor='let hora of horasLista' >
+		      							<td>
+		      								<div class="form-check">
+											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombre">
+											  <label class="form-check-label" [for]="hora.nombre">
+											    {{hora.hora}}
+											  </label>
+											</div>
+		      							</td>
+		      						</tr>
+
+		      					</tbody>
+		      				</table>
+	      				</div>
+	      			</form>
+	      		</div>
+	      	</div>
+	      	
+
+	      </div>
+	      <div class="modal-footer">
+	        <button (click)="cerrarModal()" type="button" class="btn btn-secondary" >Cerrar</button>
+	        <button (click)="btnGuardar()"  type="button" class="btn btn-primary">Guardar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>

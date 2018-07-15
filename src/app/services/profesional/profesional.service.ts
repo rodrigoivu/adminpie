@@ -65,5 +65,20 @@ export class ProfesionalService {
               })
           );
   }
+  borrarProfesional( id: string ){
+    let url = URL_SERVICIOS + 'api/remove-profesional/'+ id ;
+
+    return this.http.delete( url )
+          .pipe(
+              map( (resp: any) => {
+                
+                return true;
+              }),
+              catchError( err => {
+                
+                return throwError( err );
+              })
+          );
+  }
 
 }

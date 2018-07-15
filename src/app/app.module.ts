@@ -30,6 +30,10 @@ import { PipesModule } from './pipes/pipes.module';
 import { ServiceModule } from './services/service.module';
 
 import { ModalUploadComponent } from './component/modal-upload/modal-upload.component';
+import { ModalDiaProfesionalComponent } from './component/modal-dia-profesional/modal-dia-profesional.component';
+import { ModalSemanaProfesionalComponent } from './component/modal-semana-profesional/modal-semana-profesional.component';
+import { ModalEditProfesionalComponent } from './component/modal-edit-profesional/modal-edit-profesional.component';
+import { ModalReservaComponent } from './component/modal-reserva/modal-reserva.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -47,7 +51,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SidebarComponent,
     BreadcrumbComponent,
     BlankComponent,
-    ModalUploadComponent
+    ModalUploadComponent,
+    ModalDiaProfesionalComponent,
+    ModalSemanaProfesionalComponent,
+    ModalEditProfesionalComponent,
+    ModalReservaComponent
   ],
   imports: [
     CommonModule,

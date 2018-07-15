@@ -33,10 +33,11 @@
             		<thead>
             			<tr>
             				<th>Imagen</th>
+                            <th>Reserva</th>
             				<th>Correo</th>
             				<th>Nombre</th>
             				<th>Profesión</th>
-            				<th>Opciones</th>
+            				<th>Disponibilidad</th>
             				
             			</tr>
             		</thead>
@@ -46,21 +47,25 @@
                                 <td class="w70">
                 					<img  [src]="profesional.user.image | imagen"  class="img-50 img-circle pointer">
                 				</td>
+                                <td>
+                                    <button (click)="reserva( profesional._id, profesional.user.name,profesional.profesion  )" class="btn btn-primary" placement="top" ngbTooltip="Reservar Hora">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </td>
                 				<td>{{profesional.user.email}}</td>
                 				<td>{{profesional.user.name}}</td>
                 				<td>{{profesional.profesion}}</td>
-                                <td>{{profesional.user.role}}</td>
-                				<td>
+                                <td>
                 					
-                					<button (click)="editarDia( profesional )" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Disponibilidad día">
+                					<button (click)="editarDia( profesional._id, profesional.user.name,profesional.profesion  )" class="btn btn-primary" placement="top" ngbTooltip="Disponibilidad día">
                 						<i class="fa fa-check-square-o"></i>
                 					</button>
                 				
-                					<button (click)="editarSemana( profesional )" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Disponibilidad semana">
+                					<button (click)="editarSemana( profesional._id, profesional.user.name,profesional.profesion )" class="btn btn-info" placement="bottom" ngbTooltip="Disponibilidad semana">
                 						<i class="fa fa-calendar-o"></i>
                 					</button>
 
-                					<button (click)="editarSemana( profesional )" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar profesional">
+                					<button (click)="editarProfesional( profesional._id, profesional.user.name,profesional.profesion )" class="btn btn-warning" placement="top" ngbTooltip="Editar profesional">
                 						<i class="fa fa-pencil"></i>
                 					</button>
 

@@ -34,3 +34,48 @@
 	height: 100%;
 	z-index:9999;
 }
+
+.listado{
+	height:400px;
+	overflow: hidden scroll;
+	overflow-x: hidden;
+	overflow-y:scroll;
+    width:100%;
+}
+
+/* Important part */
+.modal-dialog{
+    overflow-y: initial;
+}
+.modal-body-i{
+    height: 450px;
+    overflow-y: auto;
+}
+
+.item_hora {
+	padding-top: 5px;
+    padding-right: 8px;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    position: relative;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-bottom-color: rgba(204,204,204,1);
+    border-left-width: 1px;
+    border-left-style: dashed;
+    border-left-color: rgba(223,223,223,1);
+    font-size: 12px;
+}
+
+.item_hora_ultimo {
+	padding-top: 5px;
+    padding-right: 8px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    position: relative;
+
+    border-left-width: 1px;
+    border-left-style: dashed;
+    border-left-color: rgba(223,223,223,1);
+    font-size: 12px;
+}
