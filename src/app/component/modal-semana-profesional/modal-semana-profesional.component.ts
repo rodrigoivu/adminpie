@@ -73,7 +73,10 @@ export class ModalSemanaProfesionalComponent implements OnInit {
   	this._modalSemanaProfesionalService.ocultarModal();
   }
   registrarHoraSem(){
-    console.log('Guarda Hora Semanal')
+
+    this._modalSemanaProfesionalService.guardarDisponibilidadSemanal(this.forma.value.horaSemana);
+    this._modalSemanaProfesionalService.ocultarModal();
+
 
   }
 }

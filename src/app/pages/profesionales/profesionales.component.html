@@ -57,15 +57,15 @@
                 				<td>{{profesional.profesion}}</td>
                                 <td>
                 					
-                					<button (click)="editarDia( profesional._id, profesional.user.name,profesional.profesion  )" class="btn btn-primary" placement="top" ngbTooltip="Disponibilidad día">
+                					<button (click)="editarDia( profesional.user._id, profesional.user.name,profesional.profesion  )" class="btn btn-primary" placement="top" ngbTooltip="Disponibilidad día">
                 						<i class="fa fa-check-square-o"></i>
                 					</button>
                 				
-                					<button (click)="editarSemana( profesional._id, profesional.user.name,profesional.profesion )" class="btn btn-info" placement="bottom" ngbTooltip="Disponibilidad semana">
+                					<button (click)="editarSemana( profesional.user._id, profesional.user.name,profesional.profesion )" class="btn btn-info" placement="bottom" ngbTooltip="Disponibilidad semana">
                 						<i class="fa fa-calendar-o"></i>
                 					</button>
 
-                					<button (click)="editarProfesional( profesional._id, profesional.user.name,profesional.profesion )" class="btn btn-warning" placement="top" ngbTooltip="Editar profesional">
+                					<button (click)="editarProfesional( profesional.user._id, profesional.user.name,profesional.profesion )" class="btn btn-warning" placement="top" ngbTooltip="Editar profesional">
                 						<i class="fa fa-pencil"></i>
                 					</button>
 

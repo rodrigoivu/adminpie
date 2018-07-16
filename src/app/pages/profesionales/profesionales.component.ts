@@ -35,6 +35,7 @@ export class ProfesionalesComponent implements AfterViewInit, OnInit {
 
   buscarUsuario( termino: string){}
   
+  // El id corresponde al user._id ,NO al profesional_id
   reserva(id: string, nombre: string, profesion:string){
      this._modalReservaService.mostrarModal(id, nombre, profesion);
   }

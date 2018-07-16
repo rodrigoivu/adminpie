@@ -30,8 +30,8 @@ export class ProfesionalService {
 
     return this.http.put( url,profesional )
                 .map( (resp: any) =>{
-                  let profesionalDB: Profesional = resp.profesional;
-                  swal('Profesional actualizado', 'Horario Semanal', 'success' );
+                  //let profesionalDB: Profesional = resp.profesional;
+                  swal('Horario Semanal', 'actualizado correctamente', 'success' );
                   return true;
                 });
   }
@@ -49,7 +49,7 @@ export class ProfesionalService {
   }
 
   crearProfesional(idUser: string){
-    var profesional= new Profesional(idUser);
+    var profesional= new Profesional(idUser); // esto es porque ne model se definio el id user como unico parametro obligatorio
     
     let url = URL_SERVICIOS + 'api/crear-profesional' ;
     

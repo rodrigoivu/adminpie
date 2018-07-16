@@ -2,19 +2,23 @@ import { Injectable,EventEmitter  } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { URL_SERVICIOS } from '../../config/config';
 import { HttpClient } from '@angular/common/http';
+import { ProfesionalService } from '../../services/service.index';
+import { Profesional } from '../../models/profesional.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModalSemanaProfesionalService {
-	public id: string;
+	public id: string; // Este id es de User._id No de Professional._id
   public nombre: string;
   public profesion: string;
 	public token: string;
 	public oculto: string='oculto';
 	public notificacion = new EventEmitter<any>();
 
-  constructor() { 
+  constructor(
+      public _profesionalService: ProfesionalService,
+    ) { 
     this.token = localStorage.getItem('token');
   }
   
@@ -30,19 +34,14 @@ export class ModalSemanaProfesionalService {
     this.profesion = profesion;
   }
 
-  guardarDisponibilidadSemanal( ){
-
-    let url = URL_SERVICIOS + 'api/update-user/' + this.id;
-    return true;
-    // return this.http.put( url,usuario )
-    //             .map( (resp: any) =>{
-    //               if ( usuario._id === this.usuario._id){  // esta función se llama desde el perfil donde es el mismo usuario y se guarda en el storage. Y se llama de la lista de usuarios en mantenimiento, donde el mismo usuario no deberia entrar
-    //                 let usuarioDB: User = resp.user;
-    //                 this.guardarStorage ( usuarioDB._id, this.token, usuarioDB, this.ROUTES);
-    //               }
-                  
-    //               swal('Usuario actualizado', usuario.name, 'success' );
-    //               return resp.user;
-    //             });
+  guardarDisponibilidadSemanal(horaSemanal:any[]){
+    let profesional = new Profesional(
+        this.id, // este es el user._id
+        this.profesion,
+        horaSemanal
+      );
+   this._profesionalService.actualizarProfesional(profesional)
+           .subscribe();
+         
   }
 }

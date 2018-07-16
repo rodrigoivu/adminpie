@@ -1,12 +1,21 @@
-interface Horas{
-	nombre: string,
-	hora: boolean
+interface HoraSemanal{
+  horaLu: boolean,
+  horaMa: boolean,
+  horaMi: boolean,
+  horaJu: boolean,
+  horaVi: boolean,
+  horaSa: boolean,
+  horaDo: boolean,
+  nombreLu: string,
+  nombreMa: string,
+  nombreMi: string,
+  nombreJu: string,
+  nombreVi: string,
+  nombreSa: string,
+  nombreDo: string,
+  hora: string
 }
 
-interface Dias{
-	dia: string,
-	horas: Horas[]
-}
 
 export class Profesional  {
 	
@@ -14,7 +23,7 @@ export class Profesional  {
 		
 		public user: string,
 		public profesion?: string,
-		public dias?: Dias[],
+		public horaSemana?: HoraSemanal[],
 		public _id?: string
 	)
 	{}
