@@ -18,7 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule.forChild(AuthenticationRoutes),
     NgbModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
     
   ],
   declarations: [

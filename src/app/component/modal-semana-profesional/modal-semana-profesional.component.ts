@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalSemanaProfesionalService } from './modal-semana-profesional.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
 interface ListaHorasSem {
   nombreLu: string,
   nombreMa: string,
@@ -18,13 +20,46 @@ interface ListaHorasSem {
 export class ModalSemanaProfesionalComponent implements OnInit {
 
   public horasListaSem : ListaHorasSem[]=[];
-  
+  forma: FormGroup;
+  valor: string = 'horaLu8';
   constructor(
+    private fb: FormBuilder,
   	public _modalSemanaProfesionalService: ModalSemanaProfesionalService
-  ) { }
+  ) {
+      this.createForm();
+   }
 
   ngOnInit() {
     this.generaListaHoraSem();
+    this.cargarHoras();
+  }
+
+  createForm() {
+    this.forma = this.fb.group({
+      name: '', // <--- the FormControl called "name"
+    });
+  }
+
+  cargarHoras(){
+    this.forma = new FormGroup({
+       horaLu8: new FormControl(false),
+       horaMa8: new FormControl(false),
+       horaMi8: new FormControl(false),
+       horaJu8: new FormControl(false),
+       horaVi8: new FormControl(false),
+       horaSa8: new FormControl(false),
+       horaDo8: new FormControl(false)
+    });
+    this.forma.setValue({
+       horaLu8: true,
+       horaMa8: true,
+       horaMi8: true,
+       horaJu8: true,
+       horaVi8: true,
+       horaSa8: true,
+       horaDo8: true
+
+    });
   }
 
   generaListaHoraSem(){

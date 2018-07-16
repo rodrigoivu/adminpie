@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalReservaService } from './modal-reserva.service';
-import { NgbDateStruct,  NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 interface DiaponibleProfesional{ // de la base de datos
   horaDisp: number
@@ -59,6 +59,8 @@ export class ModalReservaComponent implements OnInit {
   item_hora: string="item_hora";
   item_hora_ultimo: string="item_hora_ultimo";
 
+  cargando: boolean = true;
+
   constructor(
   	public _modalReservaService: ModalReservaService
   ) { }
@@ -68,6 +70,19 @@ export class ModalReservaComponent implements OnInit {
     this.generaItemsReservado();
     this.generaHorasDispProf();
     this.generaMuestraReservados();
+  }
+
+  cargarHorasDispProf(){
+    this.cargando =true;
+    this._modalReservaService.cargarHorasDisp(this.model)
+        .subscribe( (resp: any) =>{
+               
+          // this.totalRegistros = resp.total;
+          // this.usuarios = resp.users;
+          this.cargando = false;
+
+        });
+
   }
   
   generaHorasDispProf(){

@@ -12,11 +12,13 @@
 	      </div>
 	      
 	      <div class="modal-body modal-body-i" >
+
 	      	<div class="row container">
                 <div class="col">
                 	
-	      			<form class="" (ngSubmit)="registrarHoraSem()">
-	      				<div class="">
+	      			<form [formGroup]="forma" class="" (ngSubmit)="registrarHoraSem()" id="loginform">
+	      				
+	      				<div class="" formArrayName="horaSemana">
 		      				<table class="table table-bordered table-sm">
 		      					<thead class="thead-light" >
 			            			<tr>
@@ -30,60 +32,60 @@
 			            			</tr>
 			            		</thead>
 		      					<tbody>
-		      						<tr *ngFor='let hora of horasListaSem' >
+		      						<tr *ngFor="let hora of forma.controls.horaSemana.controls ;let i=index" [formGroupName]="i" >
 		      							<td>
 		      								<div class="form-check">
-											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombreLu">
-											  <label class="form-check-label" [for]="hora.nombreLu">
-											    {{hora.hora}}
+											  <input formControlName="horaLu" name="horaLu" class="form-check-input" type="checkbox" value="" id="{{hora.value.nombreLu}}">
+											  <label class="form-check-label" for="{{hora.value.nombreLu}}">
+											    {{ hora.value.hora }}
 											  </label>
 											</div>
 		      							</td>
 		      							<td>
 		      								<div class="form-check">
-											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombreMa">
-											  <label class="form-check-label" [for]="hora.nombreMa">
-											    {{hora.hora}}
+											  <input formControlName="horaMa" name="horaMa" class="form-check-input" type="checkbox" value="" id="{{hora.value.nombreMa}}">
+											  <label class="form-check-label" for="{{hora.value.nombreMa}}">
+											    {{ hora.value.hora }}
 											  </label>
 											</div>
 		      							</td>
 		      							<td>
 		      								<div class="form-check">
-											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombreMi">
-											  <label class="form-check-label" [for]="hora.nombreMi">
-											    {{hora.hora}}
+											  <input formControlName="horaMi" name="horaMi"  class="form-check-input" type="checkbox" value="" id="{{hora.value.nombreMi}}">
+											  <label class="form-check-label" for="{{hora.value.nombreMi}}">
+											    {{ hora.value.hora }}
 											  </label>
 											</div>
 		      							</td>
 		      							<td>
 		      								<div class="form-check">
-											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombreJu">
-											  <label class="form-check-label" [for]="hora.nombreJu">
-											    {{hora.hora}}
+											  <input formControlName="horaJu" name="horaJu"  class="form-check-input" type="checkbox" value="" id="{{hora.value.nombreJu}}">
+											  <label class="form-check-label" for="{{hora.value.nombreJu}}">
+											    {{ hora.value.hora }}
 											  </label>
 											</div>
 		      							</td>
 		      							<td>
 		      								<div class="form-check">
-											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombreVi">
-											  <label class="form-check-label" [for]="hora.nombreVi">
-											    {{hora.hora}}
+											  <input formControlName="horaVi" name="horaVi"  class="form-check-input" type="checkbox" value="" id="{{hora.value.nombreVi}}">
+											  <label class="form-check-label" for="{{hora.value.nombreVi}}">
+											    {{ hora.value.hora }}
 											  </label>
 											</div>
 		      							</td>
 		      							<td>
 		      								<div class="form-check">
-											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombreSa">
-											  <label class="form-check-label" [for]="hora.nombreSa">
-											    {{hora.hora}}
+											  <input formControlName="horaSa" name="horaSa"  class="form-check-input" type="checkbox" value="" id="{{hora.value.nombreSa}}">
+											  <label class="form-check-label" for="{{hora.value.nombreSa}}">
+											    {{ hora.value.hora }}
 											  </label>
 											</div>
 		      							</td>
 		      							<td>
 		      								<div class="form-check">
-											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombreDo">
-											  <label class="form-check-label" [for]="hora.nombreDo">
-											    {{hora.hora}}
+											  <input formControlName="horaDo" name="horaDo"  class="form-check-input" type="checkbox" value="" id="{{hora.value.nombreDo}}">
+											  <label class="form-check-label" for="{{hora.value.nombreDo}}">
+											    {{ hora.value.hora }}
 											  </label>
 											</div>
 		      							</td>
@@ -94,14 +96,15 @@
 		      					</tbody>
 		      				</table>
 	      				</div>
-
+	      				<button   type="submit" class="btn btn-primary">Guardar</button>
 	      			</form>
 	      		</div>	
 	      	</div>
+
 	      </div>
 	      <div class="modal-footer">
 	        <button (click)="cerrarModal()" type="button" class="btn btn-secondary" >Cerrar</button>
-	        <button   type="submit" class="btn btn-primary">Guardar</button>
+	        
 	      </div>
 	    </div>
 	  </div>
