@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalSemanaProfesionalService } from './modal-semana-profesional.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-interface ListaHorasSem {
+interface HoraSemanal{
+  horaLu: boolean,
+  horaMa: boolean,
+  horaMi: boolean,
+  horaJu: boolean,
+  horaVi: boolean,
+  horaSa: boolean,
+  horaDo: boolean,
   nombreLu: string,
   nombreMa: string,
   nombreMi: string,
@@ -11,7 +18,8 @@ interface ListaHorasSem {
   nombreSa: string,
   nombreDo: string,
   hora: string
-};
+}
+
 @Component({
   selector: 'app-modal-semana-profesional',
   templateUrl: './modal-semana-profesional.component.html',
@@ -19,9 +27,8 @@ interface ListaHorasSem {
 })
 export class ModalSemanaProfesionalComponent implements OnInit {
 
-  public horasListaSem : ListaHorasSem[]=[];
   forma: FormGroup;
-  valor: string = 'horaLu8';
+
   constructor(
     private fb: FormBuilder,
   	public _modalSemanaProfesionalService: ModalSemanaProfesionalService
@@ -29,56 +36,37 @@ export class ModalSemanaProfesionalComponent implements OnInit {
       this.createForm();
    }
 
-  ngOnInit() {
-    this.generaListaHoraSem();
-    this.cargarHoras();
-  }
+  ngOnInit() {  }
 
   createForm() {
-    this.forma = this.fb.group({
-      name: '', // <--- the FormControl called "name"
-    });
-  }
+      let horaS: HoraSemanal;
 
-  cargarHoras(){
-    this.forma = new FormGroup({
-       horaLu8: new FormControl(false),
-       horaMa8: new FormControl(false),
-       horaMi8: new FormControl(false),
-       horaJu8: new FormControl(false),
-       horaVi8: new FormControl(false),
-       horaSa8: new FormControl(false),
-       horaDo8: new FormControl(false)
-    });
-    this.forma.setValue({
-       horaLu8: true,
-       horaMa8: true,
-       horaMi8: true,
-       horaJu8: true,
-       horaVi8: true,
-       horaSa8: true,
-       horaDo8: true
+      this.forma = this.fb.group({
+          horaSemana: this.fb.array([])
+      });
 
-    });
-  }
+      let items = this.forma.get('horaSemana') as FormArray;
 
-  generaListaHoraSem(){
-    this.horasListaSem=[];
-    let lh: ListaHorasSem;
-    for (var i = 8; i <= 22; i++) {
-      lh={
-         nombreLu: 'horaLu'+i,
-         nombreMa: 'horaMa'+i,
-         nombreMi: 'horaMi'+i,
-         nombreJu: 'horaJu'+i,
-         nombreVi: 'horaVi'+i,
-         nombreSa: 'horaSa'+i,
-         nombreDo: 'horaDo'+i,
-         hora: i+':00'
-      };
-    this.horasListaSem.push(lh);
-    }
-    
+     for (var i = 8; i <= 22; i++){
+       horaS={
+          horaLu: true,
+          horaMa: true,
+          horaMi: true,
+          horaJu: true,
+          horaVi: true,
+          horaSa: true,
+          horaDo: true,
+          nombreLu: 'horaLu'+i,
+          nombreMa: 'horaMa'+i,
+          nombreMi: 'horaMi'+i,
+          nombreJu: 'horaJu'+i,
+          nombreVi: 'horaVi'+i,
+          nombreSa: 'horaSa'+i,
+          nombreDo: 'horaDo'+i,
+          hora: i+':00'
+       }
+       items.push(this.fb.group(horaS));
+     }
   }
 
   cerrarModal(){

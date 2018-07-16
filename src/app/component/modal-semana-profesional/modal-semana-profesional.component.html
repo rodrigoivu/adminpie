@@ -32,7 +32,7 @@
 			            			</tr>
 			            		</thead>
 		      					<tbody>
-		      						<tr *ngFor="let hora of forma.controls.horaSemana.controls ;let i=index" [formGroupName]="i" >
+		      						<tr *ngFor="let hora of forma.get('horaSemana').controls  ;let i=index" [formGroupName]="i" >
 		      							<td>
 		      								<div class="form-check">
 											  <input formControlName="horaLu" name="horaLu" class="form-check-input" type="checkbox" value="" id="{{hora.value.nombreLu}}">
