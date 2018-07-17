@@ -25,7 +25,13 @@ export class ProfesionalesComponent implements AfterViewInit, OnInit {
     public _modalSemanaProfesionalService: ModalSemanaProfesionalService,
     public _modalEditProfesionalService: ModalEditProfesionalService,
     public _modalReservaService: ModalReservaService
-  ) {}
+  ) {
+
+    this._modalSemanaProfesionalService.notificacionCargarProfesionales
+          .subscribe( resp => {
+            this.cargarProfesionales();
+          } ); 
+  }
 
   ngAfterViewInit() {}
   
@@ -44,8 +50,8 @@ export class ProfesionalesComponent implements AfterViewInit, OnInit {
     this._modalDiaProfesionalService.mostrarModal(id, nombre, profesion);
 
   }
-  editarSemana(id: string, nombre: string, profesion:string){
-    this._modalSemanaProfesionalService.mostrarModal(id, nombre, profesion);
+  editarSemana(id: string, nombre: string, profesional:Profesional){
+    this._modalSemanaProfesionalService.mostrarModal(id, nombre, profesional);
   }
   editarProfesional(id: string, nombre: string, profesion:string){
     this._modalEditProfesionalService.mostrarModal(id, nombre, profesion);

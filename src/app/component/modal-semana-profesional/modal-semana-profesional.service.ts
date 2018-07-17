@@ -1,9 +1,11 @@
 import { Injectable,EventEmitter  } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { URL_SERVICIOS } from '../../config/config';
-import { HttpClient } from '@angular/common/http';
+// import { URL_SERVICIOS } from '../../config/config';
+// import { HttpClient } from '@angular/common/http';
 import { ProfesionalService } from '../../services/service.index';
 import { Profesional } from '../../models/profesional.model';
+import { Observable } from 'rxjs/Observable';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +14,11 @@ export class ModalSemanaProfesionalService {
 	public id: string; // Este id es de User._id No de Professional._id
   public nombre: string;
   public profesion: string;
+  public horaSemana: any[];
 	public token: string;
 	public oculto: string='oculto';
 	public notificacion = new EventEmitter<any>();
+  public notificacionCargarProfesionales = new EventEmitter<any>();
 
   constructor(
       public _profesionalService: ProfesionalService,
@@ -27,21 +31,26 @@ export class ModalSemanaProfesionalService {
   	this.id = null;
   }
 
-  mostrarModal( id: string, nombre: string, profesion: string ){
+  mostrarModal( id: string, nombre: string, profesional: Profesional ){
   	this.oculto = '';
   	this.id = id;
     this.nombre = nombre;
-    this.profesion = profesion;
+    this.profesion = profesional.profesion;
+    this.horaSemana = profesional.horaSemana;
+
+    this.notificacion.emit(true);
+
   }
 
   guardarDisponibilidadSemanal(horaSemanal:any[]){
+
     let profesional = new Profesional(
         this.id, // este es el user._id
         this.profesion,
         horaSemanal
       );
    this._profesionalService.actualizarProfesional(profesional)
-           .subscribe();
+           .subscribe(resp => this.notificacionCargarProfesionales.emit(true));
          
   }
 }
