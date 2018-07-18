@@ -31,7 +31,7 @@ export class ProfesionalService {
     return this.http.put( url,profesional )
                 .map( (resp: any) =>{
                   //let profesionalDB: Profesional = resp.profesional;
-                  swal('Horario Semanal', 'actualizado correctamente', 'success' );
+                  swal('Horario Guardado', 'Profesional actualizado correctamente', 'success' );
                   return true;
                 });
   }

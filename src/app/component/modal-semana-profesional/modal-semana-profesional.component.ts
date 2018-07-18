@@ -3,24 +3,6 @@ import { ModalSemanaProfesionalService } from './modal-semana-profesional.servic
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Profesional } from '../../models/profesional.model';
 
-interface HoraSemanal{
-  horaLu: boolean,
-  horaMa: boolean,
-  horaMi: boolean,
-  horaJu: boolean,
-  horaVi: boolean,
-  horaSa: boolean,
-  horaDo: boolean,
-  nombreLu: string,
-  nombreMa: string,
-  nombreMi: string,
-  nombreJu: string,
-  nombreVi: string,
-  nombreSa: string,
-  nombreDo: string,
-  hora: string
-}
-
 @Component({
   selector: 'app-modal-semana-profesional',
   templateUrl: './modal-semana-profesional.component.html',

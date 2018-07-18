@@ -16,6 +16,17 @@ interface HoraSemanal{
   hora: string
 }
 
+interface hora {
+  nombre: string,
+  hora: string,
+  valor: boolean
+};
+
+interface horaDia {
+  dia: string,
+  horas: hora[]
+}
+
 
 export class Profesional  {
 	
@@ -24,6 +35,7 @@ export class Profesional  {
 		public user: string,
 		public profesion?: string,
 		public horaSemana?: HoraSemanal[],
+    public horasDia?: horaDia[],
 		public _id?: string
 	)
 	{}

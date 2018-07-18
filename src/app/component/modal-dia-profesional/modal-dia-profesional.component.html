@@ -26,17 +26,32 @@
 			                <div class="m-t-20">
 			                    <button class="btn btn-sm btn-outline-info" (click)="selectToday()" (click)="dp.navigateTo()">Hoy</button>
 			                </div>
+			                <br>
+			                <div *ngIf="!flagEsNuevo"> <h6>* Con disponibilidad específica</h6> </div>
 			            </div>
                     </div>
 	      			
 	      			
 	      		</div>
 	      		<div class="col-sm-4 ">
-	      			<form class="form-vertical">
+	      			<form [formGroup]="forma"  class="form-vertical">
 	      				<div class="row container text-center">
 	      					{{ stringDate }}
 	      				</div>
-	      				<div class="listado">
+	      				
+	      				<div class="row animated fadeIn" *ngIf="cargando">
+							<div class="col-sm-12">
+								<div class="alert alert-warning text-center">
+									<strong>Cargando</strong>
+									<br>
+									<i class="fa fa-refresh fa-spin fa-2x"></i>
+									<br>
+									<span>Espere por favor</span>
+								</div>
+							</div>
+						</div>
+
+	      				<div formArrayName="horaDia" class="listado">
 		      				<table class="table table-hover table-sm">
 		      					<thead class="thead-light" >
 			            			<tr>
@@ -44,12 +59,12 @@
 			            			</tr>
 			            		</thead>
 		      					<tbody>
-		      						<tr *ngFor='let hora of horasLista' >
+		      						<tr *ngFor="let hora of forma.get('horaDia').controls  ;let i=index" [formGroupName]="i" >
 		      							<td>
 		      								<div class="form-check">
-											  <input class="form-check-input" type="checkbox" value="" [id]="hora.nombre">
-											  <label class="form-check-label" [for]="hora.nombre">
-											    {{hora.hora}}
+											  <input formControlName="valor" name="valor"  class="form-check-input" type="checkbox" id="{{hora.value.nombre}}">
+											  <label class="form-check-label" for="{{hora.value.nombre}}">
+											    {{ hora.value.hora }}
 											  </label>
 											</div>
 		      							</td>
@@ -65,6 +80,7 @@
 
 	      </div>
 	      <div class="modal-footer">
+	      	<button *ngIf="!flagEsNuevo" (click)="btnEliminarDiayGuardar()"  type="button" class="btn btn-danger">Borra Info día</button>
 	        <button (click)="cerrarModal()" type="button" class="btn btn-secondary" >Cerrar</button>
 	        <button (click)="btnGuardar()"  type="button" class="btn btn-primary">Guardar</button>
 	      </div>
