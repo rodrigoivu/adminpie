@@ -30,7 +30,7 @@ export class ModalDiaProfesionalService {
 
   mostrarModal( id: string, nombre: string, profesional: Profesional ){
   	this.oculto = '';
-  	this.id = id;
+  	this.id = id; //esto es el id de user no de profesional
     this.nombre = nombre;
     this.profesion = profesional.profesion;
     this.horaSemana= profesional.horaSemana;

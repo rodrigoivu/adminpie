@@ -115,35 +115,6 @@ export class ModalDiaProfesionalComponent implements OnInit {
      
   }
   
-  // cargarHorasDia_borrar(){
-  //   this.createForm();
-  //   this.forma.get('horaDia').reset();
-
-  //   let items = this.forma.get('horaDia') as FormArray;
-
-  //   // buscar Horas del dia seleccionado
-  //   this.horaDiaSeleccionado = this.horaDiaVacio;
-  //   this.flagEsNuevo=true;
-    
-  //   for(let hrDiaBD of this.horasDia){
-  //     var fechaSeleccionada: string;
-  //     fechaSeleccionada=this.modelToString(this.model);
-
-  //     //console.log('diaBD: '+ hrDiaBD.dia+', '+'selec: '+ fechaSeleccionada);
-  //     if(hrDiaBD.dia === fechaSeleccionada){
-  //        this.horaDiaSeleccionado = hrDiaBD;
-  //        this.flagEsNuevo=false;
-  //        //console.log(this.horaDiaSeleccionado);
-  //       break;
-  //     }
-  //   }
- 
-  //   for(let horaD of this.horaDiaSeleccionado.horas){
-  //     //console.log(horaD);
-  //     items.push(this.fb.group(horaD));
-  //   }
-
-  // }
   genererHoraDiaVacio(){
     //this.horaDiaVacio;
     let hrs: hora[]=[];
@@ -162,40 +133,9 @@ export class ModalDiaProfesionalComponent implements OnInit {
       dia: this.modelToString(this.model),
       horas: hrs
     }
+
+
   }
-
-  // generaHoraDia(){
-  //   this.horasDia=[];
-  //   let horaD:horaDia;
-  //   let hrs: hora[]=[];
-  //   let hr: hora;
-    
-   
-  //   for( var d=0; d<=5;d++){
-  //     hrs=[];
-  //     for (var i = 8; i <= 22; i++) {
-  //       hr={
-  //          nombre: 'hora'+i,
-  //          hora: i+':00',
-  //          valor: true,
-  //       };
-  //       hrs.push(hr);
-  //     } 
-
-  //     let diaA: Date;
-  //     diaA=this.toModel(this.model);
-  //     diaA.setDate(diaA.getDate() + d);
-  //     let diaM: NgbDateStruct;
-  //     diaM=this.fromModel(diaA);
-      
-  //     horaD={
-  //       dia: this.modelToString(diaM),
-  //       horas: hrs
-  //     }
-  //     this.horasDia.push(horaD);
-  //  }
-  //   //console.log(this.horasDia);
-  // }
 
   toModel(date: NgbDateStruct): Date {
     return date ? new Date(date.year, date.month - 1, date.day) : null;

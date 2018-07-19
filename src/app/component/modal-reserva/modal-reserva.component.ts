@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalReservaService } from './modal-reserva.service';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+//import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 interface DiaponibleProfesional{ // de la base de datos
   horaDisp: number
@@ -61,42 +62,142 @@ export class ModalReservaComponent implements OnInit {
 
   cargando: boolean = true;
 
+  //forma: FormGroup;
+
   constructor(
+   // private fb: FormBuilder,
   	public _modalReservaService: ModalReservaService
-  ) { }
+  ) {
+      this._modalReservaService.notificacion
+          .subscribe( resp => {
+            this.cargarHorasDispProf();
+            this.generaMuestraReservados();
+          } ); 
+   }
 
   ngOnInit() {
   	this.selectToday();
     this.generaItemsReservado();
-    this.generaHorasDispProf();
-    this.generaMuestraReservados();
+    //this.generaHorasDispProf();
+    
+
   }
+
 
   cargarHorasDispProf(){
     this.cargando =true;
-    this._modalReservaService.cargarHorasDisp(this.model)
-        .subscribe( (resp: any) =>{
-               
-          // this.totalRegistros = resp.total;
-          // this.usuarios = resp.users;
-          this.cargando = false;
-
-        });
-
-  }
-  
-  generaHorasDispProf(){
     this.horasDispProf = [];
     let horaDispP: DiaponibleProfesional;
-    for (var i = 1; i <= 4; i++) {
-      horaDispP={
-        horaDisp: i,
-        horaDispMuestra: 7+i
+    let diaEncontrado:boolean= false; 
+
+    let indexFind:number;
+    //Buscar Horarios disponibles por fecha
+    //Primero en el registro de horasDia
+    //Luego en el registro de HoraSemana
+    var fechaSeleccionada: string;
+    fechaSeleccionada=this.modelToString(this.model);
+
+    indexFind = this._modalReservaService.horasDia.findIndex(x => x.dia === fechaSeleccionada); 
+
+    if(indexFind != -1){  //encontrado en horasDia
+      diaEncontrado=true;
+      for(let hr of this._modalReservaService.horasDia[indexFind].horas){
+        if(hr.valor){
+             let hrS : string = hr.hora;
+             let hri: number;
+             if(hrS.length<=4){
+               hri=Number(hrS.substring(0,1));
+             }else{
+               hri=Number(hrS.substring(0,2));
+             }
+             horaDispP={
+                  horaDisp: hri-7,
+                  horaDispMuestra: hri
+             }
+             this.horasDispProf.push(horaDispP);
+           }
       }
-      this.horasDispProf.push(horaDispP);
+    }else{               // no hay registro de disponibilidad de hora en ese dia
+      diaEncontrado=false;
     }
-    //console.log(this.horasDispProf);
+
+
+    //Buscar en HoraSemana
+
+   if(!diaEncontrado){
+        let nombreDiaSelecionado:Date =this.toModel(this.model);
+        let diaDeSemana:number=nombreDiaSelecionado.getDay();
+        let hrActiva:boolean=false;
+        let i:number =0;
+
+        for(let hrSBD of this._modalReservaService.horaSemana){
+          hrActiva=false;
+          switch (diaDeSemana){
+            case 0:{   //domingo
+              hrActiva = hrSBD.horaDo;
+              break;
+            }
+            case 1:{   //lunes
+              hrActiva = hrSBD.horaLu;
+              break;
+            }
+            case 2:{   //martes
+              hrActiva = hrSBD.horaMa;
+              break;
+            }
+            case 3:{   //miercoles
+              hrActiva = hrSBD.horaMi;
+              break;
+            }
+            case 4:{   //jueves
+              hrActiva = hrSBD.horaJu;
+              break;
+            }
+            case 5:{   //viernes
+              hrActiva = hrSBD.horaVi;
+              break;
+            }
+            case 6:{   //sábado
+              hrActiva = hrSBD.horaSa;
+              break;
+            }
+            default:{   
+              
+              break;
+            }
+          }
+
+          if (hrActiva){
+             horaDispP={
+                  horaDisp: i+1,  //1-15
+                  horaDispMuestra: i+8. //8-22
+              }
+                 this.horasDispProf.push(horaDispP);
+          }else{
+
+          }
+
+          i++;
+        }
+     }
+     //console.log(this.horasDispProf);
+     this.cargando =false;
   }
+
+  
+  
+  // generaHorasDispProf(){
+  //   this.horasDispProf = [];
+  //   let horaDispP: DiaponibleProfesional;
+  //   for (var i = 1; i <= 4; i++) {
+  //     horaDispP={
+  //       horaDisp: i,
+  //       horaDispMuestra: 7+i
+  //     }
+  //     this.horasDispProf.push(horaDispP);
+  //   }
+  //   //console.log(this.horasDispProf);
+  // }
 
   generaItemsReservado(){
     this.itemsReservado = [];
@@ -105,7 +206,7 @@ export class ModalReservaComponent implements OnInit {
       itemR={
           nombrePaciente: 'Paciente'+i,
           nombreEstablecimiento: 'Establecimiento'+i,
-          horaReservado: i,
+          horaReservado: i,  //1-15
           poshora: [{pos:0},{pos:0},{pos:1},{pos:1},{pos:1},{pos:0}]
       };
     this.itemsReservado.push(itemR);
@@ -233,8 +334,11 @@ export class ModalReservaComponent implements OnInit {
   }
 
   accionReservar(posEnLista: number, poshora:PosHora[], hora: number){
+    var fechaSeleccionada: string;
+    fechaSeleccionada=this.modelToString(this.model);
+    console.log('fechaSeleccionada:'+fechaSeleccionada);
     console.log('pos en lista: ', posEnLista);
-    console.log('pos hora: ',poshora);
+    console.log('pos hora: ',JSON.stringify(poshora) );
     console.log('hora: ',hora);
   }
 
@@ -248,18 +352,56 @@ export class ModalReservaComponent implements OnInit {
 
   onDateChange(date: NgbDateStruct) {
     this.formatoFecha(date);
+    this.cargarHorasDispProf();
+    this.generaMuestraReservados();
   }
 
   cerrarModal(){
     this.selectToday();
   	this._modalReservaService.ocultarModal();
   }
-  btnGuardar(){
-    this.selectToday();
-  }
+  
 
   formatoFecha(date: NgbDateStruct){
     let mes:string='';
+    let nombreDia:string='';
+    let nombreDiaSelecionado:Date =this.toModel(date);
+    let diaDeSemana:number=nombreDiaSelecionado.getDay();
+    
+    switch (diaDeSemana){
+            case 0:{   //domingo
+              nombreDia = 'Domingo';
+              break;
+            }
+            case 1:{   //lunes
+              nombreDia = 'Lunes';
+              break;
+            }
+            case 2:{   //martes
+              nombreDia = 'Martes';
+              break;
+            }
+            case 3:{   //miercoles
+              nombreDia = 'Miércoles';
+              break;
+            }
+            case 4:{   //jueves
+              nombreDia = 'Jueves';
+              break;
+            }
+            case 5:{   //viernes
+              nombreDia = 'Viernes';
+              break;
+            }
+            case 6:{   //sábado
+              nombreDia = 'Sábado';
+              break;
+            }
+            default:{   
+              
+              break;
+            }
+          }
     switch (date.month){
       case 1:
         mes='Enero';
@@ -301,8 +443,21 @@ export class ModalReservaComponent implements OnInit {
         mes='';
         break;                      
     }
-    this.stringDate=date.day+' de '+ mes +' del '+date.year;
+    this.stringDate=nombreDia+', '+date.day+' de '+ mes +' del '+date.year;
+  }
+  modelToString(date: NgbDateStruct): string{
+    return date ? date.day+'-'+date.month+'-'+date.year : '';
+  }
+  toModel(date: NgbDateStruct): Date {
+    return date ? new Date(date.year, date.month - 1, date.day) : null;
   }
 
+  fromModel(date: Date): NgbDateStruct {
+    return date ? {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate()
+    } : null;
+  }
 
 }

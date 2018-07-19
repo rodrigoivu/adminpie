@@ -35,6 +35,10 @@ export class ProfesionalesComponent implements AfterViewInit, OnInit {
           .subscribe( resp => {
             this.cargarProfesionales();
           } ); 
+    this._modalReservaService.notificacionCargarProfesionales
+          .subscribe( resp => {
+            this.cargarProfesionales();
+          } );       
   }
 
   ngAfterViewInit() {}
@@ -46,8 +50,8 @@ export class ProfesionalesComponent implements AfterViewInit, OnInit {
   buscarUsuario( termino: string){}
   
   // El id corresponde al user._id ,NO al profesional_id
-  reserva(id: string, nombre: string, profesion:string){
-     this._modalReservaService.mostrarModal(id, nombre, profesion);
+  reserva(id: string, nombre: string, profesional: Profesional){
+     this._modalReservaService.mostrarModal(id, nombre, profesional);
   }
 
   editarDia(id: string, nombre: string, profesional:Profesional){
