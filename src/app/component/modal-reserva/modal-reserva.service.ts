@@ -16,7 +16,9 @@ export class ModalReservaService {
   public horasDia: any[]=[];
   public token: string;
   public oculto: string='oculto';
+  public ocultoCreaReserva: string='oculto';
   public notificacion = new EventEmitter<any>();
+  public notificacionCreaReserva = new EventEmitter<any>();
   public notificacionCargarProfesionales = new EventEmitter<any>();
 
   constructor(
@@ -26,9 +28,21 @@ export class ModalReservaService {
   	this.token = localStorage.getItem('token');
    }
 
+  
+
+  ocultarModalCreaReserva(){
+    this.ocultoCreaReserva = 'oculto';
+  }
+
+  mostrarModalCreaReserva(){
+    this.ocultoCreaReserva = '';
+    
+    this.notificacionCreaReserva.emit(true);
+  }
+
   ocultarModal(){
-  	this.oculto = 'oculto';
-  	this.id = null;
+    this.oculto = 'oculto';
+    this.id = null;
   }
 
   mostrarModal( id: string, nombre: string,  profesional: Profesional  ){

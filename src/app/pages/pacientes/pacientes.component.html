@@ -1,10 +1,78 @@
-<div class="row">
+<div class="row animated fadeIn">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                {{subtitle}}
+               
+            	<input #input (keyup)="buscarPaciente( input.value )" type="text" class="form-control" placeholder="Buscar paciente por Nombre o por Rut...">
 
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="row animated fadeIn" *ngIf="cargando">
+	<div class="col-sm-12">
+		<div class="alert alert-warning text-center">
+			<strong>Cargando</strong>
+			<br>
+			<i class="fa fa-refresh fa-spin fa-2x"></i>
+			<br>
+			<span>Espere por favor</span>
+		</div>
+	</div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+               
+            	<h3 class="card-title">Pacientes registrados ( <small>{{totalRegistros}}</small> )</h3>
+            	<div class="text-right">
+            		<button (click)="crearPaciente()" class="btn btn-primary waves-effect waves-light btn-rounded">
+    	        		<i class="fa fa-plus"></i>
+    	        		Crear Paciente
+	            	</button>
+            	</div>
+            	<table class="table table-hover">
+            		<thead>
+            			<tr>
+            				<th>Nombre</th>
+            				<th>Rut</th>
+            				<th>e-mail</th>
+            				<th>T. Fijo/Celular</th>
+            				<th>Dirección</th>
+            				<th>Comuna</th>
+            			</tr>
+            		</thead>
+            		<tbody>
+            			<tr *ngFor='let paciente of pacientes'>
+            				<td>{{paciente.name}}</td>
+            				<td>{{paciente.rut}}</td>
+            				<td>{{paciente.email}} </td>
+            				<td>{{paciente.fijo}} / {{paciente.celular}} </td>
+            				<td>{{paciente.direccion}} </td>
+            				<td>{{paciente.comuna}} </td>
+            				
+            				<td>
+            					<button  (click)="editarPaciente( paciente )" class="btn btn-warning" placement="top" ngbTooltip="Editar paciente">
+            						<i class="fa fa-pencil"></i>
+            					</button>
+
+            					<button (click)="borrarPaciente( usuario )" class="btn btn-danger" placement="top" ngbTooltip="Eliminar paciente">
+            						<i class="fa fa-trash-o"></i>
+            					</button>
+            				</td>
+            			</tr>
+            		</tbody>
+
+            	</table>
+            	<button (click)="cambiarDesde(-10)" class="btn btn-secondary">
+            		Anteriores
+            	</button>
+            	<button (click)="cambiarDesde(10)" class="btn btn-secondary">
+            		Siguientes
+            	</button>
             </div>
         </div>
     </div>

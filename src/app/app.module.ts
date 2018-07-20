@@ -34,6 +34,8 @@ import { ModalDiaProfesionalComponent } from './component/modal-dia-profesional/
 import { ModalSemanaProfesionalComponent } from './component/modal-semana-profesional/modal-semana-profesional.component';
 import { ModalEditProfesionalComponent } from './component/modal-edit-profesional/modal-edit-profesional.component';
 import { ModalReservaComponent } from './component/modal-reserva/modal-reserva.component';
+import { ModalCreaPacienteComponent } from './component/modal-crea-paciente/modal-crea-paciente.component';
+import { ModalCreaReservaComponent } from './component/modal-crea-reserva/modal-crea-reserva.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -55,7 +57,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ModalDiaProfesionalComponent,
     ModalSemanaProfesionalComponent,
     ModalEditProfesionalComponent,
-    ModalReservaComponent
+    ModalReservaComponent,
+    ModalCreaPacienteComponent,
+    ModalCreaReservaComponent
   ],
   imports: [
     CommonModule,

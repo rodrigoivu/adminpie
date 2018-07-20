@@ -8,5 +8,6 @@ export { VerificaTokenGuard } from './guards/verifica-token.guard';
 
 export { UsuarioService } from './usuario/usuario.service';
 export { ProfesionalService } from './profesional/profesional.service';
+export { PacienteService } from './paciente/paciente.service';
 export { SubirArchivoService }from './subir-archivo/subir-archivo.service';
 export { SidebarService } from './shared/sidebar.service';

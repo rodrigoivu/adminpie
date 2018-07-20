@@ -93,6 +93,8 @@ export class ProfesionalesComponent implements AfterViewInit, OnInit {
   				this.cargando = false;
 
   			});
-
+  }
+  bloqueoGeneral(){
+    
   }
 }

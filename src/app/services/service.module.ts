@@ -4,6 +4,7 @@ import { ModalUploadService } from '../component/modal-upload/modal-upload.servi
 
 import { UsuarioService,
          ProfesionalService,
+         PacienteService,
          LoginGuardGuard, 
          AdminGuard, 
          AdminMedicalUserGuard,
@@ -26,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers:[
   	UsuarioService,
     ProfesionalService,
+    PacienteService,
   	LoginGuardGuard,
     AdminGuard,
     AdminMedicalUserGuard,

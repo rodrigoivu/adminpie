@@ -1,0 +1,81 @@
+<div class="row animated fadeIn" >
+	<div class="col-sm-12">
+		<div class="card">
+			 <div class="card-body">
+			 	<h3 class="card-title">Seleccionar Rangos</h3>
+			 	<div class="row">
+
+			 		<div class="col-sm-9">
+
+			 			<ngb-datepicker #dp (select)="onDateSelection($event)" [dayTemplate]="t" [displayMonths]="displayMonths" [navigation]="navigation" [showWeekNumbers]="showWeekNumbers" [outsideDays]="outsideDays">
+						</ngb-datepicker>
+
+						<ng-template #t let-date="date" let-focused="focused">
+						  <span class="custom-day"
+						        [class.focused]="focused"
+						        [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date) || isInList(date)"
+						        [class.faded]="isHovered(date) || isInside(date)"
+						        (mouseenter)="hoveredDate = date"
+						        (mouseleave)="hoveredDate = null"
+						         [ngbTooltip]="ValorTooltip(date)">
+						    {{ date.day }}
+						  </span>
+						</ng-template>
+
+					</div>
+
+			 		<div class="col-sm-3">
+
+			 			<pre>From: {{ fromDate | json }} </pre>
+						<pre>To: {{ toDate | json }} </pre>
+
+			 		</div>
+
+			 	</div>
+
+			 </div>
+		</div>
+	</div>
+</div>
+
+<div class="row animated fadeIn" >
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+               
+            	<h3 class="card-title">Items Bloqueados( <small>{{totalRegistros}}</small> )</h3>
+                <div class="text-right">
+                </div>    
+            	<table class="table table-hover">
+            		<thead>
+            			<tr>
+            				<th>Descripción</th>
+                            <th>Fecha Inicial</th>
+            				<th>Fecha Final</th>
+            				<th>Eliminar</th>
+	           			</tr>
+            		</thead>
+            		<tbody>
+
+            			<tr *ngFor='let item of itemsBloqueados'  >
+                                
+                                <td>{{item.descripcion}}</td>
+                				<td>{{item.fechaini}}</td>
+                				<td>{{item.fechafin}}</td>
+                                <td>
+                					
+                					<button (click)="borrarBloqueo()" class="btn btn-primary" placement="top" ngbTooltip="Elimina bloqueo">
+                						<i class="fa fa-trash-o"></i>
+                					</button>
+                				
+                				</td>
+            			</tr>
+            		</tbody>
+
+            	</table>
+            	
+            </div>
+        </div>
+    </div>
+</div>
+

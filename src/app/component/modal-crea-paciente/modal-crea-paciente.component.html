@@ -1,0 +1,85 @@
+<div class="fondo-negro animated fadeIn" [ngClass]="_modalCreaPacienteService.oculto" >
+	<div class="modal" style="display: block;" tabindex="-1" role="dialog">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	      	<h5 class="modal-title">Ingresar nuevo paciente</h5>
+	      	
+	        <button (click)="cerrarModal()" type="button" class="close"  aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      
+	      <div class="modal-body modal-body-i" >
+            	<form ngNativeValidate [formGroup]="forma" (ngSubmit)="btnGuardar()" id="Formulario">
+            	 
+            	  <div class="form-row">
+				    <div class="form-group col-md-6">
+				       	<label for="inputNombre" class="col-form-label col-form-label-sm">Nombre:</label>
+				        <input formControlName="name" type="text" class="form-control form-control-sm" id="inputNombre" required >
+				    </div>
+				    <div class="form-group col-md-6">
+					    <label for="inputEmail" class="col-form-label col-form-label-sm">e-mail:</label>
+						<input formControlName="email" type="email" class="form-control form-control-sm" id="inputEmail" >
+				    </div>
+				  </div>	
+
+				  <div class="form-row">
+				    <div class="form-group col-md-4">
+				       <label for="inputRut" class="col-form-label col-form-label-sm">Rut:</label>
+				       <input formControlName="rut" type="text" class="form-control form-control-sm" id="inputRut" >
+				    </div>
+				    <div class="form-group col-md-4">
+					   <label for="inputTFijo" class="col-form-label col-form-label-sm">Tel. fijo:</label>
+					   <input formControlName="fijo" type="text" class="form-control form-control-sm" id="inputTFijo" >
+				    </div>
+				    <div class="form-group col-md-4">
+				    	<label for="inputCelular" class="col-form-label col-form-label-sm">Tel. celular:</label>
+				    	<input formControlName="celular" type="text" class="form-control form-control-sm" id="inputCelular" >
+				    </div>
+				  </div>	
+
+				  <div class="form-row">
+				  	<div class="form-group col-md-4">
+				  		<label for="inputNacimiento" class="col-form-label col-form-label-sm">Fecha Nacimiento:</label>
+				  		<input formControlName="nacimiento" type="text" class="form-control form-control-sm" id="inputNacimiento" >
+				  	</div>
+				  	<div class="form-group col-md-4">
+				  		<label for="inputPadre" class="col-form-label col-form-label-sm">Nombre Padre:</label>
+				  		<input formControlName="padre" type="text" class="form-control form-control-sm" id="inputPadre" >
+				  	</div>
+				  	<div class="form-group col-md-4">
+				  		<label for="inputMadre" class="col-form-label col-form-label-sm">Nombre Madre:</label>
+				  		<input formControlName="madre" type="text" class="form-control form-control-sm" id="inputMadre" >
+				  	</div>
+				  </div>
+
+				  <div class="form-row">
+				  	<div class="form-group col-md-8">
+				  		<label for="inputDireccion" class="col-form-label col-form-label-sm">Dirección:</label>
+				    <input formControlName="direccion" type="text" class="form-control form-control-sm" id="inputDireccion" >
+				  	</div>
+				  	<div class="form-group col-md-4">
+				  		<label for="inputComuna" class="col-form-label col-form-label-sm">Comuna:</label>
+				  		<input formControlName="comuna" type="text" class="form-control form-control-sm" id="inputComuna" >
+				  	</div>
+				  </div>
+
+				  <div class="form-group ">
+				    <label for="inputObs" class="col-form-label col-form-label-sm">Observaciones:</label>
+				    <textarea formControlName="observaciones" class="form-control form-control-sm" id="inputObs" rows="3"></textarea>
+				  </div>
+				  
+				</form>
+
+
+	      </div>
+	      <div class="modal-footer">
+	        <button (click)="cerrarModal()" type="button" class="btn btn-secondary" >Cerrar</button>
+	        <button  type="submit" class="btn btn-primary" form="Formulario">Guardar</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+</div>

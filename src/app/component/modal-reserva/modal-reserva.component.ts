@@ -79,8 +79,6 @@ export class ModalReservaComponent implements OnInit {
   	this.selectToday();
     this.generaItemsReservado();
     //this.generaHorasDispProf();
-    
-
   }
 
 
@@ -340,6 +338,9 @@ export class ModalReservaComponent implements OnInit {
     console.log('pos en lista: ', posEnLista);
     console.log('pos hora: ',JSON.stringify(poshora) );
     console.log('hora: ',hora);
+
+    this._modalReservaService.mostrarModalCreaReserva();
+    this.cerrarModal();
   }
 
   selectToday() {
@@ -357,7 +358,7 @@ export class ModalReservaComponent implements OnInit {
   }
 
   cerrarModal(){
-    this.selectToday();
+    this.selectToday(); //reestablecer dia
   	this._modalReservaService.ocultarModal();
   }
   

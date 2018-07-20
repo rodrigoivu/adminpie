@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { ProfesionalesComponent } from './profesionales/profesionales.component';
+import { BloqueodiasgeneralComponent } from './bloqueodiasgeneral/bloqueodiasgeneral.component';
 import { ReservasComponent } from './reservas/reservas.component';
 import { PacientesComponent } from './pacientes/pacientes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
@@ -39,6 +40,18 @@ export const PagesRoutes: Routes = [
           urls: [
             { title: 'Inicio', url: '/starter' },
             { title: 'Profesionales' }
+          ]
+        }
+      },
+      {
+        path: 'bloqueogeneral',
+        component: BloqueodiasgeneralComponent,
+        canActivate: [ VerificaTokenGuard ],
+        data: {
+          title: 'Bloqueo General',
+          urls: [
+            { title: 'Inicio', url: '/starter' },
+            { title: 'Bloqueo General' }
           ]
         }
       },
