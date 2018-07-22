@@ -5,7 +5,7 @@
 			 	<h3 class="card-title">Seleccionar Rangos</h3>
 			 	<div class="row">
 
-			 		<div class="col-sm-9">
+			 		<div class="col-xl-9">
 
 			 			<ngb-datepicker #dp (select)="onDateSelection($event)" [dayTemplate]="t" [displayMonths]="displayMonths" [navigation]="navigation" [showWeekNumbers]="showWeekNumbers" [outsideDays]="outsideDays">
 						</ngb-datepicker>
@@ -13,8 +13,9 @@
 						<ng-template #t let-date="date" let-focused="focused">
 						  <span class="custom-day"
 						        [class.focused]="focused"
-						        [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date) || isInList(date)"
+						        [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date) "
 						        [class.faded]="isHovered(date) || isInside(date)"
+                                [class.selected]="isInList(date)"
 						        (mouseenter)="hoveredDate = date"
 						        (mouseleave)="hoveredDate = null"
 						         [ngbTooltip]="ValorTooltip(date)">
@@ -23,16 +24,34 @@
 						</ng-template>
 
 					</div>
+                    
+			 		<div class="col-xl-3 text-left">
 
-			 		<div class="col-sm-3">
+                        <form ngNativeValidate (ngSubmit)="ingresaRango()">
+                            <div class="form-row">
+                                <label class="col-form-label col-form-label-sm col-12">Desde (día/mes):</label>
+                                <h5 class="col-form-label text-primary" >{{ fromDateS }} </h5>
+                                
+                            </div>
+                            <div class="form-row">
+                                <label class="col-form-label col-form-label-sm col-12">Hasta (día/mes):</label>
+                                <h5 class="col-form-label text-primary">{{ toDateS }}</h5>
+                            </div>
 
-			 			<pre>From: {{ fromDate | json }} </pre>
-						<pre>To: {{ toDate | json }} </pre>
-
+                            <div class="form-row">
+                                <label for="inputDescripcion" class="col-form-label col-form-label-sm">Descripción:</label>
+                                <input  [(ngModel)]="descripcionInput" name="descripcionInput" type="text" class="form-control form-control-sm" id="inputDescripcion" required >
+                            </div>  
+                            <br>
+                            <div class="form-row">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light btn-rounded">
+                                    <i class="fa fa-plus"></i>
+                                    Ingresar Rango
+                                </button>  
+                            </div>
+                        </form>
 			 		</div>
-
 			 	</div>
-
 			 </div>
 		</div>
 	</div>
@@ -50,8 +69,8 @@
             		<thead>
             			<tr>
             				<th>Descripción</th>
-                            <th>Fecha Inicial</th>
-            				<th>Fecha Final</th>
+                            <th>Inicio (día/mes)</th>
+            				<th>Fin (día/mes)</th>
             				<th>Eliminar</th>
 	           			</tr>
             		</thead>
@@ -60,11 +79,11 @@
             			<tr *ngFor='let item of itemsBloqueados'  >
                                 
                                 <td>{{item.descripcion}}</td>
-                				<td>{{item.fechaini}}</td>
-                				<td>{{item.fechafin}}</td>
+                				<td>{{item.dateDesde.day}} / {{item.dateDesde.month}}</td>
+                				<td>{{item.dateHasta.day}} / {{item.dateHasta.month}}</td>
                                 <td>
                 					
-                					<button (click)="borrarBloqueo()" class="btn btn-primary" placement="top" ngbTooltip="Elimina bloqueo">
+                					<button (click)="borrarBloqueo(item)" class="btn btn-danger" placement="top" ngbTooltip="Elimina bloqueo">
                 						<i class="fa fa-trash-o"></i>
                 					</button>
                 				
