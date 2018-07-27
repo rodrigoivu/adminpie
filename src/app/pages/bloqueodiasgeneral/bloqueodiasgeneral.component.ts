@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { BloqueoService } from '../../services/service.index';
+import { Bloqueo } from '../../models/bloqueo.model';
+import { ModalReservaService } from '../../component/modal-reserva/modal-reserva.service';
+
 
 const equals = (one: NgbDateStruct, two: NgbDateStruct) =>
   one && two && two.year === one.year && two.month === one.month && two.day === one.day;
@@ -25,17 +29,12 @@ const afterBloqueado = (one: NgbDateStruct, two: NgbDateStruct) =>
 
 
 
-interface ListaBloqueo{
-	day: number,
-	month: number,
-	descripcion: string
-}
-
-interface RangoBloqueo{
-  dateDesde: NgbDateStruct,
-  dateHasta: NgbDateStruct,
-  descripcion: string
-}        
+// interface RangoBloqueo{
+//   _id: string,
+//   dateDesde: NgbDateStruct,
+//   dateHasta: NgbDateStruct,
+//   descripcion: string
+// }        
 
 @Component({
   selector: 'app-bloqueodiasgeneral',
@@ -65,7 +64,7 @@ interface RangoBloqueo{
   `]
 })
 export class BloqueodiasgeneralComponent implements OnInit {
-  itemsBloqueados: RangoBloqueo[]=[];
+  itemsBloqueados: Bloqueo[]=[];
   totalRegistros: number = 0;
 
   hoveredDate: NgbDateStruct;
@@ -74,9 +73,6 @@ export class BloqueodiasgeneralComponent implements OnInit {
 
   fromDateS: string;
   toDateS: string;
-
-  lista: number[]=[1,2,3];
-  listaBloqueo: ListaBloqueo[]=[];
   
   //Visualización
   displayMonths = 3;
@@ -89,7 +85,10 @@ export class BloqueodiasgeneralComponent implements OnInit {
 
   
   constructor(
-  	calendar: NgbCalendar
+  	calendar: NgbCalendar,
+    public _bloqueoService: BloqueoService,
+    public _modalReservaService: ModalReservaService
+
   ) {
   		this.fromDate = calendar.getToday();
     	this.toDate = this.fromDate;
@@ -102,7 +101,17 @@ export class BloqueodiasgeneralComponent implements OnInit {
    }
 
   ngOnInit() {
-  	this.cargaListaBloqueo();
+    this.cargarBloqueos();
+  }
+
+  cargarBloqueos(){
+    this._bloqueoService.cargarBloqueos()
+      .subscribe( (resp: any) =>{
+        this.itemsBloqueados=resp.bloqueos;
+        this.totalRegistros = resp.total;
+
+      });
+
   }
   onDateSelection(date: NgbDateStruct) {
 
@@ -152,22 +161,9 @@ export class BloqueodiasgeneralComponent implements OnInit {
   };
 
   
-  cargaListaBloqueo(){
-  	let lb: ListaBloqueo= null;
-
-  	for(let i =0; i<=10; i++){
-  		lb={
-  			day:i,
-  			month:i,
-  			descripcion:'Vacaciones'+i
-  		}
-  		this.listaBloqueo.push(lb);
-  	}
-  }
-
   // agrega item a variable itemsBloqueados
   ingresaRango(){
-    let rb: RangoBloqueo=null;
+    let rb: Bloqueo=null;
     let indexFind1:number; //rango seleccionado contiene a datos guardadios
     let indexFind2:number; // el dato de fromDate esta dentro de los datos guardados
     let indexFind3:number; // el datos de toDate esta dentro de los datos guardados
@@ -188,7 +184,9 @@ export class BloqueodiasgeneralComponent implements OnInit {
             dateHasta: this.toDate,
             descripcion: this.descripcionInput
           };
-          this.itemsBloqueados.push(rb);
+          this._bloqueoService.crearBloqueo(rb)
+              .subscribe(()=>this.cargarBloqueos());
+          //this.itemsBloqueados.push(rb);
         }else if(this.fromDate && !this.toDate){
          // console.log('ingresar rango mismo dia');
           rb={
@@ -196,7 +194,9 @@ export class BloqueodiasgeneralComponent implements OnInit {
             dateHasta: this.fromDate,
             descripcion: this.descripcionInput
           };
-          this.itemsBloqueados.push(rb);
+           this._bloqueoService.crearBloqueo(rb)
+              .subscribe(()=>this.cargarBloqueos());
+          //this.itemsBloqueados.push(rb);
         }else{
           console.log('no ingresar');
         }
@@ -207,19 +207,23 @@ export class BloqueodiasgeneralComponent implements OnInit {
    this.toDateS='Sin seleccionar';
    this.descripcionInput='';
 
+   this._modalReservaService.cargarBloqueos();
+
   }
 
 
 
-  borrarBloqueo(item: RangoBloqueo){
+  borrarBloqueo(item: Bloqueo){
 
-    let indexFind:number;
+    // let indexFind:number;
   
-    indexFind = this.itemsBloqueados.findIndex(x => x === item); 
+    // indexFind = this.itemsBloqueados.findIndex(x => x === item); 
 
-    if(indexFind != -1){  //item encontrado
-      this.itemsBloqueados.splice(indexFind,1);
-    } 
+    // if(indexFind != -1){  //item encontrado
+    //   this.itemsBloqueados.splice(indexFind,1);
+    // } 
+    this._bloqueoService.borrarBloqueo(item._id)
+        .subscribe(() => this.cargarBloqueos());
 
   }
 

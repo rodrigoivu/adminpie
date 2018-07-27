@@ -7,7 +7,7 @@ import { ModalEditProfesionalService } from './modal-edit-profesional.service';
   styles: []
 })
 export class ModalEditProfesionalComponent implements OnInit {
-  tipoProfesion: string ='prof1';
+  tipoProfesion: string ='prof2';
   constructor(
   	public _modalEditProfesionalService: ModalEditProfesionalService
   ) { }

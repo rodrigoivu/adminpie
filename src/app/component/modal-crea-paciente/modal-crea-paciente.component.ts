@@ -28,16 +28,16 @@ export class ModalCreaPacienteComponent implements OnInit {
       
       this.forma = this.fb.group({
       	     name: new FormControl(null, Validators.required),
-			 email:new FormControl(null, Validators.email),
-			 rut:'',
-			 direccion:'',
-			 fijo:'',
-			 celular:'',
-			 padre:'',
-			 madre:'',
-			 nacimiento:'',
-			 comuna:'',
-			 observaciones:''
+      			 email:new FormControl(null, Validators.email),
+      			 rut:'',
+      			 direccion:'',
+      			 fijo:'',
+      			 celular:'',
+      			 padre:'',
+      			 madre:'',
+      			 nacimiento:'',
+      			 comuna:'',
+      			 observaciones:''
       	  //material_id: new FormControl({ value: x.id, disabled: true }, Validators.required),	
           //horaSemana: this.fb.array([])
       });

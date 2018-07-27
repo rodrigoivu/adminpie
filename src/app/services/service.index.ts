@@ -11,3 +11,4 @@ export { ProfesionalService } from './profesional/profesional.service';
 export { PacienteService } from './paciente/paciente.service';
 export { SubirArchivoService }from './subir-archivo/subir-archivo.service';
 export { SidebarService } from './shared/sidebar.service';
+export { BloqueoService } from './bloqueo/bloqueo.service';

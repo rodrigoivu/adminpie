@@ -13,7 +13,8 @@ import { UsuarioService,
          AdminPesquisaGuard,
          VerificaTokenGuard,
          SubirArchivoService, 
-         SidebarService 
+         SidebarService,
+         BloqueoService
        } from './service.index';
 
 
@@ -37,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     VerificaTokenGuard,
   	SubirArchivoService,
     SidebarService,
+    BloqueoService,
     ModalUploadService
   ],
   declarations: []
