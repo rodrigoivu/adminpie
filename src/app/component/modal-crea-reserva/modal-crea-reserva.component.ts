@@ -2,10 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { ModalReservaService } from '../modal-reserva/modal-reserva.service';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
+//import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { Paciente } from '../../models/paciente.model';
+import { PacienteService } from '../../services/service.index';
 
-interface minValor{ // de la base de datos
+interface minValor{ 
     minId: number,
     minStr: string
+};
+
+interface PosHora{ // de la base de datos
+    pos: number
 };
 
 @Component({
@@ -15,7 +24,7 @@ interface minValor{ // de la base de datos
 })
 export class ModalCreaReservaComponent implements OnInit {
   forma: FormGroup;
-
+  diaFormatoBD: string;
   diaFormatoString: string;
   diaFormatoModel: NgbDateStruct;
   diaFormatoDate: Date;
@@ -23,25 +32,55 @@ export class ModalCreaReservaComponent implements OnInit {
   minvalores: minValor[]=[];
   horaReservaString: string;
 
+  pacientes: Paciente[]=[];
 
+  clickedPaciente: Paciente;
 
   constructor(
   	private fb: FormBuilder,
-  	public _modalReservaService: ModalReservaService
+  	public _modalReservaService: ModalReservaService,
+    public _pacienteService: PacienteService,
+    //config: NgbTypeaheadConfig
   ) {
 
   	 this._modalReservaService.notificacionCreaReserva
           .subscribe( resp => {
             this.inicializaDatos();
             this.cargarMinPosibles();
+            this.cargarPacientes();
           } ); 	
      this.createForm();
+     //config.showHint = true;
 
   }
 
   ngOnInit() {
 
   }
+
+  search = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map(term => term.length < 2 ? []
+        : this.pacientes.filter(v => v.name.toLowerCase().indexOf(term.toLowerCase()) > -1 || v.rut.toLowerCase().indexOf(term.toLowerCase()) > -1  ).slice(0, 10))
+
+    );
+
+  formatter = (x: {name: string, rut: string}) => x.name +', Rut: '+ x.rut;
+
+  cargarPacientes(){
+    this.pacientes=[];
+
+    this._pacienteService.cargarPacientes(0)
+        .subscribe( (resp: any) =>{
+          this.pacientes = resp.pacientes;
+          
+     });
+
+     
+     
+  }  
 
   inicializaDatos(){
     let posEnLista:number = this._modalReservaService.posEnLista;
@@ -51,6 +90,8 @@ export class ModalCreaReservaComponent implements OnInit {
     this.diaFormatoDate = this.toModel(this.diaFormatoModel);
     this.numeroDiaSemana = this.diaFormatoDate.getDay();
     this.formatoFecha(this.diaFormatoModel);
+    this.diaFormatoBD=this.modelToString(this.diaFormatoModel);
+
 
     switch (posEnLista){
             case 0:{   //domingo
@@ -102,8 +143,8 @@ export class ModalCreaReservaComponent implements OnInit {
   createForm() {
       
       this.forma = this.fb.group({
-          dia:'',
-          minPosibles: new FormControl(null, Validators.required)
+          minPosibles: new FormControl(null, Validators.required),
+          pacienteSeleccionado: new FormControl(null, Validators.required)
       });
      
   }
@@ -140,7 +181,32 @@ export class ModalCreaReservaComponent implements OnInit {
   	this._modalReservaService.ocultarModalCreaReserva();
   }
 
+  selectedItem(item){
+    this.clickedPaciente=item.item;
+    console.log(item.item);
+  }
+
   btnGuardar(){
+   let posEnLista:number = this._modalReservaService.posEnLista;
+   let idPac:string = this.clickedPaciente._id;
+   let minSel:number = this.forma.value.minPosibles
+   let poshoraGuardar: PosHora[]=[];
+   let poshoraG: PosHora;
+   let horaR:number = this._modalReservaService.horaReserva-7;
+
+   
+    //Crear Estado de posiciones
+    for  ( var i=0; i<=5 ; i++ ){
+    	poshoraG = { pos: 0 };
+        if(i >= posEnLista && i<= minSel ){
+        	poshoraG = { pos: 1 };
+        }
+        poshoraGuardar.push(poshoraG);
+    }
+
+   console.log('Id Paciente: '+idPac);
+   console.log('Minutos: '+ JSON.stringify(poshoraGuardar ));
+   this._modalReservaService.guardarReserva(idPac,this.diaFormatoBD,horaR,poshoraGuardar);
 
   }
 

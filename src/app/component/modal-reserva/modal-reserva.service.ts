@@ -2,9 +2,11 @@ import { Injectable,EventEmitter } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 // import { URL_SERVICIOS } from '../../config/config';
 // import { HttpClient } from '@angular/common/http';
-import { ProfesionalService, BloqueoService } from '../../services/service.index';
+import { ProfesionalService, BloqueoService, ReservaService } from '../../services/service.index';
 import { Profesional } from '../../models/profesional.model';
 import { Bloqueo } from '../../models/bloqueo.model';
+import { Reserva } from '../../models/reserva.model';
+
 
 
 interface PosHora{ // de la base de datos
@@ -38,7 +40,8 @@ export class ModalReservaService {
   constructor(
      //public http: HttpClient,
      public _profesionalService: ProfesionalService,
-     public _bloqueoService: BloqueoService
+     public _bloqueoService: BloqueoService,
+     public _reservaService: ReservaService
     ) {
   	this.token = localStorage.getItem('token');
     this.cargarBloqueos();
@@ -64,7 +67,7 @@ export class ModalReservaService {
 
   ocultarModal(){
     this.oculto = 'oculto';
-    this.id = null;
+    //this.id = null;
   }
 
   mostrarModal( id: string, nombre: string,  profesional: Profesional  ){
@@ -93,16 +96,21 @@ export class ModalReservaService {
   //    return this.http.get( url );
   // }
   
-  guardarDisponibilidadDia( horasDia:any[]){
+  guardarReserva(idPaciente:string, fecha:string, hora: number, posHora: any[] ){
 
-    // let profesional = new Profesional(
-    //     this.id, // este es el user._id
-    //     this.profesion,
-    //     this.horaSemana,
-    //     horasDia
-    //   );
-  //   this._profesionalService.actualizarProfesional(profesional)
-  //          .subscribe(resp => this.notificacionCargarProfesionales.emit(true));
+    let reserva = new Reserva(
+         idPaciente, 
+         this.id , //este es el usuario relacionado con el profesional
+         fecha,
+         hora,
+         posHora,
+         '',
+         'VACIO',
+         ''
+      );
+    console.log(reserva);
+    this._reservaService.crearReserva(reserva)
+           .subscribe(resp => console.log(resp));
          
    }
 

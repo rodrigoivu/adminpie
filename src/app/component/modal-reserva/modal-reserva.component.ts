@@ -332,9 +332,9 @@ export class ModalReservaComponent implements OnInit {
             if ( pacHoraDisp.poshora[i].pos == 1 ){
               poshoraA={ pos: 1 };
               
-        }
-    }
-       poshoraActual.push(poshoraA);
+        	}
+   		 }
+      	 poshoraActual.push(poshoraA);
     }
 
     //console.log(poshoraActual)

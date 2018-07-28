@@ -12,7 +12,8 @@ export class Paciente  {
 		public madre?:string,
 		public nacimiento?:string,
 		public comuna?:string,
-		public observaciones?:string
+		public observaciones?:string,
+		public _id?: string
 	)
 	{}
 }

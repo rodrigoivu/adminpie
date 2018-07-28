@@ -11,9 +11,9 @@
 	      </div>
 	      
 	      <div class="modal-body modal-body-i" >
-            	<form ngNativeValidate [formGroup]="forma" (ngSubmit)="btnGuardar()" id="Formulario">
+            	<form ngNativeValidate [formGroup]="forma"  id="Formulario">
             	  <div class="form-row">
-            	  	<div class="col-sm-4">
+            	  	<div class="col-sm-6">
             	  
 			         		<div class="form-group">
 						       	<h6 class="">Reservar para el día: </h6>
@@ -33,25 +33,20 @@
 						        	</select>
 						        	
 						        </div>
+
+
+								
 				   			</div>
 
 	           	  	</div>
-            	  	<div class="col-sm-8">
+            	  	<div class="col-sm-6">
             	  		<div class="form-group">
-						       	<ngb-tabset>
-								  <ngb-tab title="Seleccionar Paciente">
-								    <ng-template ngbTabContent>
-								      
+						    <ng-template #rt let-r="result" let-t="term" >
+							  {{ r.name}} , Rut: {{ r.rut}}
+							</ng-template>
+							<label for="typeahead-template" class="col-form-label col-form-label-sm">Buscar Paciente (por Nombre o por Rut):</label>
+							<input id="typeahead-template" type="text" (selectItem)="selectedItem($event)" class="form-control" formControlName="pacienteSeleccionado" name="pacienteSeleccionado" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" />
 
-								    </ng-template>
-								  </ngb-tab>
-								  <ngb-tab title="Crear Paciente">
-								    <ng-template ngbTabContent>
-
-								    </ng-template>
-								  </ngb-tab>
-								  
-								</ngb-tabset>
 				   		</div>
 
             	  	</div>
@@ -62,7 +57,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button (click)="cerrarModal()" type="button" class="btn btn-secondary" >Cerrar</button>
-	        <button  type="submit" class="btn btn-primary" form="Formulario">Ingresar Reserva</button>
+	        <button (click)="btnGuardar()" type="button" class="btn btn-primary" >Ingresar Reserva</button>
 	      </div>
 	    </div>
 
