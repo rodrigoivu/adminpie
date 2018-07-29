@@ -64,7 +64,8 @@
 		      									<div class="col-10 ">
 		      										<div  *ngFor='let item of hora.pacientesPorHoraDisponible; let last=last' >
 		      											<div [ngClass]="last? item_hora_ultimo:item_hora" class="row">
-			      											
+
+			      												<!-- SIN BOTON PARA RESERVAR-->
 				      											<div *ngIf="!item.btnReserva" class="col-9 ">
 				      												<h6>{{item.nombrePaciente}}</h6>
 				      												<p>{{item.nombreEstablecimiento}}</p>
@@ -75,13 +76,21 @@
 					      												<br>
 					      												{{item.minReservado}}
 				      											    </div>
-				      								
-			      											</div>
-			      											<div>
-			      												<button (click)="accionReservar(item.posEnLista,item.poshora,hora.horaDisponible)" *ngIf="item.btnReserva" class="btn btn-success btn-sm">
-												            		Reservar
-												            	</button>
-			      											</div>
+				      											</div>
+
+				      											<!-- CON BOTON PARA RESERVAR-->
+			      											    <div *ngIf="item.btnReserva" class="col-9">
+				      												<button (click)="accionReservar(item.posEnLista,item.poshora,hora.horaDisponible)" class="btn btn-success btn-sm">
+													            		Reservar
+													            	</button>
+			      											    </div>
+			      											    <div *ngIf="item.btnReserva" class="col-3">
+				      												<div>
+					      												{{item.horaReservado}}
+					      												<br>
+					      												{{item.minReservado}}
+				      											    </div>
+				      											</div>
 		      											</div>
 		      										</div>
 		      										<!-- <div class="row item_hora_ultimo">

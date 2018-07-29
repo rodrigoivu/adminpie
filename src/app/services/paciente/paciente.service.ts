@@ -23,8 +23,8 @@ export class PacienteService {
   }
 
   crearPaciente(paciente: Paciente){
-        console.log(paciente.name);
-        console.log(paciente);
+        // console.log(paciente.name);
+        // console.log(paciente);
     let url = URL_SERVICIOS + 'api/crear-paciente' ;
     
     return  this.http.post( url, paciente )

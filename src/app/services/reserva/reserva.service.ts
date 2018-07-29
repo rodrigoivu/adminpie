@@ -31,4 +31,9 @@ export class ReservaService {
               })
           );
   }
+
+  getReservaPorFechaPorUsuario(idUsr:string,fecha:string, repiteDia: number){
+    let url = URL_SERVICIOS + 'api/reservasporfechausuario/'+ idUsr+ '?fecha='+ fecha+'&repitedia='+repiteDia;
+    return this.http.get( url );
+  }
 }

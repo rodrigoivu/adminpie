@@ -26,9 +26,11 @@ export class ModalReservaService {
   public oculto: string='oculto';
   public ocultoCreaReserva: string='oculto';
   public notificacion = new EventEmitter<any>();
+  public notificacionInicioToday = new EventEmitter<any>();
   public notificacionCreaReserva = new EventEmitter<any>();
   public notificacionCargarProfesionales = new EventEmitter<any>();
   public itemsBloqueados: Bloqueo[]=[];
+  public itemsReservas: Reserva[]=[];
 
   //información para pasar a la ventana crear reserva
   public fecha:NgbDateStruct;
@@ -46,8 +48,6 @@ export class ModalReservaService {
   	this.token = localStorage.getItem('token');
     this.cargarBloqueos();
    }
-
-  
 
   ocultarModalCreaReserva(){
     this.ocultoCreaReserva = 'oculto';
@@ -78,7 +78,7 @@ export class ModalReservaService {
     this.horaSemana= profesional.horaSemana;
     this.horasDia = profesional.horasDia;
 
-    this.notificacion.emit(true);
+    this.notificacionInicioToday.emit(true);
 
   } 
 
@@ -91,12 +91,17 @@ export class ModalReservaService {
   }
 
 
-  // cargarHorasDisp( model: NgbDateStruct ){
-  //    let url = URL_SERVICIOS + 'api/users' ;
-  //    return this.http.get( url );
-  // }
+  cargarReservas( fecha: string, numeroDiaSemana:number){
+    
+    this._reservaService.getReservaPorFechaPorUsuario(this.id, fecha, numeroDiaSemana)
+      .subscribe((resp: any) =>{
+        this.itemsReservas = resp.reservas;
+        this.notificacion.emit(true);
+        //console.log(this.itemsReservas);
+      })
+  }
   
-  guardarReserva(idPaciente:string, fecha:string, hora: number, posHora: any[] ){
+  guardarReserva(idPaciente:string, fecha:string, hora: number, posHora: any[], repiteDia: number, repiteAno: number){
 
     let reserva = new Reserva(
          idPaciente, 
@@ -106,11 +111,15 @@ export class ModalReservaService {
          posHora,
          '',
          'VACIO',
-         ''
+         '',
+         repiteDia,
+         repiteAno
       );
     console.log(reserva);
     this._reservaService.crearReserva(reserva)
-           .subscribe(resp => console.log(resp));
+           .subscribe( resp =>{
+             this.ocultarModalCreaReserva();
+           });
          
    }
 

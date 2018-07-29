@@ -33,10 +33,25 @@
 						        	</select>
 						        	
 						        </div>
-
-
-								
 				   			</div>
+				   			<div class="form-group">
+				   				<label class="col-form-label col-form-label-sm">Indicar si desea reservar la misma hora para todos los dias <code class="text-info">{{diarRepiteStr}}</code> del <code class="text-info">{{anoRepite}}</code>
+				   			    </label>
+						       	<div class="form-check">
+								  <input class="form-check-input" type="radio" formControlName="repite"  id="Radios1" value="Si" checked>
+								  <label class="form-check-label" for="Radios1">
+								    Si
+								  </label>
+								</div>
+								<div class="form-check">
+								  <input class="form-check-input" type="radio" formControlName="repite"  id="Radios2" value="No">
+								  <label class="form-check-label" for="Radios2">
+								    No
+								  </label>
+								</div>		
+				   			</div>
+				   			
+				   			
 
 	           	  	</div>
             	  	<div class="col-sm-6">
@@ -44,9 +59,22 @@
 						    <ng-template #rt let-r="result" let-t="term" >
 							  {{ r.name}} , Rut: {{ r.rut}}
 							</ng-template>
-							<label for="typeahead-template" class="col-form-label col-form-label-sm">Buscar Paciente (por Nombre o por Rut):</label>
+							<label for="typeahead-template" class="col-form-label col-form-label-sm">Buscar Paciente ( por Nombre o por Rut ):</label>
 							<input id="typeahead-template" type="text" (selectItem)="selectedItem($event)" class="form-control" formControlName="pacienteSeleccionado" name="pacienteSeleccionado" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" />
 
+				   		</div>
+
+				   		<div class="form-group">
+				   			<label for="nombrePaciente" class="col-form-label col-form-label-sm">Nombre: </label>
+				   			<label for="nombrePaciente" class="col-form-label col-form-label-sm text-info"> &nbsp; {{nombrePaciente}}</label>
+				   		</div>
+				   		<div class="form-group">
+				   			<label for="emailPaciente" class="col-form-label col-form-label-sm">E-mail: </label>
+				   			<label for="emailPaciente" class="col-form-label col-form-label-sm text-info"> &nbsp; {{emailPaciente}}</label>
+				   		</div>
+				   		<div class="form-group">
+				   			<label for="telefonoPaciente" class="col-form-label col-form-label-sm">Teléfonos ( fijo/celular ): </label>
+				   			<label for="telefonoPaciente" class="col-form-label col-form-label-sm text-info"> &nbsp; {{telefonoPaciente}}</label>
 				   		</div>
 
             	  	</div>
@@ -57,7 +85,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button (click)="cerrarModal()" type="button" class="btn btn-secondary" >Cerrar</button>
-	        <button (click)="btnGuardar()" type="button" class="btn btn-primary" >Ingresar Reserva</button>
+	        <button (click)="btnGuardar()" type="button" class="btn btn-primary" [disabled]="sinPaciente">Ingresar Reserva</button>
 	      </div>
 	    </div>
 

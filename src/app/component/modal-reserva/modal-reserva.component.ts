@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalReservaService } from './modal-reserva.service';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Paciente } from '../../models/paciente.model';
+
 //import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 const equalsBloqueado = (one: NgbDateStruct, two: NgbDateStruct) =>
@@ -27,7 +29,9 @@ interface ItemReservado {  //de la base de datos
   nombrePaciente: string,
   nombreEstablecimiento: string,
   horaReservado: number,
-  poshora: PosHora[]
+  poshora: PosHora[],
+  repiteDia:number,
+  repiteAno:number
 };
 
 interface PacienteReservado{
@@ -81,16 +85,22 @@ export class ModalReservaComponent implements OnInit {
    // private fb: FormBuilder,
   	public _modalReservaService: ModalReservaService
   ) {
+      this._modalReservaService.notificacionInicioToday
+        .subscribe( resp =>{
+           this.selectToday();
+        })
       this._modalReservaService.notificacion
           .subscribe( resp => {
+            this.generaItemsReservado();
             this.cargarHorasDispProf();
             this.generaMuestraReservados();
+            
           } ); 
    }
 
   ngOnInit() {
-  	this.selectToday();
-    this.generaItemsReservado();
+  	//this.selectToday();
+    //this.generaItemsReservado();
     //this.generaHorasDispProf();
   }
 
@@ -236,21 +246,47 @@ export class ModalReservaComponent implements OnInit {
   // }
 
   generaItemsReservado(){
-    this.itemsReservado = [];
-    let itemR: ItemReservado;
-    for (var i = 1; i <= 4; i++) {
-      itemR={
-          nombrePaciente: 'Paciente'+i,
-          nombreEstablecimiento: 'Establecimiento'+i,
-          horaReservado: i,  //1-15
-          poshora: [{pos:0},{pos:0},{pos:1},{pos:1},{pos:1},{pos:0}]
-      };
-    this.itemsReservado.push(itemR);
-    }
 
+    this.itemsReservado = [];
+
+    let itemR: ItemReservado;
+    let pacR: Paciente;
+    let anoSelect= this.model.year;
+    let flagNoMostrarRepetida=false;
+    for (let ir of this._modalReservaService.itemsReservas){
+      pacR = <Paciente> ir.paciente;
+      flagNoMostrarRepetida=false;
+      // No mostrar las repeticiones antes de la fecha resrevada
+      if( ir.repiteDia != 10){  // si es distinto de 10 significa que es una reserva que se repite por dia 
+        // y la fecha es anterior al dia de reserva
+        let diaSelect: Date = new Date(this.model.year,this.model.month, this.model.day );
+        let diaSplit: string[]= ir.fecha.split('-'); 
+        let diaReserva: Date= new Date(parseInt(diaSplit[2]),parseInt(diaSplit[1]), parseInt(diaSplit[0]) );
+        
+        if(diaSelect < diaReserva){
+          flagNoMostrarRepetida=true;
+        }
+
+
+      }
+      if (anoSelect == ir.repiteAno && !flagNoMostrarRepetida){   //el año está en la BD si se repite el dia o no.
+         itemR={
+          nombrePaciente: pacR.name,
+          nombreEstablecimiento: 'Establecimiento',
+          horaReservado: ir.horaReservado,  //1-15
+          poshora: ir.poshora,
+          repiteDia: ir.repiteDia,
+          repiteAno: ir.repiteAno
+         };
+         this.itemsReservado.push(itemR);
+      }
+
+     
+    }
+    
     //console.log(this.itemsReservado);
   }
-
+  
   generaMuestraReservados(){
 
     this.listaReservadoTotal=[];
@@ -260,10 +296,14 @@ export class ModalReservaComponent implements OnInit {
     let pacientesReservadosTransformados: PacienteReservado[]=[];
     let itemReservadoTotal: ListaReservadoTotal;
 
+    var diaFormatoDate: Date = this.toModel(this.model);
+    var numeroDiaSemana:number=diaFormatoDate.getDay();
+
+    
     for ( let horaDispP of this.horasDispProf){ // recorre las horas disponibles de profesional
       for ( let itemR of this.itemsReservado){  // recorre los pacientes reservados en ese dia con ese profesional
         
-        if(horaDispP.horaDisp == itemR.horaReservado){  // si la hora coincide
+        if( horaDispP.horaDisp == itemR.horaReservado){  // si la hora coincide
             
 
             let min: number=0;
@@ -282,11 +322,15 @@ export class ModalReservaComponent implements OnInit {
               i++;
               min = min + 10*posH.pos;
             }
-            
 
             minPaciente=iniMin*10;
             horaPaciente=itemR.horaReservado+7;
-            horaPacienteString=horaPaciente+':'+minPaciente;
+            if(iniMin==0){
+                horaPacienteString=horaPaciente+':00';
+            }else{
+                horaPacienteString=horaPaciente+':'+minPaciente;
+            }
+            
 
             pacienteReservado={
                 nombrePaciente: itemR.nombrePaciente,
@@ -300,11 +344,12 @@ export class ModalReservaComponent implements OnInit {
             pacientesReservados.push(pacienteReservado);
         }
       }
-
-      pacientesReservadosTransformados= this.transformaPacientesPorHoraDisponible(pacientesReservados);
+      
+      let hrD=horaDispP.horaDisp+7;
+      pacientesReservadosTransformados= this.transformaPacientesPorHoraDisponible(pacientesReservados, hrD); //rellena con botones reservar hora a hora
 
       itemReservadoTotal={
-        horaDisponible: horaDispP.horaDisp+7,
+        horaDisponible: hrD,
         pacientesPorHoraDisponible: pacientesReservadosTransformados
       }
 
@@ -316,12 +361,29 @@ export class ModalReservaComponent implements OnInit {
       //console.log(this.listaReservadoTotal);
   }
   
-  transformaPacientesPorHoraDisponible(items: PacienteReservado[]){
+  transformaPacientesPorHoraDisponible(items: PacienteReservado[], hrDisp:number){
     let itemNuevo: PacienteReservado;
     let itemsT: PacienteReservado[]=[];
     let flagNuevo: boolean=true;
     let poshoraActual: PosHora[]=[];
     let poshoraA: PosHora;
+    let flagFechaPermitida: boolean = false
+
+     //Comparacion Fecha actual con seleccionada
+
+    let fechaActual:Date= new Date(my.getFullYear(),my.getMonth(), my.getDate()); //para que no cuente los milisegundos
+    let fechaSel: Date = this.toModel(this.model);
+
+    if(fechaActual < fechaSel){
+      flagFechaPermitida=true;
+    }
+    if(fechaActual > fechaSel){
+      flagFechaPermitida = false;
+    }
+    if(fechaActual.getTime() == fechaSel.getTime()){
+      flagFechaPermitida=true;
+    }
+    
 
     // Aqui se debe ordenar por posEn Lista
     
@@ -338,12 +400,15 @@ export class ModalReservaComponent implements OnInit {
     }
 
     //console.log(poshoraActual)
+
+   
        
     for  ( var i=0; i<=5 ; i++ ){ // recorre los min 00 10 20 30 40 50
       flagNuevo = true;
       itemNuevo=null;
 
       for( let pacHoraDisp of items ){  // recorre todos los pacientes que tiene reservado en este dia y hora del porfesional
+
             if ( pacHoraDisp.poshora[i].pos == 1 ){ //pos 0 0 1 1 1 0
               flagNuevo = false;  // no crea una nueva reserva vacia
               if ( pacHoraDisp.posEnLista == i ){
@@ -353,13 +418,31 @@ export class ModalReservaComponent implements OnInit {
             }
       }
 
-      if( flagNuevo ){
+      if( flagNuevo && flagFechaPermitida){
+        let hrD:string;
+        if(i == 0){
+            hrD = hrDisp+':00';
+        }else{
+            hrD = hrDisp+':'+i*10;
+        }
+        itemNuevo = {
+                nombrePaciente: '',
+                nombreEstablecimiento: '',
+                horaReservado: hrD,
+                minReservado: '10 min',
+                btnReserva: true,
+                posEnLista:i,
+                poshora: poshoraActual
+            };
+        itemsT.push(itemNuevo);
+      }
+      if( flagNuevo && !flagFechaPermitida){
         itemNuevo = {
                 nombrePaciente: '',
                 nombreEstablecimiento: '',
                 horaReservado: '',
                 minReservado: '',
-                btnReserva: true,
+                btnReserva: false,
                 posEnLista:i,
                 poshora: poshoraActual
             };
@@ -370,15 +453,15 @@ export class ModalReservaComponent implements OnInit {
   }
 
   accionReservar(posEnLista: number, poshora:PosHora[], hora: number){
-    var fechaSeleccionada: string;
+    //var fechaSeleccionada: string;
     var diaFormatoDate: Date = this.toModel(this.model);
     var numeroDiaSemana:number=diaFormatoDate.getDay();
 
-    fechaSeleccionada=this.modelToString(this.model);
-    console.log('fechaSeleccionada:'+fechaSeleccionada);
-    console.log('pos en lista: ', posEnLista);
-    console.log('pos hora: ',JSON.stringify(poshora) );
-    console.log('hora: ',hora);
+    //fechaSeleccionada=this.modelToString(this.model);
+    // console.log('fechaSeleccionada:'+fechaSeleccionada);
+    // console.log('pos en lista: ', posEnLista);
+    // console.log('pos hora: ',JSON.stringify(poshora) );
+    // console.log('hora: ',hora);
 
     this._modalReservaService.mostrarModalCreaReserva(this.model,numeroDiaSemana,posEnLista,poshora,hora);
     this.cerrarModal();
@@ -390,16 +473,24 @@ export class ModalReservaComponent implements OnInit {
       month: my.getMonth() + 1,
       day: my.getDate()
     };
+
+    //console.log('paso por today');
   }
 
   onDateChange(date: NgbDateStruct) {
+
+    let fecha = this.modelToString(date);
     this.formatoFecha(date);
-    this.cargarHorasDispProf();
-    this.generaMuestraReservados();
+    var diaFormatoDate: Date = this.toModel(this.model);
+    var numeroDiaSemana:number=diaFormatoDate.getDay();
+
+    this._modalReservaService.cargarReservas(fecha, numeroDiaSemana);
+    //this.cargarHorasDispProf();
+    //this.generaMuestraReservados();
   }
 
   cerrarModal(){
-    this.selectToday(); //reestablecer dia
+    //this.selectToday(); //reestablecer dia
   	this._modalReservaService.ocultarModal();
   }
   

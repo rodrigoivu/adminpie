@@ -35,6 +35,16 @@ export class ModalCreaReservaComponent implements OnInit {
   pacientes: Paciente[]=[];
 
   clickedPaciente: Paciente;
+  nombrePaciente:string='';
+  emailPaciente:string='';
+  telefonoPaciente:string='';
+  
+
+  diaRepite: number;
+  diarRepiteStr: string;
+  anoRepite: number;
+
+  sinPaciente: boolean= true;
 
   constructor(
   	private fb: FormBuilder,
@@ -45,17 +55,17 @@ export class ModalCreaReservaComponent implements OnInit {
 
   	 this._modalReservaService.notificacionCreaReserva
           .subscribe( resp => {
+            this.createForm();
             this.inicializaDatos();
             this.cargarMinPosibles();
             this.cargarPacientes();
           } ); 	
      this.createForm();
      //config.showHint = true;
-
   }
 
   ngOnInit() {
-
+   this.sinPaciente=true;
   }
 
   search = (text$: Observable<string>) =>
@@ -92,29 +102,35 @@ export class ModalCreaReservaComponent implements OnInit {
     this.formatoFecha(this.diaFormatoModel);
     this.diaFormatoBD=this.modelToString(this.diaFormatoModel);
 
+    //Borra Paciente selleccionado
+    this.clickedPaciente = new Paciente('');
+    this.nombrePaciente = '';
+    this.emailPaciente = '';
+    this.telefonoPaciente = '';
+
 
     switch (posEnLista){
-            case 0:{   //domingo
+            case 0:{   
               minstr = ': 00';
               break;
             }
-            case 1:{   //lunes
+            case 1:{   
               minstr = ': 10';
               break;
             }
-            case 2:{   //martes
+            case 2:{   
               minstr = ': 20';
               break;
             }
-            case 3:{   //miercoles
+            case 3:{   
               minstr = ': 30';
               break;
             }
-            case 4:{   //jueves
+            case 4:{   
               minstr = ': 40';
               break;
             }
-            case 5:{   //viernes
+            case 5:{   
               minstr = ': 50';
               break;
             }
@@ -144,7 +160,8 @@ export class ModalCreaReservaComponent implements OnInit {
       
       this.forma = this.fb.group({
           minPosibles: new FormControl(null, Validators.required),
-          pacienteSeleccionado: new FormControl(null, Validators.required)
+          pacienteSeleccionado: new FormControl(null, Validators.required),
+          repite: new FormControl(null, Validators.required)
       });
      
   }
@@ -164,7 +181,7 @@ export class ModalCreaReservaComponent implements OnInit {
           minId: e,
           minStr: min +' minutos'
         }
-        console.log('min:' + min);
+       // console.log('min:' + min);
         this.minvalores.push(minvalor);
         
       }else{
@@ -183,7 +200,12 @@ export class ModalCreaReservaComponent implements OnInit {
 
   selectedItem(item){
     this.clickedPaciente=item.item;
-    console.log(item.item);
+    this.nombrePaciente = this.clickedPaciente.name;
+    this.emailPaciente = this.clickedPaciente.email;
+    this.telefonoPaciente = this.clickedPaciente.fijo +' / '+ this.clickedPaciente.celular;
+
+    this.sinPaciente=false;
+    //console.log(item.item);
   }
 
   btnGuardar(){
@@ -193,7 +215,15 @@ export class ModalCreaReservaComponent implements OnInit {
    let poshoraGuardar: PosHora[]=[];
    let poshoraG: PosHora;
    let horaR:number = this._modalReservaService.horaReserva-7;
-
+   let repitedia:number;
+   let repiteano:number;
+   if(this.forma.value.repite == 'No' || this.forma.value.repite ==null){
+     repitedia = 10;
+     repiteano = this.anoRepite; // este registro se guarda igual aunque el día no se repita
+   }else{
+     repitedia = this.diaRepite;
+     repiteano = this.anoRepite;
+   }
    
     //Crear Estado de posiciones
     for  ( var i=0; i<=5 ; i++ ){
@@ -204,9 +234,8 @@ export class ModalCreaReservaComponent implements OnInit {
         poshoraGuardar.push(poshoraG);
     }
 
-   console.log('Id Paciente: '+idPac);
-   console.log('Minutos: '+ JSON.stringify(poshoraGuardar ));
-   this._modalReservaService.guardarReserva(idPac,this.diaFormatoBD,horaR,poshoraGuardar);
+
+  this._modalReservaService.guardarReserva(idPac,this.diaFormatoBD,horaR,poshoraGuardar, repitedia, repiteano);
 
   }
 
@@ -215,6 +244,7 @@ export class ModalCreaReservaComponent implements OnInit {
     let nombreDia:string='';
     let nombreDiaSelecionado:Date =this.toModel(date);
     let diaDeSemana:number=nombreDiaSelecionado.getDay();
+    this.diaRepite = diaDeSemana;
     
     switch (diaDeSemana){
             case 0:{   //domingo
@@ -291,6 +321,8 @@ export class ModalCreaReservaComponent implements OnInit {
         mes='';
         break;                      
     }
+    this.diarRepiteStr = nombreDia;
+    this.anoRepite = date.year;
     this.diaFormatoString=nombreDia+', '+date.day+' de '+ mes +' del '+date.year;
   }
   modelToString(date: NgbDateStruct): string{
