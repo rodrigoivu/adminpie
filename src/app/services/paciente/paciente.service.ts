@@ -12,10 +12,12 @@ import { throwError } from 'rxjs/internal/observable/throwError';
   providedIn: 'root'
 })
 export class PacienteService {
-
+  public token: string;
   constructor(
   	public http: HttpClient
-  ) { }
+  ) {
+    this.token = localStorage.getItem('token');
+   }
 
   cargarPacientes( desde: number = 0 ){
     let url = URL_SERVICIOS + 'api/pacientes' + '?desde='+ desde;
@@ -38,6 +40,13 @@ export class PacienteService {
                 return throwError( err );
               })
           );
+  }
+
+  buscarPacientes( termino: string ){
+    let url = URL_SERVICIOS + 'api/busqueda/pacientes/'+termino+ '?token=' + this.token;
+
+    return this.http.get( url )
+                .map((resp: any) => resp.pacientes );
   }
 
   

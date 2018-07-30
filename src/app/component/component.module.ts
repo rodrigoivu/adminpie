@@ -22,6 +22,7 @@ import { NgbdtimepickerBasicComponentComponent } from './timepicker/timepicker.c
 import { NgbdtypeheadBasicComponentComponent } from './typehead/typehead.component';
 import { CardsComponent } from './card/card.component';
 import { ButtonsComponent } from './buttons/buttons.component';
+import { ComponentComponent } from './component.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ButtonsComponent } from './buttons/buttons.component';
     NgbdtimepickerBasicComponentComponent,
     NgbdtypeheadBasicComponentComponent,
     CardsComponent,
-    ButtonsComponent
+    ButtonsComponent,
+    ComponentComponent
   ]
 })
 export class ComponentsModule {}

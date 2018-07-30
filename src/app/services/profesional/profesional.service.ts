@@ -16,11 +16,14 @@ import swal from 'sweetalert';
   providedIn: 'root'
 })
 export class ProfesionalService {
+  public token: string;
 
   constructor(
   	public http: HttpClient,
     public router: Router,
-  ) { }
+  ) { 
+    this.token = localStorage.getItem('token');
+  }
 
 
   actualizarProfesional( profesional: Profesional ){
@@ -31,7 +34,7 @@ export class ProfesionalService {
     return this.http.put( url,profesional )
                 .map( (resp: any) =>{
                   //let profesionalDB: Profesional = resp.profesional;
-                  swal('Horario Guardado', 'Profesional actualizado correctamente', 'success' );
+                  swal('Modificación guardada', 'Profesional actualizado correctamente', 'success' );
                   return true;
                 });
   }
@@ -65,6 +68,14 @@ export class ProfesionalService {
               })
           );
   }
+
+  buscarProfesionales( termino: string ){
+    let url = URL_SERVICIOS + 'api/busqueda/profesionales/'+termino+ '?token=' + this.token;
+
+    return this.http.get( url )
+                .map((resp: any) => resp.profesionales );
+  }
+
   borrarProfesional( id: string ){
     let url = URL_SERVICIOS + 'api/remove-profesional/'+ id ;
 

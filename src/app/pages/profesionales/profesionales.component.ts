@@ -34,7 +34,11 @@ export class ProfesionalesComponent implements AfterViewInit, OnInit {
     this._modalDiaProfesionalService.notificacionCargarProfesionales
           .subscribe( resp => {
             this.cargarProfesionales();
-          } ); 
+          } );
+    this._modalEditProfesionalService.notificacionCargarProfesionales
+          .subscribe( resp => {
+            this.cargarProfesionales();
+          } );            
     this._modalReservaService.notificacionCargarProfesionales
           .subscribe( resp => {
             this.cargarProfesionales();
@@ -47,7 +51,20 @@ export class ProfesionalesComponent implements AfterViewInit, OnInit {
   	this.cargarProfesionales();
   }
 
-  buscarUsuario( termino: string){}
+  buscarProfesional( termino: string){
+    this.terminoBuscar=termino;
+    if ( termino.length <= 0){
+      this.cargarProfesionales();
+      return;
+    }
+    this.cargando = true;
+    this._profesionalService.buscarProfesionales ( termino )
+        .subscribe( ( profesionales: Profesional[]) => {
+          this.profesionales  = profesionales;
+          this.cargando = false;
+        });
+
+  }
   
   // El id corresponde al user._id ,NO al profesional_id
   reserva(id: string, nombre: string, profesional: Profesional){
