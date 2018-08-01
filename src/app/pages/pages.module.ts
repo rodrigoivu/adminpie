@@ -20,11 +20,13 @@ import { CrearprofesionComponent } from './crearprofesion/crearprofesion.compone
 import { CrearestablecimientoComponent } from './crearestablecimiento/crearestablecimiento.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BloqueodiasgeneralComponent } from './bloqueodiasgeneral/bloqueodiasgeneral.component';
+import { FichasComponent } from './fichas/fichas.component';
 
 import { FileSelectDirective } from 'ng2-file-upload';
 
 //Pipe Module
 import { PipesModule } from '../pipes/pipes.module';
+
 
 @NgModule({
   imports: [
@@ -50,7 +52,8 @@ import { PipesModule } from '../pipes/pipes.module';
   	CrearestablecimientoComponent, 
     ProfileComponent,
     FileSelectDirective,
-    BloqueodiasgeneralComponent
+    BloqueodiasgeneralComponent,
+    FichasComponent
     
   ]
 })

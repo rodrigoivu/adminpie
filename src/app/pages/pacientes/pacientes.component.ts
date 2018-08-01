@@ -1,4 +1,6 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
+//import { RouterModule, Routes,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Paciente } from '../../models/paciente.model';
 import { PacienteService } from '../../services/service.index';
 import { ModalCreaPacienteService } from '../../component/modal-crea-paciente/modal-crea-paciente.service';
@@ -14,6 +16,7 @@ export class PacientesComponent implements AfterViewInit, OnInit {
   totalRegistros: number = 0;
   cargando: boolean = true;
   terminoBuscar:string ='';
+
 
   constructor(
     public _pacienteService: PacienteService,
@@ -66,6 +69,10 @@ export class PacientesComponent implements AfterViewInit, OnInit {
 
   borrarPaciente( paciente: Paciente){
     
+  }
+
+  fichasPaciente( paciente: Paciente ){
+    this._pacienteService.verFichasPaciente(paciente);
   }
   
   cambiarDesde( valor: number ){

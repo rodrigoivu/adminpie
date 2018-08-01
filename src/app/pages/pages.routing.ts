@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 import { ProfesionalesComponent } from './profesionales/profesionales.component';
 import { BloqueodiasgeneralComponent } from './bloqueodiasgeneral/bloqueodiasgeneral.component';
+import { FichasComponent } from './fichas/fichas.component';
 import { ReservasComponent } from './reservas/reservas.component';
 import { PacientesComponent } from './pacientes/pacientes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
@@ -173,6 +174,19 @@ export const PagesRoutes: Routes = [
           urls: [
             { title: 'Inicio', url: '/starter' },
             { title: 'Crear establecimiento' }
+          ]
+        }
+      },
+      {
+        path: 'fichaspaciente',
+        component: FichasComponent,
+        canActivate: [ VerificaTokenGuard ],
+        data: {
+          title: 'Fichas Paciente',
+          urls: [
+            { title: 'Inicio', url: '/starter' },
+            { title: 'Pacientes', url: '/pages/pacientes' },
+            { title: 'Fichas Paciente' }
           ]
         }
       }

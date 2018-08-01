@@ -1,0 +1,657 @@
+
+<!-- ***************************************** -->
+<!-- NOMBRE Y RUT -->
+<!-- ***************************************** -->
+
+<!-- <div class="card text-light" > -->
+	  <div class="card-header bg-dark ">Información general del paciente</div>
+    	  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
+			<form>
+			  <div class="form-group row">
+				    <div class="col-sm-4">
+				    	<label for="nombreGral" class="col-form-label col-form-label-sm">Nombre:</label>
+				        <input type="text" class="form-control form-control-sm" id="nombreGral" >
+				    </div>
+				    <div class="col-sm-4">
+				    	<label for="rutGral" class=" col-form-label col-form-label-sm">Rut:</label>
+					    <input type="text" class="form-control form-control-sm" id="rutGral" >
+				    </div>
+			  </div>
+			</form>
+	  </div>
+<!-- </div> -->
+
+<!-- <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0"> -->
+<ngb-accordion [closeOthers]="true" activeIds="static-0">	
+
+	<!-- ***************************************** -->
+	<!-- FICHA ANAMNESIS -->
+	<!-- ***************************************** -->
+  <ngb-panel id="static-1" title="Ficha Anamnesis" >
+    <ng-template ngbPanelContent>
+    	<div class="card text-light" >
+			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
+			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
+			    <form>
+					  <div class="form-group row">
+						    <div class="col-sm-4">
+						    	<label for="profesionalAnam" class="col-form-label col-form-label-sm">Profesional</label>
+							      <input type="text" class="form-control form-control-sm" id="profesionalAnam" >
+						    </div>
+						    <div class="col-sm-4">
+						    	<label for="fechaEvAnam" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
+							    <input type="text" class="form-control form-control-sm" id="fechaEvAnam" >
+						    </div>
+					  </div>
+				</form>
+			  </div>
+		</div>
+
+		 <div class="card text-light" >
+			  <div class="card-header bg-dark ">Antecedentes Generales</div>
+			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
+			    <form>
+					  <div class="form-group row">
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">NombreCompleto</label>
+							      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Edad</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-4">
+			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Fecha de Nacimiento</label>
+	        				    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+					  </div>
+					  <div class="form-group row">
+						    <div class="col-sm-6">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Establecimiento</label>
+							      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-6">
+						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Nivel</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    
+					  </div>
+					  <div class="form-group row">
+						    <div class="col-sm-6">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Dirección</label>
+							      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-3">
+						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Teléfono Fijo</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-3">
+			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Celular</label>
+	        				    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+					  </div>
+
+
+					  <button type="submit" class="btn btn-primary">Guardar</button>
+				</form>
+			  </div>
+		</div>
+
+		<div class="card text-light" >
+			  <div class="card-header bg-dark ">Antecedentes Familiares</div>
+			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
+			    <form>
+					  <!-- MADRE -->
+					  <div class="form-group row">
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Nombre de la Madre</label>
+							      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Edad</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-4">
+			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Escolaridad</label>
+	        				    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+					  </div>
+					  <div class="form-group row">
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Ocupación</label>
+							      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Horario de trabajo</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+					  </div>
+					  <hr>
+					  <!-- PADRE -->
+					  <div class="form-group row">
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Nombre del Padre</label>
+							      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Edad</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-4">
+			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Escolaridad</label>
+	        				    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+					  </div>
+					  <div class="form-group row">
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Ocupación</label>
+							      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Horario de trabajo</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+					  </div>
+					  <div class="form-group row">
+						    <div class="col-sm-12">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Descripción familar ( vínculo familiar, mayor vínculo, separaciones, etc. )</label>
+						    	<textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
+						    </div>
+						    
+					  </div>
+					  <button type="submit" class="btn btn-primary">Guardar</button>
+				</form>
+			  </div>
+		</div>
+		<div class="card text-light" >
+			  <div class="card-header bg-dark ">Antecedentes de Salud</div>
+			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
+			    <form>
+					 
+					  <div class="form-group row">
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Tiempo de gestación</label>
+							    <select class="form-control form-control-sm">
+								  <option>A término</option>
+								  <option>Prematuro</option>
+								  <option>Tardío</option>
+								</select>
+						    </div>
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Tipo de parto</label>
+							    <select class="form-control form-control-sm">
+								  <option>Normal</option>
+								  <option>Inducido</option>
+								  <option>Fórceps</option>
+								  <option>Cesárea ( señalar motivo )</option>
+								</select>
+						    </div>
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Motivo cesárea</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+					  </div>
+					  <div class="form-group row">
+						   
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Peso al nacer</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-4">
+			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Talla al nacer</label>
+	        				    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-4">
+			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Apgar</label>
+	        				    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+					  </div>
+					  <div class="form-group row">
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Enfermedades Pre-Post Natal</label>
+							    <select class="form-control form-control-sm">
+								  <option>Si</option>
+								  <option>No</option>
+								</select>
+						    </div>
+					  </div>
+					  <div class="form-group row">
+						    <div class="col-sm-12">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">¿ Cuáles ?</label>
+						    	<textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="2"></textarea>
+						    </div>
+					  </div>
+					  <div class="form-group row">
+						    <div class="col-sm-12">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Otras observaciones</label>
+						    	<textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="2"></textarea>
+						    </div>
+					  </div>
+					  
+					  <button type="submit" class="btn btn-primary">Guardar</button>
+				</form>
+			  </div>
+		</div>
+		<div class="card text-light" >
+			  <div class="card-header bg-dark ">Historial Clínico</div>
+			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
+			    <form>
+			    	<div class="form-group row">
+						    <div class="col-sm-12">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Enfermedades Familiares ( psiquiátricas, neurológicas, metabólicas, del lenguaje, auditivas de inicio temprano, etc. )</label>
+						    	<textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="2"></textarea>
+						    </div>
+					</div>
+					<div class="form-group row">
+						    <div class="col-sm-6">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Evaluación de especialistas</label>
+								
+								<div class="form-check ">
+									<input class="form-check-input " type="checkbox" value="" id="defaultCheck1">
+									<label class="form-check-label " for="defaultCheck1">Neurólogo(a)/ Psiquiatra</label>
+								</div>
+								<div class="form-check ">
+									<input class="form-check-input " type="checkbox" value="" id="defaultCheck1">
+									<label class="form-check-label " for="defaultCheck1">Fonoaudiólogo(a)</label>
+								</div>
+								<div class="form-check ">
+									<input class="form-check-input " type="checkbox" value="" id="defaultCheck1">
+									<label class="form-check-label " for="defaultCheck1">Educador(a) Diferencial/Psicopedagogo(a)</label>
+								</div>
+								<div class="form-check ">
+									<input class="form-check-input " type="checkbox" value="" id="defaultCheck1">
+									<label class="form-check-label " for="defaultCheck1">Terapeuta Ocupacional</label>
+								</div>
+								<div class="form-check ">
+									<input class="form-check-input " type="checkbox" value="" id="defaultCheck1">
+									<label class="form-check-label " for="defaultCheck1">Kinesiólogo(a)</label>
+								</div>
+								<div class="form-check ">
+									<input class="form-check-input " type="checkbox" value="" id="defaultCheck1">
+									<label class="form-check-label " for="defaultCheck1">Psicólogo(a)</label>
+								</div>
+								<div class="form-check ">
+									<input class="form-check-input " type="checkbox" value="" id="defaultCheck1">
+									<label class="form-check-label " for="defaultCheck1">Biomedicina</label>
+								</div>
+								<div class="form-check ">
+									<input class="form-check-input " type="checkbox" value="" id="defaultCheck1">
+									<label class="form-check-label " for="defaultCheck1">Tutora</label>
+								</div>
+								<div class="form-check ">
+									<input class="form-check-input " type="checkbox" value="" id="defaultCheck1">
+									<label class="form-check-label " for="defaultCheck1">Otros:</label>
+									<input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+								</div>	 
+						    </div>
+					</div> 
+					<div class="form-group row">
+						    						    
+						    <div class="col-sm-6">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Intervenciones quirúrgicas u hospitalizaciones:</label>
+							    <select class="form-control form-control-sm">
+								  <option>Si</option>
+								  <option>No</option>
+								</select>
+								<input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="¿Cuáles?">
+						    </div>
+						    <div class="col-sm-6">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Tratamientos recibidos ( especificar si son pasados o actuales ):</label>
+						    	<textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
+						    </div>
+						    
+					</div> 
+					<div class="form-group row">
+						    <div class="col-sm-6">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Medicaméntos:</label>
+							    <select class="form-control form-control-sm">
+								  <option>Si</option>
+								  <option>No</option>
+								</select>
+								<input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="¿Cuál?">
+						    </div>
+						    <div class="col-sm-6">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Medicamentos ( Efectos relevantes ):</label>
+						    	<textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
+						    </div>
+						    
+					</div> 
+					<div class="form-group row">
+						    <div class="col-sm-12">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Diagnósticos ( previos - actuales ):</label>
+						    	<textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="2"></textarea>
+						    </div>
+					</div> 
+					  
+					<button type="submit" class="btn btn-primary">Guardar</button>
+				</form>
+			  </div>
+		</div>
+		<div class="card text-light" >
+			  <div class="card-header bg-dark ">Desarrollo Evolutivo</div>
+			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
+			    <form>
+					<div class="form-group row">
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Edad en que se sienta solo/a:</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-4">
+			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Edad en que caminó:</label>
+	        				    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-4">
+			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Desempeño en AVD:</label>
+	        				    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+					</div> 
+					<hr>
+					<div class="form-group row">
+						    <div class="col-sm-12">
+			    		    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">En relación con su motricidad gruesa se aprecia:</label>
+						    </div>
+					</div> 
+					<div class="form-group row">
+						    
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Estabilidad al caminar:</label>
+							    <select class="form-control form-control-sm">
+								  <option>Si</option>
+								  <option>No</option>
+								  <option>A veces</option>
+								</select>
+						    </div>
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Caídas frecuentes:</label>
+							    <select class="form-control form-control-sm">
+								  <option>Si</option>
+								  <option>No</option>
+								  <option>A veces</option>
+								</select>
+						    </div>
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Dominancia lateral:</label>
+							    <select class="form-control form-control-sm">
+								  <option>Si</option>
+								  <option>No</option>
+								  <option>A veces</option>
+								</select>
+						    </div>
+					</div> 
+					<hr>
+					<div class="form-group row">
+						    <div class="col-sm-12">
+			    		    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">En relación con su motricidad fina el niño(a) logra:</label>
+						    </div>
+					</div> 
+					<div class="form-group row">
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Garra:</label>
+							    <select class="form-control form-control-sm">
+								  <option>Si</option>
+								  <option>No</option>
+								  <option>A veces</option>
+								</select>
+						    </div>
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Pinza:</label>
+							    <select class="form-control form-control-sm">
+								  <option>Si</option>
+								  <option>No</option>
+								  <option>A veces</option>
+								</select>
+						    </div>
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Pinza ( ¿cómo? ):</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+					</div> 
+					<div class="form-group row">
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Dibuja:</label>
+							    <select class="form-control form-control-sm">
+								  <option>Si</option>
+								  <option>No</option>
+								  <option>A veces</option>
+								</select>
+						    </div>
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Escribe:</label>
+							    <select class="form-control form-control-sm">
+								  <option>Si</option>
+								  <option>No</option>
+								  <option>A veces</option>
+								</select>
+						    </div>
+						    <div class="col-sm-4">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Corta:</label>
+							    <select class="form-control form-control-sm">
+								  <option>Si</option>
+								  <option>No</option>
+								  <option>A veces</option>
+								</select>
+						    </div>
+					</div> 
+					<button type="submit" class="btn btn-primary">Guardar</button>
+				</form>
+			  </div>
+		</div>
+		<div class="card text-light" >
+			  <div class="card-header bg-dark ">Destrezas Sociales Y Comunicativas</div>
+			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
+			    <form>
+					<div class="form-group row">
+						    <div class="col-sm-12">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Imita acciones tales
+como despedirse o aplaudir:</label>
+							    <select class="form-control form-control-sm">
+								  <option>Nunca o rara vez</option>
+								  <option>La realiza, aunque no bien</option>
+								  <option>Bien</option>
+								  <option>Muy Bien</option>
+								</select>
+						    </div>
+					</div> 
+					<div class="form-group row">
+						    <div class="col-sm-12">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Dice al menos diez palabras,
+que pueden ser comprendidas por alguien que le conozca bien:</label>
+							    <select class="form-control form-control-sm">
+								  <option>Nunca o rara vez</option>
+								  <option>La realiza, aunque no bien</option>
+								  <option>Bien</option>
+								  <option>Muy Bien</option>
+								</select>
+						    </div>
+					</div> 
+					<div class="form-group row">
+						    		    <div class="col-sm-12">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Formula preguntas simples
+(Ej: ¿Qué es esto?):</label>
+							    <select class="form-control form-control-sm">
+								  <option>Nunca o rara vez</option>
+								  <option>La realiza, aunque no bien</option>
+								  <option>Bien</option>
+								  <option>Muy Bien</option>
+								</select>
+						    </div>
+					</div>   
+					<div class="form-group row">
+						    		    <div class="col-sm-12">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Habla usando frases de tres o cuatro
+palabras:</label>
+							    <select class="form-control form-control-sm">
+								  <option>Nunca o rara vez</option>
+								  <option>La realiza, aunque no bien</option>
+								  <option>Bien</option>
+								  <option>Muy Bien</option>
+								</select>
+						    </div>
+					</div>   
+					<div class="form-group row">
+						    		    <div class="col-sm-12">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">En actividades grupales, espera por lo
+menos dos minutos a que le llegue su turno. (Ej: Espera su turno para beber un trago de agua):</label>
+							    <select class="form-control form-control-sm">
+								  <option>Nunca o rara vez</option>
+								  <option>La realiza, aunque no bien</option>
+								  <option>Bien</option>
+								  <option>Muy Bien</option>
+								</select>
+						    </div>
+					</div>   
+					<div class="form-group row">
+						    		    <div class="col-sm-12">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Ofrece ayuda a otras personas
+(Mantiene la puerta abierta para que pase una persona que tiene las manos ocupadas):</label>
+							    <select class="form-control form-control-sm">
+								  <option>Nunca o rara vez</option>
+								  <option>La realiza, aunque no bien</option>
+								  <option>Bien</option>
+								  <option>Muy Bien</option>
+								</select>
+						    </div>
+					</div>   
+					<div class="form-group row">
+						    		    <div class="col-sm-12">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Se comporta de una manera adecuada,
+sin llamar la atención de los demás cuando esta con sus amigos en lugares públicos:</label>
+							    <select class="form-control form-control-sm">
+								  <option>Nunca o rara vez</option>
+								  <option>La realiza, aunque no bien</option>
+								  <option>Bien</option>
+								  <option>Muy Bien</option>
+								</select>
+						    </div>
+					</div>   
+					<div class="form-group row">
+						    		    <div class="col-sm-12">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Reacciona correctamente ante la
+mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc.):</label>
+							    <select class="form-control form-control-sm ">
+								  <option>Nunca o rara vez</option>
+								  <option>La realiza, aunque no bien</option>
+								  <option>Bien</option>
+								  <option>Muy Bien</option>
+								</select>
+						    </div>
+					</div>   
+					<button type="submit" class="btn btn-primary">Guardar</button>
+				</form>
+			  </div>
+		</div>
+		<div class="card text-light" >
+			  <div class="card-header bg-dark ">Comportamiento Lúdico, Intereses y Personalidad</div>
+			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
+			    <form>
+					<div class="form-group row">
+						    <div class="col-sm-4">
+			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">¿ Con qué juega? </label>
+	        				    <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="2"></textarea>
+						    </div>
+						    <div class="col-sm-4">
+			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">¿ Con quién juega? </label>
+	        				    <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="2"></textarea>
+						    </div>
+						    <div class="col-sm-4">
+			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">¿ Donde juega? </label>
+	        				    <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="2"></textarea>
+						    </div>
+					</div> 
+					<div class="form-group row">
+						    <div class="col-sm-6">
+			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Actividades, objetos, juguetes, caricaturas o programas de tv/internet de interés:</label>
+	        				    <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="2"></textarea>
+						    </div>
+						    <div class="col-sm-6">
+			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Describa brevemente la personalidad del niño/a (extrovertido, tímido, tolerante a la frustración, etc.). </label>
+	        				    <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="2"></textarea>
+						    </div>
+					</div> 
+					 
+					<button type="submit" class="btn btn-primary">Guardar</button>
+				</form>
+			  </div>
+		</div>
+		<div class="card text-light" >
+			  <div class="card-header bg-dark ">Situación Social y Actual</div>
+			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
+			    <form>
+					<div class="form-group row">
+						     <div class="col-sm-6">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">¿Cuántas personas componen su núcleo familiar?</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-6">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">¿Presenta solo jefatura femenina?</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+					</div> 
+					<div class="form-group row">
+						    <div class="col-sm-6">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">¿Es beneficiario de algún programa social? ¿Cuáles?</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-6">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">¿Cuál es su porcentaje del registro social de hogares?</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+					</div> 
+					<div class="form-group row">
+						     <div class="col-sm-6">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Ingreso mensual líquido</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+						    <div class="col-sm-6">
+						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Ingreso per cápita</label>
+							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    </div>
+					</div> 
+					
+					<button type="submit" class="btn btn-primary">Guardar</button>
+				</form>
+			  </div>
+		</div>
+
+    </ng-template>
+  </ngb-panel>
+
+  	<!-- ***************************************** -->
+	<!-- FICHA GENERAL -->
+	<!-- ***************************************** -->
+  <ngb-panel id="static-2" title="Ficha General">
+    <ng-template ngbPanelContent>
+      Información
+    </ng-template>
+  </ngb-panel>
+
+  	<!-- ***************************************** -->
+	<!-- FICHA KINESIOLOGÍA -->
+	<!-- ***************************************** -->
+  <ngb-panel id="static-3" title="Ficha Kinesiologóa">
+    <ng-template ngbPanelContent>
+      Información
+    </ng-template>
+  </ngb-panel>
+
+  <!-- ***************************************** -->
+	<!-- FICHA PSICOLOGIA -->
+	<!-- ***************************************** -->
+  <ngb-panel id="static-4" title="Ficha Psicología">
+    <ng-template ngbPanelContent>
+      Información
+    </ng-template>
+  </ngb-panel>
+
+  <!-- ***************************************** -->
+	<!-- FICHA TERAPEUTA OCUPACIONAL -->
+	<!-- ***************************************** -->
+  <ngb-panel id="static-5" title="Ficha Terapeuta Ocupacional">
+    <ng-template ngbPanelContent>
+      Información
+    </ng-template>
+  </ngb-panel>
+ 
+</ngb-accordion>
+
+

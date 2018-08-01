@@ -44,5 +44,5 @@ export class ModalEditProfesionalService {
            .subscribe(resp => this.notificacionCargarProfesionales.emit(true));
          
   }
-  }
+  
 }

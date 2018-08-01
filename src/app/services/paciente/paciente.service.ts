@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Paciente } from '../../models/paciente.model';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
@@ -13,6 +13,15 @@ import { throwError } from 'rxjs/internal/observable/throwError';
 })
 export class PacienteService {
   public token: string;
+  public pacienteSeleccionado: Paciente;
+  public notificacionVerFichas = new EventEmitter<any>();
+
+  //PACIENTE SELECCIONADO
+  nombrePaciente: string='';
+  rutPaciente: string='';
+  emailPaciente: string='';
+  telefonoPaciente: string='';
+
   constructor(
   	public http: HttpClient
   ) {
@@ -49,6 +58,13 @@ export class PacienteService {
                 .map((resp: any) => resp.pacientes );
   }
 
+  verFichasPaciente(paciente: Paciente){
+
+    this.nombrePaciente = paciente.name;
+    this.rutPaciente= paciente.rut;
+    this.emailPaciente= paciente.email;
+    this.telefonoPaciente= paciente.fijo +' / '+ paciente.celular;
+  }
   
 
 }
