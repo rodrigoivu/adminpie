@@ -51,7 +51,7 @@ import { PipesModule } from '../pipes/pipes.module';
   	CrearprofesionComponent, 
   	CrearestablecimientoComponent, 
     ProfileComponent,
-    FileSelectDirective,
+    //FileSelectDirective,
     BloqueodiasgeneralComponent,
     FichasComponent
     

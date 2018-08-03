@@ -70,6 +70,8 @@ export class ModalDiaProfesionalComponent implements OnInit {
 
   }
 
+  get formahoraDia() { return <FormArray>this.forma.get('horaDia'); }
+
   cargarHorasDia(){
     this.cargando = true;
     this.createForm();

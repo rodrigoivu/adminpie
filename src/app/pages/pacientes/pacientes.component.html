@@ -55,11 +55,11 @@
             				<td>{{paciente.comuna}} </td>
             				
             				<td>
-                                <a class="btn btn-primary "  [routerLink]="['/pages/fichaspaciente']" (click)="fichasPaciente( paciente )" placement="top" ngbTooltip="Ver Fichas" >Fichas
+                                <a class="btn btn-primary "  [routerLink]="['/pages/fichaspaciente']" (click)="fichasPaciente( paciente )" placement="top" ngbTooltip="Ver Fichas" >Ver Fichas
                                 </a>
-                                <button  (click)="fichasPaciente( paciente )" class="btn btn-warning" placement="top" ngbTooltip="Ver Fichas">
+                                <!-- <button  (click)="fichasPaciente( paciente )" class="btn btn-warning" placement="top" ngbTooltip="Ver Fichas">
                                     <i class="fa fa-pencil"></i>
-                                </button>
+                                </button> -->
             					<button  (click)="editarPaciente( paciente )" class="btn btn-warning" placement="top" ngbTooltip="Editar paciente">
             						<i class="fa fa-pencil"></i>
             					</button>

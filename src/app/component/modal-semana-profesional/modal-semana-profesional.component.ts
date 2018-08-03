@@ -26,7 +26,9 @@ export class ModalSemanaProfesionalComponent implements OnInit {
   ngOnInit() {
   
   }
-
+  
+  get formahoraSemana() { return <FormArray>this.forma.get('horaSemana');}
+  
   cargarHorasSemana(){
     this.createForm();
     this.forma.get('horaSemana').reset();
