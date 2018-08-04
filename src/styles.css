@@ -42,7 +42,13 @@
 	overflow-y:scroll;
     width:100%;
 }
-
+.listadoDoble{
+    height:800px;
+    overflow: hidden scroll;
+    overflow-x: hidden;
+    overflow-y:scroll;
+    width:100%;
+}
 /* Important part */
 .modal-dialog{
     overflow-y: initial;
