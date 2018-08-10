@@ -3,11 +3,15 @@ import { Paciente } from '../../models/paciente.model';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
 import { Observable } from 'rxjs/Observable';
-//import 'rxjs/add/operator/map';
-//import 'rxjs/add/operator/catch';
-
 import { map, filter, catchError, mergeMap } from 'rxjs/operators';
 import { throwError } from 'rxjs/internal/observable/throwError';
+
+interface NgbDate {
+  day: number,
+  month: number,
+  year: number
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,17 +20,12 @@ export class PacienteService {
   public pacienteSeleccionado: Paciente;
   public notificacionVerFichas = new EventEmitter<any>();
 
-  //PACIENTE SELECCIONADO
-  nombrePaciente: string='';
-  rutPaciente: string='';
-  emailPaciente: string='';
-  telefonoPaciente: string='';
-  _id: string='';
-
   constructor(
   	public http: HttpClient
   ) {
+
     this.token = localStorage.getItem('token');
+
    }
 
   cargarPacientes( desde: number = 0 ){
@@ -56,7 +55,7 @@ export class PacienteService {
                 return resp.user;
               }),
               catchError( err => {
-                swal( 'Paciente ya existe', '', 'error');
+                swal( 'Error al crear paciente', 'Verificar si ya existe o hay un error en los datos ingresados', 'error');
                 return throwError( err );
               })
           );
@@ -71,12 +70,9 @@ export class PacienteService {
 
   verFichasPaciente(paciente: Paciente){
 
-    this.nombrePaciente = paciente.name;
-    this.rutPaciente = paciente.rut;
-    this.emailPaciente = paciente.email;
-    this.telefonoPaciente = paciente.fijo +' / '+ paciente.celular;
-    this._id = paciente._id;
+    this.pacienteSeleccionado = paciente;
+    
   }
-  
+
 
 }

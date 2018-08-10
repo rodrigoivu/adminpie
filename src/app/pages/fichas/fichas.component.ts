@@ -3,6 +3,7 @@ import { Paciente } from '../../models/paciente.model';
 import { Anamnesis } from '../../models/anamnesis.model';
 import { PacienteService, AnamnesisService } from '../../services/service.index';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 interface NgbDate {
   day: number,
@@ -16,27 +17,36 @@ interface NgbDate {
   styles: []
 })
 export class FichasComponent implements OnInit {
-  nombrePaciente:string ='';
-  rutPaciente: string='';
-  emailPaciente: string='';
-  telefonoPaciente: string='';
-  _idPaciente: string='';
-
+  pacienteEditando: Paciente;
+ 
+  //Datos de usuario Actual
   usuario:any;
   role:string;
   _idUsuario: string;
 
-  //FORMULARIOS
-  formAnamnesis: FormGroup;
+  //Flag Indicadores
   newformAnamnesis: boolean=false;
+  pacienteConDatos: boolean=false;
+
+  //Titulos 
+  titleAnamnesis: string = 'Ficha Anamnesis';
+  titleCrearFicha: string = '( crear ficha )'
+
+  //FORMULARIOS
+  formDatosGenerales: FormGroup;
+  formAnamnesis: FormGroup;
+  
   
 
 
   constructor(
        private fb: FormBuilder,
   		 public _pacienteService: PacienteService,
-       public _anamnesisService: AnamnesisService
+       public _anamnesisService: AnamnesisService,
+       private router: Router, 
+       private route: ActivatedRoute
   	) { 
+
     this.usuario=JSON.parse(localStorage.getItem('usuario'));
     this._idUsuario = this.usuario._id;
     this.role = this.usuario.role;
@@ -44,17 +54,18 @@ export class FichasComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.formAnamnesisAntecedentesFamiliares = this.fb.group({});
-  	this.nombrePaciente = this._pacienteService.nombrePaciente;
-  	this.rutPaciente = this._pacienteService.rutPaciente;
-  	this.emailPaciente = this._pacienteService.emailPaciente;
-  	this.telefonoPaciente = this._pacienteService.telefonoPaciente;
-    this._idPaciente = this._pacienteService._id;
-
-    //console.log('idPaciente:' + this._id);
-
-    this.buscarFichaAnamnesis(this._idPaciente);
-
+    // este if es para evitar elementos vacio al recargar la página de fichas
+    if (!this._pacienteService.pacienteSeleccionado){
+      this.pacienteConDatos=false;
+      this.router.navigate(['/pages/pacientes']);
+     
+    }else{
+      this.pacienteConDatos=true;
+      this.pacienteEditando = this._pacienteService.pacienteSeleccionado;
+      this.iniFormDatosGenerales();
+      this.buscarFichaAnamnesis( this.pacienteEditando._id );
+    }
+    
   }
 
   buscarFichaAnamnesis(id: string){
@@ -71,11 +82,45 @@ export class FichasComponent implements OnInit {
           }
          //Inicializa Formulario
           this.iniFormAnamnesisAntecedentesFamiliares();
+          
         });
   }
 
   //Inicializa Formularios
+  iniFormDatosGenerales(){
+    this.formDatosGenerales = this.fb.group({
+          
+           name: new FormControl({value: null, disabled: true}),
+           edad: new FormControl({value: null, disabled: true}),
+           fechaNacimiento: new FormControl({value: null, disabled: true}),
+           establecimiento: new FormControl({value: null, disabled: true}),
+           nivel: new FormControl({value: null, disabled: true}),
+           direccion: new FormControl({value: null, disabled: true}),
+           fijo: new FormControl({value: null, disabled: true}),
+           celular: new FormControl({value: null, disabled: true})
 
+    });
+
+    if(this.pacienteConDatos){
+
+      this.formDatosGenerales.setValue({
+          
+          name: this.pacienteEditando.name,
+          edad: '',
+          fechaNacimiento: this.pacienteEditando.fechaNacimiento.day +'/'+this.pacienteEditando.fechaNacimiento.month+'/'+this.pacienteEditando.fechaNacimiento.year,
+          establecimiento: this.pacienteEditando.establecimiento,
+          nivel: this.pacienteEditando.nivel,
+          direccion: this.pacienteEditando.direccion,
+          fijo: this.pacienteEditando.fijo,
+          celular: this.pacienteEditando.celular
+
+      });
+    }
+
+
+     
+
+  }
   iniFormAnamnesisAntecedentesFamiliares(){
     let diaAnam: number;
     let mesAnam: number;
@@ -84,21 +129,20 @@ export class FichasComponent implements OnInit {
     let userProfesionalName: any;
 
     if(!this.newformAnamnesis){
-      //console.log('SI HAY FECHA');
       diaAnam = this._anamnesisService.fichaAnamnesis.fecha.day;
       mesAnam = this._anamnesisService.fichaAnamnesis.fecha.month;
       anoAnam = this._anamnesisService.fichaAnamnesis.fecha.year;
       fechaAnamnesis = diaAnam+'/'+mesAnam+'/'+anoAnam;
       userProfesionalName = this._anamnesisService.fichaAnamnesis.user.name
     }else{
-      //console.log('NO HAY FECHA');
+
       fechaAnamnesis = null;
       userProfesionalName = null;
     }
-    //console.log(this._anamnesisService.fichaAnamnesis.antecedentesFamiliares);  
+
     this.formAnamnesis = this.fb.group({
-           fecha: new FormControl(fechaAnamnesis),
-           profesional: new FormControl(userProfesionalName),
+           fecha: new FormControl({value: fechaAnamnesis, disabled: true}),
+           profesional: new FormControl({value: userProfesionalName, disabled: true}),
            anamnesisAntecedentesFamiliares: this.fb.group(this._anamnesisService.fichaAnamnesis.antecedentesFamiliares)
     });
 
@@ -110,14 +154,7 @@ export class FichasComponent implements OnInit {
     //   condiciones: new FormControl(false)
     // }, { validators: this.sonIguales( 'password', 'password2') });
 
-    // this.formAnamnesisAntecedentesFamiliares.setValue({
-    //   nombre:'Test',
-    //   correo:'test@test.com',
-    //   password:'123456',
-    //   password2:'123456',
-    //   condiciones: true
 
-    // });
   }
 
   registrarAnamnesis(){
@@ -128,11 +165,13 @@ export class FichasComponent implements OnInit {
       month: my.getMonth() + 1 ,
       year: my.getFullYear(),
     }
+    
+    // FALTA VERIFICAR POR ROLE
 
     if(!this.newformAnamnesis){
       //Ya existe entonces Actualizar
       registroAnamnesis = new Anamnesis(
-          this._idPaciente,
+          this.pacienteEditando._id,
           this._anamnesisService.fichaAnamnesis.user._id,
           fecha,
           this.formAnamnesis.value.anamnesisAntecedentesFamiliares
@@ -143,21 +182,22 @@ export class FichasComponent implements OnInit {
     }else{
       //No existe entonces crear
       registroAnamnesis = new Anamnesis(
-          this._idPaciente,
+          this.pacienteEditando._id,
           this._idUsuario,
           fecha,
           this.formAnamnesis.value.anamnesisAntecedentesFamiliares
       );
 
       this._anamnesisService.crearAnamnesis(registroAnamnesis)
-          .subscribe();
+          .subscribe(resp =>{
+            this.buscarFichaAnamnesis( this.pacienteEditando._id );
+          });
     }
 
   }
 
-  iniciarDatos(){
-  	
+
+
   
-  }
 
 }

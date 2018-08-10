@@ -3,6 +3,11 @@ import { ModalCreaPacienteService } from './modal-crea-paciente.service';
 import { NgbDateStruct,NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+interface NgbDate {
+  day: number,
+  month: number,
+  year: number
+}
 
 @Component({
   selector: 'app-modal-crea-paciente',
@@ -25,16 +30,20 @@ export class ModalCreaPacienteComponent implements OnInit {
   }
 
   createForm() {
-      
+      let fecha: NgbDate={
+        day: null,
+        month: null ,
+        year: null,
+      }
       this.forma = this.fb.group({
              rut: new FormControl(null, Validators.required),
       	     name: new FormControl(null, Validators.required),
-             fechaNacimiento:'',
-             establecimiento:'',
-             nivel:'',
-             direccion:'',
-             fijo:'',
-             celular:'',
+             fechaNacimiento:fecha ,
+             establecimiento: null,
+             nivel: null,
+             direccion: null,
+             fijo: null,
+             celular: null,
       			 email: new FormControl(null, Validators.email),
 
       });

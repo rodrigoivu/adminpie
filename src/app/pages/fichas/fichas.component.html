@@ -3,8 +3,8 @@
 <!-- NOMBRE Y RUT -->
 <!-- ***************************************** -->
 
-<div class="alert alert-success" role="alert">
- <strong>Nombre:</strong> &nbsp;{{nombrePaciente}}   &nbsp; <strong>Rut:</strong>  &nbsp;{{rutPaciente}}  &nbsp; <strong>Email:&nbsp; </strong>{{emailPaciente}}  &nbsp; <strong>Contacto:</strong> &nbsp;{{telefonoPaciente}}
+<div *ngIf="pacienteConDatos" class="alert alert-success" role="alert">
+ <strong>Nombre:</strong> &nbsp;{{pacienteEditando.name}}   &nbsp; <strong>Rut:</strong>  &nbsp;{{pacienteEditando.rut}}  &nbsp; <strong>Email:&nbsp; </strong>{{pacienteEditando.email}}  &nbsp; <strong>Contacto:</strong> &nbsp;{{pacienteEditando.fijo}}&nbsp;/&nbsp;{{pacienteEditando.celular}}
 </div>
 
 <div class="listadoDoble">
@@ -15,7 +15,11 @@
 	<!-- ***************************************** -->
 	<!-- FICHA ANAMNESIS -->
 	<!-- ***************************************** -->
-  <ngb-panel id="static-1" title="Ficha Anamnesis" >
+  <ngb-panel id="static-1"  >
+  	<ng-template ngbPanelTitle>
+    <b class="text-info">{{titleAnamnesis}}</b> &nbsp; <small *ngIf="newformAnamnesis" class="font-weight-light text-danger"> {{titleCrearFicha}}</small> 
+
+    </ng-template>
 
   	<!-- ***************************************** -->
 	<!-- Profesional y Fechas de evaluación -->
@@ -44,49 +48,47 @@
 		 <div class="card text-light" >
 			  <div class="card-header bg-dark ">Antecedentes Generales</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formDatosGenerales" >
 					  <div class="form-group row">
 						    <div class="col-sm-4">
-						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">NombreCompleto</label>
-							      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    	<label for="anamAGname" class="col-form-label col-form-label-sm">NombreCompleto</label>
+							      <input formControlName="name" type="text" class="form-control form-control-sm" id="anamAGname" >
 						    </div>
 						    <div class="col-sm-4">
-						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Edad</label>
-							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    	<label for="anamAGage" class=" col-form-label col-form-label-sm">Edad</label>
+							    <input formControlName="edad" type="text" class="form-control form-control-sm" id="anamAGage" >
 						    </div>
 						    <div class="col-sm-4">
-			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Fecha de Nacimiento</label>
-	        				    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+			    		    	<label for="anamAGfecnac" class=" col-form-label col-form-label-sm">Fecha de Nacimiento</label>
+	        				    <input formControlName="fechaNacimiento" type="text" class="form-control form-control-sm" id="anamAGfecnac" >
 						    </div>
 					  </div>
 					  <div class="form-group row">
 						    <div class="col-sm-6">
-						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Establecimiento</label>
-							      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    	<label for="anamAGfestab" class="col-form-label col-form-label-sm">Establecimiento</label>
+							      <input formControlName="establecimiento" type="text" class="form-control form-control-sm" id="anamAGfestab" >
 						    </div>
 						    <div class="col-sm-6">
-						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Nivel</label>
-							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    	<label for="anamAGnivel" class=" col-form-label col-form-label-sm">Nivel</label>
+							    <input formControlName="nivel" type="text" class="form-control form-control-sm" id="anamAGnivel" >
 						    </div>
 						    
 					  </div>
 					  <div class="form-group row">
 						    <div class="col-sm-6">
-						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Dirección</label>
-							      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    	<label for="anamAGdir" class="col-form-label col-form-label-sm">Dirección</label>
+							      <input formControlName="direccion" type="text" class="form-control form-control-sm" id="anamAGdir" >
 						    </div>
 						    <div class="col-sm-3">
-						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Teléfono Fijo</label>
-							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    	<label for="anamAGtelfij" class=" col-form-label col-form-label-sm">Teléfono Fijo</label>
+							    <input formControlName="fijo" type="text" class="form-control form-control-sm" id="anamAGtelfij" >
 						    </div>
 						    <div class="col-sm-3">
-			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Celular</label>
-	        				    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+			    		    	<label for="anamAGcelu" class=" col-form-label col-form-label-sm">Celular</label>
+	        				    <input formControlName="celular" type="text" class="form-control form-control-sm" id="anamAGcelu" >
 						    </div>
 					  </div>
 
-
-					  <button type="submit" class="btn btn-primary">Guardar</button>
 				</form>
 			  </div>
 		</div>
