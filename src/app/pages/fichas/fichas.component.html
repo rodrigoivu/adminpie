@@ -24,15 +24,15 @@
     	<div class="card text-light" >
 			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formAnamnesis">
 					  <div class="form-group row">
 						    <div class="col-sm-4">
 						    	<label for="profesionalAnam" class="col-form-label col-form-label-sm">Profesional</label>
-							      <input type="text" class="form-control form-control-sm" id="profesionalAnam" >
+							      <input formControlName="profesional" type="text" class="form-control form-control-sm" id="profesionalAnam" >
 						    </div>
 						    <div class="col-sm-4">
 						    	<label for="fechaEvAnam" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-							    <input type="text" class="form-control form-control-sm" id="fechaEvAnam" >
+							    <input formControlName="fecha" type="text" class="form-control form-control-sm" id="fechaEvAnam" >
 						    </div>
 					  </div>
 				</form>
@@ -96,30 +96,31 @@
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Antecedentes Familiares</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="registrarAnamnesis()">
+			    	<div formGroupName="anamnesisAntecedentesFamiliares">
 					  <!-- MADRE -->
-					  <div class="form-group row">
+					  <div class="form-group row"  >
 						    <div class="col-sm-4">
-						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Nombre de la Madre</label>
-							      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+						    	<label for="anamNomMadre" class="col-form-label col-form-label-sm">Nombre de la Madre</label>
+							      <input formControlName="nombreMadre" name="nombreMadre" type="text" class="form-control form-control-sm" id="anamNomMadre" >
 						    </div>
 						    <div class="col-sm-4">
 						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Edad</label>
-							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+							    <input formControlName="edadMadre" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
 						    </div>
 						    <div class="col-sm-4">
 			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Escolaridad</label>
-	        				    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+	        				    <input formControlName="escolaridadMadre" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
 						    </div>
 					  </div>
 					  <div class="form-group row">
 						    <div class="col-sm-4">
 						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Ocupación</label>
-							      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+							      <input formControlName="ocupacionMadre" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
 						    </div>
 						    <div class="col-sm-4">
 						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Horario de trabajo</label>
-							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+							    <input formControlName="horarioTrabajoMadre" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
 						    </div>
 					  </div>
 					  <hr>
@@ -127,35 +128,36 @@
 					  <div class="form-group row">
 						    <div class="col-sm-4">
 						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Nombre del Padre</label>
-							      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+							      <input formControlName="nombrePadre" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
 						    </div>
 						    <div class="col-sm-4">
 						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Edad</label>
-							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+							    <input formControlName="edadPadre" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
 						    </div>
 						    <div class="col-sm-4">
 			    		    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Escolaridad</label>
-	        				    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+	        				    <input formControlName="escolaridadPadre" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
 						    </div>
 					  </div>
 					  <div class="form-group row">
 						    <div class="col-sm-4">
 						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Ocupación</label>
-							      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+							      <input formControlName="ocupacionPadre" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
 						    </div>
 						    <div class="col-sm-4">
 						    	<label for="colFormLabelSm" class=" col-form-label col-form-label-sm">Horario de trabajo</label>
-							    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" >
+							    <input formControlName="horarioTrabajoPadre" type="text" class="form-control form-control-sm" id="colFormLabelSm" >
 						    </div>
 					  </div>
 					  <div class="form-group row">
 						    <div class="col-sm-12">
 						    	<label for="colFormLabelSm" class="col-form-label col-form-label-sm">Descripción familar ( vínculo familiar, mayor vínculo, separaciones, etc. )</label>
-						    	<textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
+						    	<textarea formControlName="descripcionFamiliar" class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
 						    </div>
 						    
 					  </div>
 					  <button type="submit" class="btn btn-primary">Guardar</button>
+					</div>  
 				</form>
 			  </div>
 		</div>
@@ -3789,7 +3791,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 			  </div>
 		</div>
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Área: Área: Habilidades sociales y comunicativas:</div>
+			  <div class="card-header bg-dark ">Área: Habilidades sociales y comunicativas:</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form>
 					  <div class="form-group row">

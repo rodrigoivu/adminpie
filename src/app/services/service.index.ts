@@ -13,3 +13,4 @@ export { ReservaService } from './reserva/reserva.service';
 export { SubirArchivoService }from './subir-archivo/subir-archivo.service';
 export { SidebarService } from './shared/sidebar.service';
 export { BloqueoService } from './bloqueo/bloqueo.service';
+export { AnamnesisService } from './fichas/anamnesis.service';

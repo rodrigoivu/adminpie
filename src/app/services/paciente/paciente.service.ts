@@ -21,6 +21,7 @@ export class PacienteService {
   rutPaciente: string='';
   emailPaciente: string='';
   telefonoPaciente: string='';
+  _id: string='';
 
   constructor(
   	public http: HttpClient
@@ -30,7 +31,17 @@ export class PacienteService {
 
   cargarPacientes( desde: number = 0 ){
     let url = URL_SERVICIOS + 'api/pacientes' + '?desde='+ desde;
-    return this.http.get( url );
+    return this.http.get( url )
+          .pipe(
+              map( (resp: any) => {
+
+                return resp;
+
+              }),
+              catchError( err => {
+                return err ;
+              })
+          );
   }
 
   crearPaciente(paciente: Paciente){
@@ -61,9 +72,10 @@ export class PacienteService {
   verFichasPaciente(paciente: Paciente){
 
     this.nombrePaciente = paciente.name;
-    this.rutPaciente= paciente.rut;
-    this.emailPaciente= paciente.email;
-    this.telefonoPaciente= paciente.fijo +' / '+ paciente.celular;
+    this.rutPaciente = paciente.rut;
+    this.emailPaciente = paciente.email;
+    this.telefonoPaciente = paciente.fijo +' / '+ paciente.celular;
+    this._id = paciente._id;
   }
   
 

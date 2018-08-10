@@ -42,7 +42,6 @@
             				<th>e-mail</th>
             				<th>T. Fijo/Celular</th>
             				<th>Dirección</th>
-            				<th>Comuna</th>
             			</tr>
             		</thead>
             		<tbody>
@@ -52,7 +51,6 @@
             				<td>{{paciente.email}} </td>
             				<td>{{paciente.fijo}} / {{paciente.celular}} </td>
             				<td>{{paciente.direccion}} </td>
-            				<td>{{paciente.comuna}} </td>
             				
             				<td>
                                 <a class="btn btn-primary "  [routerLink]="['/pages/fichaspaciente']" (click)="fichasPaciente( paciente )" placement="top" ngbTooltip="Ver Fichas" >Ver Fichas

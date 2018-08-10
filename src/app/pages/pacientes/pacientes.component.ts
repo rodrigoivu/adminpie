@@ -23,8 +23,15 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     public _modalCreaPacienteService: ModalCreaPacienteService
   ) {
    this._modalCreaPacienteService.notificacionCargarPacientes
-          .subscribe( resp => {
-            this.cargarPacientes();
+          .subscribe( (resp,err) => {
+            if(err){
+              console.log('error'+err);
+              this.cargando = false;
+            }else{
+              this.cargarPacientes();
+            }
+            
+            
           } ); 
   }
 

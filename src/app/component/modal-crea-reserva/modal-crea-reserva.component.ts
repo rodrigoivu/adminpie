@@ -103,7 +103,7 @@ export class ModalCreaReservaComponent implements OnInit {
     this.diaFormatoBD=this.modelToString(this.diaFormatoModel);
 
     //Borra Paciente selleccionado
-    this.clickedPaciente = new Paciente('');
+    this.clickedPaciente = new Paciente('','');
     this.nombrePaciente = '';
     this.emailPaciente = '';
     this.telefonoPaciente = '';
