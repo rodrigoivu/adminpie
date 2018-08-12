@@ -139,11 +139,17 @@ export class FichasComponent implements OnInit {
       fechaAnamnesis = null;
       userProfesionalName = null;
     }
-
+   
     this.formAnamnesis = this.fb.group({
            fecha: new FormControl({value: fechaAnamnesis, disabled: true}),
            profesional: new FormControl({value: userProfesionalName, disabled: true}),
-           anamnesisAntecedentesFamiliares: this.fb.group(this._anamnesisService.fichaAnamnesis.antecedentesFamiliares)
+           anamnesisAntecedentesFamiliares: this.fb.group(this._anamnesisService.fichaAnamnesis.antecedentesFamiliares),
+           anamnesisAntecedentesSalud: this.fb.group(this._anamnesisService.fichaAnamnesis.antecedentesSalud),
+           anamnesisHistorialClinico: this.fb.group(this._anamnesisService.fichaAnamnesis.historialClinico),
+           anamnesisDesarrolloEvolutivo: this.fb.group(this._anamnesisService.fichaAnamnesis.desarrolloEvolutivo),
+           anamnesisDestrezasSocialesComunicativas: this.fb.group(this._anamnesisService.fichaAnamnesis.destrezasSocialesComunicativas),
+           anamnesisComportamientoLudico: this.fb.group(this._anamnesisService.fichaAnamnesis.comportamientoLudico),
+           anamnesisSituacionSocial: this.fb.group(this._anamnesisService.fichaAnamnesis.situacionSocial)
     });
 
     // this.formAnamnesisAntecedentesFamiliares = new FormGroup({
@@ -161,11 +167,11 @@ export class FichasComponent implements OnInit {
     let registroAnamnesis: Anamnesis;
     let my = new Date();
     let fecha: NgbDate={
-      day: my.getDay(),
+      day: my.getDate(),
       month: my.getMonth() + 1 ,
       year: my.getFullYear(),
     }
-    
+   
     // FALTA VERIFICAR POR ROLE
 
     if(!this.newformAnamnesis){
@@ -174,7 +180,13 @@ export class FichasComponent implements OnInit {
           this.pacienteEditando._id,
           this._anamnesisService.fichaAnamnesis.user._id,
           fecha,
-          this.formAnamnesis.value.anamnesisAntecedentesFamiliares
+          this.formAnamnesis.value.anamnesisAntecedentesFamiliares,
+          this.formAnamnesis.value.anamnesisAntecedentesSalud,
+          this.formAnamnesis.value.anamnesisHistorialClinico,
+          this.formAnamnesis.value.anamnesisDesarrolloEvolutivo,
+          this.formAnamnesis.value.anamnesisDestrezasSocialesComunicativas,
+          this.formAnamnesis.value.anamnesisComportamientoLudico,
+          this.formAnamnesis.value.anamnesisSituacionSocial
       );
 
       this._anamnesisService.actualizarAnamnesis(registroAnamnesis)
@@ -185,8 +197,16 @@ export class FichasComponent implements OnInit {
           this.pacienteEditando._id,
           this._idUsuario,
           fecha,
-          this.formAnamnesis.value.anamnesisAntecedentesFamiliares
+          this.formAnamnesis.value.anamnesisAntecedentesFamiliares,
+          this.formAnamnesis.value.anamnesisAntecedentesSalud,
+          this.formAnamnesis.value.anamnesisHistorialClinico,
+          this.formAnamnesis.value.anamnesisDesarrolloEvolutivo,
+          this.formAnamnesis.value.anamnesisDestrezasSocialesComunicativas,
+          this.formAnamnesis.value.anamnesisComportamientoLudico,
+          this.formAnamnesis.value.anamnesisSituacionSocial
+
       );
+
 
       this._anamnesisService.crearAnamnesis(registroAnamnesis)
           .subscribe(resp =>{

@@ -78,6 +78,76 @@ export class AnamnesisService {
       horarioTrabajoPadre : null,
       descripcionFamiliar : null
     }
+    this.fichaAnamnesis.antecedentesSalud={
+      tiempoGestion : '0',
+      tipoParto : null,
+      motivoCesarea : null,
+      pesoNacer : null,
+      tallaNacer : null,
+      apgar : null,
+      enfermedadesPrePostNatal : null,
+      cuales : null,
+      observaciones : null
+    }
+    this.fichaAnamnesis.historialClinico={
+        enfermedadesFamiliares : null,
+        neurologoPsiquiatra : null,
+        fonoaudiologo : null,
+        educadorPsicopedagogo : null,
+        terapeutaOcupacional : null,
+        kinesiologo : null,
+        psicologo : null,
+        biomedicina : null,
+        tutora : null,
+        otros : null,
+        otrosString : null,
+        intervencionQuirurgicaHospitalizaciones : null,
+        cualesIntervencion : null,
+        tratamientosRecibidos : null,
+        medicamentos : null,
+        cualesMedicamentos : null,
+        medicamentosEfectos : null,
+        diagnosticos : null
+    }
+    this.fichaAnamnesis.desarrolloEvolutivo={
+      edadSientaSolo : null,
+      edadCamino : null,
+      desempenoAVD : null,
+      estabilidadCaminar : null,
+      caidasFrecuentes : null,
+      dominanciaLateral : null,
+      garra : null,
+      pinza : null,
+      pinzaComo : null,
+      dibuja : null,
+      escribe : null,
+      corta : null
+    }
+    this.fichaAnamnesis.destrezasSocialesComunicativas={
+      imtaDespedirAplaudir : null,
+      diceDiezPalabras : null,
+      formulaPreguntas : null,
+      hablaFrases : null,
+      esperaTurno : null,
+      ofreceAyuda : null,
+      seComporta : null,
+      reccionCorrrecta : null
+    }
+    this.fichaAnamnesis.comportamientoLudico={
+      conQueJuega : null,
+      conQuienJuega : null,
+      dondeJuega : null,
+      actividadesInteres : null,
+      personalidad : null
+    }
+    this.fichaAnamnesis.situacionSocial={
+      personasFamilia : null,
+      jefeFemenino : null,
+      beneficiarioProgramaSocial : null,
+      porcentajeRegistroSocial : null,
+      ingresoMensual : null,
+      ingresoPerCapita : null
+    }
 
   }
 
