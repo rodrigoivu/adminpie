@@ -223,8 +223,8 @@
 								</select>
 						    </div>
 					  </div>
-					  <div class="form-group row">
-						    <div class="col-sm-12">
+					  <div *ngIf="otroEnfermedadPrePostNatal" class="form-group row" >
+						    <div class="col-sm-12" >
 						    	<label for="anamasceppn" class="col-form-label col-form-label-sm">¿ Cuáles ?</label>
 						    	<textarea formControlName="cuales" class="form-control form-control-sm" id="anamasceppn" rows="2"></textarea>
 						    </div>
@@ -294,7 +294,7 @@
 								<div class="form-check ">
 									<input formControlName="otros" class="form-check-input " type="checkbox"  id="anamhcotros">
 									<label class="form-check-label " for="anamhcotros">Otros:</label>
-									<input formControlName="otrosString" type="text" class="form-control form-control-sm" id="anamhcotros" >
+									<input *ngIf="otroEvaluacionEspecialista" formControlName="otrosString" type="text" class="form-control form-control-sm" id="anamhcotros" >
 								</div>	 
 						    </div>
 					</div> 
@@ -307,7 +307,7 @@
 								  <option value="1">Si</option>
 								  <option value="2">No</option>
 								</select>
-								<input formControlName="cualesIntervencion" type="text" class="form-control form-control-sm" id="anamhciqh" placeholder="¿Cuáles?">
+								<input *ngIf="otroIntervencionQuirurgica" formControlName="cualesIntervencion" type="text" class="form-control form-control-sm" id="anamhciqh" placeholder="¿Cuáles?">
 						    </div>
 						    <div class="col-sm-6">
 						    	<label for="anamhctrec" class="col-form-label col-form-label-sm">Tratamientos recibidos ( especificar si son pasados o actuales ):</label>
@@ -323,7 +323,7 @@
 								  <option value="1">Si</option>
 								  <option value="2">No</option>
 								</select>
-								<input formControlName="cualesMedicamentos" type="text" class="form-control form-control-sm" id="anamhcmed" placeholder="¿Cuál?">
+								<input *ngIf="otroMedicamentos" formControlName="cualesMedicamentos" type="text" class="form-control form-control-sm" id="anamhcmed" placeholder="¿Cuál?">
 						    </div>
 						    <div class="col-sm-6">
 						    	<label for="anamhcmeder" class="col-form-label col-form-label-sm">Medicamentos ( Efectos relevantes ):</label>
@@ -357,12 +357,13 @@
 							    <input formControlName="edadSientaSolo" type="text" class="form-control form-control-sm" id="anamdeess" >
 						    </div>
 						    <div class="col-sm-4">
-			    		    	<label for="anamdeecs" class=" col-form-label col-form-label-sm">Edad en que caminó:</label>
-	        				    <input FormControlName="edadCamino" type="text" class="form-control form-control-sm" id="anamdeecs" >
+						    	<label for="anamdeecs" class=" col-form-label col-form-label-sm">Edad en que caminó:</label>
+							    <input formControlName="edadCamino" type="text" class="form-control form-control-sm" id="anamdeecs" >
 						    </div>
+						    
 						    <div class="col-sm-4">
 			    		    	<label for="anamdedadv" class=" col-form-label col-form-label-sm">Desempeño en AVD:</label>
-	        				    <input FormControlName="desempenoAVD" type="text" class="form-control form-control-sm" id="anamdedadv" >
+	        				    <input formControlName="desempenoAVD" type="text" class="form-control form-control-sm" id="anamdedadv" >
 						    </div>
 					</div> 
 					<hr>
@@ -375,7 +376,7 @@
 						    
 						    <div class="col-sm-4">
 						    	<label for="anamdeecam" class="col-form-label col-form-label-sm">Estabilidad al caminar:</label>
-							    <select FormControlName="estabilidadCaminar" class="form-control form-control-sm" id="anamdeecam">
+							    <select formControlName="estabilidadCaminar" class="form-control form-control-sm" id="anamdeecam">
 								  <option value="0"></option>
 								  <option value="1">Si</option>
 								  <option value="2">No</option>
@@ -384,7 +385,7 @@
 						    </div>
 						    <div class="col-sm-4">
 						    	<label for="anamdecf" class="col-form-label col-form-label-sm">Caídas frecuentes:</label>
-							    <select FormControlName="caidasFrecuentes" class="form-control form-control-sm" id="anamdecf">
+							    <select formControlName="caidasFrecuentes" class="form-control form-control-sm" id="anamdecf">
 								  <option value="0"></option>
 								  <option value="1">Si</option>
 								  <option value="2">No</option>
@@ -393,7 +394,7 @@
 						    </div>
 						    <div class="col-sm-4">
 						    	<label for="anamdedl" class="col-form-label col-form-label-sm">Dominancia lateral:</label>
-							    <select FormControlName="dominanciaLateral" class="form-control form-control-sm" id="anamdedl">
+							    <select formControlName="dominanciaLateral" class="form-control form-control-sm" id="anamdedl">
 								  <option value="0"></option>
 								  <option value="1">Si</option>
 								  <option value="2">No</option>
@@ -410,7 +411,7 @@
 					<div class="form-group row">
 						    <div class="col-sm-4">
 						    	<label for="anamdegarr" class="col-form-label col-form-label-sm">Garra:</label>
-							    <select FormControlName="garra" class="form-control form-control-sm" id="anamdegarr">
+							    <select formControlName="garra" class="form-control form-control-sm" id="anamdegarr">
 								  <option value="0"></option>
 								  <option value="1">Si</option>
 								  <option value="2">No</option>
@@ -419,7 +420,7 @@
 						    </div>
 						    <div class="col-sm-4">
 						    	<label for="anamdepin" class="col-form-label col-form-label-sm">Pinza:</label>
-							    <select FormControlName="pinza" class="form-control form-control-sm" id="anamdepin">
+							    <select formControlName="pinza" class="form-control form-control-sm" id="anamdepin">
 								  <option value="0"></option>
 								  <option value="1">Si</option>
 								  <option value="2">No</option>
@@ -428,13 +429,13 @@
 						    </div>
 						    <div class="col-sm-4">
 						    	<label for="anamdepincom" class="col-form-label col-form-label-sm">Pinza ( ¿cómo? ):</label>
-							    <input FormControlName="pinzaComo" type="text" class="form-control form-control-sm" id="anamdepincom" >
+							    <input formControlName="pinzaComo" type="text" class="form-control form-control-sm" id="anamdepincom" >
 						    </div>
 					</div> 
 					<div class="form-group row">
 						    <div class="col-sm-4">
 						    	<label for="anamdedib" class="col-form-label col-form-label-sm">Dibuja:</label>
-							    <select FormControlName="dibuja" class="form-control form-control-sm" id="anamdedib">
+							    <select formControlName="dibuja" class="form-control form-control-sm" id="anamdedib">
 								  <option value="0"></option>
 								  <option value="1">Si</option>
 								  <option value="2">No</option>
@@ -443,7 +444,7 @@
 						    </div>
 						    <div class="col-sm-4">
 						    	<label for="anamdeesc" class="col-form-label col-form-label-sm">Escribe:</label>
-							    <select FormControlName="escribe" class="form-control form-control-sm" id="anamdeesc">
+							    <select formControlName="escribe" class="form-control form-control-sm" id="anamdeesc">
 								  <option value="0"></option>
 								  <option value="1">Si</option>
 								  <option value="2">No</option>
@@ -452,7 +453,7 @@
 						    </div>
 						    <div class="col-sm-4">
 						    	<label for="anamdecor" class="col-form-label col-form-label-sm">Corta:</label>
-							    <select FormControlName="corta" class="form-control form-control-sm" id="anamdecor">
+							    <select formControlName="corta" class="form-control form-control-sm" id="anamdecor">
 								  <option value="0"></option>
 								  <option value="1">Si</option>
 								  <option value="2">No</option>
@@ -478,7 +479,7 @@
 						    <div class="col-sm-12">
 						    	<label for="" class="col-form-label col-form-label-sm">Imita acciones tales
 como despedirse o aplaudir:</label>
-							    <select FormControlName="imtaDespedirAplaudir" class="form-control form-control-sm">
+							    <select formControlName="imtaDespedirAplaudir" class="form-control form-control-sm">
 								  <option value="0"></option>
 								  <option value="1">Nunca o rara vez</option>
 								  <option value="2">La realiza, aunque no bien</option>
@@ -491,7 +492,7 @@ como despedirse o aplaudir:</label>
 						    <div class="col-sm-12">
 						    	<label for="" class="col-form-label col-form-label-sm">Dice al menos diez palabras,
 que pueden ser comprendidas por alguien que le conozca bien:</label>
-							    <select FormControlName="diceDiezPalabras" class="form-control form-control-sm">
+							    <select formControlName="diceDiezPalabras" class="form-control form-control-sm">
 								  <option value="0"></option>
 								  <option value="1">Nunca o rara vez</option>
 								  <option value="2">La realiza, aunque no bien</option>
@@ -504,7 +505,7 @@ que pueden ser comprendidas por alguien que le conozca bien:</label>
 						    		    <div class="col-sm-12">
 						    	<label for="" class="col-form-label col-form-label-sm">Formula preguntas simples
 (Ej: ¿Qué es esto?):</label>
-							    <select FormControlName="formulaPreguntas" class="form-control form-control-sm">
+							    <select formControlName="formulaPreguntas" class="form-control form-control-sm">
 								  <option value="0"></option>
 								  <option value="1">Nunca o rara vez</option>
 								  <option value="2">La realiza, aunque no bien</option>
@@ -517,7 +518,7 @@ que pueden ser comprendidas por alguien que le conozca bien:</label>
 						    		    <div class="col-sm-12">
 						    	<label for="" class="col-form-label col-form-label-sm">Habla usando frases de tres o cuatro
 palabras:</label>
-							    <select FormControlName="hablaFrases" class="form-control form-control-sm">
+							    <select formControlName="hablaFrases" class="form-control form-control-sm">
 								  <option value="0"></option>
 								  <option value="1">Nunca o rara vez</option>
 								  <option value="2">La realiza, aunque no bien</option>
@@ -530,7 +531,7 @@ palabras:</label>
 						    		    <div class="col-sm-12">
 						    	<label for="" class="col-form-label col-form-label-sm">En actividades grupales, espera por lo
 menos dos minutos a que le llegue su turno. (Ej: Espera su turno para beber un trago de agua):</label>
-							    <select FormControlName="esperaTurno" class="form-control form-control-sm">
+							    <select formControlName="esperaTurno" class="form-control form-control-sm">
 								  <option value="0"></option>
 								  <option value="1">Nunca o rara vez</option>
 								  <option value="2">La realiza, aunque no bien</option>
@@ -543,7 +544,7 @@ menos dos minutos a que le llegue su turno. (Ej: Espera su turno para beber un t
 						    		    <div class="col-sm-12">
 						    	<label for="" class="col-form-label col-form-label-sm">Ofrece ayuda a otras personas
 (Mantiene la puerta abierta para que pase una persona que tiene las manos ocupadas):</label>
-							    <select FormControlName="ofreceAyuda" class="form-control form-control-sm">
+							    <select formControlName="ofreceAyuda" class="form-control form-control-sm">
 								  <option value="0"></option>
 								  <option value="1">Nunca o rara vez</option>
 								  <option value="2">La realiza, aunque no bien</option>
@@ -556,7 +557,7 @@ menos dos minutos a que le llegue su turno. (Ej: Espera su turno para beber un t
 						    		    <div class="col-sm-12">
 						    	<label for="" class="col-form-label col-form-label-sm">Se comporta de una manera adecuada,
 sin llamar la atención de los demás cuando esta con sus amigos en lugares públicos:</label>
-							    <select FormControlName="seComporta" class="form-control form-control-sm">
+							    <select formControlName="seComporta" class="form-control form-control-sm">
 								  <option value="0"></option>
 								  <option value="1">Nunca o rara vez</option>
 								  <option value="2">La realiza, aunque no bien</option>
@@ -569,7 +570,7 @@ sin llamar la atención de los demás cuando esta con sus amigos en lugares púb
 						    		    <div class="col-sm-12">
 						    	<label for="" class="col-form-label col-form-label-sm">Reacciona correctamente ante la
 mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc.):</label>
-							    <select FormControlName="reccionCorrrecta" class="form-control form-control-sm ">
+							    <select formControlName="reccionCorrrecta" class="form-control form-control-sm ">
 								  <option value="0"></option>
 								  <option value="1">Nunca o rara vez</option>
 								  <option value="2">La realiza, aunque no bien</option>
@@ -595,25 +596,25 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 					<div class="form-group row">
 						    <div class="col-sm-4">
 			    		    	<label for="" class=" col-form-label col-form-label-sm">¿ Con qué juega? </label>
-	        				    <textarea FormControlName="conQueJuega" class="form-control form-control-sm" id="" rows="2"></textarea>
+	        				    <textarea formControlName="conQueJuega" class="form-control form-control-sm" id="" rows="2"></textarea>
 						    </div>
 						    <div class="col-sm-4">
 			    		    	<label for="" class=" col-form-label col-form-label-sm">¿ Con quién juega? </label>
-	        				    <textarea FormControlName="conQuienJuega" class="form-control form-control-sm" id="" rows="2"></textarea>
+	        				    <textarea formControlName="conQuienJuega" class="form-control form-control-sm" id="" rows="2"></textarea>
 						    </div>
 						    <div class="col-sm-4">
 			    		    	<label for="" class=" col-form-label col-form-label-sm">¿ Donde juega? </label>
-	        				    <textarea FormControlName="dondeJuega" class="form-control form-control-sm" id="" rows="2"></textarea>
+	        				    <textarea formControlName="dondeJuega" class="form-control form-control-sm" id="" rows="2"></textarea>
 						    </div>
 					</div> 
 					<div class="form-group row">
 						    <div class="col-sm-6">
 			    		    	<label for="" class=" col-form-label col-form-label-sm">Actividades, objetos, juguetes, caricaturas o programas de tv/internet de interés:</label>
-	        				    <textarea FormControlName="actividadesInteres" class="form-control form-control-sm" id="" rows="2"></textarea>
+	        				    <textarea formControlName="actividadesInteres" class="form-control form-control-sm" id="" rows="2"></textarea>
 						    </div>
 						    <div class="col-sm-6">
 			    		    	<label for="" class=" col-form-label col-form-label-sm">Describa brevemente la personalidad del niño/a (extrovertido, tímido, tolerante a la frustración, etc.). </label>
-	        				    <textarea FormControlName="personalidad" class="form-control form-control-sm" id="" rows="2"></textarea>
+	        				    <textarea formControlName="personalidad" class="form-control form-control-sm" id="" rows="2"></textarea>
 						    </div>
 					</div> 
 					<button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button>
@@ -633,31 +634,31 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 					<div class="form-group row">
 						     <div class="col-sm-6">
 						    	<label for="" class="col-form-label col-form-label-sm">¿Cuántas personas componen su núcleo familiar?</label>
-							    <input FormControlName="personasFamilia" type="text" class="form-control form-control-sm" id="" >
+							    <input formControlName="personasFamilia" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 						    <div class="col-sm-6">
 						    	<label for="" class="col-form-label col-form-label-sm">¿Presenta solo jefatura femenina?</label>
-							    <input FormControlName="jefeFemenino" type="text" class="form-control form-control-sm" id="" >
+							    <input formControlName="jefeFemenino" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 					</div> 
 					<div class="form-group row">
 						    <div class="col-sm-6">
 						    	<label for="" class="col-form-label col-form-label-sm">¿Es beneficiario de algún programa social? ¿Cuáles?</label>
-							    <input FormControlName="beneficiarioProgramaSocial" type="text" class="form-control form-control-sm" id="" >
+							    <input formControlName="beneficiarioProgramaSocial" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 						    <div class="col-sm-6">
 						    	<label for="" class="col-form-label col-form-label-sm">¿Cuál es su porcentaje del registro social de hogares?</label>
-							    <input FormControlName="porcentajeRegistroSocial" type="text" class="form-control form-control-sm" id="" >
+							    <input formControlName="porcentajeRegistroSocial" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 					</div> 
 					<div class="form-group row">
 						     <div class="col-sm-6">
 						    	<label for="" class="col-form-label col-form-label-sm">Ingreso mensual líquido</label>
-							    <input FormControlName="ingresoMensual" type="text" class="form-control form-control-sm" id="" >
+							    <input formControlName="ingresoMensual" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 						    <div class="col-sm-6">
 						    	<label for="" class="col-form-label col-form-label-sm">Ingreso per cápita</label>
-							    <input FormControlName="ingresoPerCapita" type="text" class="form-control form-control-sm" id="" >
+							    <input formControlName="ingresoPerCapita" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 					</div> 
 					<button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button>

@@ -68,6 +68,35 @@ export class FichasComponent implements OnInit {
     
   }
 
+  //CONTORL DE COMPONENTES DEPENDIENTES
+  get otroEnfermedadPrePostNatal() { 
+    let estado = this.formAnamnesis.get('anamnesisAntecedentesSalud').get('enfermedadesPrePostNatal').value;
+    if (estado == 1){
+      return true;
+    }else{
+      return false
+    }
+  }
+  get otroEvaluacionEspecialista() { 
+    return this.formAnamnesis.get('anamnesisHistorialClinico').get('otros').value
+  }
+
+  get otroIntervencionQuirurgica() { 
+    let estado = this.formAnamnesis.get('anamnesisHistorialClinico').get('intervencionQuirurgicaHospitalizaciones').value;
+    if (estado == 1){
+      return true;
+    }else{
+      return false
+    }
+  }
+  get otroMedicamentos() { 
+    let estado = this.formAnamnesis.get('anamnesisHistorialClinico').get('medicamentos').value;
+    if (estado == 1){
+      return true;
+    }else{
+      return false
+    }
+  }
   buscarFichaAnamnesis(id: string){
     this._anamnesisService.cargarAnamnesis(id)
         .subscribe(resp => {
