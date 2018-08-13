@@ -32,7 +32,7 @@
 					  <div class="form-group row">
 						    <div class="col-sm-4">
 						    	<label for="profesionalAnam" class="col-form-label col-form-label-sm">Profesional</label>
-							      <input formControlName="profesional" type="text" class="form-control form-control-sm" id="profesionalAnam" >
+							    <input formControlName="profesional" type="text" class="form-control form-control-sm" id="profesionalAnam" >
 						    </div>
 						    <div class="col-sm-4">
 						    	<label for="fechaEvAnam" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
@@ -99,7 +99,7 @@
 			  <div class="card-header bg-dark ">Antecedentes Familiares</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="registrarAnamnesis()">
-			    	<div formGroupName="anamnesisAntecedentesFamiliares">
+			    	<div formGroupName="anamnesisAntecedentesFamiliares"> 
 					  <!-- MADRE -->
 					  <div class="form-group row"  >
 						    <div class="col-sm-4">
@@ -679,15 +679,15 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
     	<div class="card text-light" >
 			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formGeneral">. 
 					  <div class="form-group row">
 						    <div class="col-sm-4">
-						    	<label for="profesionalAnam" class="col-form-label col-form-label-sm">Profesional</label>
-							      <input type="text" class="form-control form-control-sm" id="profesionalAnam" >
+						    	<label for="" class="col-form-label col-form-label-sm">Profesional</label>
+							    <input formControlName="profesional" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 						    <div class="col-sm-4">
-						    	<label for="fechaEvAnam" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-							    <input type="text" class="form-control form-control-sm" id="fechaEvAnam" >
+						    	<label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
+							    <input formControlName="fecha" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 					  </div>
 				</form>
@@ -696,33 +696,35 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
     	<div class="card text-light" >
 			  <div class="card-header bg-dark ">Ficha Médica General</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formGeneral">
+			      <div formGroupName="medicaGeneral">
 					<div class="form-group row">
 						     <div class="col-sm-12">
 			    		    	<label for="" class=" col-form-label col-form-label-sm">Historial</label>
-	        				    <textarea class="form-control form-control-sm" id="" rows="2"></textarea>
+	        				    <textarea formControlName="historial" class="form-control form-control-sm" id="" rows="2"></textarea>
 						    </div>
 					</div> 
 					<div class="form-group row">
 						    <div class="col-sm-12">
 			    		    	<label for="" class=" col-form-label col-form-label-sm">Tratamiento</label>
-	        				    <textarea class="form-control form-control-sm" id="" rows="2"></textarea>
+	        				    <textarea formControlName="tartamiento" class="form-control form-control-sm" id="" rows="2"></textarea>
 						    </div>
 					</div> 
 					<div class="form-group row">
 						     <div class="col-sm-12">
 			    		    	<label for="" class=" col-form-label col-form-label-sm">Diagnósticos</label>
-	        				    <textarea class="form-control form-control-sm" id="" rows="2"></textarea>
+	        				    <textarea formControlName="diagnosticos" class="form-control form-control-sm" id="" rows="2"></textarea>
 						    </div>
 					</div> 
 					<div class="form-group row">
 						     <div class="col-sm-12">
 			    		    	<label for="" class=" col-form-label col-form-label-sm">Medicamentos</label>
-	        				    <textarea class="form-control form-control-sm" id="" rows="2"></textarea>
+	        				    <textarea formControlName="medicamentos" class="form-control form-control-sm" id="" rows="2"></textarea>
 						    </div>
 					</div> 
 					
 					<button type="submit" class="btn btn-primary">Guardar</button>
+				  </div>	
 				</form>
 			  </div>
 		</div>
@@ -739,15 +741,15 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
     	<div class="card text-light" >
 			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formKinesiologia"> 
 					  <div class="form-group row">
 						    <div class="col-sm-4">
-						    	<label for="profesionalAnam" class="col-form-label col-form-label-sm">Profesional</label>
-							      <input type="text" class="form-control form-control-sm" id="profesionalAnam" >
+						    	<label for="" class="col-form-label col-form-label-sm">Profesional</label>
+							    <input formControlName="profesional" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 						    <div class="col-sm-4">
-						    	<label for="fechaEvAnam" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-							    <input type="text" class="form-control form-control-sm" id="fechaEvAnam" >
+						    	<label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
+							    <input formControlName="fecha" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 					  </div>
 				</form>
@@ -755,12 +757,12 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 		</div>
 
   	<!-- ***************************************** -->
-	<!-- OBJETIVO GENERAL 1 -->
+	<!-- OBJETIVO GENERAL 1 KINESIOLOGÍA -->
 	<!-- ***************************************** -->
     	<div class="card text-light" >
 			  <div class="card-header bg-dark ">Objetvo General</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form >
 					  <div class="form-group row">
 						    <div class="col-sm-12">
 						    	<h6>Estimular las conductas psicomotoras descendidas y favorecer la estabilidad en los
@@ -775,57 +777,58 @@ desplazamientos a fin de contribuir con la autonomía del/la estudiante.</h6>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Objetvos Específicos</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formKinesiologia">
+			    	<div formGroupName="estabilidadDesplazamiento">
 					  <div class="form-group row">
 						    <div class="col-sm-12">
 						    	<label for="" class="col-form-label ">1. Favorecer el control postural y reacciones de protección.</label>
 								
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Control de tronco en posición sedente en cama taburete estimulando reacciones de equilibrio con estímulos externos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Control de tronco en posición sedente sobre balón terapéutico.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Educador(a) Diferencial/Psicopedagogo(a)</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Ejercicios de musculatura abdominal en colchoneta.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Ejercicios de musculatura abdominal en colchoneta con balón terapéutico.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp66" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Ejercicios isométricos de paravertebrales en prono.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Mantención de postura en cuadripedia.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Mantención de postura en cuadripedia con apoyo de balón mani.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp9" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Ejercicios isométricos en cuadripedia con elevación de EESS y EEII contralateral.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp10" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Ejercicios isométricos de musculatura pélvica en colchoneta.</label>
 								</div>	 
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp11" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Ejercitar posiciones bajas (supino) e intermedias (sedente) a altas (bípedo).</label>
 								</div>	 
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp12" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Uso de vestibuladores.</label>
 								</div>	 	 
 						    </div>
@@ -837,39 +840,39 @@ desplazamientos a fin de contribuir con la autonomía del/la estudiante.</h6>
 						    	<label for="" class="col-form-label ">2. Aumentar y/o mantener rango articular en Extremidades Superiores (EESS).</label>
 								
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp13" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Elongación pasiva de musculatura acortada.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp14" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Oscilaciones de Extremidad.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp15" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Movilización Pasiva de EESS.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp16" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Movilización Activa de Extremidades en supino.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp17" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Movilización Activa de Extremidades en sedente.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp18" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Movilización Activo/Asistida de Extremidades.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp19" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Escalera Sueca.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp20" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Tablero de manipulación.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp21" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Mesa pronosupinador.</label>
 								</div>	 
 						    </div>
@@ -880,27 +883,27 @@ desplazamientos a fin de contribuir con la autonomía del/la estudiante.</h6>
 						    	<label for="" class="col-form-label ">3. Estimular la coordinación dinámica general.</label>
 								
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp22" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Desplazamientos y movilidad en suelo: Giros en decúbito, gateo, arrastre.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp23" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Secuencias de ejercicios que combinen alternancia de EESS e EEII.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp24" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Lanzamiento de balón con pie.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp25" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Lanzamiento y recepción de balones de distintos tamaños.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp26" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Lanzamiento de argollas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp27" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Subir y bajar escaleras estimulando alternancia de pies.</label>
 								</div>
 						    </div>
@@ -911,39 +914,39 @@ desplazamientos a fin de contribuir con la autonomía del/la estudiante.</h6>
 						    	<label for="" class="col-form-label ">4. Ejercitar la motricidad fina.</label>
 								
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp28" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Amasar.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp29" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Moldear.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp30" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Atornillar.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp31" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Hilvanar.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp32" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Encajar.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp33" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Ejercicios manipulativos con lápiz.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp34" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Manipulación de punzón.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp35" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Tablero de manipulación.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp36" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Mesa pronosupinador.</label>
 								</div>
 						    </div>
@@ -952,23 +955,23 @@ desplazamientos a fin de contribuir con la autonomía del/la estudiante.</h6>
 					 		<div class="col-sm-12">
 						    	<label for="" class="col-form-label ">5. Favorecer la autonomía.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp37" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Tareas de vestuario: Abotonar, acordonar, subir y bajar cierres.</label>
 								</div>
 						    </div>
 					 </div>
 
-
+				  </div>
 				</form>
 			  </div>
 		</div>
   	<!-- ***************************************** -->
-	<!-- OBJETIVO GENERAL 2-->
+	<!-- OBJETIVO GENERAL 2. KINESIOLOGÍA-->
 	<!-- ***************************************** -->
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Objetvo General</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form >
 					  <div class="form-group row">
 						    <div class="col-sm-12">
 						    	<h6>Estimular las conductas psicomotoras descendidas y favorecer la coordinación
@@ -982,53 +985,53 @@ dinámica a fin de contribuir con la autonomía del/la estudiante.</h6>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">ObjetvoS Específicos</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
-
+			    <form [formGroup]="formKinesiologia">
+			      <div formGroupName="coordinacionDinamica">	
 					<div class="form-group row">
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">1. Estimular la coordinación dinámica general.</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp1" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Desplazamientos y movilidad en suelo: Giros en decúbito, gateo, arrastre.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp2" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Secuencias de ejercicios que combinen alternancia de EESS e EEII.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp3" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Saltos a pies juntos.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp4" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Saltos en un pié.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp5" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Saltos con diferentes alturas.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp6" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Saltos con alternancia de pies.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp7" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Lanzamiento de balón con pie.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp8" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Lanzamiento con argollas.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp9" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Lanzamiento y recepción de balones de distintos tamaños.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp10" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Subir y bajar escaleras incentivando la alternancia de pies.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp11" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Trepar.</label>
 							</div>
 					    </div>
@@ -1038,27 +1041,27 @@ dinámica a fin de contribuir con la autonomía del/la estudiante.</h6>
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">2. Estimular el equilibrio.</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp12" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Control corporal en balón bosu.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp13" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Control corporal sobre balón bosu con actividad dinámica.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp14" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Marcha en altura sobre banca sueca.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp15" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Marcha por terrenos irregulares y escaleras.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp16" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Marcha por terrenos inclinados.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp17" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Uso de vestibuladores.</label>
 							</div>
 					    </div>
@@ -1068,43 +1071,43 @@ dinámica a fin de contribuir con la autonomía del/la estudiante.</h6>
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">3. Ejercitar la motricidad fina.</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp18" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Amasar.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp19" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Moldear.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp20" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Hilvanar.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp21" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Encajar.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp22" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Atornillar.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp23" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Actividades manipulativas con pinza.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp24" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios manipulativos con lápiz.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp25" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de manipulación con punzón.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp26" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Tablero de manipulación.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp27" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Mesa pronosupinador.</label>
 							</div>
 					    </div>
@@ -1114,18 +1117,17 @@ dinámica a fin de contribuir con la autonomía del/la estudiante.</h6>
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">4. Favorecer la autonomía.</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp28" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Tareas de vestuario: Abotonar, acordonar, subir y bajar cierres.</label>
 							</div>
 					    </div>
 					 </div>
-
-
+				  </div>	 
 				</form>
 			  </div>
 		</div>
     <!-- ***************************************** -->
-	<!-- OBJETIVO GENERAL 3-->
+	<!-- OBJETIVO GENERAL 3. KINESIOLOGÍA-->
 	<!-- ***************************************** -->
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Objetvo General</div>
@@ -1144,54 +1146,54 @@ conductas psicomotoras descendidas y facilitar la autonomía en el estudiante.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">ObjetvoS Específicos</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
-
+			    <form [formGroup]="formKinesiologia">
+			      <div formGroupName="conductasPsicomotoras">	
 					<div class="form-group row">
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">1. Favorecer el control postural y reacciones de protección.</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp1" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Control de tronco en posición sedente en cama taburete estimulando
 reacciones de equilibrio con estímulos externos.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp2" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Control de tronco en posición sedente sobre balón terapéutico.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp3" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de musculatura abdominal en colchoneta.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp4" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de musculatura abdominal en colchoneta con balón terapéutico.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp5" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios isométricos de paravertebrales en prono.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp6" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Mantención de postura en cuadripedia.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp7" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Mantención de postura en cuadripedia con apoyo de balón mani.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp8" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios isométricos en cuadripedia con elevación de EESS y EEII contralateral.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp9" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios isométricos de musculatura pélvica en colchoneta.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp10" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercitar posiciones bajas (supino) e intermedias (sedente) a altas (bípedo).</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp11" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Uso de vestibuladores.</label>
 							</div>
 					    </div>
@@ -1201,39 +1203,39 @@ reacciones de equilibrio con estímulos externos.</label>
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">2. Aumentar y/o mantener rango articular en Extremidades Superiores (EESS).</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp12" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Elongación pasiva de musculatura acortada.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp13" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Oscilaciones de Extremidad.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp14" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Movilización Pasiva de EESS.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp15" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Movilización Activa de Extremidades en supino.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp16" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Movilización Activa de Extremidades en sedente.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp17" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Movilización Activo/Asistida de Extremidades.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp18" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Escalera Sueca.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp19" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Tablero de manipulación.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp20" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Mesa pronosupinador.</label>
 							</div>
 					    </div>
@@ -1243,23 +1245,23 @@ reacciones de equilibrio con estímulos externos.</label>
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">3. Aumentar y/o mantener rango articular en Extremidades Inferiores (EEII)</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp21" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Elongación de musculatura asociada.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp22" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Movilización Pasiva de EEII.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp23" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Movilización Activo/Asistida de Extremidades.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp24" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Movilización Activa de Extremidades en supino y/o sedente.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp25" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Movilización Activa de extremidades en supino y/o sedente.</label>
 							</div>
 					    </div>
@@ -1269,27 +1271,27 @@ reacciones de equilibrio con estímulos externos.</label>
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">4. Fortalecimiento muscular de Extremidades:</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp26" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de contracciones musculares activas en supino con peso en EESS.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp27" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de contracciones musculares activas en supino con peso en EEII.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp28" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de contracciones musculares activas en sedente con peso en EESS.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp29" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de contracciones musculares activas en sedente con peso en EEII.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp30" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de contracciones musculares con resistencia en EESS.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp31" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de contracciones musculares con resistencia en EEII.</label>
 							</div>
 					    </div>
@@ -1299,46 +1301,45 @@ reacciones de equilibrio con estímulos externos.</label>
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">5. Ejercitar motricidad fina y autonomía.</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp32" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Amasar.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp33" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Hilvanar.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp34" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Encajar.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp35" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Atornillar.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp36" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios manipulativos con lápiz.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp37" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de manipulación con punzón.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp38" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Tablero de manipulación.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp39" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Mesa pronosupinador.</label>
 							</div>
 					    </div>
 					 </div>
-
-
+				  </div>
 				</form>
 			  </div>
 		</div>
 <!-- ***************************************** -->
-	<!-- OBJETIVO GENERAL 4-->
+	<!-- OBJETIVO GENERAL 4. KINESIOLOGÍA-->
 	<!-- ***************************************** -->
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Objetvo General</div>
@@ -1357,37 +1358,37 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">ObjetvoS Específicos</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
-
+			    <form [formGroup]="formKinesiologia">
+			      <div formGroupName="alineacionPostural">		
 					<div class="form-group row">
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">1. Favorecer el equilibrio</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp1" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Control corporal en sedente sobre balón terapéutico.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp2" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Control corporal en bípedo sobre balón bosu.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp3" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Marcha en altura sobre banca sueca.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp4" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Marcha por terrenos irregulares y escaleras.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp5" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Marcha por terrenos inclinados.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp6" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercitar posiciones bajas (supino) e intermedias (sedente) a altas (bípedo).</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp7" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Uso de vestibuladores.</label>
 							</div>
 					    </div>
@@ -1397,35 +1398,35 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">2. Estimular la coordinación dinámica general.</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp8" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Desplazamientos y movilidad en suelo: Giros en decúbito, gateo, arrastre.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp9" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Secuencias de ejercicios que combinen alternancia de EESS e EEII.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp10" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Saltos a pies juntos.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp11" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Saltos en un pie.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp12" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Saltos alternados.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp13" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Lanzamiento de balón con pie.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp14" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Lanzamiento y recepción de balones de distintos tamaños.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp15" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Subir y bajar escaleras estimulando alternancia de pies.</label>
 							</div>
 					    </div>
@@ -1435,23 +1436,23 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">3. Corrección postural</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp16" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Concientización de esquema corporal (Espejo)</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp17" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de flexibilidad de columna vertebral.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp18" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de elongación de musculatura pectoral.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp19" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Fortalecimiento de musculatura escapulotoráxica.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp20" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Fortalecimiento de pared abdominal.</label>
 							</div>
 					    </div>
@@ -1461,35 +1462,35 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">4. Ejercitar motricidad fina y autonomía.</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp21" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Amasar.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp22" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Hilvanar.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp23" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Encajar.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp24" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Atornillar.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp25" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios manipulativos con lápiz.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp26" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de manipulación con punzón.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp27" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Tablero de manipulación.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp28" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Mesa pronosupinador.</label>
 							</div>
 					    </div>
@@ -1499,27 +1500,27 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">5. Corregir y evitar malas posturas.</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp29" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de flexibilización de columna vertebral en cuadripedia.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp30" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Elongación muscular sobre balón terapéutico.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp31" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Elongación pasiva de la musculatura afectada.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp32" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de fortalecimiento de musculatura de tronco.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp33" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de fortalecimiento de musculatura de pelvis.</label>
 							</div>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp34" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Ejercicios de corrección postural frente a espejo.</label>
 							</div>
 					    </div>
@@ -1529,22 +1530,19 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						<div class="col-sm-12">
 					    	<label for="" class="col-form-label ">6. Favorecer la autonomía.</label>
 							<div class="form-check ">
-								<input class="form-check-input " type="checkbox" value="" id="">
+								<input formControlName="objetivoEsp35" class="form-check-input " type="checkbox" value="" id="">
 								<label class="form-check-label " for="">Tareas de vestuario: Abotonar, acordonar, subir y bajar cierres.</label>
 							</div>
 					    </div>
 					 </div>
-
-
+				  </div>
 				</form>
 			  </div>
 		</div>
-      	      	
-      	
-    </ng-template>
+      </ng-template>
   </ngb-panel>
 
-  <!-- ***************************************** -->
+  	<!-- ***************************************** -->
 	<!-- FICHA PSICOLOGIA -->
 	<!-- ***************************************** -->
   <ngb-panel id="static-4" title="Ficha Psicología">
@@ -1552,38 +1550,42 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
         <div class="card text-light" >
 			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formPsicologia">
 					  <div class="form-group row">
 						    <div class="col-sm-4">
-						    	<label for="profesionalAnam" class="col-form-label col-form-label-sm">Profesional</label>
-							      <input type="text" class="form-control form-control-sm" id="profesionalAnam" >
+						    	<label for="" class="col-form-label col-form-label-sm">Profesional</label>
+							    <input formControlName="profesional" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 						    <div class="col-sm-4">
-						    	<label for="fechaEvAnam" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-							    <input type="text" class="form-control form-control-sm" id="fechaEvAnam" >
+						    	<label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
+							    <input formControlName="fecha" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 					  </div>
 				</form>
 			  </div>
 		</div>
+		<!-- ***************************************** -->
+		<!-- 1. Establecer Vínculo PSICOLOGIA -->
+		<!-- ***************************************** -->
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">1. Establecer Vínculo</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formPsicologia" >
+			      <div formGroupName="establecerVinculo">
 			    	<div class="form-group row">
 						    <div class="col-sm-6">
 
 						    	<label for="" class="col-form-label ">Objetivos Específicos</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">a) Encuadre</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">b) Escucha Activa</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">c) Formular estrategias de abordaje terapéutico</label>
 								</div>
 
@@ -1596,36 +1598,40 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    	<h6>- Utilizar recursos vestibulares.</h6>
 						    </div>
 					  </div>
-					  
+				  </div>  
 				</form>
 			  </div>
 		</div>
+		<!-- ***************************************** -->
+		<!-- 2. Desarrollar capacidades adaptativas PSICOLOGIA -->
+		<!-- ***************************************** -->		
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">2. Desarrollar capacidades adaptativas</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formPsicologia">
+			      <div formGroupName="capacidadesAdaptativas">	
 			    	<div class="form-group row">
 						    <div class="col-sm-6">
 
 						    	<label for="" class="col-form-label ">Objetivos Específicos</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">a) Sociabilizar</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">b) Seguir Instrucciones</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">c) Regulación emocional</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">d) Incentivar habilidades de comunicación efectiva</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">e) Promover capacidad de resolución de conflictos</label>
 								</div>
 
@@ -1640,48 +1646,52 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    	<h6>- Por medio del juego imaginativo utilización de títeres para representar diálogo.</h6>
 						    </div>
 					  </div>
-					  
+				  </div>  
 				</form>
 			  </div>
 		</div>
+		<!-- ***************************************** -->
+		<!-- 3. Resignificar Autoconcepto PSICOLOGIA -->
+		<!-- ***************************************** -->				
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">3. Resignificar Autoconcepto</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formPsicologia">
+			      <div formGroupName="autoconcepto">	
 			    	<div class="form-group row">
 						    <div class="col-sm-6">
 
 						    	<label for="" class="col-form-label ">Objetivos Específicos</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">a) Analizar autoestima</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">b) Evaluar capacidades de autoeficacia</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">c) Potenciar autonomía</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">d) Visualizar percepción de sí mismo</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">e) Reconocer autoconcepto</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">f) Promover autoestima positiva</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">g) Definir capacidades de autoeficacia</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">h) Potenciar autonomía e independencia acorde a etapa evolutiva.</label>
 								</div>
 
@@ -1696,32 +1706,36 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    	<h6>- Responder logopedias de: percepción de sí mismo, autocontrol e intereses personales.</h6>
 						    </div>
 					  </div>
-					  
+				  </div>  
 				</form>
 			  </div>
 		</div>
+		<!-- ***************************************** -->
+		<!-- 4. Analizar labilidad emocional PSICOLOGIA -->
+		<!-- ***************************************** -->				
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">4. Analizar labilidad emocional</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
-			    	<div class="form-group row">
+			    <form [formGroup]="formPsicologia">
+			      <div formGroupName="labilidadEmocional">		
+			    	 <div class="form-group row">
 						    <div class="col-sm-6">
 
 						    	<label for="" class="col-form-label ">Objetivos Específicos</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">a) Escucha activa</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">b) Contener</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">c) Racionalizar</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">d)Generar Herramientas</label>
 								</div>
 
@@ -1734,12 +1748,10 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    	<h6>- Exponer al paciente mediante desensibilización sistemática frente al estímulo que provoca el dolor psíquico.</h6>
 						    </div>
 					  </div>
-					  
+					</div>  
 				</form>
 			  </div>
 		</div>
-
-
 
     </ng-template>
   </ngb-panel>
@@ -1752,15 +1764,15 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
         <div class="card text-light" >
 			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formTerapeuta">
 					  <div class="form-group row">
 						    <div class="col-sm-4">
-						    	<label for="profesionalAnam" class="col-form-label col-form-label-sm">Profesional</label>
-							      <input type="text" class="form-control form-control-sm" id="profesionalAnam" >
+						    	<label for="" class="col-form-label col-form-label-sm">Profesional</label>
+							    <input formControlName="profesional" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 						    <div class="col-sm-4">
-						    	<label for="fechaEvAnam" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-							    <input type="text" class="form-control form-control-sm" id="fechaEvAnam" >
+						    	<label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
+							    <input formControlName="fecha" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 					  </div>
 				</form>
@@ -2457,15 +2469,15 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
         <div class="card text-light" >
 			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formFonoaudiologia" >
 					  <div class="form-group row">
 						    <div class="col-sm-4">
-						    	<label for="profesionalAnam" class="col-form-label col-form-label-sm">Profesional</label>
-							      <input type="text" class="form-control form-control-sm" id="profesionalAnam" >
+						    	<label for="" class="col-form-label col-form-label-sm">Profesional</label>
+							    <input formControlName="profesional" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 						    <div class="col-sm-4">
-						    	<label for="fechaEvAnam" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-							    <input type="text" class="form-control form-control-sm" id="fechaEvAnam" >
+						    	<label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
+							    <input formControlName="fecha" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 					  </div>
 				</form>
@@ -2474,7 +2486,7 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Objetivos Generales</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form >
 					  <div class="form-group row">
 					  	<div class="col-sm-12">
 						    <h6>1. Optimizar habilidades comunicativas que le permitan un mayor desenvolvimiento en su entorno social.</h6>
@@ -2489,7 +2501,7 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Funciones prelingüísticas:</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formFonoaudiologia">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
 

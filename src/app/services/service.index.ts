@@ -14,3 +14,8 @@ export { SubirArchivoService }from './subir-archivo/subir-archivo.service';
 export { SidebarService } from './shared/sidebar.service';
 export { BloqueoService } from './bloqueo/bloqueo.service';
 export { AnamnesisService } from './fichas/anamnesis.service';
+export { FonoaudiologiaService } from './fichas/fonoaudiologia.service';
+export { GeneralService } from './fichas/general.service';
+export { KinesiologiaService } from './fichas/kinesiologia.service';
+export { PsicologiaService } from './fichas/psicologia.service';
+export { TerapeutaService } from './fichas/terapeuta.service';

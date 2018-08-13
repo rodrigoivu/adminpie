@@ -16,7 +16,12 @@ import { UsuarioService,
          SubirArchivoService, 
          SidebarService,
          BloqueoService,
-         AnamnesisService
+         AnamnesisService,
+         FonoaudiologiaService,
+         GeneralService,
+         KinesiologiaService,
+         PsicologiaService,
+         TerapeutaService
        } from './service.index';
 
 
@@ -43,6 +48,11 @@ import { HttpClientModule } from '@angular/common/http';
     SidebarService,
     BloqueoService,
     AnamnesisService,
+    FonoaudiologiaService,
+    GeneralService,
+    KinesiologiaService,
+    PsicologiaService,
+    TerapeutaService,
     ModalUploadService
   ],
   declarations: []
