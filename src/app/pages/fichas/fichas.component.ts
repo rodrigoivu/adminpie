@@ -476,7 +476,150 @@ export class FichasComponent implements OnInit {
     }
 
   }
+  registrarFonoaudiologia(){
+    let registro: Fonoaudiologia;
+    let my = new Date();
+    let dia: number=my.getDate();
+    let mes: number=my.getMonth()+1;
+    let ano: number=my.getFullYear();
+    let fecha: string=  dia+'-'+  mes + '-'+ ano;
+    // FALTA VERIFICAR POR ROLE
 
+    registro = new Fonoaudiologia(
+          this.pacienteEditando._id,
+          this._idUsuario,
+          fecha,
+          this.formFonoaudiologia.value.prelinguisticas,
+          this.formFonoaudiologia.value.prearticulatorias,
+          this.formFonoaudiologia.value.psicolinguisticas,
+          this.formFonoaudiologia.value.foneticoFonologico,
+          this.formFonoaudiologia.value.semantico,
+          this.formFonoaudiologia.value.morfosintactico,
+          this.formFonoaudiologia.value.pragmatico,
+          this.formFonoaudiologia.value.discursoNarrativo,
+          this.formFonoaudiologia.value.socialComunicativa
+    );
+
+    if(!this.newformFonoaudiologia){
+      //Ya existe entonces Actualizar
+      this._fonoaudiologiaService.actualizarFicha(registro)
+          .subscribe();
+
+    }else{
+      this._fonoaudiologiaService.crearFicha(registro)
+          .subscribe();
+    }
+    
+  }
+  registrarGeneral(){
+    let registro: General;
+    let my = new Date();
+    let dia: number=my.getDate();
+    let mes: number=my.getMonth()+1;
+    let ano: number=my.getFullYear();
+    let fecha: string=  dia+'-'+  mes + '-'+ ano;
+
+    registro = new General(
+          this.pacienteEditando._id,
+          this._idUsuario,
+          fecha,
+          this.formGeneral.value.medicaGeneral
+    );
+
+    if(!this.newformGeneral){
+      //Ya existe entonces Actualizar
+      this._generalService.actualizarFicha(registro)
+          .subscribe();
+    }else{
+      this._generalService.crearFicha(registro)
+          .subscribe();
+    }
+  }
+  registrarKinesiologia(){
+    let registro: Kinesiologia;
+    let my = new Date();
+    let dia: number=my.getDate();
+    let mes: number=my.getMonth()+1;
+    let ano: number=my.getFullYear();
+    let fecha: string=  dia+'-'+  mes + '-'+ ano;
+
+    registro = new Kinesiologia(
+          this.pacienteEditando._id,
+          this._idUsuario,
+          fecha,
+          this.formKinesiologia.value.estabilidadDesplazamiento,
+          this.formKinesiologia.value.coordinacionDinamica,
+          this.formKinesiologia.value.conductasPsicomotoras,
+          this.formKinesiologia.value.alineacionPostural
+    );
+
+    if(!this.newformKinesiologia){
+      //Ya existe entonces Actualizar
+      this._kinesiologiaService.actualizarFicha(registro)
+          .subscribe();
+    }else{
+      this._kinesiologiaService.crearFicha(registro)
+          .subscribe();
+    }
+  }
+  registrarPsicologia(){
+    let registro: Psicologia;
+    let my = new Date();
+    let dia: number=my.getDate();
+    let mes: number=my.getMonth()+1;
+    let ano: number=my.getFullYear();
+    let fecha: string=  dia+'-'+  mes + '-'+ ano;
+
+    registro = new Psicologia(
+          this.pacienteEditando._id,
+          this._idUsuario,
+          fecha,
+          this.formPsicologia.value.establecerVinculo,
+          this.formPsicologia.value.capacidadesAdaptativas,
+          this.formPsicologia.value.autoconcepto,
+          this.formPsicologia.value.labilidadEmocional
+    );
+
+    if(!this.newformPsicologia){
+      //Ya existe entonces Actualizar
+      this._psicologiaService.actualizarFicha(registro)
+          .subscribe();
+    }else{
+      this._psicologiaService.crearFicha(registro)
+          .subscribe();
+    }
+  }
+  registrarTerapeuta(){
+    let registro: Terapeuta;
+    let my = new Date();
+    let dia: number=my.getDate();
+    let mes: number=my.getMonth()+1;
+    let ano: number=my.getFullYear();
+    let fecha: string=  dia+'-'+  mes + '-'+ ano;
+
+    registro = new Terapeuta(
+          this.pacienteEditando._id,
+          this._idUsuario,
+          fecha,
+          this.formTerapeuta.value.actividadesVidaDiaria,
+          this.formTerapeuta.value.actividadesInstrumentales,
+          this.formTerapeuta.value.descansoSueno,
+          this.formTerapeuta.value.educacion,
+          this.formTerapeuta.value.ocio,
+          this.formTerapeuta.value.juego,
+          this.formTerapeuta.value.participacionSocial,
+          this.formTerapeuta.value.transversal
+    );
+
+    if(!this.newformTerapeuta){
+      //Ya existe entonces Actualizar
+      this._terapeutaService.actualizarFicha(registro)
+          .subscribe();
+    }else{
+      this._terapeutaService.crearFicha(registro)
+          .subscribe();
+    }
+  }
 
 
   

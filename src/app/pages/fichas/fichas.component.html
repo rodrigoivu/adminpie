@@ -677,9 +677,9 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
   <ngb-panel id="static-2" title="Ficha General">
     <ng-template ngbPanelContent>
     	<div class="card text-light" >
-			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
+    	   <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formGeneral">. 
+			    <form [formGroup]="formGeneral">
 					  <div class="form-group row">
 						    <div class="col-sm-4">
 						    	<label for="" class="col-form-label col-form-label-sm">Profesional</label>
@@ -696,7 +696,7 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
     	<div class="card text-light" >
 			  <div class="card-header bg-dark ">Ficha Médica General</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formGeneral">
+			    <form [formGroup]="formGeneral" (ngSubmit)="registrarGeneral()">
 			      <div formGroupName="medicaGeneral">
 					<div class="form-group row">
 						     <div class="col-sm-12">
@@ -723,7 +723,9 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 						    </div>
 					</div> 
 					
-					<button type="submit" class="btn btn-primary">Guardar</button>
+					<button *ngIf="newformGeneral" type="submit" class="btn btn-primary">Guardar</button>
+					<button *ngIf="!newformGeneral" type="submit" class="btn btn-primary">Actualizar</button>
+
 				  </div>	
 				</form>
 			  </div>
@@ -777,7 +779,7 @@ desplazamientos a fin de contribuir con la autonomía del/la estudiante.</h6>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Objetvos Específicos</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formKinesiologia">
+			    <form [formGroup]="formKinesiologia" (ngSubmit)="registrarKinesiologia()" >
 			    	<div formGroupName="estabilidadDesplazamiento">
 					  <div class="form-group row">
 						    <div class="col-sm-12">
@@ -804,7 +806,7 @@ desplazamientos a fin de contribuir con la autonomía del/la estudiante.</h6>
 									<label class="form-check-label " for="">Ejercicios de musculatura abdominal en colchoneta con balón terapéutico.</label>
 								</div>
 								<div class="form-check ">
-									<input formControlName="objetivoEsp66" class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="objetivoEsp6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Ejercicios isométricos de paravertebrales en prono.</label>
 								</div>
 								<div class="form-check ">
@@ -960,7 +962,8 @@ desplazamientos a fin de contribuir con la autonomía del/la estudiante.</h6>
 								</div>
 						    </div>
 					 </div>
-
+					 <button *ngIf="newformKinesiologia" type="submit" class="btn btn-primary">Guardar</button>
+				     <button *ngIf="!newformKinesiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>
 				</form>
 			  </div>
@@ -985,7 +988,7 @@ dinámica a fin de contribuir con la autonomía del/la estudiante.</h6>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">ObjetvoS Específicos</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formKinesiologia">
+			    <form [formGroup]="formKinesiologia" (ngSubmit)="registrarKinesiologia()">
 			      <div formGroupName="coordinacionDinamica">	
 					<div class="form-group row">
 						<div class="col-sm-12">
@@ -1122,6 +1125,8 @@ dinámica a fin de contribuir con la autonomía del/la estudiante.</h6>
 							</div>
 					    </div>
 					 </div>
+					 <button *ngIf="newformKinesiologia" type="submit" class="btn btn-primary">Guardar</button>
+				     <button *ngIf="!newformKinesiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>	 
 				</form>
 			  </div>
@@ -1146,7 +1151,7 @@ conductas psicomotoras descendidas y facilitar la autonomía en el estudiante.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">ObjetvoS Específicos</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formKinesiologia">
+			    <form [formGroup]="formKinesiologia" (ngSubmit)="registrarKinesiologia()">
 			      <div formGroupName="conductasPsicomotoras">	
 					<div class="form-group row">
 						<div class="col-sm-12">
@@ -1334,6 +1339,8 @@ reacciones de equilibrio con estímulos externos.</label>
 							</div>
 					    </div>
 					 </div>
+					 <button *ngIf="newformKinesiologia" type="submit" class="btn btn-primary">Guardar</button>
+				     <button *ngIf="!newformKinesiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>
 				</form>
 			  </div>
@@ -1358,7 +1365,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">ObjetvoS Específicos</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formKinesiologia">
+			    <form [formGroup]="formKinesiologia" (ngSubmit)="registrarKinesiologia()">
 			      <div formGroupName="alineacionPostural">		
 					<div class="form-group row">
 						<div class="col-sm-12">
@@ -1535,6 +1542,8 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 							</div>
 					    </div>
 					 </div>
+					 <button *ngIf="newformKinesiologia" type="submit" class="btn btn-primary">Guardar</button>
+				     <button *ngIf="!newformKinesiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>
 				</form>
 			  </div>
@@ -1550,7 +1559,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
         <div class="card text-light" >
 			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formPsicologia">
+			    <form [formGroup]="formPsicologia" >
 					  <div class="form-group row">
 						    <div class="col-sm-4">
 						    	<label for="" class="col-form-label col-form-label-sm">Profesional</label>
@@ -1570,7 +1579,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">1. Establecer Vínculo</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formPsicologia" >
+			    <form [formGroup]="formPsicologia" (ngSubmit)="registrarPsicologia()" >
 			      <div formGroupName="establecerVinculo">
 			    	<div class="form-group row">
 						    <div class="col-sm-6">
@@ -1598,6 +1607,8 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    	<h6>- Utilizar recursos vestibulares.</h6>
 						    </div>
 					  </div>
+					  <button *ngIf="newformPsicologia" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformPsicologia" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>  
 				</form>
 			  </div>
@@ -1608,7 +1619,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">2. Desarrollar capacidades adaptativas</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formPsicologia">
+			    <form [formGroup]="formPsicologia" (ngSubmit)="registrarPsicologia()">
 			      <div formGroupName="capacidadesAdaptativas">	
 			    	<div class="form-group row">
 						    <div class="col-sm-6">
@@ -1646,6 +1657,8 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    	<h6>- Por medio del juego imaginativo utilización de títeres para representar diálogo.</h6>
 						    </div>
 					  </div>
+					  <button *ngIf="newformPsicologia" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformPsicologia" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>  
 				</form>
 			  </div>
@@ -1656,7 +1669,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">3. Resignificar Autoconcepto</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formPsicologia">
+			    <form [formGroup]="formPsicologia" (ngSubmit)="registrarPsicologia()">
 			      <div formGroupName="autoconcepto">	
 			    	<div class="form-group row">
 						    <div class="col-sm-6">
@@ -1706,6 +1719,8 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    	<h6>- Responder logopedias de: percepción de sí mismo, autocontrol e intereses personales.</h6>
 						    </div>
 					  </div>
+					  <button *ngIf="newformPsicologia" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformPsicologia" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>  
 				</form>
 			  </div>
@@ -1716,7 +1731,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">4. Analizar labilidad emocional</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formPsicologia">
+			    <form [formGroup]="formPsicologia" (ngSubmit)="registrarPsicologia()">
 			      <div formGroupName="labilidadEmocional">		
 			    	 <div class="form-group row">
 						    <div class="col-sm-6">
@@ -1748,6 +1763,8 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    	<h6>- Exponer al paciente mediante desensibilización sistemática frente al estímulo que provoca el dolor psíquico.</h6>
 						    </div>
 					  </div>
+					  <button *ngIf="newformPsicologia" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformPsicologia" type="submit" class="btn btn-primary">Actualizar</button>
 					</div>  
 				</form>
 			  </div>
@@ -1778,32 +1795,36 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Actividades Básicas de la Vida Diaria (ABVD) TERAPEUTA OCUPACIONAL -->
+  <!-- ***************************************** -->
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Actividades Básicas de la Vida Diaria (ABVD)</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()">
+			    	<div formGroupName="actividadesVidaDiaria">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
 
 						    	<label for="" class="col-form-label ">1. Desarrollar independencia en actividades de vestuario</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Figuras didácticas con ropa (aprendiendo a vestirme)</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Cubo ABVD</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego de roles</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Entrenamiento en vestuario</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Tableros montesori</label>
 								</div>
 
@@ -1812,19 +1833,19 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    <div class="col-sm-12">
 						    	<label for="" class="col-form-label ">2. Desarrollar independencia en actividades de alimentación</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego de roles</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Cocina interactiva</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Creando con plastilina</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad9" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Entrenamiento en el uso de utensilios</label>
 								</div>
 						    </div>
@@ -1833,19 +1854,19 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    	<label for="" class="col-form-label ">3. Desarrollar independencia en actividades de higiene menor (lavado de dientes, de manos,
 de cara).</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad10" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Desensibilización peri e intra oral para lavado de dientes</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad11" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Desensibilización a nivel de manos</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad12" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego de roles</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad13" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Entrenamiento en higiene menor</label>
 								</div>
 						    </div>
@@ -1853,15 +1874,15 @@ de cara).</label>
 						    <div class="col-sm-12">
 						    	<label for="" class="col-form-label ">4. Desarrollar independencia en actividades de higiene mayor (Ducha)</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad14" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Entrenamiento en ducha junto al apoderado</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad15" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Confección de rutina y pasos del baño</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad16" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Equilibrio en bosu</label>
 								</div>
 						    </div>
@@ -1869,40 +1890,47 @@ de cara).</label>
 						    <div class="col-sm-12">
 						    	<label for="" class="col-form-label ">5. Desarrollar independencia en movilidad funcional</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad17" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Entrenamiento en transferencias</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad18" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Educación a la familia</label>
 								</div>
 						    </div>
 					  </div>
+					  <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				  </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Actividades Instrumentales de la vida Diaria TERAPEUTA OCUPACIONAL -->
+  <!-- ***************************************** -->
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Actividades Instrumentales de la vida Diaria</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()" >
+			    	<div formGroupName="actividadesInstrumentales">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
 
 						    	<label for="" class="col-form-label ">1. Participar en el mantenimiento y colaboración de tareas domésticas (ordenar dormitorio, poner la mesa, ordenar mochila).</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Confección de calendario y horario con tareas y responsabilidades</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego de roles (poner mesa)</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Entrenamiento en tareas domesticas</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Preparando mi mochila (con imágenes)</label>
 								</div>
 						    </div>
@@ -1912,11 +1940,11 @@ de cara).</label>
 
 						    	<label for="" class="col-form-label ">2. Adquirir responsabilidad en el cuidado de terceros y/o mascotas</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Confección de horario con las tareas que debe cumplir</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">“Los derechos de mi mascota” (Educación)</label>
 								</div>
 						    </div>
@@ -1926,19 +1954,19 @@ de cara).</label>
 
 						    	<label for="" class="col-form-label ">3. Adquirir o desarrollar habilidades en el manejo y uso de dinero</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego monopoly</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Educación en valor de las monedas y billetes</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad9" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego de roles (compra-venta)</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad10" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Entrenamiento en comunidad (compra-venta)</label>
 								</div>
 						    </div>
@@ -1948,74 +1976,88 @@ de cara).</label>
 
 						    	<label for="" class="col-form-label ">4. Favorecer movilidad en la comunidad (uso de transporte público, andar en bicicleta).</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad11" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Educación en la identificación de los símbolos y signos de tránsito</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad12" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Equilibrio en bosu y columpio</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad13" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego de roles en manejo de dinero (compra-venta)</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad14" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Entrenamiento en uso de transporte público</label>
 								</div>
 						    </div>
 					  </div>
+					  <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				  </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Descanso y sueño TERAPEUTA OCUPACIONAL -->
+  <!-- ***************************************** -->
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Descanso y sueño</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()" >
+			    	<div formGroupName="descansoSueno">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
 
 						    	<label for="" class="col-form-label ">1. </label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Educación en técnicas de relajación</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Educación en el manejo del espacio físico (iluminación, orden, estímulos auditivos y visuales)</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Educación en la alimentación (para padres)</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Confección de horario de sueño</label>
 								</div>
 						    </div>
 					  </div>
+					  <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				  </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Educación TERAPEUTA OCUPACIONAL -->
+  <!-- ***************************************** -->
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Educación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()" >
+			    	<div formGroupName="educacion">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
 
 						    	<label for="" class="col-form-label ">1. Fomentar participación en la educación informal (programas, actividades o talleres de
 interés).</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Explorar actividades didácticas educativas</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Uso de internet como herramienta educativa (búsqueda de información)</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Educándome de mi entorno (talleres, programas, cursos).</label>
 								</div>
 						    </div>
@@ -2026,90 +2068,104 @@ interés).</label>
 
 						    	<label for="" class="col-form-label ">2. Adquirir hábitos de rutina de estudio en hogar</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Activándome para el estudio</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Relajándome para el estudio</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Decorando mi material de estudio</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Confección de horario de estudio incorporando pausas activas</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Creando mi espacio de estudio.</label>
 								</div>
 
 						    </div>
 					  </div>
+					  <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				  </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Ocio y tiempo libre TERAPEUTA OCUPACIONAL -->
+  <!-- ***************************************** -->
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Ocio y tiempo libre</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()" >
+			    	<div formGroupName="ocio">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
 
 						    	<label for="" class="col-form-label ">1. Fomentar la exploración y participación en actividades de ocio y tiempo libre.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Confeccionando mi mapa de intereses en comunidad.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Educando a la familia y el uso de tiempo libre.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Buscando mis redes de apoyo para el ocio y tiempo libre.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Hora de aventura al aire libre.</label>
 								</div>
 						    </div>
 					  </div>
+					  <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				  </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Juego TERAPEUTA OCUPACIONAL -->
+  <!-- ***************************************** -->
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Juego</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()" >
+			    	<div formGroupName="juego">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
 
 						    	<label for="" class="col-form-label ">1. Mejorar permanencia en las actividades de juego.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Jugando con geomosaico.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Crenado con legos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Panel de luces, diversos colores (Sala multisensorial).</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Tweezer Tongs.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Sys didáctico.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Proyección data (Sala multisensorial).</label>
 								</div>
 
@@ -2120,31 +2176,31 @@ interés).</label>
 
 						    	<label for="" class="col-form-label ">2. Mejorar tolerancia a la frustración en actividades de juego.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Jenga.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Monopoly.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad9" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Tablero iman.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad10" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Tablero didáctico de laberintos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad11" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Futbol pie.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad12" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Futbol mano.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad13" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Lanzamiento argolla – cono.</label>
 								</div>
 
@@ -2155,27 +2211,27 @@ interés).</label>
 
 						    	<label for="" class="col-form-label ">3. Desarrollar respeto de turnos en juego.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad14" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Patineta en rampa.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad15" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Monopoly.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad16" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Actividades grupales.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad17" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Muro de escalada.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad18" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Memo Textura.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad19" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Lego.</label>
 								</div>
 						    </div>
@@ -2185,19 +2241,19 @@ interés).</label>
 
 						    	<label for="" class="col-form-label ">4. Desarrollar juego pre-operacional junto a otros.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad20" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Legos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad21" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Cocina interactiva.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad22" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Set de muñeca de baño.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad23" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Vistiendo a mis muñecos.</label>
 								</div>
 						    </div>
@@ -2207,23 +2263,23 @@ interés).</label>
 
 						    	<label for="" class="col-form-label ">5. Desarrollar juego operacional concreto (juego de reglas)</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad24" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Monopoly.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad25" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Simón dice</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad26" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Ludo gigante</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad27" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Alfombra color y forma doble canal</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad28" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Gincana.</label>
 								</div>
 
@@ -2234,7 +2290,7 @@ interés).</label>
 
 						    	<label for="" class="col-form-label ">6. Desarrollar juego colaborativo</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad29" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Realizado</label>
 								</div>
 								
@@ -2246,18 +2302,15 @@ interés).</label>
 
 						    	<label for="" class="col-form-label ">7. Desarrollar juego social. Actividades para juego colaborativo y juego social:</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
-									<label class="form-check-label " for=""><strong>Abrazos musicales: </strong> una música suena a medida que los niños danzan en la habitación, una
-vez que esta se detenga, cada niño deberá abrazar a otro.</label>
+									<input formControlName="actividad30" class="form-check-input " type="checkbox" value="" id="">
+									<label class="form-check-label " for=""><strong>Abrazos musicales: </strong> una música suena a medida que los niños danzan en la habitación, una vez que esta se detenga, cada niño deberá abrazar a otro.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
-									<label class="form-check-label " for=""><strong>La Gran Tortuga: </strong>el caparazón será una colchoneta, los niños deberán ubicarse debajo de
-esta, apoyándose con sus manos y rodillas. Deberán mover la colchoneta en conjunto
-hasta llegar al punto indicado.</label>
+									<input formControlName="actividad31" class="form-check-input " type="checkbox" value="" id="">
+									<label class="form-check-label " for=""><strong>La Gran Tortuga: </strong>el caparazón será una colchoneta, los niños deberán ubicarse debajo de esta, apoyándose con sus manos y rodillas. Deberán mover la colchoneta en conjunto hasta llegar al punto indicado.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad32" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for=""><strong>Dibujos en equipo: </strong>Dibujos en equipo: dos equipos de dos niños o más. Los niños deberán ubicarse en una
 fila, frente a cada equipo, a unos 7 o 10 metros, se coloca un folio de papel. El monitor nombrará un tema, por ejemplo, “el colegio”, luego el primero de cada fila corre hacia el
 papel de su equipo con un lápiz en la mano y comienza a dibujar sobre el tema nombrado. Después de unos 10 segundos, el monitor gritará “¡Ya!” y los que estaban dibujando
@@ -2265,61 +2318,68 @@ corren a entregar el lápiz al segundo de su fila, que rápidamente corre a cont
 procederá a una votación realizada por los propios niños en donde elegirán el dibujo que más les ha gustado (sin necesidad de que fuese el suyo).</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad33" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for=""><strong>El dragón: </strong>se divide al grupo en subgrupos. El primer niño hará de dragón y el último de
 cola, llevando un pañuelo colgado en la cintura. La cabeza intentará coger las colas de los demás dragones. Y la cola, ayudada por todo su grupo, intentará no ser cogida. Cuando
 una sola cola es cogida (se consigue el pañuelo), el dragón al que pertenece el pañuelo se unirá al que le ha cogido la cola, formando así un dragón más largo. El juego terminará
 cuando todo el grupo forme un único dragón.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad34" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for=""><strong>Bailes por Pareja: </strong>todos los participantes se reparten en parejas y se unen por la espalada.
 Si hay un número impar de personas, la persona que sobra canta, mientras todos se mueven alrededor de la habitación con las espaldas en contacto. Cuando el canto cesa,
 cada persona busca una nueva pareja, y la persona libre busca también la suya. La persona que queda desparejada ahora, es la que comienza de nuevo con el canto.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad35" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for=""><strong>El aro: </strong>el monitor invita a jugadores a colocarse alrededor de cada aro. Se colocan
 poniendo los brazos sobre los hombros de los compañeros formando un círculo alrededor del aro, y de forma que este quede sobre sus pies. La idea es que han de subir el aro hasta
 la cabeza, sin ayudarse de las manos, y meter todas las cabezas dentro de él.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad36" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for=""><strong>Fútbol.</strong></label>
 								</div>
 
 						    </div>
 					  </div>
+					  <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				  </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Participación social TERAPEUTA OCUPACIONAL -->
+  <!-- ***************************************** -->
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Participación social</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()" >
+			    	<div formGroupName="participacionSocial">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
 
 						    	<label for="" class="col-form-label ">1. Aumentar respuestas adaptativas en los diferentes contextos.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juegos sociales.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Refuerzo positivo al momento de completar una actividad.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Role Playing del interés de los participantes.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Modificaciones ambientales, si esto lo requieres, con el objetivo de
 brindar un espacio acogedor al estudiante.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Anticipación a la actividad a la que se enfrentara el estudiante.</label>
 								</div>
 
@@ -2330,23 +2390,23 @@ brindar un espacio acogedor al estudiante.</label>
 
 						    	<label for="" class="col-form-label ">2. Favorecer participación a nivel de comunidad</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Gestionar redes con instituciones cercanas al sector de residencia del estudiante.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Actividades de participación social.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Talleres informativos sobre la ciudad de Antofagasta.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad9" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Anticipación con imágenes, videos, del lugar al que se dirigen.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad10" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Actividades de role playing, caracterizando los ambientes al que se enfrentan.</label>
 								</div>
 
@@ -2357,19 +2417,19 @@ brindar un espacio acogedor al estudiante.</label>
 
 						    	<label for="" class="col-form-label ">3. Potenciar participación en actividades de carácter familiar</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad11" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Dedicar tiempo para Involucrarse y ser participe en el juego que está realizando el niño.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad12" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juegos de mesa como: Dama, ajedrez, ludo, domino, entre otros.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad13" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Participar de talleres familiares dictados por distintas organizaciones y/o instituciones.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad14" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Realizar reuniones con familiares cercanos, que permitan el desenvolvimiento social del estudiante, también encontrar red de apoyo en la familia.</label>
 								</div>
 						    </div>
@@ -2379,19 +2439,19 @@ brindar un espacio acogedor al estudiante.</label>
 
 						    	<label for="" class="col-form-label ">4. Favorecer participación en actividades con pares.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad15" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Anticipación previa antes de realizar una actividad.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad16" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Modificar la actividad acorde a las habilidades de todos los participantes.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad17" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juegos de Mesa (ludo, monopoly, ajedrez, etc…)</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad18" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">El paracaídas (Grupo de 3 niños en donde tendrán que manipular un
 género de aproximado 2 metros de diámetro, sobre él, ira una pelota de tenis y ellos tendrán que evitar que esta caiga al suelo, tomando el género por los costados).</label>
 								</div>
@@ -2402,57 +2462,67 @@ género de aproximado 2 metros de diámetro, sobre él, ira una pelota de tenis 
 
 						    	<label for="" class="col-form-label ">5. Desarrollar habilidades de comunicación e interacción</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad19" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">“YO, SOY” actividad donde cada estudiante tendrá que realizar una autobiografía con sus gustos, hobbies, familia y exponerla frente a sus pares.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad20" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Karaoke infantil.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad21" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">“La historia de Juanito” se realiza 2 filas de 3 estudiantes cada una, al primero de cada fila se le relatara una historia breve (por ejemplo: “Juanito vive con sus padres y tiene un auto blanco”) sin que el resto de la
 fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y así sucesivamente hasta llegar al último niño quien tendrá que escribir la frase que recibió, ganará el grupo que escriba la historia más parecida a la original.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad22" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Presentación de títeres.</label>
 								</div>
 						    </div>
 					  </div>
+					  <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				  </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Objetivos transversales TERAPEUTA OCUPACIONAL -->
+  <!-- ***************************************** -->
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Objetivos transversales</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()" >
+			    	<div formGroupName="transversal">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
 
 						    	<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">1. Aumentar atención y concentración en actividades de juego</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">2. Mejorar seguimiento de instrucciones</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">3. Incrementar capacidad de logro en actividades de juego</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">4. Potenciar lenguaje verbal durante las actividades</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">5. Aumentar causalidad personal en actividades de juego</label>
 								</div>
 
 						    </div>
 					  </div>
+					  <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				  </div>
 				</form>
 			  </div>
 		</div>
@@ -2498,40 +2568,44 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Área: Funciones prelingüísticas: FICHA FONOAUDIOLOGICA -->
+  <!-- ***************************************** -->		
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Funciones prelingüísticas:</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formFonoaudiologia">
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    	<div formGroupName="prelinguisticas">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
 
 						    	<label for="" class="col-form-label ">Establecer un vínculo adecuado con terapeuta.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Jugar en columpios.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Jugar con Sr. De Cara de Papa.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Jugar con bloques.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Jugar con muñecas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Jugar con Monopoly.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Jugar con Jenga.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Jugar con otros juguetes.</label>
 								</div>
 
@@ -2540,23 +2614,23 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Desarrollar atención y concentración.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Buscando a Wally.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad9" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Memorice.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad10" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Aplicaciones de Tablet.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad11" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego “nervioso”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad12" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Pesca milagrosa.</label>
 								</div>
 
@@ -2567,19 +2641,19 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Desarrollar contacto ocular.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad13" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Lentes de cotillón.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad14" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Stickers en la frente.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad15" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Fibra óptica.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad16" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Nariz de payaso.</label>
 								</div>
 
@@ -2588,15 +2662,15 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Desarrollar intención comunicativa.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad17" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Esconder objetos de interés.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad18" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Alejar objetos de interés.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad19" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">PECS.</label>
 								</div>
 						    </div>
@@ -2606,7 +2680,7 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Desarrollar conductas de repetición verbal.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad20" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Cantar.</label>
 								</div>
 						    </div>
@@ -2614,11 +2688,11 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Desarrollar investigación visual.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad21" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Esconder objetos de interés.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad22" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Búsqueda del tesoro.</label>
 								</div>
 						    </div>
@@ -2628,7 +2702,7 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Desarrollar investigación motora.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad23" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Piscina de pelotas.</label>
 								</div>
 						    </div>
@@ -2636,15 +2710,15 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Desarrollar conducta de repetición motora.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad24" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego “Simón dice…”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad25" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Baile entretenido.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad26" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Jugar frente al espejo.</label>
 								</div>
 						    </div>
@@ -2654,41 +2728,48 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Desarrollar interacción social.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad27" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Intercambio de pelotas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad28" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Piscina de pelotas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad29" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juegos de rol.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad30" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Títeres.</label>
 								</div>
 						    </div>
 						    
 					  </div>
+					  <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				   </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Área: Funciones prearticulatorias: FICHA FONOAUDIOLOGICA -->
+  <!-- ***************************************** -->		
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Funciones prearticulatorias:</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()" >
+			       <div formGroupName="prearticulatorias">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
 
 						    	<label for="" class="col-form-label ">Establecer modo respiratorio adecuado.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Oler distintos aromas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Gymkana.</label>
 								</div>
 						    </div>
@@ -2696,15 +2777,15 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Establecer tipo respiratorio adecuado.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Yoga.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Banda elástica.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Movilizar peso con la zona abdominal.</label>
 								</div>
 						    </div>
@@ -2714,7 +2795,7 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Lograr coordinación fono-respiratoria.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Lectura en voz alta con pausas.</label>
 								</div>
 						    </div>
@@ -2722,23 +2803,23 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Optimizar soplo.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Burbujas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Caja de soplo.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad9" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Plumas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad10" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Globo.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad11" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Pintar con bombillas.</label>
 								</div>
 						    </div>
@@ -2748,19 +2829,19 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Optimizar tonicidad orofacial.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad12" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Masajes.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad13" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Vibrador facial.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad14" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Taping.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad15" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Terapia térmica.</label>
 								</div>
 						    </div>
@@ -2768,27 +2849,27 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Optimizar selle labial.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad16" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Taping.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad17" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">PROMPT</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad18" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Control lateral y frontal asistido.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad19" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Estimular propicepción mediante uso de espejo.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad20" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Ejercicios con bajalengua.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad21" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Uso de pesas labiales.</label>
 								</div>
 						    </div>
@@ -2798,15 +2879,15 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Optimizar movilidad de OFAS.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad22" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Bajalenguas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad23" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Pesas labiales y/o linguales.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad24" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Praxias verbales.</label>
 								</div>
 						    </div>
@@ -2814,45 +2895,52 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    	<label for="" class="col-form-label ">Lograr un proceso deglutorio adecuado.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad25" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Reflejos de arcada. ( Estimulación de zona posterior de la lengua y pilares faríngeos con
 bajalengua y gasa a distintas temperaturas.)</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad26" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Reflejos de tos. ( Asistencia manual de la tos. )</label>
 								</div>
 						    </div>
 					  </div>
+					  <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				   </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Área: Habilidades psicolingüísticas: FICHA FONOAUDIOLOGICA -->
+  <!-- ***************************************** -->		
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Habilidades psicolingüísticas:</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    	<div formGroupName="psicolinguisticas">
 					  <div class="form-group row">
 						   <div class="col-sm-12">
 
 						    	<label for="" class="col-form-label ">Desarrollar memoria visual.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego “Memorice”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas con imágenes de diferentes categorías semánticas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Aplicaciones de Tablet y/o computador.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Tablero de colores.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Bloques.</label>
 								</div>
 
@@ -2863,23 +2951,23 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Desarrollar memoria auditiva.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Memorizar secuencias de sonidos onomatopéyicos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Memorización de elementos de la misma categoría semántica.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Memorización de elementos de distintas categorías semánticas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad9" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Dibujar un cuento narrado por la terapeuta.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad10" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Memorización de dígitos.</label>
 								</div>
 
@@ -2890,46 +2978,53 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Desarrollar fluidez verbal.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad11" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Nominar objetos pertenecientes a distintas categorías semánticas con tiempo
 (cronómetro, temporizador, reloj de arena, etc.)</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad12" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Nominar objetos pertenecientes a la misma categoría semántica con tiempo.</label>
 								</div>
 
 						    </div>
 					  </div>
+					  <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				   </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Área: Lenguaje Nivel fonético - fonológico FICHA FONOAUDIOLOGICA -->
+  <!-- ***************************************** -->		
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Nivel fonético - fonológico</strong></div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    	<div formGroupName="foneticoFonologico">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
 
 						    	<label for="" class="col-form-label ">Realizar praxias secuenciadas verbales.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Espejo.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Imágenes.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Ruleta.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Dado.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Programas computacionales.</label>
 								</div>
 
@@ -2938,15 +3033,15 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Discriminación de sonidos no verbales (distintas categorías semánticas).</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Presentación power point.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Lotería de escucha.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Objetos concretos.</label>
 								</div>
 
@@ -2957,11 +3052,11 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Discriminar palabras en contraste fonológico.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad9" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad10" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Objetos concretos.</label>
 								</div>
 								
@@ -2970,19 +3065,19 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Discriminar sílabas en distintas posiciones.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad11" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas cortadas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad12" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Aplausos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad13" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Oraciones básicas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad14" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Actividades en papel.</label>
 								</div>
 
@@ -2993,23 +3088,23 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Segmentar silábicamente.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad15" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Xilófono.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad16" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Bloques.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad17" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas segmentadas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad18" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Aplausos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad19" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Plasticina.</label>
 								</div>
 
@@ -3018,43 +3113,43 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Articular correctamente fonemas vocálicos y consonánticos.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad20" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Programas computacionales.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad21" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Espejo.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad22" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad23" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Actividades en papel.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad24" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Alimentos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad25" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Títeres.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad26" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Trabalenguas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad27" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Historias.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad28" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Adivinanzas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad29" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Canciones.</label>
 								</div>
 
@@ -3065,43 +3160,43 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Emitir correctamente dífonos vocálicos.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad30" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Programas computacionales.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad31" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Espejo.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad32" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad33" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Actividades en papel.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad34" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Alimentos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad35" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Títeres.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad36" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Trabalenguas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad37" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Historias.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad38" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Adivinanzas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad39" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Canciones.</label>
 								</div>
 
@@ -3111,43 +3206,43 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Emitir correctamente dífonos consonánticos.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad40" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Programas computacionales.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad41" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Espejo.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad42" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad43" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Actividades en papel.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad44" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Alimentos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad45" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Títeres.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad46" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Trabalenguas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad47" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Historias.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad48" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Adivinanzas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad49" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Canciones.</label>
 								</div>
 
@@ -3159,43 +3254,43 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Emitir correctamente consonantes trabantes.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad50" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Programas computacionales.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad51" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Espejo.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad52" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad53" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Actividades en papel.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad54" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Alimentos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad55" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Títeres.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad56" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Trabalenguas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad57" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Historias.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad58" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Adivinanzas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad59" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Canciones.</label>
 								</div>
 
@@ -3205,43 +3300,43 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Emitir adecuadamente palabras con distinta metría.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad60" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Programas computacionales.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad61" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Espejo.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad62" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad63" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Actividades en papel.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad64" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Alimentos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad65" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Títeres.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad66" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Trabalenguas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad67" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Historias.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad68" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Adivinanzas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad69" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Canciones.</label>
 								</div>
 
@@ -3253,50 +3348,57 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Optimizar ritmo y fluidez del habla.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad70" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Instrumentos musicales.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad71" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Objetos concretos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad72" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Títeres.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad73" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Actividades en papel.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad74" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego de roles.</label>
 								</div>
 
 						    </div>
 						    
 					  </div>
+					  <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				   </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Área: Lenguaje Nivel semántico: FICHA FONOAUDIOLOGICA -->
+  <!-- ***************************************** -->		
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Nivel semántico:</strong></div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    	<div formGroupName="semantico">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
 
 						    	<label for="" class="col-form-label ">CIdentificar elementos de categorías semánticas.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Objetos concretos de distintas categorías semánticas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas de objetos de distintas categorías semánticas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Recortes de revistas.</label>
 								</div>
 
@@ -3305,15 +3407,15 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Identificar categorías semánticas.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Objetos concretos de distintas categorías semánticas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas de objetos de distintas categorías semánticas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Recortes de revistas.</label>
 								</div>
 
@@ -3324,11 +3426,11 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Identificar objetos por uso.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Objetos concretos de distintas categorías semánticas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Recortes de revistas.</label>
 								</div>
 
@@ -3337,15 +3439,15 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Nominar categorías semánticas.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad9" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Pictogramas que representen distintas categorías semánticas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad10" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego “Memorice”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad11" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Recortes de revistas.</label>
 								</div>
 
@@ -3356,15 +3458,15 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Definir por uso.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad12" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Objetos concretos de distintas categorías semánticas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad13" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas de objetos de distintas categorías semánticas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad14 class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Recortes de revistas.</label>
 								</div>
 
@@ -3373,15 +3475,15 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Definir por categoría.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad15" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Objetos concretos de distintas categorías semánticas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad16" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas de objetos de distintas categorías semánticas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad17" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Recortes de revistas.</label>
 								</div>
 
@@ -3392,23 +3494,23 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Realizar asociaciones semánticas.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad18" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Completar analogías verbales por hiponimia.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad19" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Completar analogías verbales por metonimia.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad20" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Completar analogías verbales por oposición.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad21" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Tablero de sinónimos y antónimos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad22" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Libro móvil de sinónimos y antónimos.</label>
 								</div>
 
@@ -3417,11 +3519,11 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Reconocer absurdos visuales.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad23" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas con absurdos visuales.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad24" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Objetos concretos.</label>
 								</div>
 
@@ -3432,11 +3534,11 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Reconocer absurdos verbales.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad25" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Oraciones con la presencia de absurdos verbales.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad26" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Historias con la presencia de absurdos verbales.</label>
 								</div>
 
@@ -3445,41 +3547,48 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Responder adivinanzas.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad27" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Adivinanzas simples.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad28" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Adivinanzas complejas.</label>
 								</div>
 
 						    </div>
 					  </div>
+					  <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				   </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Área: Lenguaje Nivel morfosintáctico: FICHA FONOAUDIOLOGICA -->
+  <!-- ***************************************** -->		
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Nivel morfosintáctico:</strong></div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    	<div formGroupName="morfosintactico">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
 
 						    	<label for="" class="col-form-label ">Comprender órdenes.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Token test.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego “Simón dice…”</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Búsqueda del tesoro.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego “Monopoly”.</label>
 								</div>
 
@@ -3488,7 +3597,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Comprender oraciones.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Aplica</label>
 								</div>
 
@@ -3499,23 +3608,23 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Estructurar frases.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Dados morfosintácticos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego “Oraciones básicas”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">“El libro de las frases”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad9" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">“Juego de Tablero”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad10" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas “Formación de Frases”.</label>
 								</div>
 
@@ -3524,19 +3633,19 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Estructurar oraciones.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad11" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego “Oraciones básicas”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad12" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Dados morfosintácticos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad13" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">“Juego de Tablero”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad14" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas “Formación de Frases”.</label>
 								</div>
 
@@ -3547,23 +3656,23 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Comprender elementos gramaticales.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad15" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Dados morfosintácticos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad16" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego “Oraciones básicas”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad17" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">“El libro de las frases”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad18" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">“Juego de Tablero”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad19" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas “Formación de Frases”.</label>
 								</div>
 
@@ -3572,45 +3681,52 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Utilizar correctamente elementos gramaticales.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad20" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Dados morfosintácticos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad21" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego “Oraciones básicas”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad22" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">“El libro de las frases”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad23" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">“Juego de Tablero”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad24" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas “Formación de Frases”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad25" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Inventar oraciones.</label>
 								</div>
 
 						    </div>
 					  </div>
+					  <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				   </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Área: Lenguaje Nivel pragmático: FICHA FONOAUDIOLOGICA -->
+  <!-- ***************************************** -->		
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Nivel pragmático:</strong></div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    	<div formGroupName="pragmatico">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
 
 						    	<label for="" class="col-form-label ">Mantener adecuadas distancias y posturas.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Aplica</label>
 								</div>
 
@@ -3619,15 +3735,15 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Desarrollar atención conjunta.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Aplicaciones de Tablet.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego “Jenga”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Bloques.</label>
 								</div>
 
@@ -3638,19 +3754,19 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Respetar turnos. De juego</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego “Jenga”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Bloques.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juego “Uno”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Encestar aros.</label>
 								</div>
 
@@ -3659,11 +3775,11 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Respetar turnos. De habla</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad9" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juegos de rol.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad10" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Lectura de cuentos y narraciones de forma compartida.</label>
 								</div>
 
@@ -3674,27 +3790,27 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Reconocer emociones. En otros:</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad11" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Aplicaciones de Tablet.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad12" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Cojines de emociones.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad13" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas de emociones.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad14" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Imágenes.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad15" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Películas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad16" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Actividades de “Teoría de la Mente”</label>
 								</div>
 
@@ -3703,19 +3819,19 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Reconocer emociones. En sí mismo:</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad17" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Fotos.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad18" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Grabaciones.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad19" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Espejo.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad20" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Narración de situaciones.</label>
 								</div>
 
@@ -3726,11 +3842,11 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Desarrollar respuesta verbal atingente.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad21" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juegos de rol.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad22" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Conversación espontánea.</label>
 								</div>
 
@@ -3739,19 +3855,19 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Mantener tópicos de conversación.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad23" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juegos de rol.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad24" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Terapia natural.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad25" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Narración de cuentos e historias.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad26" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Conversación espontánea.</label>
 								</div>
 
@@ -3763,38 +3879,45 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Alternar, reparar y finalizar conversaciones.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad27" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Juegos de rol.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad28" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Conversación espontánea.</label>
 								</div>
 								
 						    </div>
 						    
 					  </div>
+					  <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				   </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Área: Lenguaje Discurso narrativo: FICHA FONOAUDIOLOGICA -->
+  <!-- ***************************************** -->		
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Discurso narrativo:</strong></div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    	<div formGroupName="discursoNarrativo">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
 
 						    	<label for="" class="col-form-label ">Ordenar secuencias temporales.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Material “Causa-Efecto”.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Ordenación de láminas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Ordenar secuencia temporal auditiva.</label>
 								</div>
 
@@ -3803,11 +3926,11 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Narrar secuencias temporales.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Láminas de secuencias.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Material “Causa-efecto”.</label>
 								</div>
 
@@ -3818,11 +3941,11 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Comprender categorías formales del discurso.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Historias.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Cómics.</label>
 								</div>
 
@@ -3832,37 +3955,44 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Expresar categorías formales del discurso.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad8" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Inventar historias.</label>
 								</div>
 
 						    </div>
 					  </div>
+					  <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				   </div>
 				</form>
 			  </div>
 		</div>
+  <!-- ***************************************** -->
+  <!-- Área: Habilidades sociales y comunicativas: FICHA FONOAUDIOLOGICA -->
+  <!-- ***************************************** -->		
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Habilidades sociales y comunicativas:</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form>
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    	<div formGroupName="socialComunicativa">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
 
 						    	<label for="" class="col-form-label ">Respetar normas sociales.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad1" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Pictogramas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad2" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Salidas comunicativas.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad3" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Terapia natural.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad4" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Clasificación de conductas apropiadas e inapropiadas.</label>
 								</div>
 
@@ -3873,20 +4003,23 @@ bajalengua y gasa a distintas temperaturas.)</label>
 
 						    	<label for="" class="col-form-label ">Comprar, cortarse el pelo, organizar una convivencia, ir a comer, etc.</label>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad5" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Historia social.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad6" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Secuencia visual.</label>
 								</div>
 								<div class="form-check ">
-									<input class="form-check-input " type="checkbox" value="" id="">
+									<input formControlName="actividad7" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Salidas comunicativas.</label>
 								</div>
 
 						    </div>
 					  </div>
+					  <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button>
+				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				   </div>
 				</form>
 			  </div>
 		</div>
