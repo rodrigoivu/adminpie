@@ -16,6 +16,11 @@ interface NgbDate {
   year: number
 }
 
+interface fechaFicha{
+  fecha: string,
+  item: number
+}
+
 @Component({
   selector: 'app-fichas',
   templateUrl: './fichas.component.html',
@@ -53,6 +58,20 @@ export class FichasComponent implements OnInit {
   formTerapeuta: FormGroup;
   
 
+  //CONJUNTO DE FICHAS
+  fichasFonoaudiologia:Fonoaudiologia[]=[];
+  fichasGeneral:General[]=[];
+  fichasKinesiologia:Kinesiologia[]=[];
+  fichasPsicologia:Psicologia[]=[];
+  fichasTerapeuta:Terapeuta[]=[];
+
+
+  //POSICIÓN FECHA SELECCIONADA ACTUAL
+  posFechaActualFonoaudiologia: number=0;
+  posFechaActualGeneral: number=0;
+  posFechaActualKinesiologia: number=0;
+  posFechaActualPsicologia: number=0;
+  posFechaActualTerapeuta: number=0;
 
   constructor(
        private fb: FormBuilder,
@@ -122,11 +141,22 @@ export class FichasComponent implements OnInit {
       return false
     }
   }
+
+  // LISTA DE FECHAS
+  get formFonoaudiologiaFechaData() { return <FormArray>this.formFonoaudiologia.get('fechaData'); }
+  get formGeneralFechaData() { return <FormArray>this.formGeneral.get('fechaData'); }
+  get formKinesiologiaFechaData() { return <FormArray>this.formKinesiologia.get('fechaData'); }
+  get formPsicologiaFechaData() { return <FormArray>this.formPsicologia.get('fechaData'); }
+  get formTerapeutaFechaData() { return <FormArray>this.formTerapeuta.get('fechaData'); }
+
   buscarFichaAnamnesis(id: string){
     this._anamnesisService.cargarAnamnesis(id)
+
         .subscribe(resp => {
+
           if(resp.anamnesis){
             //Existe Ficha
+            
             this.newformAnamnesis=false;
             this._anamnesisService.fichaAnamnesis = resp.anamnesis;
           }else{
@@ -140,87 +170,128 @@ export class FichasComponent implements OnInit {
         });
   }
   buscarFichaFonoaudiologia(id: string){
+    
+    let i:number;
     this._fonoaudiologiaService.cargarFicha(id)
-        .subscribe(resp => {
-          if(resp.fonoaudiologia){
+        .subscribe( (resp: any) => {
+
+          if(resp.total != 0 ){
             //Existe Ficha
+            
+            i=this.posFechaActualFonoaudiologia;
+            this.fichasFonoaudiologia = resp.fonoaudiologia;
+            this._fonoaudiologiaService.fichaFonoaudiologia=this.fichasFonoaudiologia[i];
+            // for( let fi of this.fichasFonoaudiologia ){
+              
+            // }
             this.newformFonoaudiologia=false;
             
           }else{
             //No hay ficha hay que crearla
+            i=0;
+            this.fichasFonoaudiologia = [];
             this.newformFonoaudiologia=true;
             this._fonoaudiologiaService.inicializaFicha();
           }
          //Inicializa Formulario
-          this.iniFormFonoaudiologia();
+          this.iniFormFonoaudiologia(i);
           
      });
   }
   buscarFichaGeneral(id: string){
+    let i:number;
     this._generalService.cargarFicha(id)
-        .subscribe(resp => {
-          if(resp.general){
+        .subscribe((resp: any) => {
+          if(resp.total != 0 ){
             //Existe Ficha
+
+            i=this.posFechaActualGeneral;
+            this.fichasGeneral = resp.general;
+            this._generalService.fichaGeneral=this.fichasGeneral[i];
+
             this.newformGeneral=false;
             
           }else{
             //No hay ficha hay que crearla
+            i=0;
+            this.fichasGeneral = [];
             this.newformGeneral=true;
             this._generalService.inicializaFicha();
           }
          //Inicializa Formulario
-          this.iniFormGeneral();
+          this.iniFormGeneral(i);
           
      });
   }
   buscarFichaKinesiologia(id: string){
+    let i:number;
     this._kinesiologiaService.cargarFicha(id)
-        .subscribe(resp => {
-          if(resp.kinesiologia){
+        .subscribe((resp: any) => {
+          if(resp.total != 0 ){
             //Existe Ficha
+            i=this.posFechaActualKinesiologia;
+            this.fichasKinesiologia = resp.kinesiologia;
+            this._kinesiologiaService.fichaKinesiologia=this.fichasKinesiologia[i];
+
             this.newformKinesiologia=false;
             
           }else{
             //No hay ficha hay que crearla
+            i=0;
+            this.fichasKinesiologia = [];
             this.newformKinesiologia=true;
             this._kinesiologiaService.inicializaFicha();
           }
          //Inicializa Formulario
-          this.iniFormKinesiologia();
+          this.iniFormKinesiologia(i);
           
      });
   }
   buscarFichaPsicologia(id: string){
+    let i:number;
     this._psicologiaService.cargarFicha(id)
-        .subscribe(resp => {
-          if(resp.psicologia){
+        .subscribe((resp: any) => {
+          if(resp.total != 0 ){
             //Existe Ficha
+            i=this.posFechaActualPsicologia;
+            this.fichasPsicologia = resp.psicologia;
+            this._psicologiaService.fichaPsicologia=this.fichasPsicologia[i];
+
             this.newformPsicologia=false;
             
           }else{
             //No hay ficha hay que crearla
+            i=0;
+            this.fichasPsicologia = [];
             this.newformPsicologia=true;
             this._psicologiaService.inicializaFicha();
           }
          //Inicializa Formulario
-          this.iniFormPsicologia();
+          this.iniFormPsicologia(i);
           
      });
   }
   buscarFichaTerapeuta(id: string){
+    let i:number;
     this._terapeutaService.cargarFicha(id)
-        .subscribe(resp => {
-          if(resp.terapeuta){
+        .subscribe((resp: any) => {
+          if(resp.total != 0 ){
             //Existe Ficha
+            i=this.posFechaActualTerapeuta;
+            this.fichasTerapeuta = resp.terapeuta;
+            this._terapeutaService.fichaTerapeuta=this.fichasTerapeuta[i];
+
             this.newformTerapeuta=false;
             
           }else{
             //No hay ficha hay que crearla
+            i=0;
+            this.fichasTerapeuta = [];
             this.newformTerapeuta=true;
             this._terapeutaService.inicializaFicha();
           }
          //Inicializa Formulario
-          this.iniFormTerapeuta();
+          this.iniFormTerapeuta(i);
           
      });
   }
@@ -302,20 +373,24 @@ export class FichasComponent implements OnInit {
   }
 
   //FONOAUDIOLOGIA
-  iniFormFonoaudiologia(){
-    let fecha: string;
+  iniFormFonoaudiologia(idFecha:number){
+    //let fecha: string;
+    let fechaN: number;
     let userProfesionalName: any;
 
-    if(!this.newformFonoaudiologia){
-      fecha = this._fonoaudiologiaService.fichaFonoaudiologia.fecha;
+    if(!this.newformFonoaudiologia){  // si existe
+      fechaN = idFecha;
+      //fecha = this._fonoaudiologiaService.fichaFonoaudiologia.fecha;
       userProfesionalName = this._fonoaudiologiaService.fichaFonoaudiologia.user.name
     }else{
-      fecha = null;
+      fechaN = null;
+      //fecha = null;
       userProfesionalName = null;
     }
-
+    console.log('fechaN:'+fechaN);
     this.formFonoaudiologia = this.fb.group({
-      fecha: new FormControl({value: fecha, disabled: true}),
+      fechaName: fechaN,
+      fechaData: this.fb.array([]),
       profesional: new FormControl({value: userProfesionalName, disabled: true}),
       prelinguisticas: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.prelinguisticas),
       prearticulatorias: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.prearticulatorias),
@@ -325,91 +400,161 @@ export class FichasComponent implements OnInit {
       morfosintactico: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.morfosintactico),
       pragmatico: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.pragmatico),
       discursoNarrativo: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.discursoNarrativo),
-      socialComunicativa: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.socialComunicativa),
+      socialComunicativa: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.socialComunicativa)
     });  
+
+
+    //CARGAR LAS FECHAS HISTORICAS DE FICHAS
+    this.formFonoaudiologia.get('fechaData').reset();
+    let items = this.formFonoaudiologia.get('fechaData') as FormArray;
+    let fecFicha: fechaFicha;
+    let i:number=0;
+    for( let ficha of this.fichasFonoaudiologia ){
+
+      fecFicha={
+           fecha: ficha.fecha,
+           item:i
+      } 
+      items.push(this.fb.group(fecFicha));
+
+      i++;
+    }
+     
 
   }
   //GENERAL
-  iniFormGeneral(){
-    let fecha: string;
+  iniFormGeneral(idFecha:number){
+    let fechaN: number;
     let userProfesionalName: any;
 
     if(!this.newformGeneral){
-      fecha = this._generalService.fichaGeneral.fecha;
+      fechaN = idFecha;
       userProfesionalName = this._generalService.fichaGeneral.user.name
     }else{
-      fecha = null;
+      fechaN = null;
       userProfesionalName = null;
     }
     this.formGeneral = this.fb.group({
-      fecha: new FormControl({value: fecha, disabled: true}),
+      fechaName: fechaN,
+      fechaData: this.fb.array([]),
       profesional: new FormControl({value: userProfesionalName, disabled: true}),
-      medicaGeneral: this.fb.group(this._generalService.fichaGeneral.medicaGeneral),
+      medicaGeneral: this.fb.group(this._generalService.fichaGeneral.medicaGeneral)
 
     }); 
 
+    //CARGAR LAS FECHAS HISTORICAS DE FICHAS
+    this.formGeneral.get('fechaData').reset();
+    let items = this.formGeneral.get('fechaData') as FormArray;
+    let fecFicha: fechaFicha;
+    let i:number=0;
+    for( let ficha of this.fichasGeneral ){
+
+      fecFicha={
+           fecha: ficha.fecha,
+           item:i
+      } 
+      items.push(this.fb.group(fecFicha));
+
+      i++;
+    }
+
   }
   //KINESIOLOGIA
-  iniFormKinesiologia(){
-    let fecha: string;
+  iniFormKinesiologia(idFecha:number){
+    let fechaN: number;
     let userProfesionalName: any;
 
     if(!this.newformKinesiologia){
-      fecha = this._kinesiologiaService.fichaKinesiologia.fecha;
+      fechaN = idFecha;
       userProfesionalName = this._kinesiologiaService.fichaKinesiologia.user.name
     }else{
-      fecha = null;
+      fechaN = null;
       userProfesionalName = null;
     }
 
     this.formKinesiologia = this.fb.group({
-      fecha: new FormControl({value: fecha, disabled: true}),
+      fechaName: fechaN,
+      fechaData: this.fb.array([]),
       profesional: new FormControl({value: userProfesionalName, disabled: true}),
       estabilidadDesplazamiento: this.fb.group(this._kinesiologiaService.fichaKinesiologia.estabilidadDesplazamiento),
       coordinacionDinamica: this.fb.group(this._kinesiologiaService.fichaKinesiologia.coordinacionDinamica),
       conductasPsicomotoras: this.fb.group(this._kinesiologiaService.fichaKinesiologia.conductasPsicomotoras),
-      alineacionPostural: this.fb.group(this._kinesiologiaService.fichaKinesiologia.alineacionPostural),
+      alineacionPostural: this.fb.group(this._kinesiologiaService.fichaKinesiologia.alineacionPostural)
 
     }); 
+
+    //CARGAR LAS FECHAS HISTORICAS DE FICHAS
+    this.formKinesiologia.get('fechaData').reset();
+    let items = this.formKinesiologia.get('fechaData') as FormArray;
+    let fecFicha: fechaFicha;
+    let i:number=0;
+    for( let ficha of this.fichasKinesiologia ){
+
+      fecFicha={
+           fecha: ficha.fecha,
+           item:i
+      } 
+      items.push(this.fb.group(fecFicha));
+
+      i++;
+    }
   }
   //PSICOLOGIA
-  iniFormPsicologia(){
-    let fecha: string;
+  iniFormPsicologia(idFecha:number){
+    let fechaN: number;
     let userProfesionalName: any;
 
     if(!this.newformPsicologia){
-      fecha = this._psicologiaService.fichaPsicologia.fecha;
+      fechaN = idFecha;
       userProfesionalName = this._psicologiaService.fichaPsicologia.user.name
     }else{
-      fecha = null;
+      fechaN = null;
       userProfesionalName = null;
     }
 
     this.formPsicologia = this.fb.group({
-      fecha: new FormControl({value: fecha, disabled: true}),
+      fechaName: fechaN,
+      fechaData: this.fb.array([]),
       profesional: new FormControl({value: userProfesionalName, disabled: true}),
       establecerVinculo: this.fb.group(this._psicologiaService.fichaPsicologia.establecerVinculo),
       capacidadesAdaptativas: this.fb.group(this._psicologiaService.fichaPsicologia.capacidadesAdaptativas),
       autoconcepto: this.fb.group(this._psicologiaService.fichaPsicologia.autoconcepto),
-      labilidadEmocional: this.fb.group(this._psicologiaService.fichaPsicologia.labilidadEmocional),
+      labilidadEmocional: this.fb.group(this._psicologiaService.fichaPsicologia.labilidadEmocional)
 
     }); 
+
+    //CARGAR LAS FECHAS HISTORICAS DE FICHAS
+    this.formPsicologia.get('fechaData').reset();
+    let items = this.formPsicologia.get('fechaData') as FormArray;
+    let fecFicha: fechaFicha;
+    let i:number=0;
+    for( let ficha of this.fichasPsicologia ){
+
+      fecFicha={
+           fecha: ficha.fecha,
+           item:i
+      } 
+      items.push(this.fb.group(fecFicha));
+
+      i++;
+    }
   }
   //TERAPEUTA
-  iniFormTerapeuta(){
-    let fecha: string;
+  iniFormTerapeuta(idFecha:number){
+    let fechaN: number;
     let userProfesionalName: any;
 
     if(!this.newformTerapeuta){
-      fecha = this._terapeutaService.fichaTerapeuta.fecha;
+      fechaN = idFecha;
       userProfesionalName = this._terapeutaService.fichaTerapeuta.user.name
     }else{
-      fecha = null;
+      fechaN = null;
       userProfesionalName = null;
     }
 
     this.formTerapeuta = this.fb.group({
-      fecha: new FormControl({value: fecha, disabled: true}),
+      fechaName: fechaN,
+      fechaData: this.fb.array([]),
       profesional: new FormControl({value: userProfesionalName, disabled: true}),
       actividadesVidaDiaria: this.fb.group(this._terapeutaService.fichaTerapeuta.actividadesVidaDiaria),
       actividadesInstrumentales: this.fb.group(this._terapeutaService.fichaTerapeuta.actividadesInstrumentales),
@@ -418,11 +563,82 @@ export class FichasComponent implements OnInit {
       ocio: this.fb.group(this._terapeutaService.fichaTerapeuta.ocio),
       juego: this.fb.group(this._terapeutaService.fichaTerapeuta.juego),
       participacionSocial: this.fb.group(this._terapeutaService.fichaTerapeuta.participacionSocial),
-      transversal: this.fb.group(this._terapeutaService.fichaTerapeuta.transversal),
+      transversal: this.fb.group(this._terapeutaService.fichaTerapeuta.transversal)
 
     }); 
+
+    //CARGAR LAS FECHAS HISTORICAS DE FICHAS
+    this.formTerapeuta.get('fechaData').reset();
+    let items = this.formTerapeuta.get('fechaData') as FormArray;
+    let fecFicha: fechaFicha;
+    let i:number=0;
+    for( let ficha of this.fichasTerapeuta ){
+
+      fecFicha={
+           fecha: ficha.fecha,
+           item:i
+      } 
+      items.push(this.fb.group(fecFicha));
+
+      i++;
+    }
   }
 
+  //SELECCIONAR OTRA FECHA
+  otraFechaFonoaudiologia(){
+    let i: number;
+    i=this.formFonoaudiologia.value.fechaName;
+    this.posFechaActualFonoaudiologia=i;
+    if(!this.newformFonoaudiologia){
+      this._fonoaudiologiaService.fichaFonoaudiologia = this.fichasFonoaudiologia[i];
+      this.iniFormFonoaudiologia(i);
+    }
+
+  }
+
+  otraFechaGeneral(){
+    let i: number;
+    i=this.formGeneral.value.fechaName;
+    this.posFechaActualGeneral=i;
+    if(!this.newformGeneral){
+      this._generalService.fichaGeneral = this.fichasGeneral[i];
+      this.iniFormGeneral(i);
+    }
+
+  }
+
+  otraFechaKinesiologia(){
+    let i: number;
+    i=this.formKinesiologia.value.fechaName;
+    this.posFechaActualKinesiologia=i;
+    if(!this.newformKinesiologia){
+      this._kinesiologiaService.fichaKinesiologia = this.fichasKinesiologia[i];
+      this.iniFormKinesiologia(i);
+    }
+
+  }
+
+  otraFechaPsicologia(){
+    let i: number;
+    i=this.formPsicologia.value.fechaName;
+    this.posFechaActualPsicologia=i;
+    if(!this.newformPsicologia){
+      this._psicologiaService.fichaPsicologia = this.fichasPsicologia[i];
+      this.iniFormPsicologia(i);
+    }
+
+  }
+
+  otraFechaTerapeuta(){
+    let i: number;
+    i=this.formTerapeuta.value.fechaName;
+    this.posFechaActualTerapeuta=i;
+    if(!this.newformTerapeuta){
+      this._terapeutaService.fichaTerapeuta = this.fichasTerapeuta[i];
+      this.iniFormTerapeuta(i);
+    }
+
+  }
 
   registrarAnamnesis(){
     let registroAnamnesis: Anamnesis;
@@ -479,12 +695,26 @@ export class FichasComponent implements OnInit {
   registrarFonoaudiologia(){
     let registro: Fonoaudiologia;
     let my = new Date();
-    let dia: number=my.getDate();
-    let mes: number=my.getMonth()+1;
-    let ano: number=my.getFullYear();
-    let fecha: string=  dia+'-'+  mes + '-'+ ano;
-    // FALTA VERIFICAR POR ROLE
+    let dia: number;
+    let mes: number;
+    let ano: number;
+    let fecha: string;
 
+    if(!this.newformFonoaudiologia){
+      //Ya existe entonces Actualizar
+       fecha = this._fonoaudiologiaService.fichaFonoaudiologia.fecha;
+       
+
+    }else{
+      //CREAR FICHA
+       dia =my.getDate();
+       mes =my.getMonth()+1;
+       ano =my.getFullYear();
+       fecha =  dia+'-'+  mes + '-'+ ano;
+
+    }
+
+    // FALTA VERIFICAR POR ROLE
     registro = new Fonoaudiologia(
           this.pacienteEditando._id,
           this._idUsuario,
@@ -502,22 +732,41 @@ export class FichasComponent implements OnInit {
 
     if(!this.newformFonoaudiologia){
       //Ya existe entonces Actualizar
+
       this._fonoaudiologiaService.actualizarFicha(registro)
-          .subscribe();
+          .subscribe(resp =>{
+            this.buscarFichaFonoaudiologia( this.pacienteEditando._id );
+          });
 
     }else{
+
       this._fonoaudiologiaService.crearFicha(registro)
-          .subscribe();
+          .subscribe(resp =>{
+            this.buscarFichaFonoaudiologia( this.pacienteEditando._id );
+          });
     }
     
   }
   registrarGeneral(){
     let registro: General;
     let my = new Date();
-    let dia: number=my.getDate();
-    let mes: number=my.getMonth()+1;
-    let ano: number=my.getFullYear();
-    let fecha: string=  dia+'-'+  mes + '-'+ ano;
+    let dia: number;
+    let mes: number;
+    let ano: number;
+    let fecha: string;
+
+    if(!this.newformGeneral){
+      //Ya existe entonces Actualizar
+       fecha = this._generalService.fichaGeneral.fecha;
+
+    }else{
+      //CREAR FICHA
+       dia =my.getDate();
+       mes =my.getMonth()+1;
+       ano =my.getFullYear();
+       fecha =  dia+'-'+  mes + '-'+ ano;
+
+    }
 
     registro = new General(
           this.pacienteEditando._id,
@@ -529,19 +778,36 @@ export class FichasComponent implements OnInit {
     if(!this.newformGeneral){
       //Ya existe entonces Actualizar
       this._generalService.actualizarFicha(registro)
-          .subscribe();
+          .subscribe(resp =>{
+            this.buscarFichaGeneral( this.pacienteEditando._id );
+          });
     }else{
       this._generalService.crearFicha(registro)
-          .subscribe();
+          .subscribe(resp =>{
+            this.buscarFichaGeneral( this.pacienteEditando._id );
+          });
     }
   }
   registrarKinesiologia(){
     let registro: Kinesiologia;
     let my = new Date();
-    let dia: number=my.getDate();
-    let mes: number=my.getMonth()+1;
-    let ano: number=my.getFullYear();
-    let fecha: string=  dia+'-'+  mes + '-'+ ano;
+    let dia: number;
+    let mes: number;
+    let ano: number;
+    let fecha: string;
+
+    if(!this.newformKinesiologia){
+      //Ya existe entonces Actualizar
+       fecha = this._kinesiologiaService.fichaKinesiologia.fecha;
+
+    }else{
+      //CREAR FICHA
+       dia =my.getDate();
+       mes =my.getMonth()+1;
+       ano =my.getFullYear();
+       fecha =  dia+'-'+  mes + '-'+ ano;
+
+    }
 
     registro = new Kinesiologia(
           this.pacienteEditando._id,
@@ -556,19 +822,36 @@ export class FichasComponent implements OnInit {
     if(!this.newformKinesiologia){
       //Ya existe entonces Actualizar
       this._kinesiologiaService.actualizarFicha(registro)
-          .subscribe();
+          .subscribe(resp =>{
+            this.buscarFichaKinesiologia( this.pacienteEditando._id );
+          });
     }else{
       this._kinesiologiaService.crearFicha(registro)
-          .subscribe();
+          .subscribe(resp =>{
+            this.buscarFichaKinesiologia( this.pacienteEditando._id );
+          });
     }
   }
   registrarPsicologia(){
     let registro: Psicologia;
     let my = new Date();
-    let dia: number=my.getDate();
-    let mes: number=my.getMonth()+1;
-    let ano: number=my.getFullYear();
-    let fecha: string=  dia+'-'+  mes + '-'+ ano;
+    let dia: number;
+    let mes: number;
+    let ano: number;
+    let fecha: string;
+
+    if(!this.newformPsicologia){
+      //Ya existe entonces Actualizar
+       fecha = this._psicologiaService.fichaPsicologia.fecha;
+
+    }else{
+      //CREAR FICHA
+       dia =my.getDate();
+       mes =my.getMonth()+1;
+       ano =my.getFullYear();
+       fecha =  dia+'-'+  mes + '-'+ ano;
+
+    }
 
     registro = new Psicologia(
           this.pacienteEditando._id,
@@ -583,19 +866,36 @@ export class FichasComponent implements OnInit {
     if(!this.newformPsicologia){
       //Ya existe entonces Actualizar
       this._psicologiaService.actualizarFicha(registro)
-          .subscribe();
+          .subscribe(resp =>{
+            this.buscarFichaPsicologia( this.pacienteEditando._id );
+          });
     }else{
       this._psicologiaService.crearFicha(registro)
-          .subscribe();
+          .subscribe(resp =>{
+            this.buscarFichaPsicologia( this.pacienteEditando._id );
+          });
     }
   }
   registrarTerapeuta(){
     let registro: Terapeuta;
     let my = new Date();
-    let dia: number=my.getDate();
-    let mes: number=my.getMonth()+1;
-    let ano: number=my.getFullYear();
-    let fecha: string=  dia+'-'+  mes + '-'+ ano;
+    let dia: number;
+    let mes: number;
+    let ano: number;
+    let fecha: string;
+
+    if(!this.newformTerapeuta){
+      //Ya existe entonces Actualizar
+       fecha = this._terapeutaService.fichaTerapeuta.fecha;
+
+    }else{
+      //CREAR FICHA
+       dia =my.getDate();
+       mes =my.getMonth()+1;
+       ano =my.getFullYear();
+       fecha =  dia+'-'+  mes + '-'+ ano;
+
+    }
 
     registro = new Terapeuta(
           this.pacienteEditando._id,
@@ -614,14 +914,53 @@ export class FichasComponent implements OnInit {
     if(!this.newformTerapeuta){
       //Ya existe entonces Actualizar
       this._terapeutaService.actualizarFicha(registro)
-          .subscribe();
+          .subscribe(resp =>{
+            this.buscarFichaTerapeuta( this.pacienteEditando._id );
+          });
     }else{
       this._terapeutaService.crearFicha(registro)
-          .subscribe();
+          .subscribe(resp =>{
+            this.buscarFichaTerapeuta( this.pacienteEditando._id );
+          });
     }
+
+
   }
 
+  crearFichaFonoaudiologia(){
+      this.newformFonoaudiologia=true;
+      this._fonoaudiologiaService.inicializaFicha();
+      this.iniFormFonoaudiologia(0);
+      this.registrarFonoaudiologia();
+  }
 
+  crearFichaGeneral(){
+      this.newformGeneral=true;
+      this._generalService.inicializaFicha();
+      this.iniFormGeneral(0);
+      this.registrarGeneral();
+  }
+
+  crearFichaKinesiologia(){
+      this.newformKinesiologia=true;
+      this._kinesiologiaService.inicializaFicha();
+      this.iniFormKinesiologia(0);
+      this.registrarKinesiologia();
+  }
+
+  crearFichaPsicologia(){
+      this.newformPsicologia=true;
+      this._psicologiaService.inicializaFicha();
+      this.iniFormPsicologia(0);
+      this.registrarPsicologia();
+  }
+
+  crearFichaTerapeuta(){
+      this.newformTerapeuta=true;
+      this._terapeutaService.inicializaFicha();
+      this.iniFormTerapeuta(0);
+      this.registrarTerapeuta();
+  }
   
 
 }
