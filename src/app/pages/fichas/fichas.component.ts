@@ -6,7 +6,7 @@ import { General } from '../../models/general.model';
 import { Kinesiologia } from '../../models/kinesiologia.model';
 import { Psicologia } from '../../models/psicologia.model';
 import { Terapeuta } from '../../models/terapeuta.model';
-import { PacienteService, AnamnesisService, FonoaudiologiaService, GeneralService, KinesiologiaService, PsicologiaService, TerapeutaService} from '../../services/service.index';
+import { ProfesionalService, PacienteService, AnamnesisService, FonoaudiologiaService, GeneralService, KinesiologiaService, PsicologiaService, TerapeutaService} from '../../services/service.index';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -27,12 +27,14 @@ interface fechaFicha{
   styles: []
 })
 export class FichasComponent implements OnInit {
+
   pacienteEditando: Paciente;
- 
+
   //Datos de usuario Actual
   usuario:any;
   role:string;
   _idUsuario: string;
+  profesion: string;
 
   //Flag Indicadores
   pacienteConDatos: boolean=false;
@@ -73,8 +75,13 @@ export class FichasComponent implements OnInit {
   posFechaActualPsicologia: number=0;
   posFechaActualTerapeuta: number=0;
 
+  profesiones: string[]=['NEUROLOGO', 'FONOAUDIOLOGO', 'KINESILOGO' ,'TERAPEUTA' ,'PSICOLOGO'];
+
+  
+
   constructor(
        private fb: FormBuilder,
+       public _profesionalService: ProfesionalService,
   		 public _pacienteService: PacienteService,
        public _anamnesisService: AnamnesisService,
        public _fonoaudiologiaService: FonoaudiologiaService,
@@ -89,6 +96,15 @@ export class FichasComponent implements OnInit {
     this.usuario=JSON.parse(localStorage.getItem('usuario'));
     this._idUsuario = this.usuario._id;
     this.role = this.usuario.role;
+    this._profesionalService.buscarProfesional(this._idUsuario)
+          .subscribe((resp:any) =>{
+            //console.log('resp:' + JSON.stringify(resp));
+            if (resp){
+              this.profesion=resp.profesion;
+            }else{
+              this.profesion='';
+            }
+          });
   	
   }
 
@@ -108,7 +124,11 @@ export class FichasComponent implements OnInit {
       this.buscarFichaKinesiologia( this.pacienteEditando._id );
       this.buscarFichaPsicologia( this.pacienteEditando._id );
       this.buscarFichaTerapeuta( this.pacienteEditando._id );
+
+
     }
+
+   
     
   }
 
@@ -194,7 +214,7 @@ export class FichasComponent implements OnInit {
             this._fonoaudiologiaService.inicializaFicha();
           }
          //Inicializa Formulario
-          this.iniFormFonoaudiologia(i);
+          this.iniFormFonoaudiologia(i,false);
           
      });
   }
@@ -368,12 +388,19 @@ export class FichasComponent implements OnInit {
     //   password2: new FormControl(null, Validators.required),
     //   condiciones: new FormControl(false)
     // }, { validators: this.sonIguales( 'password', 'password2') });
-
-
+   
+    //BLOQUEAR
+    //Si no es profesional se bloquea
+    if (this.profesiones.indexOf(this.profesion) < 0){
+        this.bloqueoAnamnesis();
+    }else{
+        this.desBloqueoAnamnesis();
+    }
+    
   }
 
   //FONOAUDIOLOGIA
-  iniFormFonoaudiologia(idFecha:number){
+  iniFormFonoaudiologia(idFecha:number, setValor:boolean){
     //let fecha: string;
     let fechaN: number;
     let userProfesionalName: any;
@@ -387,39 +414,84 @@ export class FichasComponent implements OnInit {
       //fecha = null;
       userProfesionalName = null;
     }
-    console.log('fechaN:'+fechaN);
-    this.formFonoaudiologia = this.fb.group({
-      fechaName: fechaN,
-      fechaData: this.fb.array([]),
-      profesional: new FormControl({value: userProfesionalName, disabled: true}),
-      prelinguisticas: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.prelinguisticas),
-      prearticulatorias: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.prearticulatorias),
-      psicolinguisticas: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.psicolinguisticas),
-      foneticoFonologico: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.foneticoFonologico),
-      semantico: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.semantico),
-      morfosintactico: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.morfosintactico),
-      pragmatico: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.pragmatico),
-      discursoNarrativo: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.discursoNarrativo),
-      socialComunicativa: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.socialComunicativa)
-    });  
+
+    if (!setValor){
+        this.formFonoaudiologia = this.fb.group({
+          fechaName: fechaN,
+          fechaData: this.fb.array([]),
+          profesional: new FormControl({value: userProfesionalName, disabled: true}),
+          prelinguisticas: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.prelinguisticas),
+          prearticulatorias: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.prearticulatorias),
+          psicolinguisticas: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.psicolinguisticas),
+          foneticoFonologico: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.foneticoFonologico),
+          semantico: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.semantico),
+          morfosintactico: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.morfosintactico),
+          pragmatico: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.pragmatico),
+          discursoNarrativo: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.discursoNarrativo),
+          socialComunicativa: this.fb.group(this._fonoaudiologiaService.fichaFonoaudiologia.socialComunicativa)
+        });  
+
+        //CARGAR LAS FECHAS HISTORICAS DE FICHAS
+        this.formFonoaudiologia.get('fechaData').reset();
+        let items = this.formFonoaudiologia.get('fechaData') as FormArray;
+        let fecFicha: fechaFicha;
+        let i:number=0;
+        for( let ficha of this.fichasFonoaudiologia ){
+
+          fecFicha={
+               fecha: ficha.fecha,
+               item:i
+          } 
+          items.push(this.fb.group(fecFicha));
+
+          i++;
+        }
+       
+    }else{
+      console.log('setvalores');
+      this.formFonoaudiologia.get('fechaName').setValue(fechaN);
+      this.formFonoaudiologia.get('profesional').setValue(userProfesionalName);
+      this.formFonoaudiologia.get('prelinguisticas').setValue(this._fonoaudiologiaService.fichaFonoaudiologia.prelinguisticas);
+      this.formFonoaudiologia.get('prearticulatorias').setValue(this._fonoaudiologiaService.fichaFonoaudiologia.prearticulatorias);
+      this.formFonoaudiologia.get('psicolinguisticas').setValue(this._fonoaudiologiaService.fichaFonoaudiologia.psicolinguisticas);
+      this.formFonoaudiologia.get('foneticoFonologico').setValue(this._fonoaudiologiaService.fichaFonoaudiologia.foneticoFonologico);
+      this.formFonoaudiologia.get('semantico').setValue(this._fonoaudiologiaService.fichaFonoaudiologia.semantico);
+      this.formFonoaudiologia.get('morfosintactico').setValue(this._fonoaudiologiaService.fichaFonoaudiologia.morfosintactico);
+      this.formFonoaudiologia.get('pragmatico').setValue(this._fonoaudiologiaService.fichaFonoaudiologia.pragmatico);
+      this.formFonoaudiologia.get('discursoNarrativo').setValue(this._fonoaudiologiaService.fichaFonoaudiologia.discursoNarrativo);
+      this.formFonoaudiologia.get('socialComunicativa').setValue(this._fonoaudiologiaService.fichaFonoaudiologia.socialComunicativa);
+    } 
 
 
-    //CARGAR LAS FECHAS HISTORICAS DE FICHAS
-    this.formFonoaudiologia.get('fechaData').reset();
-    let items = this.formFonoaudiologia.get('fechaData') as FormArray;
-    let fecFicha: fechaFicha;
-    let i:number=0;
-    for( let ficha of this.fichasFonoaudiologia ){
+    
 
-      fecFicha={
-           fecha: ficha.fecha,
-           item:i
-      } 
-      items.push(this.fb.group(fecFicha));
+    //BLOQUEAR
+    let esFechaHoy: boolean=false;
+    let fechaConsultada: string = this._fonoaudiologiaService.fichaFonoaudiologia.fecha;
+    esFechaHoy=this.esHoy(fechaConsultada);
 
-      i++;
+    //Compara fecha consulta con fecha actual
+    console.log(esFechaHoy);
+    if(esFechaHoy){
+      if ( this.profesiones.indexOf(this.profesion) == 1 ){
+          console.log('desbloquear');
+          this.desBloqueoFonoaudiologia();
+          
+      }else{
+           
+          console.log('bloquear');
+          this.bloqueoFonoaudiologia();
+          
+      }
+
+    }else{
+        console.log('bloquear');
+       this.bloqueoFonoaudiologia();
+       
     }
      
+    
+
 
   }
   //GENERAL
@@ -457,6 +529,25 @@ export class FichasComponent implements OnInit {
 
       i++;
     }
+
+    //BLOQUEAR
+    let esFechaHoy: boolean=false;
+    let fechaConsultada: string = this._generalService.fichaGeneral.fecha;
+    esFechaHoy=this.esHoy(fechaConsultada);
+
+    //Compara fecha consulta con fecha actual
+    //console.log(esFechaHoy);
+    if(esFechaHoy){
+        if (this.profesiones.indexOf(this.profesion) == 0){
+          this.desBloqueoGeneral();
+        }else{
+          this.bloqueoGeneral();
+        }
+    }else{
+       this.bloqueoGeneral();
+    }
+
+    
 
   }
   //KINESIOLOGIA
@@ -498,6 +589,14 @@ export class FichasComponent implements OnInit {
 
       i++;
     }
+
+    //BLOQUEAR
+    if (this.profesiones.indexOf(this.profesion) == 2){
+        this.desBloqueoKinesiologia();
+    }else{
+        this.bloqueoKinesiologia();
+    }
+
   }
   //PSICOLOGIA
   iniFormPsicologia(idFecha:number){
@@ -538,6 +637,14 @@ export class FichasComponent implements OnInit {
 
       i++;
     }
+
+    //BLOQUEAR
+    if (this.profesiones.indexOf(this.profesion) == 4){
+        this.desBloqueoPsicologia();
+    }else{
+        this.bloqueoPsicologia();
+    }
+
   }
   //TERAPEUTA
   iniFormTerapeuta(idFecha:number){
@@ -551,6 +658,7 @@ export class FichasComponent implements OnInit {
       fechaN = null;
       userProfesionalName = null;
     }
+
 
     this.formTerapeuta = this.fb.group({
       fechaName: fechaN,
@@ -566,6 +674,7 @@ export class FichasComponent implements OnInit {
       transversal: this.fb.group(this._terapeutaService.fichaTerapeuta.transversal)
 
     }); 
+    
 
     //CARGAR LAS FECHAS HISTORICAS DE FICHAS
     this.formTerapeuta.get('fechaData').reset();
@@ -582,16 +691,25 @@ export class FichasComponent implements OnInit {
 
       i++;
     }
+
+    //BLOQUEAR
+    if (this.profesiones.indexOf(this.profesion) == 3){
+        this.desBloqueoTerapeuta();
+    }else{
+        this.bloqueoTerapeuta();
+    }
   }
 
   //SELECCIONAR OTRA FECHA
   otraFechaFonoaudiologia(){
+
     let i: number;
     i=this.formFonoaudiologia.value.fechaName;
     this.posFechaActualFonoaudiologia=i;
     if(!this.newformFonoaudiologia){
       this._fonoaudiologiaService.fichaFonoaudiologia = this.fichasFonoaudiologia[i];
-      this.iniFormFonoaudiologia(i);
+      this.iniFormFonoaudiologia(i,true);
+      
     }
 
   }
@@ -927,10 +1045,15 @@ export class FichasComponent implements OnInit {
 
   }
 
+  crearFichaAnamnesis(){
+    this.registrarAnamnesis();
+  }
+
   crearFichaFonoaudiologia(){
       this.newformFonoaudiologia=true;
       this._fonoaudiologiaService.inicializaFicha();
-      this.iniFormFonoaudiologia(0);
+      this.iniFormFonoaudiologia(0, false);
+      this.posFechaActualFonoaudiologia=0;
       this.registrarFonoaudiologia();
   }
 
@@ -938,6 +1061,7 @@ export class FichasComponent implements OnInit {
       this.newformGeneral=true;
       this._generalService.inicializaFicha();
       this.iniFormGeneral(0);
+      this.posFechaActualGeneral=0;
       this.registrarGeneral();
   }
 
@@ -945,6 +1069,7 @@ export class FichasComponent implements OnInit {
       this.newformKinesiologia=true;
       this._kinesiologiaService.inicializaFicha();
       this.iniFormKinesiologia(0);
+      this.posFechaActualKinesiologia=0;
       this.registrarKinesiologia();
   }
 
@@ -952,6 +1077,7 @@ export class FichasComponent implements OnInit {
       this.newformPsicologia=true;
       this._psicologiaService.inicializaFicha();
       this.iniFormPsicologia(0);
+      this.posFechaActualPsicologia=0;
       this.registrarPsicologia();
   }
 
@@ -959,8 +1085,96 @@ export class FichasComponent implements OnInit {
       this.newformTerapeuta=true;
       this._terapeutaService.inicializaFicha();
       this.iniFormTerapeuta(0);
+      this.posFechaActualTerapeuta=0;
       this.registrarTerapeuta();
   }
   
+  bloqueoAnamnesis(){
+    this.formAnamnesis.disable();
+  }
+
+  borrar(){
+    this.desBloqueoFonoaudiologia();
+  }
+  borrar1(){
+    this.bloqueoFonoaudiologia();
+  }
+  bloqueoFonoaudiologia(){
+
+    console.log('BLOQUEANDO');
+    
+    this.formFonoaudiologia.disable();
+    this.formFonoaudiologia.get('fechaName').enable();
+    
+  }
+
+  bloqueoGeneral(){
+    this.formGeneral.disable();
+    this.formGeneral.get('fechaName').enable();
+  }
+
+  bloqueoKinesiologia(){
+    this.formKinesiologia.disable();
+    this.formKinesiologia.get('fechaName').enable();
+  }
+
+  bloqueoPsicologia(){
+    this.formPsicologia.disable();
+    this.formPsicologia.get('fechaName').enable();
+  }
+
+  bloqueoTerapeuta(){
+    this.formTerapeuta.disable();
+    this.formTerapeuta.get('fechaName').enable();
+  }
+
+  desBloqueoAnamnesis(){
+    this.formAnamnesis.enable();
+  }
+
+  desBloqueoFonoaudiologia(){
+    this.formFonoaudiologia.enable();
+    this.formFonoaudiologia.get('profesional').disable();
+
+  }
+
+  desBloqueoGeneral(){
+    this.formGeneral.enable();
+    this.formGeneral.get('profesional').disable();
+  }
+
+  desBloqueoKinesiologia(){
+    this.formKinesiologia.enable();
+    this.formKinesiologia.get('profesional').disable();
+  }
+
+  desBloqueoPsicologia(){
+    this.formPsicologia.enable();
+    this.formPsicologia.get('profesional').disable();
+  }
+
+  desBloqueoTerapeuta(){
+    this.formTerapeuta.enable();
+    this.formTerapeuta.get('profesional').disable();
+  }
+
+  esHoy(fecha: string): boolean{
+      let my = new Date();
+      let dia: number =my.getDate();
+      let mes: number =my.getMonth()+1;
+      let ano: number =my.getFullYear();
+      let fechaHoy:string =  dia+'-'+  mes + '-'+ ano;
+      let regex = new RegExp(fechaHoy, 'i');
+      if( fecha !=null)
+        if (fecha.match(regex)){
+          return true;
+        }else{
+          return false;
+        }
+      else{
+        return true;
+      }  
+    
+  }
 
 }

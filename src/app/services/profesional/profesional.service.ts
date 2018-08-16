@@ -76,6 +76,13 @@ export class ProfesionalService {
                 .map((resp: any) => resp.profesionales );
   }
 
+  buscarProfesional( idUser: string ){
+    let url = URL_SERVICIOS + 'api/profesional/'+idUser;
+
+    return this.http.get( url )
+                .map((resp: any) => resp.profesional );
+  }
+
   borrarProfesional( id: string ){
     let url = URL_SERVICIOS + 'api/remove-profesional/'+ id ;
 

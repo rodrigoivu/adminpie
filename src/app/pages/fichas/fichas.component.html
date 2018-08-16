@@ -25,6 +25,13 @@
 	<!-- Profesional y Fechas de evaluación -->
 	<!-- ***************************************** -->
     <ng-template ngbPanelContent>
+    	<div class="text-right">
+            		<button (click)="crearFichaAnamnesis()" class="btn btn-primary waves-effect waves-light btn-rounded">
+    	        		<i class="fa fa-plus"></i>
+    	        		Crear Nueva Ficha
+	            	</button>
+        </div>
+        <br>
     	<div class="card text-light" >
 			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
@@ -43,7 +50,7 @@
 			  </div>
 		</div>
   	<!-- ***************************************** -->
-	<!-- Antecedentes Generales -->
+	<!-- Antecedentes Generales FICHA ANAMNESIS -->
 	<!-- ***************************************** -->
 		 <div class="card text-light" >
 			  <div class="card-header bg-dark ">Antecedentes Generales</div>
@@ -158,7 +165,7 @@
 						    </div>
 						    
 					  </div>
-					  <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button>
+					  <!-- <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button> -->
 					  <button *ngIf="!newformAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
 					</div>  
 				</form>
@@ -235,7 +242,7 @@
 						    	<textarea formControlName="observaciones" class="form-control form-control-sm" id="anamasoo" rows="2"></textarea>
 						    </div>
 					  </div>
-					  <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button>
+					  <!-- <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button> -->
 					  <button *ngIf="!newformAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
 					</div> 	  
 				</form>
@@ -337,7 +344,7 @@
 						    	<textarea formControlName="diagnosticos" class="form-control form-control-sm" id="anamhcdpa" rows="2"></textarea>
 						    </div>
 					</div> 
-					<button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button>
+					<!-- <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button> -->
 					<button *ngIf="!newformAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div> 
 				</form>
@@ -461,7 +468,7 @@
 								</select>
 						    </div>
 					</div> 
-					<button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button>
+					<!-- <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button> -->
 					<button *ngIf="!newformAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div> 	
 				</form>
@@ -579,7 +586,7 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 								</select>
 						    </div>
 					</div>   
-					<button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button>
+					<!-- <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button> -->
 					<button *ngIf="!newformAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div> 
 				</form>
@@ -617,7 +624,7 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 	        				    <textarea formControlName="personalidad" class="form-control form-control-sm" id="" rows="2"></textarea>
 						    </div>
 					</div> 
-					<button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button>
+					<!-- <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button> -->
 					<button *ngIf="!newformAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div> 
 				</form>
@@ -661,7 +668,7 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 							    <input formControlName="ingresoPerCapita" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 					</div> 
-					<button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button>
+					<!-- <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button> -->
 					<button *ngIf="!newformAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div> 
 				</form>
@@ -676,6 +683,13 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 	<!-- ***************************************** -->
   <ngb-panel id="static-2" title="Ficha General">
     <ng-template ngbPanelContent>
+    	<div class="text-right">
+            		<button (click)="crearFichaGeneral()" class="btn btn-primary waves-effect waves-light btn-rounded">
+    	        		<i class="fa fa-plus"></i>
+    	        		Crear Nueva Ficha
+	            	</button>
+        </div>
+        <br>
     	<div class="card text-light" >
     	   <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
@@ -685,10 +699,13 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 						    	<label for="" class="col-form-label col-form-label-sm">Profesional</label>
 							    <input formControlName="profesional" type="text" class="form-control form-control-sm" id="" >
 						    </div>
+						    
 						    <div class="col-sm-4">
-						    	<label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-							    <input formControlName="fecha" type="text" class="form-control form-control-sm" id="" >
-						    </div>
+							    <label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
+								<select  formControlName="fechaName" (change)="otraFechaGeneral()" class="form-control form-control-sm" id="">
+								     <option *ngFor="let fecha of formGeneralFechaData.controls" [value]="fecha.value.item">{{fecha.value.fecha}}</option>	
+								</select>
+							</div>
 					  </div>
 				</form>
 			  </div>
@@ -740,6 +757,13 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 	<!-- ***************************************** -->
   <ngb-panel id="static-3" title="Ficha Kinesiología">
     <ng-template ngbPanelContent>
+    	<div class="text-right">
+            		<button (click)="crearFichaKinesiologia()" class="btn btn-primary waves-effect waves-light btn-rounded">
+    	        		<i class="fa fa-plus"></i>
+    	        		Crear Nueva Ficha
+	            	</button>
+        </div>
+        <br>
     	<div class="card text-light" >
 			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
@@ -750,9 +774,11 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 							    <input formControlName="profesional" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 						    <div class="col-sm-4">
-						    	<label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-							    <input formControlName="fecha" type="text" class="form-control form-control-sm" id="" >
-						    </div>
+							    <label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
+								<select  formControlName="fechaName" (change)="otraFechaKinesiologia()" class="form-control form-control-sm" id="">
+								     <option *ngFor="let fecha of formKinesiologiaFechaData.controls" [value]="fecha.value.item">{{fecha.value.fecha}}</option>	
+								</select>
+							</div>
 					  </div>
 				</form>
 			  </div>
@@ -1556,6 +1582,13 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 	<!-- ***************************************** -->
   <ngb-panel id="static-4" title="Ficha Psicología">
     <ng-template ngbPanelContent>
+    	<div class="text-right">
+            		<button (click)="crearFichaPsicologia()" class="btn btn-primary waves-effect waves-light btn-rounded">
+    	        		<i class="fa fa-plus"></i>
+    	        		Crear Nueva Ficha
+	            	</button>
+        </div>
+        <br>
         <div class="card text-light" >
 			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
@@ -1565,10 +1598,13 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    	<label for="" class="col-form-label col-form-label-sm">Profesional</label>
 							    <input formControlName="profesional" type="text" class="form-control form-control-sm" id="" >
 						    </div>
+						    
 						    <div class="col-sm-4">
-						    	<label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-							    <input formControlName="fecha" type="text" class="form-control form-control-sm" id="" >
-						    </div>
+							    <label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
+								<select  formControlName="fechaName" (change)="otraFechaPsicologia()" class="form-control form-control-sm" id="">
+								     <option *ngFor="let fecha of formPsicologiaFechaData.controls" [value]="fecha.value.item">{{fecha.value.fecha}}</option>	
+								</select>
+							</div>
 					  </div>
 				</form>
 			  </div>
@@ -1778,6 +1814,13 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
   <!-- ***************************************** -->
   <ngb-panel id="static-5" title="Ficha Terapeuta Ocupacional">
     <ng-template ngbPanelContent>
+    	<div class="text-right">
+            		<button (click)="crearFichaTerapeuta()" class="btn btn-primary waves-effect waves-light btn-rounded">
+    	        		<i class="fa fa-plus"></i>
+    	        		Crear Nueva Ficha
+	            	</button>
+        </div>
+        <br>
         <div class="card text-light" >
 			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
@@ -1788,9 +1831,11 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 							    <input formControlName="profesional" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 						    <div class="col-sm-4">
-						    	<label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-							    <input formControlName="fecha" type="text" class="form-control form-control-sm" id="" >
-						    </div>
+							    <label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
+								<select  formControlName="fechaName" (change)="otraFechaTerapeuta()" class="form-control form-control-sm" id="">
+								     <option *ngFor="let fecha of formTerapeutaFechaData.controls" [value]="fecha.value.item">{{fecha.value.fecha}}</option>	
+								</select>
+							</div>
 					  </div>
 				</form>
 			  </div>
@@ -2553,17 +2598,12 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 							    <input formControlName="profesional" type="text" class="form-control form-control-sm" id="" >
 						    </div>
 
-						    <!-- <div formArrayName="fecha" > -->
-							    <div class="col-sm-4">
-							    	<label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-								    <select  formControlName="fechaName" (change)="otraFechaFonoaudiologia()" class="form-control form-control-sm" id="">
-								      
-								      <option *ngFor="let fecha of formFonoaudiologiaFechaData.controls" [value]="fecha.value.item">{{fecha.value.fecha}}</option>	
-									  
-									</select>
-								    <!-- <input formControlName="fecha" type="text" class="form-control form-control-sm" id="" > -->
-							    <!-- </div> -->
-							   
+						    <div class="col-sm-4">
+							    <label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
+								<select  formControlName="fechaName" (change)="otraFechaFonoaudiologia()" class="form-control form-control-sm" id="">
+								     <option *ngFor="let fecha of formFonoaudiologiaFechaData.controls" [value]="fecha.value.item">{{fecha.value.fecha}}</option>	
+								</select>
+								
 							</div>
 							
 					  </div>
