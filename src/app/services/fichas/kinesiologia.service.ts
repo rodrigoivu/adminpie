@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Kinesiologia } from '../../models/kinesiologia.model';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
@@ -12,12 +12,13 @@ import { throwError } from 'rxjs/internal/observable/throwError';
 export class KinesiologiaService {
 	public token: string;
 	public fichaKinesiologia: Kinesiologia;
+	public notificacionNuevaFicha = new EventEmitter<any>();
 
   constructor(
   	public http: HttpClient
   ) { 
   	this.token = localStorage.getItem('token');
-    this.inicializaFicha();
+    this.inicializaFicha('','','');
   }
 
   cargarFicha( id: string ){
@@ -59,8 +60,26 @@ export class KinesiologiaService {
                 });
   }
 
-  inicializaFicha(){
-    this.fichaKinesiologia = new Kinesiologia('','');
+  registraFicha( idPaciente: string, idUser: string ){
+
+  	let registro: Kinesiologia;
+    let my = new Date();
+    let dia: number =my.getDate();
+    let mes: number =my.getMonth()+1;
+    let ano: number = my.getFullYear();
+    let fecha: string =  dia+'-'+  mes + '-'+ ano;
+    
+    this.inicializaFicha( idPaciente, idUser,fecha);
+
+    this.crearFicha(this.fichaKinesiologia)
+    	.subscribe((resp:any) =>{
+            this.notificacionNuevaFicha.emit(true);
+          });
+  }
+
+  inicializaFicha(idPaciente: string, idUser: string, fecha:string){
+    this.fichaKinesiologia = new Kinesiologia(idPaciente,idUser);
+    this.fichaKinesiologia.fecha=fecha;    
     this.fichaKinesiologia.estabilidadDesplazamiento ={
 	   objetivoEsp1: null,
 	   objetivoEsp2: null,

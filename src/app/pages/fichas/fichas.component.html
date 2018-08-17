@@ -17,7 +17,7 @@
 	<!-- ***************************************** -->
   <ngb-panel id="static-1"  >
   	<ng-template ngbPanelTitle>
-    <b class="text-info">{{titleAnamnesis}}</b> &nbsp; <small *ngIf="newformAnamnesis" class="font-weight-light text-danger"> {{titleCrearFicha}}</small> 
+    <b class="text-info">{{titleAnamnesis}}</b> &nbsp; <small *ngIf="" class="font-weight-light text-danger"> {{titleCrearFicha}}</small> 
 
     </ng-template>
 
@@ -25,7 +25,7 @@
 	<!-- Profesional y Fechas de evaluación -->
 	<!-- ***************************************** -->
     <ng-template ngbPanelContent>
-    	<div class="text-right">
+    	<div *ngIf="flgCrearAnamnesis" class="text-right">
             		<button (click)="crearFichaAnamnesis()" class="btn btn-primary waves-effect waves-light btn-rounded">
     	        		<i class="fa fa-plus"></i>
     	        		Crear Nueva Ficha
@@ -105,8 +105,8 @@
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Antecedentes Familiares</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="registrarAnamnesis()">
-			    	<div formGroupName="anamnesisAntecedentesFamiliares"> 
+			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="actualizaFichaAnamnesis()">
+			    	<div formGroupName="antecedentesFamiliares"> 
 					  <!-- MADRE -->
 					  <div class="form-group row"  >
 						    <div class="col-sm-4">
@@ -166,7 +166,7 @@
 						    
 					  </div>
 					  <!-- <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button> -->
-					  <button *ngIf="!newformAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
+					  <button *ngIf="flgActualizarAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
 					</div>  
 				</form>
 			  </div>
@@ -177,8 +177,8 @@
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Antecedentes de Salud</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="registrarAnamnesis()">
-			    	<div formGroupName="anamnesisAntecedentesSalud" >
+			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="actualizaFichaAnamnesis()">
+			    	<div formGroupName="antecedentesSalud" >
 					 
 					  <div class="form-group row">
 						    <div class="col-sm-4">
@@ -243,7 +243,7 @@
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button> -->
-					  <button *ngIf="!newformAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
+					  <button *ngIf="flgActualizarAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
 					</div> 	  
 				</form>
 			  </div>
@@ -254,8 +254,8 @@
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Historial Clínico</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="registrarAnamnesis()">
-			      <div formGroupName="anamnesisHistorialClinico">
+			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="actualizaFichaAnamnesis()">
+			      <div formGroupName="historialClinico">
 			    	<div class="form-group row">
 						    <div class="col-sm-12">
 						    	<label for="anamhcef" class="col-form-label col-form-label-sm">Enfermedades Familiares ( psiquiátricas, neurológicas, metabólicas, del lenguaje, auditivas de inicio temprano, etc. )</label>
@@ -345,7 +345,7 @@
 						    </div>
 					</div> 
 					<!-- <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button> -->
-					<button *ngIf="!newformAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
+					<button *ngIf="flgActualizarAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div> 
 				</form>
 			  </div>
@@ -356,8 +356,8 @@
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Desarrollo Evolutivo</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="registrarAnamnesis()">
-			      <div formGroupName="anamnesisDesarrolloEvolutivo">
+			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="actualizaFichaAnamnesis()">
+			      <div formGroupName="desarrolloEvolutivo">
 					<div class="form-group row">
 						    <div class="col-sm-4">
 						    	<label for="anamdeess" class=" col-form-label col-form-label-sm">Edad en que se sienta solo/a:</label>
@@ -469,7 +469,7 @@
 						    </div>
 					</div> 
 					<!-- <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button> -->
-					<button *ngIf="!newformAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
+					<button *ngIf="flgActualizarAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div> 	
 				</form>
 			  </div>
@@ -480,8 +480,8 @@
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Destrezas Sociales Y Comunicativas</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="registrarAnamnesis()">
-			      <div formGroupName="anamnesisDestrezasSocialesComunicativas">
+			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="actualizaFichaAnamnesis()">
+			      <div formGroupName="destrezasSocialesComunicativas">
 					<div class="form-group row">
 						    <div class="col-sm-12">
 						    	<label for="" class="col-form-label col-form-label-sm">Imita acciones tales
@@ -587,7 +587,7 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 						    </div>
 					</div>   
 					<!-- <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button> -->
-					<button *ngIf="!newformAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
+					<button *ngIf="flgActualizarAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div> 
 				</form>
 			  </div>
@@ -598,8 +598,8 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Comportamiento Lúdico, Intereses y Personalidad</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="registrarAnamnesis()">
-			      <div formGroupName="anamnesisComportamientoLudico">
+			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="actualizaFichaAnamnesis()">
+			      <div formGroupName="comportamientoLudico">
 					<div class="form-group row">
 						    <div class="col-sm-4">
 			    		    	<label for="" class=" col-form-label col-form-label-sm">¿ Con qué juega? </label>
@@ -625,7 +625,7 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 						    </div>
 					</div> 
 					<!-- <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button> -->
-					<button *ngIf="!newformAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
+					<button *ngIf="flgActualizarAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div> 
 				</form>
 			  </div>
@@ -636,8 +636,8 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Situación Social y Actual</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="registrarAnamnesis()">
-			      <div formGroupName="anamnesisSituacionSocial">
+			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="actualizaFichaAnamnesis()">
+			      <div formGroupName="situacionSocial">
 					<div class="form-group row">
 						     <div class="col-sm-6">
 						    	<label for="" class="col-form-label col-form-label-sm">¿Cuántas personas componen su núcleo familiar?</label>
@@ -669,7 +669,7 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 						    </div>
 					</div> 
 					<!-- <button *ngIf="newformAnamnesis" type="submit" class="btn btn-primary">Guardar</button> -->
-					<button *ngIf="!newformAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
+					<button *ngIf="flgActualizarAnamnesis" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div> 
 				</form>
 			  </div>
@@ -683,7 +683,7 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 	<!-- ***************************************** -->
   <ngb-panel id="static-2" title="Ficha General">
     <ng-template ngbPanelContent>
-    	<div class="text-right">
+    	<div *ngIf="flgCrearGeneral" class="text-right">
             		<button (click)="crearFichaGeneral()" class="btn btn-primary waves-effect waves-light btn-rounded">
     	        		<i class="fa fa-plus"></i>
     	        		Crear Nueva Ficha
@@ -702,7 +702,7 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 						    
 						    <div class="col-sm-4">
 							    <label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-								<select  formControlName="fechaName" (change)="otraFechaGeneral()" class="form-control form-control-sm" id="">
+								<select  formControlName="fechaName"  class="form-control form-control-sm" id="">
 								     <option *ngFor="let fecha of formGeneralFechaData.controls" [value]="fecha.value.item">{{fecha.value.fecha}}</option>	
 								</select>
 							</div>
@@ -713,7 +713,7 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
     	<div class="card text-light" >
 			  <div class="card-header bg-dark ">Ficha Médica General</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formGeneral" (ngSubmit)="registrarGeneral()">
+			    <form [formGroup]="formGeneral" (ngSubmit)="actualizaFichaGeneral()">
 			      <div formGroupName="medicaGeneral">
 					<div class="form-group row">
 						     <div class="col-sm-12">
@@ -741,7 +741,7 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 					</div> 
 					
 					<!-- <button *ngIf="newformGeneral" type="submit" class="btn btn-primary">Guardar</button> -->
-					<button *ngIf="!newformGeneral" type="submit" class="btn btn-primary">Actualizar</button>
+					<button *ngIf="flgActualizarGeneral" type="submit" class="btn btn-primary">Actualizar</button>
 
 				  </div>	
 				</form>
@@ -757,7 +757,7 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 	<!-- ***************************************** -->
   <ngb-panel id="static-3" title="Ficha Kinesiología">
     <ng-template ngbPanelContent>
-    	<div class="text-right">
+    	<div *ngIf="flgCrearKinesiologia" class="text-right">
             		<button (click)="crearFichaKinesiologia()" class="btn btn-primary waves-effect waves-light btn-rounded">
     	        		<i class="fa fa-plus"></i>
     	        		Crear Nueva Ficha
@@ -775,7 +775,7 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 						    </div>
 						    <div class="col-sm-4">
 							    <label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-								<select  formControlName="fechaName" (change)="otraFechaKinesiologia()" class="form-control form-control-sm" id="">
+								<select  formControlName="fechaName" class="form-control form-control-sm" id="">
 								     <option *ngFor="let fecha of formKinesiologiaFechaData.controls" [value]="fecha.value.item">{{fecha.value.fecha}}</option>	
 								</select>
 							</div>
@@ -805,7 +805,7 @@ desplazamientos a fin de contribuir con la autonomía del/la estudiante.</h6>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Objetvos Específicos</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formKinesiologia" (ngSubmit)="registrarKinesiologia()" >
+			    <form [formGroup]="formKinesiologia" (ngSubmit)="actualizaFichaKinesiologia()" >
 			    	<div formGroupName="estabilidadDesplazamiento">
 					  <div class="form-group row">
 						    <div class="col-sm-12">
@@ -989,7 +989,7 @@ desplazamientos a fin de contribuir con la autonomía del/la estudiante.</h6>
 						    </div>
 					 </div>
 					 <!-- <button *ngIf="newformKinesiologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				     <button *ngIf="!newformKinesiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				     <button *ngIf="flgActualizarKinesiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>
 				</form>
 			  </div>
@@ -1014,7 +1014,7 @@ dinámica a fin de contribuir con la autonomía del/la estudiante.</h6>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">ObjetvoS Específicos</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formKinesiologia" (ngSubmit)="registrarKinesiologia()">
+			    <form [formGroup]="formKinesiologia" (ngSubmit)="actualizaFichaKinesiologia()">
 			      <div formGroupName="coordinacionDinamica">	
 					<div class="form-group row">
 						<div class="col-sm-12">
@@ -1152,7 +1152,7 @@ dinámica a fin de contribuir con la autonomía del/la estudiante.</h6>
 					    </div>
 					 </div>
 					 <!-- <button *ngIf="newformKinesiologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				     <button *ngIf="!newformKinesiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				     <button *ngIf="flgActualizarKinesiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>	 
 				</form>
 			  </div>
@@ -1177,7 +1177,7 @@ conductas psicomotoras descendidas y facilitar la autonomía en el estudiante.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">ObjetvoS Específicos</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formKinesiologia" (ngSubmit)="registrarKinesiologia()">
+			    <form [formGroup]="formKinesiologia" (ngSubmit)="actualizaFichaKinesiologia()">
 			      <div formGroupName="conductasPsicomotoras">	
 					<div class="form-group row">
 						<div class="col-sm-12">
@@ -1366,7 +1366,7 @@ reacciones de equilibrio con estímulos externos.</label>
 					    </div>
 					 </div>
 					 <!-- <button *ngIf="newformKinesiologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				     <button *ngIf="!newformKinesiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				     <button *ngIf="flgActualizarKinesiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>
 				</form>
 			  </div>
@@ -1391,7 +1391,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">ObjetvoS Específicos</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formKinesiologia" (ngSubmit)="registrarKinesiologia()">
+			    <form [formGroup]="formKinesiologia" (ngSubmit)="actualizaFichaKinesiologia()">
 			      <div formGroupName="alineacionPostural">		
 					<div class="form-group row">
 						<div class="col-sm-12">
@@ -1569,7 +1569,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 					    </div>
 					 </div>
 					 <!-- <button *ngIf="newformKinesiologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				     <button *ngIf="!newformKinesiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				     <button *ngIf="flgActualizarKinesiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>
 				</form>
 			  </div>
@@ -1582,7 +1582,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 	<!-- ***************************************** -->
   <ngb-panel id="static-4" title="Ficha Psicología">
     <ng-template ngbPanelContent>
-    	<div class="text-right">
+    	<div *ngIf="flgCrearPsicologia" class="text-right">
             		<button (click)="crearFichaPsicologia()" class="btn btn-primary waves-effect waves-light btn-rounded">
     	        		<i class="fa fa-plus"></i>
     	        		Crear Nueva Ficha
@@ -1601,7 +1601,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    
 						    <div class="col-sm-4">
 							    <label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-								<select  formControlName="fechaName" (change)="otraFechaPsicologia()" class="form-control form-control-sm" id="">
+								<select  formControlName="fechaName" class="form-control form-control-sm" id="">
 								     <option *ngFor="let fecha of formPsicologiaFechaData.controls" [value]="fecha.value.item">{{fecha.value.fecha}}</option>	
 								</select>
 							</div>
@@ -1615,7 +1615,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">1. Establecer Vínculo</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formPsicologia" (ngSubmit)="registrarPsicologia()" >
+			    <form [formGroup]="formPsicologia" (ngSubmit)="actualizaFichaPsicologia()" >
 			      <div formGroupName="establecerVinculo">
 			    	<div class="form-group row">
 						    <div class="col-sm-6">
@@ -1644,7 +1644,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformPsicologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformPsicologia" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarPsicologia" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>  
 				</form>
 			  </div>
@@ -1655,7 +1655,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">2. Desarrollar capacidades adaptativas</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formPsicologia" (ngSubmit)="registrarPsicologia()">
+			    <form [formGroup]="formPsicologia" (ngSubmit)="actualizaFichaPsicologia()">
 			      <div formGroupName="capacidadesAdaptativas">	
 			    	<div class="form-group row">
 						    <div class="col-sm-6">
@@ -1694,7 +1694,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformPsicologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformPsicologia" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarPsicologia" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>  
 				</form>
 			  </div>
@@ -1705,7 +1705,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">3. Resignificar Autoconcepto</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formPsicologia" (ngSubmit)="registrarPsicologia()">
+			    <form [formGroup]="formPsicologia" (ngSubmit)="actualizaFichaPsicologia()">
 			      <div formGroupName="autoconcepto">	
 			    	<div class="form-group row">
 						    <div class="col-sm-6">
@@ -1756,7 +1756,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformPsicologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformPsicologia" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarPsicologia" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>  
 				</form>
 			  </div>
@@ -1767,7 +1767,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">4. Analizar labilidad emocional</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formPsicologia" (ngSubmit)="registrarPsicologia()">
+			    <form [formGroup]="formPsicologia" (ngSubmit)="actualizaFichaPsicologia()">
 			      <div formGroupName="labilidadEmocional">		
 			    	 <div class="form-group row">
 						    <div class="col-sm-6">
@@ -1800,7 +1800,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformPsicologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformPsicologia" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarPsicologia" type="submit" class="btn btn-primary">Actualizar</button>
 					</div>  
 				</form>
 			  </div>
@@ -1814,7 +1814,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
   <!-- ***************************************** -->
   <ngb-panel id="static-5" title="Ficha Terapeuta Ocupacional">
     <ng-template ngbPanelContent>
-    	<div class="text-right">
+    	<div *ngIf="flgCrearTerapeuta" class="text-right">
             		<button (click)="crearFichaTerapeuta()" class="btn btn-primary waves-effect waves-light btn-rounded">
     	        		<i class="fa fa-plus"></i>
     	        		Crear Nueva Ficha
@@ -1832,7 +1832,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    </div>
 						    <div class="col-sm-4">
 							    <label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-								<select  formControlName="fechaName" (change)="otraFechaTerapeuta()" class="form-control form-control-sm" id="">
+								<select  formControlName="fechaName" class="form-control form-control-sm" id="">
 								     <option *ngFor="let fecha of formTerapeutaFechaData.controls" [value]="fecha.value.item">{{fecha.value.fecha}}</option>	
 								</select>
 							</div>
@@ -1846,7 +1846,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Actividades Básicas de la Vida Diaria (ABVD)</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()">
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()">
 			    	<div formGroupName="actividadesVidaDiaria">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
@@ -1945,7 +1945,7 @@ de cara).</label>
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>
 				</form>
 			  </div>
@@ -1956,7 +1956,7 @@ de cara).</label>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Actividades Instrumentales de la vida Diaria</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()" >
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()" >
 			    	<div formGroupName="actividadesInstrumentales">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
@@ -2039,7 +2039,7 @@ de cara).</label>
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>
 				</form>
 			  </div>
@@ -2050,7 +2050,7 @@ de cara).</label>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Descanso y sueño</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()" >
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()" >
 			    	<div formGroupName="descansoSueno">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
@@ -2075,7 +2075,7 @@ de cara).</label>
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>
 				</form>
 			  </div>
@@ -2086,7 +2086,7 @@ de cara).</label>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Educación</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()" >
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()" >
 			    	<div formGroupName="educacion">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
@@ -2136,7 +2136,7 @@ interés).</label>
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>
 				</form>
 			  </div>
@@ -2147,7 +2147,7 @@ interés).</label>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Ocio y tiempo libre</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()" >
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()" >
 			    	<div formGroupName="ocio">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
@@ -2172,7 +2172,7 @@ interés).</label>
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>
 				</form>
 			  </div>
@@ -2183,7 +2183,7 @@ interés).</label>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Juego</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()" >
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()" >
 			    	<div formGroupName="juego">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
@@ -2389,7 +2389,7 @@ la cabeza, sin ayudarse de las manos, y meter todas las cabezas dentro de él.</
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>
 				</form>
 			  </div>
@@ -2400,7 +2400,7 @@ la cabeza, sin ayudarse de las manos, y meter todas las cabezas dentro de él.</
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Participación social</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()" >
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()" >
 			    	<div formGroupName="participacionSocial">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
@@ -2526,7 +2526,7 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>
 				</form>
 			  </div>
@@ -2537,7 +2537,7 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Objetivos transversales</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formTerapeuta" (ngSubmit)="registrarTerapeuta()" >
+			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()" >
 			    	<div formGroupName="transversal">	
 					  <div class="form-group row">
 						   <div class="col-sm-12">
@@ -2566,7 +2566,7 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformTerapeuta" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarTerapeuta" type="submit" class="btn btn-primary">Actualizar</button>
 				  </div>
 				</form>
 			  </div>
@@ -2581,7 +2581,7 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
   <!-- ***************************************** -->
   <ngb-panel id="static-6" title="Ficha Fonoaudiológica">
     <ng-template ngbPanelContent>
-    	<div class="text-right">
+    	<div *ngIf="flgCrearFonoaudiologia" class="text-right">
             		<button (click)="crearFichaFonoaudiologia()" class="btn btn-primary waves-effect waves-light btn-rounded">
     	        		<i class="fa fa-plus"></i>
     	        		Crear Nueva Ficha
@@ -2600,7 +2600,7 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 
 						    <div class="col-sm-4">
 							    <label for="" class=" col-form-label col-form-label-sm">Fecha de evaluación</label>
-								<select  formControlName="fechaName" (change)="otraFechaFonoaudiologia()" class="form-control form-control-sm" id="">
+								<select  formControlName="fechaName"  class="form-control form-control-sm" id="">
 								     <option *ngFor="let fecha of formFonoaudiologiaFechaData.controls" [value]="fecha.value.item">{{fecha.value.fecha}}</option>	
 								</select>
 								
@@ -2631,7 +2631,7 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Funciones prelingüísticas:</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="prelinguisticas">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
@@ -2804,7 +2804,7 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 						    
 					  </div>
 					  <!-- <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				   </div>
 				</form>
 			  </div>
@@ -2815,7 +2815,7 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Funciones prearticulatorias:</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()" >
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()" >
 			       <div formGroupName="prearticulatorias">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
@@ -2963,7 +2963,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				   </div>
 				</form>
 			  </div>
@@ -2974,7 +2974,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Habilidades psicolingüísticas:</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="psicolinguisticas">
 					  <div class="form-group row">
 						   <div class="col-sm-12">
@@ -3047,7 +3047,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				   </div>
 				</form>
 			  </div>
@@ -3058,7 +3058,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Nivel fonético - fonológico</strong></div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="foneticoFonologico">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
@@ -3429,7 +3429,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 						    
 					  </div>
 					  <!-- <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				   </div>
 				</form>
 			  </div>
@@ -3440,7 +3440,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Nivel semántico:</strong></div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="semantico">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
@@ -3615,7 +3615,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				   </div>
 				</form>
 			  </div>
@@ -3626,7 +3626,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Nivel morfosintáctico:</strong></div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="morfosintactico">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
@@ -3765,7 +3765,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				   </div>
 				</form>
 			  </div>
@@ -3776,7 +3776,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Nivel pragmático:</strong></div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="pragmatico">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
@@ -3948,7 +3948,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 						    
 					  </div>
 					  <!-- <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				   </div>
 				</form>
 			  </div>
@@ -3959,7 +3959,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Discurso narrativo:</strong></div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="discursoNarrativo">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
@@ -4019,7 +4019,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				   </div>
 				</form>
 			  </div>
@@ -4030,7 +4030,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 		<div class="card text-light" >
 			  <div class="card-header bg-dark ">Área: Habilidades sociales y comunicativas:</div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
-			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="registrarFonoaudiologia()">
+			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="socialComunicativa">
 					  <div class="form-group row">
 						   <div class="col-sm-6">
@@ -4075,7 +4075,7 @@ bajalengua y gasa a distintas temperaturas.)</label>
 						    </div>
 					  </div>
 					  <!-- <button *ngIf="newformFonoaudiologia" type="submit" class="btn btn-primary">Guardar</button> -->
-				      <button *ngIf="!newformFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
+				      <button *ngIf="flgActualizarFonoaudiologia" type="submit" class="btn btn-primary">Actualizar</button>
 				   </div>
 				</form>
 			  </div>

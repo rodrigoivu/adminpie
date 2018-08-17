@@ -1,9 +1,9 @@
 
-interface NgbDate {
-  day: number,
-  month: number,
-  year: number
-}
+// interface NgbDate {
+//   day: number,
+//   month: number,
+//   year: number
+// }
 
 interface antecedentesFamiliares {
   nombreMadre : string,
@@ -102,7 +102,7 @@ export class Anamnesis  {
 
     public paciente: any,
     public user: any,
-    public fecha?: NgbDate,
+    public fecha?: string,
     public antecedentesFamiliares?: antecedentesFamiliares,
     public antecedentesSalud?: antecedentesSalud,
     public historialClinico?: historialClinico,

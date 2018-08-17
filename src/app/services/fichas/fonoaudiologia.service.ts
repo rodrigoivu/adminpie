@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Fonoaudiologia } from '../../models/fonoaudiologia.model';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
@@ -12,12 +12,13 @@ import { throwError } from 'rxjs/internal/observable/throwError';
 export class FonoaudiologiaService {
 	public token: string;
 	public fichaFonoaudiologia: Fonoaudiologia;
+    public notificacionNuevaFicha = new EventEmitter<any>();
 
   constructor(
   	public http: HttpClient
   ) { 
   	this.token = localStorage.getItem('token');
-    this.inicializaFicha();
+    this.inicializaFicha('','','');
   }
 
   cargarFicha( id: string ){
@@ -59,9 +60,26 @@ export class FonoaudiologiaService {
                 });
   }
 
+  registraFicha( idPaciente: string, idUser: string ){
 
-  inicializaFicha(){
-    this.fichaFonoaudiologia = new Fonoaudiologia('','');
+  	let registro: Fonoaudiologia;
+    let my = new Date();
+    let dia: number =my.getDate();
+    let mes: number =my.getMonth()+1;
+    let ano: number = my.getFullYear();
+    let fecha: string =  dia+'-'+  mes + '-'+ ano;
+    
+    this.inicializaFicha( idPaciente, idUser,fecha);
+
+    this.crearFicha(this.fichaFonoaudiologia)
+    	.subscribe((resp:any) =>{
+            this.notificacionNuevaFicha.emit(true);
+          });
+  }
+
+  inicializaFicha( idPaciente: string, idUser: string, fecha:string ){
+    this.fichaFonoaudiologia = new Fonoaudiologia(idPaciente,idUser);
+    this.fichaFonoaudiologia.fecha=fecha;
     this.fichaFonoaudiologia.prelinguisticas={
 	  actividad1: 0,
 	  actividad2: 0,

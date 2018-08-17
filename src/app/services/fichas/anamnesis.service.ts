@@ -14,15 +14,16 @@ import { throwError } from 'rxjs/internal/observable/throwError';
 export class AnamnesisService {
 	public token: string;
 	public fichaAnamnesis: Anamnesis;
+  public notificacionNuevaFicha = new EventEmitter<any>();
 
   constructor(
   	public http: HttpClient
   ) { 
   	this.token = localStorage.getItem('token');
-    this.inicializaFichaAnamnesis();
+    this.inicializaFicha('','','');
   }
 
-  cargarAnamnesis( id: string ){
+  cargarFicha( id: string ){
     let url = URL_SERVICIOS + 'api/anamnesis-paciente/' + id ;
     return this.http.get( url )
           .pipe(
@@ -33,7 +34,7 @@ export class AnamnesisService {
               })
           );
   }
-  crearAnamnesis(fichaAnamnesis: Anamnesis){
+  crearFicha(fichaAnamnesis: Anamnesis){
         
     let url = URL_SERVICIOS + 'api/crear-anamnesis' ;
     
@@ -50,7 +51,7 @@ export class AnamnesisService {
           );
   }
 
-  actualizarAnamnesis( fichaAnamnesis: Anamnesis ){
+  actualizarFicha( fichaAnamnesis: Anamnesis ){
 
     let url = URL_SERVICIOS + 'api/update-anamnesis/' + fichaAnamnesis.paciente;
     //url += '?token=' + this.token;
@@ -63,8 +64,27 @@ export class AnamnesisService {
                 });
   }
 
-  inicializaFichaAnamnesis(){
-    this.fichaAnamnesis = new Anamnesis('','');
+  registraFicha( idPaciente: string, idUser: string ){
+
+    let registro: Anamnesis;
+    let my = new Date();
+    let dia: number =my.getDate();
+    let mes: number =my.getMonth()+1;
+    let ano: number = my.getFullYear();
+    let fecha: string =  dia+'-'+  mes + '-'+ ano;
+    
+    this.inicializaFicha( idPaciente, idUser,fecha);
+
+    this.crearFicha(this.fichaAnamnesis)
+      .subscribe((resp:any) =>{
+            this.notificacionNuevaFicha.emit(true);
+          });
+  }
+
+
+  inicializaFicha(idPaciente: string, idUser: string, fecha:string){
+    this.fichaAnamnesis = new Anamnesis(idPaciente,idUser);
+    this.fichaAnamnesis.fecha=fecha;
     this.fichaAnamnesis.antecedentesFamiliares={
       nombreMadre: null,
       edadMadre : null,

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { General } from '../../models/general.model';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
@@ -12,12 +12,13 @@ import { throwError } from 'rxjs/internal/observable/throwError';
 export class GeneralService {
 	public token: string;
 	public fichaGeneral: General;
+  public notificacionNuevaFicha = new EventEmitter<any>();
 
   constructor(
   	public http: HttpClient
   ) { 
   	this.token = localStorage.getItem('token');
-    this.inicializaFicha();
+    this.inicializaFicha('','','');
   }
 
   cargarFicha( id: string ){
@@ -59,8 +60,26 @@ export class GeneralService {
                 });
   }
 
-  inicializaFicha(){
-    this.fichaGeneral = new General('','');
+  registraFicha( idPaciente: string, idUser: string ){
+
+    let registro: General;
+    let my = new Date();
+    let dia: number =my.getDate();
+    let mes: number =my.getMonth()+1;
+    let ano: number = my.getFullYear();
+    let fecha: string =  dia+'-'+  mes + '-'+ ano;
+    
+    this.inicializaFicha( idPaciente, idUser,fecha);
+
+    this.crearFicha(this.fichaGeneral)
+      .subscribe((resp:any) =>{
+            this.notificacionNuevaFicha.emit(true);
+          });
+  }
+
+  inicializaFicha(idPaciente: string, idUser: string, fecha:string){
+    this.fichaGeneral = new General(idPaciente,idUser);
+    this.fichaGeneral.fecha=fecha;
     this.fichaGeneral.medicaGeneral ={
 	    historial : null,
 		tartamiento: null,
