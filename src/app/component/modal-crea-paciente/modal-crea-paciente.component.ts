@@ -44,7 +44,7 @@ export class ModalCreaPacienteComponent implements OnInit {
              direccion: null,
              fijo: null,
              celular: null,
-      			 email: new FormControl(null, Validators.email),
+      		 email: new FormControl(null, Validators.email),
 
       });
      

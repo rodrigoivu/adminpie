@@ -84,6 +84,15 @@ export class FichasComponent implements OnInit {
   posFechaActualPsicologia: number=0;
   posFechaActualTerapeuta: number=0;
 
+  //ULTIMA CONSULTA
+  fechaUltimaConsultaAnamnesis: string='';
+  fechaUltimaConsultaFonoaudiologia: string='';
+  fechaUltimaConsultaGenaral: string='';
+  fechaUltimaConsultaKinesiologia: string='';
+  fechaUltimaConsultaPsicologia: string='';
+  fechaUltimaConsultaTerapeuta: string='';
+
+
   profesiones: string[]=['NEUROLOGO', 'FONOAUDIOLOGO', 'KINESILOGO' ,'TERAPEUTA' ,'PSICOLOGO'];
 
   
@@ -602,6 +611,7 @@ export class FichasComponent implements OnInit {
   }
 
   setValoresFichaAnamnesis(){
+      this.fechaUltimaConsultaAnamnesis = 'Última consulta:'+this.fichaAnamnesis.fecha;
 
       this.formAnamnesis.get('fecha').setValue(this.fichaAnamnesis.fecha);
       this.formAnamnesis.get('profesional').setValue(this.fichaAnamnesis.user.name);
@@ -618,7 +628,8 @@ export class FichasComponent implements OnInit {
   }
 
   setValoresFichaFonoaudiologia(idFecha:number){
-      
+      this.fechaUltimaConsultaFonoaudiologia = 'Última consulta:'+this.fichasFonoaudiologia[idFecha].fecha;
+
       this.formFonoaudiologia.get('profesional').setValue(this.fichasFonoaudiologia[idFecha].user.name);
       this.formFonoaudiologia.get('prelinguisticas').setValue(this.fichasFonoaudiologia[idFecha].prelinguisticas);
       this.formFonoaudiologia.get('prearticulatorias').setValue(this.fichasFonoaudiologia[idFecha].prearticulatorias);
@@ -635,6 +646,7 @@ export class FichasComponent implements OnInit {
   }
 
   setValoresFichaGeneral(idFecha:number){
+      this.fechaUltimaConsultaGenaral = 'Última consulta:'+this.fichasGeneral[idFecha].fecha;
       
       this.formGeneral.get('profesional').setValue(this.fichasGeneral[idFecha].user.name);
       this.formGeneral.get('medicaGeneral').setValue(this.fichasGeneral[idFecha].medicaGeneral);
@@ -644,6 +656,7 @@ export class FichasComponent implements OnInit {
   }
 
   setValoresFichaKinesiologia(idFecha:number){
+      this.fechaUltimaConsultaKinesiologia = 'Última consulta:'+this.fichasKinesiologia[idFecha].fecha;
       
       this.formKinesiologia.get('profesional').setValue(this.fichasKinesiologia[idFecha].user.name);
       this.formKinesiologia.get('estabilidadDesplazamiento').setValue(this.fichasKinesiologia[idFecha].estabilidadDesplazamiento);
@@ -656,6 +669,7 @@ export class FichasComponent implements OnInit {
   }
 
   setValoresFichaPsicologia(idFecha:number){
+      this.fechaUltimaConsultaPsicologia = 'Última consulta:'+this.fichasPsicologia[idFecha].fecha;
 
       this.formPsicologia.get('profesional').setValue(this.fichasPsicologia[idFecha].user.name);
       this.formPsicologia.get('establecerVinculo').setValue(this.fichasPsicologia[idFecha].establecerVinculo);
@@ -668,6 +682,7 @@ export class FichasComponent implements OnInit {
   }
 
   setValoresFichaTerapeuta(idFecha:number){
+      this.fechaUltimaConsultaTerapeuta = 'Última consulta:'+this.fichasTerapeuta[idFecha].fecha;
 
       this.formTerapeuta.get('profesional').setValue(this.fichasTerapeuta[idFecha].user.name);
       this.formTerapeuta.get('actividadesVidaDiaria').setValue(this.fichasTerapeuta[idFecha].actividadesVidaDiaria);

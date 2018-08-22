@@ -21,11 +21,13 @@ import { CrearestablecimientoComponent } from './crearestablecimiento/crearestab
 import { ProfileComponent } from './profile/profile.component';
 import { BloqueodiasgeneralComponent } from './bloqueodiasgeneral/bloqueodiasgeneral.component';
 import { FichasComponent } from './fichas/fichas.component';
+import { AdjuntosComponent } from './adjuntos/adjuntos.component';
 
 import { FileSelectDirective } from 'ng2-file-upload';
 
 //Pipe Module
 import { PipesModule } from '../pipes/pipes.module';
+
 
 
 @NgModule({
@@ -54,7 +56,8 @@ import { PipesModule } from '../pipes/pipes.module';
     ProfileComponent,
     //FileSelectDirective,
     BloqueodiasgeneralComponent,
-    FichasComponent
+    FichasComponent,
+    AdjuntosComponent
     
   ]
 })

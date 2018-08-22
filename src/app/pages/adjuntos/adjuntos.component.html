@@ -1,0 +1,320 @@
+<!-- ***************************************** -->
+<!-- NOMBRE Y RUT -->
+<!-- ***************************************** -->
+
+<div *ngIf="pacienteConDatos" class="alert alert-success" role="alert">
+ <strong>Nombre:</strong> &nbsp;{{pacienteEditando.name}}   &nbsp; <strong>Rut:</strong>  &nbsp;{{pacienteEditando.rut}}  &nbsp; <strong>Email:&nbsp; </strong>{{pacienteEditando.email}}  &nbsp; <strong>Contacto:</strong> &nbsp;{{pacienteEditando.fijo}}&nbsp;/&nbsp;{{pacienteEditando.celular}}
+</div>
+
+<div class="listadoDoble">
+
+
+	<!-- ***************************************** -->
+	<!-- PROTOCOLO ADIR -->
+	<!-- ***************************************** -->
+	<div class="card text-light" >
+		<div class="card-header bg-dark  ">
+			<div class="row">
+				<div class="col-sm-6">
+				  	Protocolo ADIR
+				</div>
+				<div class="col-sm-6 text-right">
+					<small> Subido por:&nbsp;{{protocolo3SubidoPor}} </small> 
+				</div>
+		    </div>
+		</div>
+		<div class="card-body text-body shadow-sm p-3  bg-white rounded">
+			<div class="row">
+				<div class="col-sm-4">
+					<a *ngIf="protocoloAdir" [href]="pacienteEditando.protocoloAdir | pdf" target="_blank">Ver Protocolo ADIR</a>
+					<p *ngIf="!protocoloAdir" class="text-danger">No existe documento</p>
+				</div>
+				<div class="col-sm-5">
+					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+				</div>
+				<div class="col-lg-3">
+					<button type="button" class="btn btn-block btn-success m-r-10"
+		                         (click)="guardarArchivo('protocoloAdir')" 
+		                         [disabled]="!archivoSubir" >
+		                    	<i class="fa fa-save"></i>
+		                    	Subir archivo
+		            </button>
+	            </div>
+	            
+            </div>	
+            
+            
+		</div>	  
+	</div>
+
+	<!-- ***************************************** -->
+	<!-- PROTOCOLO ADOS -->
+	<!-- ***************************************** -->	
+
+	<div class="card text-light" >
+		<div class="card-header bg-dark  ">
+			<div class="row">
+				<div class="col-sm-6">
+				  	Protocolo ADOS
+				</div>
+				<div class="col-sm-6 text-right">
+					<small> Subido por:&nbsp;{{protocolo4SubidoPor}}</small> 
+				</div>
+		    </div>
+		</div>
+		<div class="card-body text-body shadow-sm p-3 bg-white rounded">
+			<div class="row">
+				<div class="col-sm-4">
+					<a *ngIf="protocoloAdos" [href]="pacienteEditando.protocoloAdos | pdf" target="_blank">Ver Protocolo ADOS</a>
+					<p *ngIf="!protocoloAdos" class="text-danger">No existe documento</p>
+				</div>
+				<div class="col-sm-5">
+					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+				</div>
+				<div class="col-lg-3">
+					<button type="button" class="btn btn-block btn-success m-r-10"
+		                         (click)="guardarArchivo('protocoloAdos')" 
+		                         [disabled]="!archivoSubir" >
+		                    	<i class="fa fa-save"></i>
+		                    	Subir archivo
+		            </button>
+	            </div>
+	            
+            </div>	
+
+		</div>	  
+	</div>
+
+	<!-- ***************************************** -->
+	<!-- PROTOCOLO DE EVALUACIÓN -->
+	<!-- ***************************************** -->	
+
+	<div class="card text-light" >
+		<div class="card-header bg-dark  ">
+			<div class="row">
+				<div class="col-sm-6">
+				  	Protocolo de Evaluación
+				</div>
+				<div class="col-sm-6 text-right">
+					<small> Subido por: Varios</small> 
+				</div>
+		    </div>
+		</div>
+		<!-- ***************************************** -->
+		<!--  EVALUACIÓN 1 -->
+		<!-- ***************************************** -->	
+		<div class="card-body text-body shadow-sm p-3 bg-white rounded">
+			<div class="row">
+				<div class="col-sm-4">
+					<a *ngIf="protocoloEvaluacion1" [href]="pacienteEditando.protocoloEvaluacion1 | pdf" target="_blank">Ver Evaluación 1</a>
+					<p *ngIf="!protocoloEvaluacion1" class="text-danger">No existe documento</p>
+					<p *ngIf="protocoloEvaluacion1" class="text-secondary"><small> Subido por:&nbsp;{{protocolo5SubidoPor}}</small></p>
+				</div>
+				<div class="col-sm-5">
+					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+				</div>
+				<div class="col-lg-3">
+					<button type="button" class="btn btn-block btn-success m-r-10"
+		                         (click)="guardarArchivo('protocoloEvaluacion1')" 
+		                         [disabled]="!archivoSubir" >
+		                    	<i class="fa fa-save"></i>
+		                    	Subir archivo
+		            </button>
+	            </div>
+            </div>	
+
+
+		<!-- ***************************************** -->
+		<!--  EVALUACIÓN 2 -->
+		<!-- ***************************************** -->	
+		    <hr>
+			<div class="row">
+				<div class="col-sm-4">
+					<a *ngIf="protocoloEvaluacion2" [href]="pacienteEditando.protocoloEvaluacion2 | pdf" target="_blank">Ver Evaluación 2</a>
+					<p *ngIf="!protocoloEvaluacion2" class="text-danger">No existe documento</p>
+					<p *ngIf="protocoloEvaluacion2" class="text-secondary"><small> Subido por:&nbsp;{{protocolo6SubidoPor}}</small></p>
+				</div>
+				<div class="col-sm-5">
+					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+				</div>
+				<div class="col-lg-3">
+					<button type="button" class="btn btn-block btn-success m-r-10"
+		                         (click)="guardarArchivo('protocoloEvaluacion2')" 
+		                         [disabled]="!archivoSubir" >
+		                    	<i class="fa fa-save"></i>
+		                    	Subir archivo
+		            </button>
+	            </div>
+            </div>	
+	
+
+		<!-- ***************************************** -->
+		<!--  EVALUACIÓN 3 -->
+		<!-- ***************************************** -->	
+		    <hr>
+			<div class="row">
+				<div class="col-sm-4">
+					<a *ngIf="protocoloEvaluacion3" [href]="pacienteEditando.protocoloEvaluacion3 | pdf" target="_blank">Ver Evaluación 3</a>
+					<p *ngIf="!protocoloEvaluacion3" class="text-danger">No existe documento</p>
+					<p *ngIf="protocoloEvaluacion3" class="text-secondary"><small> Subido por:&nbsp;{{protocolo7SubidoPor}}</small></p>
+				</div>
+				<div class="col-sm-5">
+					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+				</div>
+				<div class="col-lg-3">
+					<button type="button" class="btn btn-block btn-success m-r-10"
+		                         (click)="guardarArchivo('protocoloEvaluacion3')" 
+		                         [disabled]="!archivoSubir" >
+		                    	<i class="fa fa-save"></i>
+		                    	Subir archivo
+		            </button>
+	            </div>
+            </div>	
+	
+
+		<!-- ***************************************** -->
+		<!--  EVALUACIÓN 4 -->
+		<!-- ***************************************** -->	
+		    <hr>
+			<div class="row">
+				<div class="col-sm-4">
+					<a *ngIf="protocoloEvaluacion4" [href]="pacienteEditando.protocoloEvaluacion4 | pdf" target="_blank">Ver Evaluación 4</a>
+					<p *ngIf="!protocoloEvaluacion4" class="text-danger">No existe documento</p>
+					<p *ngIf="protocoloEvaluacion4" class="text-secondary"><small> Subido por:&nbsp;{{protocolo8SubidoPor}}</small></p>
+				</div>
+				<div class="col-sm-5">
+					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+				</div>
+				<div class="col-lg-3">
+					<button type="button" class="btn btn-block btn-success m-r-10"
+		                         (click)="guardarArchivo('protocoloEvaluacion4')" 
+		                         [disabled]="!archivoSubir" >
+		                    	<i class="fa fa-save"></i>
+		                    	Subir archivo
+		            </button>
+	            </div>
+            </div>	
+	
+
+		<!-- ***************************************** -->
+		<!--  EVALUACIÓN 5 -->
+		<!-- ***************************************** -->	
+		    <hr>
+			<div class="row">
+				<div class="col-sm-4">
+					<a *ngIf="protocoloEvaluacion5" [href]="pacienteEditando.protocoloEvaluacion5 | pdf" target="_blank">Ver Evaluación 5</a>
+					<p *ngIf="!protocoloEvaluacion5" class="text-danger">No existe documento</p>
+					<p *ngIf="protocoloEvaluacion5" class="text-secondary"><small> Subido por:&nbsp;{{protocolo9SubidoPor}}</small></p>
+				</div>
+				<div class="col-sm-5">
+					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+				</div>
+				<div class="col-lg-3">
+					<button type="button" class="btn btn-block btn-success m-r-10"
+		                         (click)="guardarArchivo('protocoloEvaluacion5')" 
+		                         [disabled]="!archivoSubir" >
+		                    	<i class="fa fa-save"></i>
+		                    	Subir archivo
+		            </button>
+	            </div>
+            </div>	
+	
+		</div>	
+	</div>
+
+	<!-- ***************************************** -->
+	<!-- PROTOCOLO INFORME FINAL -->
+	<!-- ***************************************** -->	
+
+	<div class="card text-light" >
+		<div class="card-header bg-dark  ">
+			<div class="row">
+				<div class="col-sm-6">
+				  	Informe Final
+				</div>
+				<div class="col-sm-6 text-right">
+					<small> Subido por:&nbsp;{{protocolo10SubidoPor}}</small> 
+				</div>
+		    </div>
+		</div>
+		<div class="card-body text-body shadow-sm p-3 bg-white rounded">
+			<div class="row">
+				<div class="col-sm-4">
+					<a *ngIf="protocoloInformeFinal" [href]="pacienteEditando.protocoloInformeFinal | pdf" target="_blank">Ver Informe Final</a>
+					<p *ngIf="!protocoloInformeFinal" class="text-danger">No existe documento</p>
+				</div>
+				<div class="col-sm-5">
+					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+				</div>
+				<div class="col-lg-3">
+					<button type="button" class="btn btn-block btn-success m-r-10"
+		                         (click)="guardarArchivo('protocoloInformeFinal')" 
+		                         [disabled]="!archivoSubir" >
+		                    	<i class="fa fa-save"></i>
+		                    	Subir archivo
+		            </button>
+	            </div>
+	            
+            </div>	
+
+		</div>	  
+	</div>
+
+	<!-- ***************************************** -->
+	<!-- DOWNLOAD -->
+	<!-- ***************************************** -->	
+
+	<div class="card text-light" >
+		<div class="card-header bg-dark  ">
+			<div class="row">
+				<div class="col-sm-6">
+				  	Download
+				</div>
+				<div class="col-sm-6 text-right">
+					<small> Protocolos</small> 
+				</div>
+		    </div>
+		</div>
+		<div class="card-body text-body shadow-sm p-3 bg-white rounded">
+			<div class="row">
+				<div class="col-sm-12">
+					<a [href]="archivo1 | doc" download>Modulo 1 No palabras.doc</a>
+				</div>
+				<hr>
+				<div class="col-sm-12">
+					<a [href]="archivo2 | doc" download>Modulo 1 Palabras.doc</a>
+				</div>
+				<hr>
+				<div class="col-sm-12">
+					<a [href]="archivo3 | doc" download>Modulo 2 Mayores de 5 años.doc</a>
+				</div>
+				<hr>
+				<div class="col-sm-12">
+					<a [href]="archivo4 | doc" download>Modulo 2 Menores de 5 años.doc</a>
+				</div>
+				<hr>
+				<div class="col-sm-12">
+					<a [href]="archivo5 | doc" download>Modulo 3.doc</a>
+				</div>
+				<hr>
+				<div class="col-sm-12">
+					<a [href]="archivo6 | doc" download>Modulo 4.doc</a>
+				</div>
+				<hr>
+				<div class="col-sm-12">
+					<a [href]="archivo7 | doc" download>Modulo T No palabras.doc</a>
+				</div>
+				<hr>
+				<div class="col-sm-12">
+					<a [href]="archivo8 | doc" download>Modulo T Palabras.doc</a>
+				</div>
+				<hr>
+
+
+             </div>	
+		</div>	  
+	</div>
+	
+
+</div>
+

@@ -26,14 +26,34 @@ export class ModalCreaPacienteService {
   	//console.log(paciente.name);
   	let nuevoPaciente = new Paciente(
       paciente.rut,
-  		paciente.name,
+  	  paciente.name,
       paciente.fechaNacimiento,
       paciente.establecimiento,
       paciente.nivel,
       paciente.direccion,
       paciente.fijo,
       paciente.celular,
-		  paciente.email,
+	  paciente.email,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
 	);
 	//console.log(paciente.observaciones);
    this._pacienteService.crearPaciente(nuevoPaciente)

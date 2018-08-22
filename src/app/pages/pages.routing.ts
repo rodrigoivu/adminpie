@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { ProfesionalesComponent } from './profesionales/profesionales.component';
 import { BloqueodiasgeneralComponent } from './bloqueodiasgeneral/bloqueodiasgeneral.component';
 import { FichasComponent } from './fichas/fichas.component';
+import { AdjuntosComponent } from './adjuntos/adjuntos.component';
 import { ReservasComponent } from './reservas/reservas.component';
 import { PacientesComponent } from './pacientes/pacientes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
@@ -187,6 +188,19 @@ export const PagesRoutes: Routes = [
             { title: 'Inicio', url: '/starter' },
             { title: 'Pacientes', url: '/pages/pacientes' },
             { title: 'Fichas Paciente' }
+          ]
+        }
+      },
+      {
+        path: 'adjuntospaciente',
+        component: AdjuntosComponent,
+        canActivate: [ VerificaTokenGuard ],
+        data: {
+          title: 'Adjuntos Paciente',
+          urls: [
+            { title: 'Inicio', url: '/starter' },
+            { title: 'Pacientes', url: '/pages/pacientes' },
+            { title: 'Adjuntos Paciente' }
           ]
         }
       }

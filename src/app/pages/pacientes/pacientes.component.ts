@@ -81,6 +81,10 @@ export class PacientesComponent implements AfterViewInit, OnInit {
   fichasPaciente( paciente: Paciente ){
     this._pacienteService.verFichasPaciente(paciente);
   }
+
+  adjuntosPaciente( paciente: Paciente ){
+    this._pacienteService.verAdjuntosPaciente(paciente);
+  }
   
   cambiarDesde( valor: number ){
 

@@ -33,7 +33,20 @@
         </div>
         <br>
     	<div class="card text-light" >
-			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
+			  <div class="card-header bg-dark  ">
+			     <div class="row">
+				  	<div class="col-sm-4">
+				  		Profesional y Fechas de evaluación 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaAnamnesis}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Anamnesis</small>
+				  	</div>
+				</div>
+		  	
+			  </div>
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formAnamnesis">
 					  <div class="form-group row">
@@ -53,7 +66,19 @@
 	<!-- Antecedentes Generales FICHA ANAMNESIS -->
 	<!-- ***************************************** -->
 		 <div class="card text-light" >
-			  <div class="card-header bg-dark ">Antecedentes Generales</div>
+			  <div class="card-header bg-dark ">
+			     <div class="row">
+				  	<div class="col-sm-4">
+				  		Antecedentes Generales 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaAnamnesis}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Anamnesis</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formDatosGenerales" >
 					  <div class="form-group row">
@@ -103,7 +128,19 @@
 	<!-- Antecedentes Familiares ANAMNESIS-->
 	<!-- ***************************************** -->
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Antecedentes Familiares</div>
+			  <div class="card-header bg-dark ">
+			   	<div class="row">
+				  	<div class="col-sm-4">
+				  		Antecedentes Familiares 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaAnamnesis}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Anamnesis</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="actualizaFichaAnamnesis()">
 			    	<div formGroupName="antecedentesFamiliares"> 
@@ -175,7 +212,19 @@
 	<!-- Antecedentes de Salud ANAMNESIS-->
 	<!-- ***************************************** -->		
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Antecedentes de Salud</div>
+			  <div class="card-header bg-dark ">
+			   	<div class="row">
+				  	<div class="col-sm-4">
+				  		Antecedentes de Salud
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaAnamnesis}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Anamnesis</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="actualizaFichaAnamnesis()">
 			    	<div formGroupName="antecedentesSalud" >
@@ -252,7 +301,19 @@
 	<!-- Historial Clínico ANAMNESIS-->
 	<!-- ***************************************** -->			
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Historial Clínico</div>
+			  <div class="card-header bg-dark ">
+			   	<div class="row">
+				  	<div class="col-sm-4">
+				  		Historial Clínico 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaAnamnesis}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Anamnesis</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="actualizaFichaAnamnesis()">
 			      <div formGroupName="historialClinico">
@@ -354,7 +415,19 @@
 	<!-- Desarrollo Evolutivo ANAMNESIS-->
 	<!-- ***************************************** -->			
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Desarrollo Evolutivo</div>
+			  <div class="card-header bg-dark ">
+			   	<div class="row">
+				  	<div class="col-sm-4">
+				  		Desarrollo Evolutivo 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaAnamnesis}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Anamnesis</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="actualizaFichaAnamnesis()">
 			      <div formGroupName="desarrolloEvolutivo">
@@ -478,7 +551,19 @@
 	<!-- Destrezas Sociales Y Comunicativas ANAMNESIS -->
 	<!-- ***************************************** -->		
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Destrezas Sociales Y Comunicativas</div>
+			  <div class="card-header bg-dark ">
+			   	<div class="row">
+				  	<div class="col-sm-4">
+				  		Destrezas Sociales Y Comunicativas
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaAnamnesis}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Anamnesis</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="actualizaFichaAnamnesis()">
 			      <div formGroupName="destrezasSocialesComunicativas">
@@ -596,7 +681,19 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 	<!-- Comportamiento Lúdico, Intereses y Personalidad ANAMNESIS-->
 	<!-- ***************************************** -->	
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Comportamiento Lúdico, Intereses y Personalidad</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		Comportamiento Lúdico, Intereses y Personalidad 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaAnamnesis}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Anamnesis</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="actualizaFichaAnamnesis()">
 			      <div formGroupName="comportamientoLudico">
@@ -634,7 +731,19 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 	<!-- Situación Social y Actual ANAMNESIS-->
 	<!-- ***************************************** -->			
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Situación Social y Actual</div>
+			  <div class="card-header bg-dark ">
+			  	 <div class="row">
+				  	<div class="col-sm-4">
+				  		Situación Social y Actual
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaAnamnesis}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Anamnesis</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formAnamnesis" id="" (ngSubmit)="actualizaFichaAnamnesis()">
 			      <div formGroupName="situacionSocial">
@@ -691,7 +800,19 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
         </div>
         <br>
     	<div class="card text-light" >
-    	   <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
+    	   <div class="card-header bg-dark ">
+			 	<div class="row">
+				  	<div class="col-sm-4">
+				  		Profesional y Fechas de evaluación
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaGeneral}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> General</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formGeneral">
 					  <div class="form-group row">
@@ -711,7 +832,19 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 			  </div>
 		</div>
     	<div class="card text-light" >
-			  <div class="card-header bg-dark ">Ficha Médica General</div>
+			  <div class="card-header bg-dark ">
+			   	<div class="row">
+				  	<div class="col-sm-4">
+				  		Ficha Médica General 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaGeneral}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> General</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formGeneral" (ngSubmit)="actualizaFichaGeneral()">
 			      <div formGroupName="medicaGeneral">
@@ -765,7 +898,19 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
         </div>
         <br>
     	<div class="card text-light" >
-			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
+			  <div class="card-header bg-dark ">
+			   	<div class="row">
+				  	<div class="col-sm-4">
+				  		Profesional y Fechas de evaluación 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaKinesiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Kinesiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formKinesiologia"> 
 					  <div class="form-group row">
@@ -788,7 +933,19 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
 	<!-- OBJETIVO GENERAL 1 KINESIOLOGÍA -->
 	<!-- ***************************************** -->
     	<div class="card text-light" >
-			  <div class="card-header bg-dark ">Objetvo General</div>
+			  <div class="card-header bg-dark ">
+			   	<div class="row">
+				  	<div class="col-sm-4">
+				  		Objetvo General 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaKinesiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Kinesiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form >
 					  <div class="form-group row">
@@ -803,7 +960,19 @@ desplazamientos a fin de contribuir con la autonomía del/la estudiante.</h6>
 		</div>
 
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Objetvos Específicos</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		Objetvos Específicos 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaKinesiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Kinesiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formKinesiologia" (ngSubmit)="actualizaFichaKinesiologia()" >
 			    	<div formGroupName="estabilidadDesplazamiento">
@@ -998,7 +1167,19 @@ desplazamientos a fin de contribuir con la autonomía del/la estudiante.</h6>
 	<!-- OBJETIVO GENERAL 2. KINESIOLOGÍA-->
 	<!-- ***************************************** -->
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Objetvo General</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		Objetvo General 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaKinesiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Kinesiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form >
 					  <div class="form-group row">
@@ -1012,7 +1193,19 @@ dinámica a fin de contribuir con la autonomía del/la estudiante.</h6>
 			  </div>
 		</div>
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">ObjetvoS Específicos</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		ObjetvoS Específicos 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaKinesiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Kinesiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formKinesiologia" (ngSubmit)="actualizaFichaKinesiologia()">
 			      <div formGroupName="coordinacionDinamica">	
@@ -1161,7 +1354,19 @@ dinámica a fin de contribuir con la autonomía del/la estudiante.</h6>
 	<!-- OBJETIVO GENERAL 3. KINESIOLOGÍA-->
 	<!-- ***************************************** -->
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Objetvo General</div>
+			  <div class="card-header bg-dark ">
+			   	<div class="row">
+				  	<div class="col-sm-4">
+				  		Objetvo General 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaKinesiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Kinesiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form>
 					  <div class="form-group row">
@@ -1175,7 +1380,19 @@ conductas psicomotoras descendidas y facilitar la autonomía en el estudiante.</
 			  </div>
 		</div>
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">ObjetvoS Específicos</div>
+			  <div class="card-header bg-dark ">
+			   	<div class="row">
+				  	<div class="col-sm-4">
+				  		Objetvos Específicos
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaKinesiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Kinesiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formKinesiologia" (ngSubmit)="actualizaFichaKinesiologia()">
 			      <div formGroupName="conductasPsicomotoras">	
@@ -1375,7 +1592,19 @@ reacciones de equilibrio con estímulos externos.</label>
 	<!-- OBJETIVO GENERAL 4. KINESIOLOGÍA-->
 	<!-- ***************************************** -->
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Objetvo General</div>
+			  <div class="card-header bg-dark ">
+			   	<div class="row">
+				  	<div class="col-sm-4">
+				  		Objetvo General 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaKinesiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Kinesiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form>
 					  <div class="form-group row">
@@ -1389,7 +1618,19 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 			  </div>
 		</div>
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">ObjetvoS Específicos</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		Objetvos Específicos
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaKinesiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Kinesiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formKinesiologia" (ngSubmit)="actualizaFichaKinesiologia()">
 			      <div formGroupName="alineacionPostural">		
@@ -1590,7 +1831,19 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
         </div>
         <br>
         <div class="card text-light" >
-			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		Profesional y Fechas de evaluación 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaPsicologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Psicología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formPsicologia" >
 					  <div class="form-group row">
@@ -1613,7 +1866,19 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<!-- 1. Establecer Vínculo PSICOLOGIA -->
 		<!-- ***************************************** -->
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">1. Establecer Vínculo</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		1. Establecer Vínculo 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaPsicologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Psicología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formPsicologia" (ngSubmit)="actualizaFichaPsicologia()" >
 			      <div formGroupName="establecerVinculo">
@@ -1653,7 +1918,19 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<!-- 2. Desarrollar capacidades adaptativas PSICOLOGIA -->
 		<!-- ***************************************** -->		
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">2. Desarrollar capacidades adaptativas</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		2. Desarrollar capacidades adaptativas 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaPsicologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Psicología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formPsicologia" (ngSubmit)="actualizaFichaPsicologia()">
 			      <div formGroupName="capacidadesAdaptativas">	
@@ -1703,7 +1980,19 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<!-- 3. Resignificar Autoconcepto PSICOLOGIA -->
 		<!-- ***************************************** -->				
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">3. Resignificar Autoconcepto</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		3. Resignificar Autoconcepto
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaPsicologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Psicología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formPsicologia" (ngSubmit)="actualizaFichaPsicologia()">
 			      <div formGroupName="autoconcepto">	
@@ -1765,7 +2054,19 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 		<!-- 4. Analizar labilidad emocional PSICOLOGIA -->
 		<!-- ***************************************** -->				
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">4. Analizar labilidad emocional</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		4. Analizar labilidad emocional
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaPsicologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Psicología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formPsicologia" (ngSubmit)="actualizaFichaPsicologia()">
 			      <div formGroupName="labilidadEmocional">		
@@ -1822,7 +2123,19 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
         </div>
         <br>
         <div class="card text-light" >
-			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		Profesional y Fechas de evaluación
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaTerapeuta}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Terapeuta O.</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formTerapeuta">
 					  <div class="form-group row">
@@ -1844,7 +2157,19 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
   <!-- Actividades Básicas de la Vida Diaria (ABVD) TERAPEUTA OCUPACIONAL -->
   <!-- ***************************************** -->
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Actividades Básicas de la Vida Diaria (ABVD)</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		Actividades Básicas de la Vida Diaria (ABVD)
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaTerapeuta}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Terapeuta O.</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()">
 			    	<div formGroupName="actividadesVidaDiaria">	
@@ -1896,8 +2221,7 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
 						    </div>
 						    <hr>
 						    <div class="col-sm-12">
-						    	<label for="" class="col-form-label ">3. Desarrollar independencia en actividades de higiene menor (lavado de dientes, de manos,
-de cara).</label>
+						    	<label for="" class="col-form-label ">3. Desarrollar independencia en actividades de higiene menor (lavado de dientes, de manos, de cara).</label>
 								<div class="form-check ">
 									<input formControlName="actividad10" class="form-check-input " type="checkbox" value="" id="">
 									<label class="form-check-label " for="">Desensibilización peri e intra oral para lavado de dientes</label>
@@ -1954,7 +2278,19 @@ de cara).</label>
   <!-- Actividades Instrumentales de la vida Diaria TERAPEUTA OCUPACIONAL -->
   <!-- ***************************************** -->
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Actividades Instrumentales de la vida Diaria</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		Actividades Instrumentales de la vida Diaria 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaTerapeuta}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Terapeuta O.</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()" >
 			    	<div formGroupName="actividadesInstrumentales">	
@@ -2048,7 +2384,19 @@ de cara).</label>
   <!-- Descanso y sueño TERAPEUTA OCUPACIONAL -->
   <!-- ***************************************** -->
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Descanso y sueño</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		Descanso y sueño
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaTerapeuta}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Terapeuta O.</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()" >
 			    	<div formGroupName="descansoSueno">	
@@ -2084,7 +2432,19 @@ de cara).</label>
   <!-- Educación TERAPEUTA OCUPACIONAL -->
   <!-- ***************************************** -->
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Educación</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		Educación 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaTerapeuta}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Terapeuta O.</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()" >
 			    	<div formGroupName="educacion">	
@@ -2145,7 +2505,19 @@ interés).</label>
   <!-- Ocio y tiempo libre TERAPEUTA OCUPACIONAL -->
   <!-- ***************************************** -->
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Ocio y tiempo libre</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		Ocio y tiempo libre 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaTerapeuta}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Terapeuta O.</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()" >
 			    	<div formGroupName="ocio">	
@@ -2181,7 +2553,19 @@ interés).</label>
   <!-- Juego TERAPEUTA OCUPACIONAL -->
   <!-- ***************************************** -->
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Juego</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		Juego
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaTerapeuta}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Terapeuta O.</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()" >
 			    	<div formGroupName="juego">	
@@ -2398,7 +2782,19 @@ la cabeza, sin ayudarse de las manos, y meter todas las cabezas dentro de él.</
   <!-- Participación social TERAPEUTA OCUPACIONAL -->
   <!-- ***************************************** -->
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Participación social</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		Participación social
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaTerapeuta}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Terapeuta O.</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()" >
 			    	<div formGroupName="participacionSocial">	
@@ -2535,7 +2931,19 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
   <!-- Objetivos transversales TERAPEUTA OCUPACIONAL -->
   <!-- ***************************************** -->
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Objetivos transversales</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-4">
+				  		Objetivos transversales 
+				  	</div>
+				  	<div class="col-sm-4">
+				  		<small> {{fechaUltimaConsultaTerapeuta}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Terapeuta O.</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formTerapeuta" (ngSubmit)="actualizaFichaTerapeuta()" >
 			    	<div formGroupName="transversal">	
@@ -2589,7 +2997,19 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
         </div>
         <br>
         <div class="card text-light" >
-			  <div class="card-header bg-dark ">Profesional y Fechas de evaluación</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-5">
+				  		Profesional y Fechas de evaluación 
+				  	</div>
+				  	<div class="col-sm-3">
+				  		<small> {{fechaUltimaConsultaFonoaudiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Fonoaudiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formFonoaudiologia" >
 					  <div class="form-group row">
@@ -2611,7 +3031,19 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
 			  </div>
 		</div>
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Objetivos Generales</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-5">
+				  		Objetivos Generales 
+				  	</div>
+				  	<div class="col-sm-3">
+				  		<small> {{fechaUltimaConsultaFonoaudiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Fonoaudiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form >
 					  <div class="form-group row">
@@ -2629,7 +3061,19 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
   <!-- Área: Funciones prelingüísticas: FICHA FONOAUDIOLOGICA -->
   <!-- ***************************************** -->		
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Área: Funciones prelingüísticas:</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-5">
+				  		Área: Funciones prelingüísticas: 
+				  	</div>
+				  	<div class="col-sm-3">
+				  		<small> {{fechaUltimaConsultaFonoaudiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Fonoaudiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="prelinguisticas">
@@ -2813,7 +3257,19 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
   <!-- Área: Funciones prearticulatorias: FICHA FONOAUDIOLOGICA -->
   <!-- ***************************************** -->		
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Área: Funciones prearticulatorias:</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-5">
+				  		Área: Funciones prearticulatorias:
+				  	</div>
+				  	<div class="col-sm-3">
+				  		<small> {{fechaUltimaConsultaFonoaudiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Fonoaudiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()" >
 			       <div formGroupName="prearticulatorias">
@@ -2972,7 +3428,19 @@ bajalengua y gasa a distintas temperaturas.)</label>
   <!-- Área: Habilidades psicolingüísticas: FICHA FONOAUDIOLOGICA -->
   <!-- ***************************************** -->		
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Área: Habilidades psicolingüísticas:</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-5">
+				  		Área: Habilidades psicolingüísticas:
+				  	</div>
+				  	<div class="col-sm-3">
+				  		<small> {{fechaUltimaConsultaFonoaudiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Fonoaudiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="psicolinguisticas">
@@ -3056,7 +3524,19 @@ bajalengua y gasa a distintas temperaturas.)</label>
   <!-- Área: Lenguaje Nivel fonético - fonológico FICHA FONOAUDIOLOGICA -->
   <!-- ***************************************** -->		
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Nivel fonético - fonológico</strong></div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-5">
+				  		Área: Lenguaje <strong>Nivel fonético - fonológico</strong>
+				  	</div>
+				  	<div class="col-sm-3">
+				  		<small> {{fechaUltimaConsultaFonoaudiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Fonoaudiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="foneticoFonologico">
@@ -3438,7 +3918,19 @@ bajalengua y gasa a distintas temperaturas.)</label>
   <!-- Área: Lenguaje Nivel semántico: FICHA FONOAUDIOLOGICA -->
   <!-- ***************************************** -->		
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Nivel semántico:</strong></div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-5">
+				  		Área: Lenguaje <strong>Nivel semántico:</strong> 
+				  	</div>
+				  	<div class="col-sm-3">
+				  		<small> {{fechaUltimaConsultaFonoaudiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Fonoaudiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="semantico">
@@ -3624,7 +4116,19 @@ bajalengua y gasa a distintas temperaturas.)</label>
   <!-- Área: Lenguaje Nivel morfosintáctico: FICHA FONOAUDIOLOGICA -->
   <!-- ***************************************** -->		
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Nivel morfosintáctico:</strong></div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-5">
+				  		Área: Lenguaje <strong>Nivel morfosintáctico:</strong> 
+				  	</div>
+				  	<div class="col-sm-3">
+				  		<small> {{fechaUltimaConsultaFonoaudiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Fonoaudiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="morfosintactico">
@@ -3774,7 +4278,19 @@ bajalengua y gasa a distintas temperaturas.)</label>
   <!-- Área: Lenguaje Nivel pragmático: FICHA FONOAUDIOLOGICA -->
   <!-- ***************************************** -->		
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Nivel pragmático:</strong></div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-5">
+				  		Área: Lenguaje <strong>Nivel pragmático:</strong>
+				  	</div>
+				  	<div class="col-sm-3">
+				  		<small> {{fechaUltimaConsultaFonoaudiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Fonoaudiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="pragmatico">
@@ -3957,7 +4473,19 @@ bajalengua y gasa a distintas temperaturas.)</label>
   <!-- Área: Lenguaje Discurso narrativo: FICHA FONOAUDIOLOGICA -->
   <!-- ***************************************** -->		
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Área: Lenguaje <strong>Discurso narrativo:</strong></div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-5">
+				  		Área: Lenguaje <strong>Discurso narrativo:</strong> 
+				  	</div>
+				  	<div class="col-sm-3">
+				  		<small> {{fechaUltimaConsultaFonoaudiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Fonoaudiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="discursoNarrativo">
@@ -4028,7 +4556,19 @@ bajalengua y gasa a distintas temperaturas.)</label>
   <!-- Área: Habilidades sociales y comunicativas: FICHA FONOAUDIOLOGICA -->
   <!-- ***************************************** -->		
 		<div class="card text-light" >
-			  <div class="card-header bg-dark ">Área: Habilidades sociales y comunicativas:</div>
+			  <div class="card-header bg-dark ">
+			   <div class="row">
+				  	<div class="col-sm-5">
+				  		Área: Habilidades sociales y comunicativas:
+				  	</div>
+				  	<div class="col-sm-3">
+				  		<small> {{fechaUltimaConsultaFonoaudiologia}}</small> 
+				  	</div>
+				  	<div class="col-sm-4 text-right">
+				  		<small> Fonoaudiología</small>
+				  	</div>
+				</div>
+			  </div>	
 			  <div class="card-body text-body shadow p-3 mb-5 bg-white rounded">
 			    <form [formGroup]="formFonoaudiologia" (ngSubmit)="actualizaFichaFonoaudiologia()">
 			    	<div formGroupName="socialComunicativa">

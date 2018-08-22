@@ -5,6 +5,7 @@ import { URL_SERVICIOS } from '../../config/config';
 import { Observable } from 'rxjs/Observable';
 import { map, filter, catchError, mergeMap } from 'rxjs/operators';
 import { throwError } from 'rxjs/internal/observable/throwError';
+import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 
 interface NgbDate {
   day: number,
@@ -19,9 +20,11 @@ export class PacienteService {
   public token: string;
   public pacienteSeleccionado: Paciente;
   public notificacionVerFichas = new EventEmitter<any>();
+  public notificacionActualizado = new EventEmitter<any>();
 
   constructor(
-  	public http: HttpClient
+  	public http: HttpClient,
+    public _subirArchivoService: SubirArchivoService
   ) {
 
     this.token = localStorage.getItem('token');
@@ -72,6 +75,40 @@ export class PacienteService {
 
     this.pacienteSeleccionado = paciente;
     
+  }
+
+  verAdjuntosPaciente(paciente: Paciente){
+
+    this.pacienteSeleccionado = paciente;
+    
+  }
+
+  guardarArchivo( archivo: File, idPaciente: string, itemArchivo:string, profesionalProfesion:string){
+    this._subirArchivoService.adjuntarArchivo( archivo, itemArchivo, idPaciente, this.token, profesionalProfesion )
+          .then ( (resp: any) =>{
+
+            swal('Archivo cargado','', 'success');
+            this.notificacionActualizado.emit(true)
+
+          })
+          .catch( resp =>{
+            console.log ( resp );
+          })
+  }
+
+  buscarPaciente(pacienteId: string){
+     let url = URL_SERVICIOS + 'api/paciente/' + pacienteId;
+     return this.http.get( url )
+          .pipe(
+              map( (resp: any) => {
+                this.pacienteSeleccionado = resp.paciente;
+                return resp;
+
+              }),
+              catchError( err => {
+                return err ;
+              })
+          );
   }
 
 
