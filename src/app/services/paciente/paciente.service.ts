@@ -55,13 +55,25 @@ export class PacienteService {
           .pipe(
               map( (resp: any) => {
                 swal('Paciente creado', '', 'success');
-                return resp.user;
+                return resp.paciente;
               }),
               catchError( err => {
                 swal( 'Error al crear paciente', 'Verificar si ya existe o hay un error en los datos ingresados', 'error');
                 return throwError( err );
               })
           );
+  }
+
+  actualizaPaciente( paciente: Paciente, pacienteId:string ){
+
+    let url = URL_SERVICIOS + 'api/update-paciente/' + pacienteId;
+    //url += '?token=' + this.token;
+
+    return this.http.put( url,paciente )
+                .map( (resp: any) =>{
+                  swal('Modificación guardada', 'Paciente actualizado correctamente', 'success' );
+                  return true;
+                });
   }
 
   buscarPacientes( termino: string ){

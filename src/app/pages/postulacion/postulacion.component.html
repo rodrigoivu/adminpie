@@ -1,11 +1,60 @@
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                {{subtitle}}
-
-
-            </div>
-        </div>
+	<div class="text-right">
+            		<button (click)="crearPesquisa()" class="btn btn-primary waves-effect waves-light btn-rounded">
+    	        		<i class="fa fa-plus"></i>
+    	        		Crear Nueva Pesquisa
+	            	</button>
     </div>
-</div>
+	<br>
+	<div class="card text-light" >
+		<div class="card-header bg-dark  ">
+			<div class="row">
+				<div class="col-sm-6">
+				  	Pesquisa
+				</div>
+				<div class="col-sm-6 text-right">
+					<small> Subido por: </small> 
+				</div>
+		    </div>
+		</div>
+
+		<div class="card-body text-body shadow-sm p-3  bg-white rounded">
+			<div class="row">
+
+
+				<table class="table table-hover">
+            		<thead>
+            			<tr>
+            				<th>Archivo</th>
+            				<th>Seleccionar</th>
+            				<th>Subir Archivo</th>
+            			</tr>
+            		</thead>
+            		<tbody>
+            			<tr *ngFor='let pes of pesquisas'>
+            				<td> 
+            					<a *ngIf="pes.pesquisaXls" [href]="pes.pesquisaXls | xls" download>Pesquiza &nbsp; {{pes.periodo}}</a>
+					            <p *ngIf="!pes.pesquisaXls" class="text-danger">No existe documento</p>
+					            <p *ngIf="pes.pesquisaXls" class="text-secondary"><small> Subido por:&nbsp;{{pes.subidoPor}}</small></p>
+            				</td>
+            				<td> 
+            					<input *ngIf="pes.periodo == periodoActual" (change)="seleccionaArchivo( $event.target.files[0])" type="file" name="file" >
+            				</td>
+            				<td> 
+            					<button *ngIf="pes.periodo == periodoActual" type="button" class="btn btn-block btn-success m-r-10"
+		                         (click)="guardarArchivo(pes._id)" 
+		                         [disabled]="!archivoSubir" >
+		                    	<i class="fa fa-save"></i>
+		                    	Subir archivo
+		            			</button>
+            				</td>
+            				
+            			</tr>
+            		</tbody>
+
+            	</table>
+
+            </div>	
+            
+            
+		</div>	  
+	</div>

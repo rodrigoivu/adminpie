@@ -53,8 +53,9 @@ export class PacientesComponent implements AfterViewInit, OnInit {
      });
 
   }
-  crearPaciente(){
-    this._modalCreaPacienteService.mostrarModal();
+  crearEditarPaciente(paciente:Paciente){
+
+    this._modalCreaPacienteService.mostrarModal(paciente);
   }
   buscarPaciente( termino: string){
     this.terminoBuscar=termino;

@@ -21,13 +21,12 @@ export class SubirArchivoService {
 	  				//console.log('Imagen subida');
 	  				resolve( JSON.parse( xhr.response )) ;
 	  			} else {
-	  				console.log('Falló la subida');
 	  				reject( xhr.response );
 	  			}
 	  		}
 	  	};
 
-	  	let url = URL_SERVICIOS + 'api/upload-image-user/' + id + '?token=' + token; ;
+	  	let url = URL_SERVICIOS + 'api/upload-image-user/' + id + '?token=' + token; 
         xhr.open ('PUT', url, true);
         xhr.send ( formData );
 	        
@@ -46,13 +45,36 @@ export class SubirArchivoService {
 	  				//console.log('Imagen subida');
 	  				resolve( JSON.parse( xhr.response )) ;
 	  			} else {
-	  				console.log('Falló la subida');
 	  				reject( xhr.response );
 	  			}
 	  		}
 	  	};
 
-	  	let url = URL_SERVICIOS + 'api/upload-pdf-paciente/' + id + '/'+ tipo +'/'+profesionalProfesion+'?token=' + token; ;
+	  	let url = URL_SERVICIOS + 'api/upload-pdf-paciente/' + id + '/'+ tipo +'/'+profesionalProfesion+'?token=' + token; 
+        xhr.open ('PUT', url, true);
+        xhr.send ( formData );
+	        
+	});
+  }
+
+  adjuntarArchivoXls( archivo: File,  id: string, token: string, usuario:string){
+
+  	return new Promise( (resolve, reject ) => {
+  		let formData = new FormData();
+	  	let xhr = new XMLHttpRequest();
+	  	formData.append ( 'archivo', archivo, archivo.name );
+
+	  	xhr.onreadystatechange = function() {
+	  		if ( xhr.readyState ===4 ){
+	  			if (xhr.status === 200 ){
+	  				resolve( JSON.parse( xhr.response )) ;
+	  			} else {
+	  				reject( xhr.response );
+	  			}
+	  		}
+	  	};
+
+	  	let url = URL_SERVICIOS + 'api/upload-xls-pesquisa/' + id + '/'+usuario+'?token=' + token; 
         xhr.open ('PUT', url, true);
         xhr.send ( formData );
 	        

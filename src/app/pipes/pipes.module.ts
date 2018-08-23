@@ -3,6 +3,7 @@ import { ImagenPipe } from './imagen.pipe';
 import { ValuesPipe } from './values.pipe';
 import { PdfPipe } from './pdf.pipe';
 import { DocPipe } from './doc.pipe';
+import { XlsPipe } from './xls.pipe';
 
 @NgModule({
   imports: [],
@@ -10,13 +11,15 @@ import { DocPipe } from './doc.pipe';
   	ImagenPipe,
   	ValuesPipe,
   	PdfPipe,
-  	DocPipe
+  	DocPipe,
+  	XlsPipe
   ],
   exports: [
   	ImagenPipe,
   	ValuesPipe,
   	PdfPipe,
-  	DocPipe
+  	DocPipe,
+    XlsPipe
   ]
 })
 export class PipesModule { }

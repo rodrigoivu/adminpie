@@ -849,58 +849,6 @@ export class FichasComponent implements OnInit {
   }
 
   
-  // registrarAnamnesis(){
-  //   let registroAnamnesis: Anamnesis;
-  //   let my = new Date();
-  //   let fecha: NgbDate={
-  //     day: my.getDate(),
-  //     month: my.getMonth() + 1 ,
-  //     year: my.getFullYear(),
-  //   }
-   
-  //   // FALTA VERIFICAR POR ROLE
-
-  //   if(!this.newformAnamnesis){
-  //     //Ya existe entonces Actualizar
-  //     registroAnamnesis = new Anamnesis(
-  //         this.pacienteEditando._id,
-  //         this._anamnesisService.fichaAnamnesis.user._id,
-  //         fecha,
-  //         this.formAnamnesis.value.anamnesisAntecedentesFamiliares,
-  //         this.formAnamnesis.value.anamnesisAntecedentesSalud,
-  //         this.formAnamnesis.value.anamnesisHistorialClinico,
-  //         this.formAnamnesis.value.anamnesisDesarrolloEvolutivo,
-  //         this.formAnamnesis.value.anamnesisDestrezasSocialesComunicativas,
-  //         this.formAnamnesis.value.anamnesisComportamientoLudico,
-  //         this.formAnamnesis.value.anamnesisSituacionSocial
-  //     );
-
-  //     this._anamnesisService.actualizarAnamnesis(registroAnamnesis)
-  //         .subscribe();
-  //   }else{
-  //     //No existe entonces crear
-  //     registroAnamnesis = new Anamnesis(
-  //         this.pacienteEditando._id,
-  //         this._idUsuario,
-  //         fecha,
-  //         this.formAnamnesis.value.anamnesisAntecedentesFamiliares,
-  //         this.formAnamnesis.value.anamnesisAntecedentesSalud,
-  //         this.formAnamnesis.value.anamnesisHistorialClinico,
-  //         this.formAnamnesis.value.anamnesisDesarrolloEvolutivo,
-  //         this.formAnamnesis.value.anamnesisDestrezasSocialesComunicativas,
-  //         this.formAnamnesis.value.anamnesisComportamientoLudico,
-  //         this.formAnamnesis.value.anamnesisSituacionSocial
-
-  //     );
-
-
-  //     this._anamnesisService.crearAnamnesis(registroAnamnesis)
-  //         .subscribe(resp =>{
-  //           this.buscarFichaAnamnesis( this.pacienteEditando._id );
-  //         });
-  //   }
-
-  // }
   
   actualizaFichaAnamnesis(){
     let registro: Anamnesis;

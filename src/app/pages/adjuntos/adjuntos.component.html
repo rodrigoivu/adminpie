@@ -30,12 +30,12 @@
 					<p *ngIf="!protocoloAdir" class="text-danger">No existe documento</p>
 				</div>
 				<div class="col-sm-5">
-					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+					<input (change)="seleccionArchivo( $event.target.files[0],1)" type="file" name="file" >
 				</div>
 				<div class="col-lg-3">
 					<button type="button" class="btn btn-block btn-success m-r-10"
-		                         (click)="guardarArchivo('protocoloAdir')" 
-		                         [disabled]="!archivoSubir" >
+		                         (click)="guardarArchivo('protocoloAdir',1)" 
+		                         [disabled]="!archivoSubir1" >
 		                    	<i class="fa fa-save"></i>
 		                    	Subir archivo
 		            </button>
@@ -69,12 +69,12 @@
 					<p *ngIf="!protocoloAdos" class="text-danger">No existe documento</p>
 				</div>
 				<div class="col-sm-5">
-					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+					<input (change)="seleccionArchivo( $event.target.files[0],2)" type="file" name="file" >
 				</div>
 				<div class="col-lg-3">
 					<button type="button" class="btn btn-block btn-success m-r-10"
-		                         (click)="guardarArchivo('protocoloAdos')" 
-		                         [disabled]="!archivoSubir" >
+		                         (click)="guardarArchivo('protocoloAdos',2)" 
+		                         [disabled]="!archivoSubir2" >
 		                    	<i class="fa fa-save"></i>
 		                    	Subir archivo
 		            </button>
@@ -111,12 +111,12 @@
 					<p *ngIf="protocoloEvaluacion1" class="text-secondary"><small> Subido por:&nbsp;{{protocolo5SubidoPor}}</small></p>
 				</div>
 				<div class="col-sm-5">
-					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+					<input (change)="seleccionArchivo( $event.target.files[0],3)" type="file" name="file" >
 				</div>
 				<div class="col-lg-3">
 					<button type="button" class="btn btn-block btn-success m-r-10"
-		                         (click)="guardarArchivo('protocoloEvaluacion1')" 
-		                         [disabled]="!archivoSubir" >
+		                         (click)="guardarArchivo('protocoloEvaluacion1',3)" 
+		                         [disabled]="!archivoSubir3" >
 		                    	<i class="fa fa-save"></i>
 		                    	Subir archivo
 		            </button>
@@ -135,12 +135,12 @@
 					<p *ngIf="protocoloEvaluacion2" class="text-secondary"><small> Subido por:&nbsp;{{protocolo6SubidoPor}}</small></p>
 				</div>
 				<div class="col-sm-5">
-					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+					<input (change)="seleccionArchivo( $event.target.files[0],4)" type="file" name="file" >
 				</div>
 				<div class="col-lg-3">
 					<button type="button" class="btn btn-block btn-success m-r-10"
-		                         (click)="guardarArchivo('protocoloEvaluacion2')" 
-		                         [disabled]="!archivoSubir" >
+		                         (click)="guardarArchivo('protocoloEvaluacion2',4)" 
+		                         [disabled]="!archivoSubir4" >
 		                    	<i class="fa fa-save"></i>
 		                    	Subir archivo
 		            </button>
@@ -159,12 +159,12 @@
 					<p *ngIf="protocoloEvaluacion3" class="text-secondary"><small> Subido por:&nbsp;{{protocolo7SubidoPor}}</small></p>
 				</div>
 				<div class="col-sm-5">
-					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+					<input (change)="seleccionArchivo( $event.target.files[0],5)" type="file" name="file" >
 				</div>
 				<div class="col-lg-3">
 					<button type="button" class="btn btn-block btn-success m-r-10"
-		                         (click)="guardarArchivo('protocoloEvaluacion3')" 
-		                         [disabled]="!archivoSubir" >
+		                         (click)="guardarArchivo('protocoloEvaluacion3',5)" 
+		                         [disabled]="!archivoSubir5" >
 		                    	<i class="fa fa-save"></i>
 		                    	Subir archivo
 		            </button>
@@ -183,12 +183,12 @@
 					<p *ngIf="protocoloEvaluacion4" class="text-secondary"><small> Subido por:&nbsp;{{protocolo8SubidoPor}}</small></p>
 				</div>
 				<div class="col-sm-5">
-					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+					<input (change)="seleccionArchivo( $event.target.files[0],6)" type="file" name="file" >
 				</div>
 				<div class="col-lg-3">
 					<button type="button" class="btn btn-block btn-success m-r-10"
-		                         (click)="guardarArchivo('protocoloEvaluacion4')" 
-		                         [disabled]="!archivoSubir" >
+		                         (click)="guardarArchivo('protocoloEvaluacion4',6)" 
+		                         [disabled]="!archivoSubir6" >
 		                    	<i class="fa fa-save"></i>
 		                    	Subir archivo
 		            </button>
@@ -207,12 +207,12 @@
 					<p *ngIf="protocoloEvaluacion5" class="text-secondary"><small> Subido por:&nbsp;{{protocolo9SubidoPor}}</small></p>
 				</div>
 				<div class="col-sm-5">
-					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+					<input (change)="seleccionArchivo( $event.target.files[0],7)" type="file" name="file" >
 				</div>
 				<div class="col-lg-3">
 					<button type="button" class="btn btn-block btn-success m-r-10"
-		                         (click)="guardarArchivo('protocoloEvaluacion5')" 
-		                         [disabled]="!archivoSubir" >
+		                         (click)="guardarArchivo('protocoloEvaluacion5',7)" 
+		                         [disabled]="!archivoSubir7" >
 		                    	<i class="fa fa-save"></i>
 		                    	Subir archivo
 		            </button>
@@ -244,12 +244,12 @@
 					<p *ngIf="!protocoloInformeFinal" class="text-danger">No existe documento</p>
 				</div>
 				<div class="col-sm-5">
-					<input (change)="seleccionArchivo( $event.target.files[0])" type="file" name="file" >
+					<input (change)="seleccionArchivo( $event.target.files[0],8)" type="file" name="file" >
 				</div>
 				<div class="col-lg-3">
 					<button type="button" class="btn btn-block btn-success m-r-10"
-		                         (click)="guardarArchivo('protocoloInformeFinal')" 
-		                         [disabled]="!archivoSubir" >
+		                         (click)="guardarArchivo('protocoloInformeFinal',8)" 
+		                         [disabled]="!archivoSubir8" >
 		                    	<i class="fa fa-save"></i>
 		                    	Subir archivo
 		            </button>

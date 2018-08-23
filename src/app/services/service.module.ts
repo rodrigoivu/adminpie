@@ -21,7 +21,8 @@ import { UsuarioService,
          GeneralService,
          KinesiologiaService,
          PsicologiaService,
-         TerapeutaService
+         TerapeutaService,
+         PesquisaService
        } from './service.index';
 
 
@@ -53,6 +54,7 @@ import { HttpClientModule } from '@angular/common/http';
     KinesiologiaService,
     PsicologiaService,
     TerapeutaService,
+    PesquisaService,
     ModalUploadService
   ],
   declarations: []

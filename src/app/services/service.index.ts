@@ -19,3 +19,4 @@ export { GeneralService } from './fichas/general.service';
 export { KinesiologiaService } from './fichas/kinesiologia.service';
 export { PsicologiaService } from './fichas/psicologia.service';
 export { TerapeutaService } from './fichas/terapeuta.service';
+export { PesquisaService } from './pesquisa/pesquisa.service';

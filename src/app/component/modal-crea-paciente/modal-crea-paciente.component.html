@@ -76,11 +76,88 @@
 				  
 				<!-- </form> -->
 
+				<!-- ***************************************** -->
+				<!-- AUTORIZACION DE SALIDA -->
+				<!-- ***************************************** -->	
+
+					<div *ngIf="!flgCrea" class="card text-light" >
+						<div class="card-header bg-dark">
+							<div class="row">
+								<div class="col-sm-6">
+								  	Autorización salida de paciente de Establecimiento Escolar
+								</div>
+								<div class="col-sm-6 text-right">
+									<small> Subido por:&nbsp;{{_modalCreaPacienteService.protocolo1SubidoPor}}</small> 
+								</div>
+						    </div>
+						</div>
+						<div class="card-body text-body shadow-sm p-3 bg-white rounded">
+							<div class="row">
+								<div class="col-sm-3">
+									<a *ngIf="_modalCreaPacienteService.autorizacionSalida" [href]="_modalCreaPacienteService.pacienteSeleccionado.autorizacionSalida | pdf" target="_blank">Ver Autorización</a>
+									<p *ngIf="!_modalCreaPacienteService.autorizacionSalida" class="text-danger">No existe documento</p>
+								</div>
+								<div class="col-sm-6">
+									<input (change)="seleccionArchivo( $event.target.files[0],1)" type="file" name="file" >
+								</div>
+								<div class="col-lg-3">
+									<button type="button" class="btn btn-block btn-success m-r-10"
+						                         (click)="guardarArchivo('autorizacionSalida',1)" 
+						                         [disabled]="!archivoSubir1" >
+						                    	<i class="fa fa-save"></i>
+						                    	Subir archivo
+						            </button>
+					            </div>
+					            
+				            </div>	
+
+						</div>	  
+					</div>
+
+					<!-- ***************************************** -->
+					<!-- AUTORIZACION DE transporte -->
+					<!-- ***************************************** -->	
+
+					<div *ngIf="!flgCrea" class="card text-light" >
+						<div class="card-header bg-dark  ">
+							<div class="row">
+								<div class="col-sm-6">
+								  	Autorización uso de transporte escolar
+								</div>
+								<div class="col-sm-6 text-right">
+									<small> Subido por:&nbsp;{{_modalCreaPacienteService.protocolo2SubidoPor}}</small> 
+								</div>
+						    </div>
+						</div>
+						<div class="card-body text-body shadow-sm p-3 bg-white rounded">
+							<div class="row">
+								<div class="col-sm-3">
+									<a *ngIf="_modalCreaPacienteService.autorizacionTransporte" [href]="_modalCreaPacienteService.pacienteSeleccionado.autorizacionTransporte | pdf" target="_blank">Ver Autorización</a>
+									<p *ngIf="!_modalCreaPacienteService.autorizacionTransporte" class="text-danger">No existe documento</p>
+								</div>
+								<div class="col-sm-6">
+									<input (change)="seleccionArchivo( $event.target.files[0],2)" type="file" name="file" >
+								</div>
+								<div class="col-lg-3">
+									<button type="button" class="btn btn-block btn-success m-r-10"
+						                         (click)="guardarArchivo('autorizacionTransporte',2)" 
+						                         [disabled]="!archivoSubir2" >
+						                    	<i class="fa fa-save"></i>
+						                    	Subir archivo
+						            </button>
+					            </div>
+					            
+				            </div>	
+
+						</div>	  
+					</div>
+
 
 	      </div>
 	      <div class="modal-footer">
 	        <button (click)="cerrarModal()" type="button" class="btn btn-secondary" >Cerrar</button>
-	        <button  type="submit" class="btn btn-primary" form="Formulario">Guardar</button>
+	        <button *ngIf="flgCrea" type="submit" class="btn btn-primary" form="Formulario">Guardar</button>
+	        <button *ngIf="!flgCrea" type="submit" class="btn btn-primary" form="Formulario">Actualizar</button>
 	      </div>
 	    </div>
 
