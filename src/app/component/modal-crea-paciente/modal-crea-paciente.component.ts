@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalCreaPacienteService } from './modal-crea-paciente.service';
 import { NgbDateStruct,NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
-interface NgbDate {
-  day: number,
-  month: number,
-  year: number
-}
 
 @Component({
   selector: 'app-modal-crea-paciente',
@@ -21,6 +16,8 @@ export class ModalCreaPacienteComponent implements OnInit {
 
   archivoSubir1: File;
   archivoSubir2: File;
+
+  edadPaciente: number;
 
   constructor(
   	private fb: FormBuilder,
@@ -43,19 +40,29 @@ export class ModalCreaPacienteComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+   this.onChanges();
   }
 
+  onChanges(): void {
+    this.forma.get('fechaNacimiento').valueChanges.subscribe( (val:string) => {
+     console.log('cambiando fecha');
+     let edad: number = this.calculateAge(val);
+     if(isNaN(edad)){
+       this.edadPaciente = null;
+     }else{
+       this.edadPaciente = this.calculateAge(val);
+     }
+      
+    });
+
+    
+  }
   createForm() {
-      let fecha: NgbDate={
-        day: null,
-        month: null ,
-        year: null,
-      }
+      
       this.forma = this.fb.group({
-             rut: new FormControl(null, Validators.required),
+             rut: new FormControl(null, [Validators.required, Validators.pattern('[0-9]{7,8}-[0-9Kk]{1}')]),
       	     name: new FormControl(null, Validators.required),
-             fechaNacimiento:fecha ,
+             fechaNacimiento: new FormControl(null, Validators.pattern('[0-9]{7,8}-[0-9Kk]{1}')),
              establecimiento: null,
              nivel: null,
              direccion: null,
@@ -97,6 +104,14 @@ export class ModalCreaPacienteComponent implements OnInit {
 
   cerrarModal(){
   	this._modalCreaPacienteService.ocultarModal();
+  }
+
+  calculateAge(birthday: string) {
+    let birthday_arr: string[] = birthday.split('-');
+    var birthday_date:Date = new Date(parseInt(birthday_arr[2]), parseInt(birthday_arr[1]) - 1, parseInt(birthday_arr[0]));
+    var ageDifMs = Date.now() - birthday_date.getTime();
+    var ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
   btnGuardar(){

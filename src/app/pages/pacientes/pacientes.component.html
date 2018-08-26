@@ -23,11 +23,27 @@
 </div>
 
 <div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-sm-6">
+        <button  (click)="mostrarPacientesHoy()" class="btn btn-warning" placement="top" ngbTooltip="Pacientes para hoy">
+            <i class="fa fa-eye"></i>
+            Mostar Pacientes citados para hoy
+        </button>
+    </div>
+    <div class="col-sm-6">
+        <button  (click)="mostrarPacientesTodos()" class="btn btn-success" placement="top" ngbTooltip="Todos los Pacientes">
+            <i class="fa fa-eye"></i>
+            Mostar Todos los Pacientes
+        </button>
+    </div>
+</div>
+<br>
+<div class="row animated fadeIn" *ngIf="!cargando">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
                
             	<h3 class="card-title">Pacientes registrados ( <small>{{totalRegistros}}</small> )</h3>
+                <h3 *ngIf="opcionMuestra==1" class="card-title"><small>{{mensajeSuperior}}</small></h3>
             	<div class="text-right">
             		<button (click)="crearEditarPaciente(null)" class="btn btn-primary waves-effect waves-light btn-rounded">
     	        		<i class="fa fa-plus"></i>
@@ -37,6 +53,7 @@
             	<table class="table table-hover">
             		<thead>
             			<tr>
+                            <th *ngIf="opcionMuestra==1">hora</th>
             				<th>Nombre</th>
             				<th>Rut</th>
             				<th>e-mail</th>
@@ -45,26 +62,27 @@
             			</tr>
             		</thead>
             		<tbody>
-            			<tr *ngFor='let paciente of pacientes'>
-            				<td>{{paciente.name}}</td>
-            				<td>{{paciente.rut}}</td>
-            				<td>{{paciente.email}} </td>
-            				<td>{{paciente.fijo}} / {{paciente.celular}} </td>
-            				<td>{{paciente.direccion}} </td>
+            			<tr *ngFor='let pac of pacienteDataReserva'>
+                            <td *ngIf="opcionMuestra==1" class="text-primary">{{pac.hora}}</td>
+            				<td>{{pac.paciente.name}}</td>
+            				<td>{{pac.paciente.rut}}</td>
+            				<td>{{pac.paciente.email}} </td>
+            				<td>{{pac.paciente.fijo}} / {{pac.paciente.celular}} </td>
+            				<td>{{pac.paciente.direccion}} </td>
             				
             				<td>
-                                <a class="btn btn-primary "  [routerLink]="['/pages/fichaspaciente']" (click)="fichasPaciente( paciente )" placement="top" ngbTooltip="Ver Fichas" >Ver Fichas
+                                <a class="btn btn-primary "  [routerLink]="['/pages/fichaspaciente']" (click)="fichasPaciente( pac.paciente )" placement="top" ngbTooltip="Ver Fichas" >Ver Fichas
                                 </a>
-                                <a class="btn btn-success "  [routerLink]="['/pages/adjuntospaciente']" (click)="adjuntosPaciente( paciente )" placement="top" ngbTooltip="Adjuntar Archivos" ><i class="fa fa-file-o"></i>
+                                <a class="btn btn-success "  [routerLink]="['/pages/adjuntospaciente']" (click)="adjuntosPaciente( pac.paciente )" placement="top" ngbTooltip="Adjuntar Archivos" ><i class="fa fa-file-o"></i>
                                 </a>
                                 <!-- <button  (click)="fichasPaciente( paciente )" class="btn btn-warning" placement="top" ngbTooltip="Ver Fichas">
                                     <i class="fa fa-pencil"></i>
                                 </button> -->
-            					<button  (click)="crearEditarPaciente( paciente )" class="btn btn-warning" placement="top" ngbTooltip="Editar paciente">
+            					<button  (click)="crearEditarPaciente( pac.paciente )" class="btn btn-warning" placement="top" ngbTooltip="Editar paciente">
             						<i class="fa fa-pencil"></i>
             					</button>
 
-            					<button (click)="borrarPaciente( usuario )" class="btn btn-danger" placement="top" ngbTooltip="Eliminar paciente">
+            					<button (click)="borrarPaciente( pac.paciente )" class="btn btn-danger" placement="top" ngbTooltip="Eliminar paciente">
             						<i class="fa fa-trash-o"></i>
             					</button>
             				</td>

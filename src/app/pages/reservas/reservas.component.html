@@ -1,10 +1,93 @@
-<div class="row">
+
+<!-- ***************************************** -->
+<!-- BUSCAR -->
+<!-- ***************************************** -->
+<div class="row animated fadeIn">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                {{subtitle}}
+               
+            	<input #input (keyup)="buscarReserva( input.value )" type="text" class="form-control" placeholder="Buscar paciente por Nombre o por Rut...">
 
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- ***************************************** -->
+<!-- CARGANDO -->
+<!-- ***************************************** -->
+<div class="row animated fadeIn" *ngIf="cargando">
+	<div class="col-sm-12">
+		<div class="alert alert-warning text-center">
+			<strong>Cargando</strong>
+			<br>
+			<i class="fa fa-refresh fa-spin fa-2x"></i>
+			<br>
+			<span>Espere por favor</span>
+		</div>
+	</div>
+</div>
+
+<!-- ***************************************** -->
+<!-- LISTA -->
+<!-- ***************************************** -->
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+               
+            	<h3 class="card-title">Reservas registradas ( <small>{{totalRegistros}}</small> )</h3>
+            	
+            	<table class="table table-hover">
+            		<thead>
+            			<tr>
+            				<th>Paciente</th>
+            				<th>Fecha Reserva</th>
+            				<th>Especialista</th>
+            				<th>Contacto</th>
+            				<th>Repite dia/hora</th>
+            			</tr>
+            		</thead>
+            		<tbody>
+            			<tr *ngFor='let res of itemsReserva'>
+            				<td>
+            					<p>{{res.datosReserva.paciente.name}}</p>
+            					<p class="text-secondary"><small>RUT:&nbsp;{{res.datosReserva.paciente.rut}}</small></p>
+            				</td>
+            				<td>
+            					<p>{{res.datosReserva.fecha}}</p>
+                                <p class="text-secondary"><small>Hora:&nbsp;{{res.indicaHora}}</small></p>
+            				</td>
+            				<td>
+            					<p>{{res.datosReserva.user.name}} </p>
+                                <p class="text-secondary"><small>&nbsp;{{res.especialidad}}</small></p>
+            				</td>
+            				<td>
+            					<p>{{res.datosReserva.paciente.fijo}}&nbsp;/&nbsp;{{res.datosReserva.paciente.celular}} </p>
+                                <p class="text-secondary"><small>Email:&nbsp;{{res.datosReserva.paciente.email}}</small></p>
+            				</td>
+            				<td>
+                                <p>{{res.repite}} </p>
+                                <p *ngIf="!(res.repite =='NO') " class="text-secondary"><small>Entre:&nbsp;{{res.indicaHora}}</small></p>
+                            </td>
+            				
+            				<td>
+            					<button  (click)="eliminaReserva( res.datosReserva )" class="btn btn-danger" placement="top" ngbTooltip="Eliminar Reserva">
+            						<i class="fa fa-trash-o"></i>
+            					</button>
+          					
+            				</td>
+            			</tr>
+            		</tbody>
+
+            	</table>
+            	<button (click)="cambiarDesde(-10)" class="btn btn-secondary">
+            		Anteriores
+            	</button>
+            	<button (click)="cambiarDesde(10)" class="btn btn-secondary">
+            		Siguientes
+            	</button>
             </div>
         </div>
     </div>

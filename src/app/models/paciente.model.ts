@@ -1,8 +1,3 @@
-interface NgbDate {
-  day: number,
-  month: number,
-  year: number
-}
 
 export class Paciente  {
 	
@@ -10,7 +5,7 @@ export class Paciente  {
 
 		public rut:string,
 		public name: string,
-		public fechaNacimiento?: NgbDate,
+		public fechaNacimiento?: string,
 		public establecimiento?:string,
 		public nivel?:string,
 		public direccion?:string,

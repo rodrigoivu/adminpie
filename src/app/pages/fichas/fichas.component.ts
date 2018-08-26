@@ -54,10 +54,6 @@ export class FichasComponent implements OnInit {
   flgCrearTerapeuta: boolean=false;
   
 
-  //Titulos 
-  titleAnamnesis: string = 'Ficha Anamnesis';
-  titleCrearFicha: string = '( crear ficha )'
-
   //FORMULARIOS
   formDatosGenerales: FormGroup;
   formAnamnesis: FormGroup;
@@ -257,7 +253,7 @@ export class FichasComponent implements OnInit {
 
   bloqueoInicialBotonesCrear(){
 
-    this.flgCrearAnamnesis = true;
+    //this.flgCrearAnamnesis = true;
 
     let posPro:number = this.profesiones.indexOf(this.profesion);
     switch(posPro) { 
@@ -298,9 +294,11 @@ export class FichasComponent implements OnInit {
 
           if( resp.anamnesis ){
             //Existe Ficha
+            this.flgCrearAnamnesis = false;
             this.fichaAnamnesis = resp.anamnesis;
             this.setValoresFichaAnamnesis();
-            
+          }else{
+            this.flgCrearAnamnesis = true;
           }
         });
   }
@@ -401,7 +399,7 @@ export class FichasComponent implements OnInit {
           
           name: this.pacienteEditando.name,
           edad: '',
-          fechaNacimiento: this.pacienteEditando.fechaNacimiento.day +'/'+this.pacienteEditando.fechaNacimiento.month+'/'+this.pacienteEditando.fechaNacimiento.year,
+          fechaNacimiento: this.pacienteEditando.fechaNacimiento,
           establecimiento: this.pacienteEditando.establecimiento,
           nivel: this.pacienteEditando.nivel,
           direccion: this.pacienteEditando.direccion,
@@ -532,7 +530,7 @@ export class FichasComponent implements OnInit {
           fecFicha={
                fecha: ficha.fecha,
                item:i
-          } 
+          };
           items.push(this.fb.group(fecFicha));
           i++;
     }
@@ -550,7 +548,7 @@ export class FichasComponent implements OnInit {
           fecFicha={
                fecha: ficha.fecha,
                item:i
-          } 
+          };
           items.push(this.fb.group(fecFicha));
           i++;
     }
@@ -568,7 +566,7 @@ export class FichasComponent implements OnInit {
           fecFicha={
                fecha: ficha.fecha,
                item:i
-          } 
+          };
           items.push(this.fb.group(fecFicha));
           i++;
     }
@@ -586,7 +584,7 @@ export class FichasComponent implements OnInit {
           fecFicha={
                fecha: ficha.fecha,
                item:i
-          } 
+          };
           items.push(this.fb.group(fecFicha));
           i++;
     }
@@ -604,7 +602,7 @@ export class FichasComponent implements OnInit {
           fecFicha={
                fecha: ficha.fecha,
                item:i
-          } 
+          };
           items.push(this.fb.group(fecFicha));
           i++;
     }

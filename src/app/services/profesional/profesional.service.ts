@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { User } from '../../models/user.model';
 import { Profesional } from '../../models/profesional.model';
 import { HttpClient } from '@angular/common/http';
@@ -23,9 +23,10 @@ export class ProfesionalService {
     public router: Router,
   ) { 
     this.token = localStorage.getItem('token');
+
   }
 
-
+ 
   actualizarProfesional( profesional: Profesional ){
 
     let url = URL_SERVICIOS + 'api/update-profesional/' + profesional.user;
@@ -71,7 +72,6 @@ export class ProfesionalService {
 
   buscarProfesionales( termino: string ){
     let url = URL_SERVICIOS + 'api/busqueda/profesionales/'+termino+ '?token=' + this.token;
-
     return this.http.get( url )
                 .map((resp: any) => resp.profesionales );
   }
@@ -81,6 +81,13 @@ export class ProfesionalService {
 
     return this.http.get( url )
                 .map((resp: any) => resp.profesional );
+  }
+
+  buscarProfesion( idUser: string ){
+    let url = URL_SERVICIOS + 'api/profesional/'+idUser;
+
+    return this.http.get( url )
+                .map((resp: any) => resp.profesional.profesion );
   }
 
   borrarProfesional( id: string ){
@@ -100,3 +107,11 @@ export class ProfesionalService {
   }
 
 }
+
+
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YjMzZTJlMTBhYmRmZDBmYTIxNDlmNzYiLCJuYW1lIjoiUm9kcmlnbyIsInN1cm5hbWUiOm51bGwsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTl9ST0xFIiwiaW1hZ2UiOiI1YjMzZTJlMTBhYmRmZDBmYTIxNDlmNzYtMzEwLmpwZyIsImlhdCI6MTUzNTAzMDQxNywiZXhwIjoxNTM1MDg0NDE3fQ.7v28OrIrGBNzbFYKI5urUYNaTPhXb_J50ewD9mxIunQ
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YjMzZTJlMTBhYmRmZDBmYTIxNDlmNzYiLCJuYW1lIjoiUm9kcmlnbyIsInN1cm5hbWUiOm51bGwsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTl9ST0xFIiwiaW1hZ2UiOiI1YjMzZTJlMTBhYmRmZDBmYTIxNDlmNzYtMzEwLmpwZyIsImlhdCI6MTUzNTExMjA3NywiZXhwIjoxNTM1MTY2MDc3fQ.rxEnzI6La-7PlF6qYsNH2La8hqPuKTTJd7xWgEczEbg
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YjMzZTJlMTBhYmRmZDBmYTIxNDlmNzYiLCJuYW1lIjoiUm9kcmlnbyIsInN1cm5hbWUiOm51bGwsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTl9ST0xFIiwiaW1hZ2UiOiI1YjMzZTJlMTBhYmRmZDBmYTIxNDlmNzYtMzEwLmpwZyIsImlhdCI6MTUzNTExMjA3NywiZXhwIjoxNTM1MTY2MDc3fQ.rxEnzI6La-7PlF6qYsNH2La8hqPuKTTJd7xWgEczEbg
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YjMzZTJlMTBhYmRmZDBmYTIxNDlmNzYiLCJuYW1lIjoiUm9kcmlnbyIsInN1cm5hbWUiOm51bGwsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTl9ST0xFIiwiaW1hZ2UiOiI1YjMzZTJlMTBhYmRmZDBmYTIxNDlmNzYtMzEwLmpwZyIsImlhdCI6MTUzNTExMjA3NywiZXhwIjoxNTM1MTY2MDc3fQ.rxEnzI6La-7PlF6qYsNH2La8hqPuKTTJd7xWgEczEbg
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YjMzZTJlMTBhYmRmZDBmYTIxNDlmNzYiLCJuYW1lIjoiUm9kcmlnbyIsInN1cm5hbWUiOm51bGwsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJBRE1JTl9ST0xFIiwiaW1hZ2UiOiI1YjMzZTJlMTBhYmRmZDBmYTIxNDlmNzYtMzEwLmpwZyIsImlhdCI6MTUzNTExMDE5OSwiZXhwIjoxNTM1MTY0MTk5fQ.VyKE-QwlGGroijfiasNZzjK8jZgSdmeFr5hEm7OzMyk
+

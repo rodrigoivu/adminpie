@@ -15,6 +15,21 @@ export class ReservaService {
   	public http: HttpClient
   ) { }
 
+  cargarReservas( desde: number = 0 ){
+    let url = URL_SERVICIOS + 'api/reservas' + '?desde='+ desde;
+    return this.http.get( url )
+          .pipe(
+              map( (resp: any) => {
+
+                return resp;
+
+              }),
+              catchError( err => {
+                return err ;
+              })
+          );
+  }
+
   crearReserva(reserva: Reserva){
 
     let url = URL_SERVICIOS + 'api/crear-reserva' ;
@@ -36,4 +51,16 @@ export class ReservaService {
     let url = URL_SERVICIOS + 'api/reservasporfechausuario/'+ idUsr+ '?fecha='+ fecha+'&repitedia='+repiteDia;
     return this.http.get( url );
   }
+
+  borrarReserva( id: string ){
+    let url = URL_SERVICIOS + 'api/remove-reserva/'+ id;
+
+    return this.http.delete( url )
+                  .map( resp => {
+                      swal('Reserva borrada', 'La reserva ha sido eliminado correctamente', 'success');
+                      return true;
+                  });
+  }
+
+
 }

@@ -88,12 +88,14 @@ export class ModalReservaComponent implements OnInit {
       this._modalReservaService.notificacionInicioToday
         .subscribe( resp =>{
            this.selectToday();
+           console.log('InicioToday');
         })
       this._modalReservaService.notificacion
           .subscribe( resp => {
             this.generaItemsReservado();
             this.cargarHorasDispProf();
             this.generaMuestraReservados();
+            console.log('cargar horas');
             
           } ); 
    }
@@ -259,10 +261,10 @@ export class ModalReservaComponent implements OnInit {
       // No mostrar las repeticiones antes de la fecha resrevada
       if( ir.repiteDia != 10){  // si es distinto de 10 significa que es una reserva que se repite por dia 
         // y la fecha es anterior al dia de reserva
-        let diaSelect: Date = new Date(this.model.year,this.model.month, this.model.day );
+        let diaSelect: Date = new Date(this.model.year,this.model.month-1, this.model.day );
         let diaSplit: string[]= ir.fecha.split('-'); 
-        let diaReserva: Date= new Date(parseInt(diaSplit[2]),parseInt(diaSplit[1]), parseInt(diaSplit[0]) );
-        
+        let diaReserva: Date= new Date(parseInt(diaSplit[2]),parseInt(diaSplit[1])-1, parseInt(diaSplit[0]) );
+
         if(diaSelect < diaReserva){
           flagNoMostrarRepetida=true;
         }
@@ -272,7 +274,7 @@ export class ModalReservaComponent implements OnInit {
       if (anoSelect == ir.repiteAno && !flagNoMostrarRepetida){   //el año está en la BD si se repite el dia o no.
          itemR={
           nombrePaciente: pacR.name,
-          nombreEstablecimiento: 'Establecimiento',
+          nombreEstablecimiento: pacR.establecimiento,
           horaReservado: ir.horaReservado,  //1-15
           poshora: ir.poshora,
           repiteDia: ir.repiteDia,

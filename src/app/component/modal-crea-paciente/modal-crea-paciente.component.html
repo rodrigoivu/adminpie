@@ -22,25 +22,26 @@
 									      <input formControlName="name" type="text" class="form-control form-control-sm" id="profesionalAnam" required>
 								    </div>
 								    <div class="col-sm-4">
-								    	<label for="fechaEvAnam" class=" col-form-label col-form-label-sm">Rut:</label>
-									    <input formControlName="rut" type="text" class="form-control form-control-sm" id="fechaEvAnam" required>
+								    	<label for="rut" class=" col-form-label col-form-label-sm">Rut:</label>
+									    <input formControlName="rut" type="text" class="form-control form-control-sm" id="rut" placeholder="12345678-5" title="ej. 12345678-5" pattern="[0-9]{7,8}-[0-9Kk]{1}" required>
 								    </div>
 							  </div>
 							  <div class="form-group row">
 								    <div class="col-sm-4">
-								    	<label for="profesionalAnam" class="col-form-label col-form-label-sm">Fecha de Nacimiento:</label>
-									      <input  type="text" class="form-control form-control-sm" id="profesionalAnam" >
+								    	<label for="fecnac" class="col-form-label col-form-label-sm">Fecha de Nacimiento:</label>
+									      <input formControlName="fechaNacimiento" type="text" class="form-control form-control-sm" id="fecnac" placeholder="dd-mm-yyyy" title="ej. 1-1-2000" pattern="(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-\d{4}">
 								    </div>
 								    <div class="col-sm-4">
-								    	<label for="fechaEvAnam" class=" col-form-label col-form-label-sm">Edad:</label>
-									    <input  type="text" class="form-control form-control-sm" id="fechaEvAnam" >
+								    	<label for="edad" class=" col-form-label col-form-label-sm">Edad:</label>
+								    	<h4 class=" text-primary">{{edadPaciente}}&nbsp;años</h4>
+									    <!-- <input  type="text" class="form-control form-control-sm" id="edad" disabled=""> -->
 								    </div>
 								    
 							  </div>
 							  <div class="form-group row">
 								    <div class="col-sm-4">
 								    	<label for="profesionalAnam" class="col-form-label col-form-label-sm">Email:</label>
-									      <input formControlName="email" type="text" class="form-control form-control-sm" id="profesionalAnam" >
+									      <input formControlName="email" type="email" class="form-control form-control-sm" id="profesionalAnam" >
 								    </div>
 								    <div class="col-sm-4">
 								    	<label for="fechaEvAnam" class=" col-form-label col-form-label-sm">Teléfono fijo:</label>

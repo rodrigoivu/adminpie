@@ -16,7 +16,8 @@ export class Reserva  {
 		public estado?: string,
 		public confirmada?: string,
 		public repiteDia?: number,   //valores del 0 al 6 de domingo a sábado, si es 10 es porque no se repite
-		public repiteAno?: number 
+		public repiteAno?: number,
+		public _id?: string
 	)
 	{}
 }

@@ -175,7 +175,7 @@ export class UsuarioService {
 
   buscarUsuarios( termino: string ){
     let url = URL_SERVICIOS + 'api/busqueda/users/'+termino+ '?token=' + this.token;
-
+    
     return this.http.get( url )
                 .map((resp: any) => resp.users );
   }

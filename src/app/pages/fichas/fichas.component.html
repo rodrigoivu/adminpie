@@ -17,8 +17,7 @@
 	<!-- ***************************************** -->
   <ngb-panel id="static-1"  >
   	<ng-template ngbPanelTitle>
-    <b class="text-info">{{titleAnamnesis}}</b> &nbsp; <small *ngIf="" class="font-weight-light text-danger"> {{titleCrearFicha}}</small> 
-
+	    <b class="text-info">Ficha Anamnesis</b> &nbsp; <small *ngIf="flgCrearAnamnesis" class="text-success" > (editar)</small> 
     </ng-template>
 
   	<!-- ***************************************** -->
@@ -790,7 +789,12 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
   	<!-- ***************************************** -->
 	<!-- FICHA GENERAL -->
 	<!-- ***************************************** -->
-  <ngb-panel id="static-2" title="Ficha General">
+  <ngb-panel id="static-2"  >
+
+  	<ng-template ngbPanelTitle>
+	    <b class="text-info">Ficha General</b> &nbsp; <small *ngIf="flgCrearGeneral" class="text-success" > (editar)</small> 
+    </ng-template>	
+
     <ng-template ngbPanelContent>
     	<div *ngIf="flgCrearGeneral" class="text-right">
             		<button (click)="crearFichaGeneral()" class="btn btn-primary waves-effect waves-light btn-rounded">
@@ -888,7 +892,12 @@ mayoría de las señales o símbolos más comunes. (Ej: Stop, peligro, alto, etc
   	<!-- ***************************************** -->
 	<!-- FICHA KINESIOLOGÍA -->
 	<!-- ***************************************** -->
-  <ngb-panel id="static-3" title="Ficha Kinesiología">
+  <ngb-panel id="static-3" >
+
+    <ng-template ngbPanelTitle>
+	    <b class="text-info">Ficha Kinesiología</b> &nbsp; <small *ngIf="flgCrearKinesiologia" class="text-success" > (editar)</small> 
+    </ng-template>
+
     <ng-template ngbPanelContent>
     	<div *ngIf="flgCrearKinesiologia" class="text-right">
             		<button (click)="crearFichaKinesiologia()" class="btn btn-primary waves-effect waves-light btn-rounded">
@@ -1821,7 +1830,12 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
   	<!-- ***************************************** -->
 	<!-- FICHA PSICOLOGIA -->
 	<!-- ***************************************** -->
-  <ngb-panel id="static-4" title="Ficha Psicología">
+  <ngb-panel id="static-4" >
+
+  	<ng-template ngbPanelTitle>
+	    <b class="text-info">Ficha Psicología</b> &nbsp; <small *ngIf="flgCrearPsicologia" class="text-success" > (editar)</small> 
+    </ng-template>
+
     <ng-template ngbPanelContent>
     	<div *ngIf="flgCrearPsicologia" class="text-right">
             		<button (click)="crearFichaPsicologia()" class="btn btn-primary waves-effect waves-light btn-rounded">
@@ -2113,7 +2127,12 @@ postural del estudiante para evitar alteraciones musculoesqueléticas futuras.</
   <!-- ***************************************** -->
   <!-- FICHA TERAPEUTA OCUPACIONAL -->
   <!-- ***************************************** -->
-  <ngb-panel id="static-5" title="Ficha Terapeuta Ocupacional">
+  <ngb-panel id="static-5" >
+
+  	<ng-template ngbPanelTitle>
+	    <b class="text-info">Ficha Terapeuta Ocupacional</b> &nbsp; <small *ngIf="flgCrearTerapeuta" class="text-success" > (editar)</small> 
+    </ng-template>
+
     <ng-template ngbPanelContent>
     	<div *ngIf="flgCrearTerapeuta" class="text-right">
             		<button (click)="crearFichaTerapeuta()" class="btn btn-primary waves-effect waves-light btn-rounded">
@@ -2987,7 +3006,12 @@ fila escuche, luego este tendrá que contar al oído del estudiante que sigue, y
   <!-- ***************************************** -->
   <!-- FICHA FONOAUDIOLOGICA -->
   <!-- ***************************************** -->
-  <ngb-panel id="static-6" title="Ficha Fonoaudiológica">
+  <ngb-panel id="static-6" >
+
+  	<ng-template ngbPanelTitle>
+	    <b class="text-info">Ficha Fonoaudiológica</b> &nbsp; <small *ngIf="flgCrearFonoaudiologia" class="text-success" > (editar)</small> 
+    </ng-template>
+
     <ng-template ngbPanelContent>
     	<div *ngIf="flgCrearFonoaudiologia" class="text-right">
             		<button (click)="crearFichaFonoaudiologia()" class="btn btn-primary waves-effect waves-light btn-rounded">
