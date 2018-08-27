@@ -1,16 +1,16 @@
 import { Component, AfterViewInit } from '@angular/core';
+
 @Component({
-  templateUrl: './starter.component.html'
+  templateUrl: './chartjs.component.html'
 })
-export class StarterComponent implements AfterViewInit {
+export class ChartjsComponent implements AfterViewInit {
   subtitle: string;
+
   constructor() {
-    this.subtitle = 'This is some text within a card block.';
+    this.subtitle = 'This is chart page.';
   }
 
-  ngAfterViewInit() {}
-
-   // This is line chart
+  // This is line chart
   // bar chart
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
@@ -103,4 +103,6 @@ export class StarterComponent implements AfterViewInit {
      * assign it;
      */
   }
+
+  ngAfterViewInit() {}
 }

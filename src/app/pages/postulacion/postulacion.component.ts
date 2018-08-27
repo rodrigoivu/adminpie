@@ -24,6 +24,9 @@ export class PostulacionComponent implements OnInit {
   _idUsuario: string;
   nombreUsuario: string;
 
+   //DOWNLOAD
+    archivo1:string='modelopesquisa.zip';
+
   constructor(
   	public _pesquisaService: PesquisaService,	
   ) {
