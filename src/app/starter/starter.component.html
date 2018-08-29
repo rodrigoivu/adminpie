@@ -1,70 +1,174 @@
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere por favor</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="row" *ngIf="!cargando">
+    
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Total Especialidades</h4>
+                <h6 class="card-subtitle">Total de atenciones durante el año&nbsp; {{anoConsulta}} </h6>
+                <canvas baseChart height="150px" [data]="pieChartDataEspecialidades" [labels]="pieChartLabelsEspecialidades" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [colors]="pieChartColorsEspecialidades">
+                </canvas>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-info btn-sm" (click)="updateGrafico1()">Update</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Consultas esta semana</h4>
+                <h6 class="card-subtitle">Consultas totales desde&nbsp;{{seisDiasAntesString}} hasta hoy</h6>
+                <canvas baseChart height="130" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+                </canvas>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row" *ngIf="!cargando">
+    
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Conteo Total</h4>
+                <h6 class="card-subtitle">Atenciones durante el año&nbsp; {{anoConsulta}} </h6>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Especialidad</th>
+                            <th>Total</th>
+                            <!-- <th>Esperado</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <td>Fonoaudiología</td>
+                            <td> {{totalFonoaudiologiaDataAno}} </td>
+                            <!-- <td></td> -->
+                        </tr>
+                        <tr >
+                            <td>General</td>
+                            <td> {{totalGeneralDataAno}} </td>
+                            <!-- <td></td> -->
+                        </tr>
+                        <tr >
+                            <td>Kinesiología</td>
+                            <td> {{totalKinesiologiaDataAno}} </td>
+                            <!-- <td></td> -->
+                        </tr>
+                        <tr >
+                            <td>Psicología</td>
+                            <td> {{totalPsicologiaDataAno}} </td>
+                            <!-- <td></td> -->
+                        </tr>
+                        <tr >
+                            <td>Terapeuta Ocupacional</td>
+                            <td> {{totalTerapeutaDataAno}} </td>
+                            <!-- <td></td> -->
+                        </tr>
+
+                        <tr >
+                            <td>Todas</td>
+                            <td> {{totalEspecialidadesDataAno}} </td>
+                            <!-- <td></td> -->
+                        </tr>
+                    </tbody>
+
+                </table>
+               
+            </div>
+            
+        </div>
+    </div>
+
+   
+
+</div>
+
+
+<!-- <div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Bar Sales Chart</h4>
+                <h6 class="card-subtitle">This is the simple example of bar chart</h6>
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" [colors]="barChartColors" (chartClick)="chartClicked($event)">
+                </canvas>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-info btn-sm" (click)="randomize()">Update</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Doughnut Chart</h4>
+                <h6 class="card-subtitle">This is the simple example of Doughnut chart</h6>
+                <canvas baseChart height="165px"  [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [colors]="[{backgroundColor: ['#009efb', '#55ce63', '#90a4ae']}]">
+                </canvas>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Bar Sales Chart</h4>
-                    <h6 class="card-subtitle">This is the simple example of bar chart</h6>
-                    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" [colors]="barChartColors" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-info btn-sm" (click)="randomize()">Update</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Doughnut Chart</h4>
-                    <h6 class="card-subtitle">This is the simple example of Doughnut chart</h6>
-                    <canvas baseChart height="165px"  [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [colors]="[{backgroundColor: ['#009efb', '#55ce63', '#90a4ae']}]">
-                    </canvas>
-                </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Radar Chart</h4>
+                <h6 class="card-subtitle">This is the simple example of Radar chart</h6>
+                <canvas baseChart height="150px" [datasets]="radarChartData" [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [colors]="radarChartColors">
+                </canvas>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Radar Chart</h4>
-                    <h6 class="card-subtitle">This is the simple example of Radar chart</h6>
-                    <canvas baseChart height="150px" [datasets]="radarChartData" [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [colors]="radarChartColors">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Pie Chart</h4>
-                    <h6 class="card-subtitle">This is the simple example of Pie chart</h6>
-                    <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [colors]="[{backgroundColor: ['#009efb', '#55ce63', '#90a4ae']}]">
-                    </canvas>
-                </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Pie Chart</h4>
+                <h6 class="card-subtitle">This is the simple example of Pie chart</h6>
+                <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [colors]="[{backgroundColor: ['#009efb', '#55ce63', '#90a4ae']}]">
+                </canvas>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="card">
-                
-                <div class="card-body">
-                    <h4 class="card-title">Polar Area Chart</h4>
-                    <h6 class="card-subtitle">This is the simple example of Polar Area Chart</h6>
-                    <canvas baseChart height="130px" [data]="polarAreaChartData" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend" [chartType]="polarAreaChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [colors]="[{backgroundColor: ['#009efb', '#55ce63', '#90a4ae', '#7460ee', '#f62d51']}]">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Line Chart</h4>
-                    <h6 class="card-subtitle">This is the simple example of Polar Line Chart</h6>
-                    <canvas baseChart height="130" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            
+            <div class="card-body">
+                <h4 class="card-title">Polar Area Chart</h4>
+                <h6 class="card-subtitle">This is the simple example of Polar Area Chart</h6>
+                <canvas baseChart height="130px" [data]="polarAreaChartData" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend" [chartType]="polarAreaChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [colors]="[{backgroundColor: ['#009efb', '#55ce63', '#90a4ae', '#7460ee', '#f62d51']}]">
+                </canvas>
             </div>
         </div>
     </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Line Chart</h4>
+                <h6 class="card-subtitle">This is the simple example of Polar Line Chart</h6>
+                <canvas baseChart height="130" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+                </canvas>
+            </div>
+        </div>
+    </div>
+</div> -->

@@ -119,6 +119,23 @@ export class UsuarioService {
           
   }
 
+  //SERVICIO LOGIN
+  buscaPorMail( email: string ){
+   
+    let url = URL_SERVICIOS + 'api/recover/'+email;
+    return this.http.get( url )
+          .pipe(
+              map( (resp: any) => {
+                return resp; //se puede retornar cualquier cosa si no se pone no llega nada como respuesta a la funcion que lo llama
+              }),
+              catchError( err => {
+                swal( 'Usuario no se encuentra en nuestros registros', err.error.message, 'error');
+                return throwError( err );
+              })
+          );
+          
+  }
+
   //SERVICIO CREAR USUARIO
   crearUsuario( usuario: User ){
   	let url = URL_SERVICIOS + 'api/register';
@@ -136,6 +153,18 @@ export class UsuarioService {
               })
           );
 
+  }
+
+  actualizarUsuarioPassword( usuario: User ){
+
+    let url = URL_SERVICIOS + 'api/update-user-password/' + usuario._id;
+   // url += '?token=' + this.token;
+
+    return this.http.put( url, usuario )
+                .map( (resp: any) =>{          
+                  swal('Contraseña cambiada correctamete', usuario.name, 'success' );
+                  return resp.user;
+                });
   }
 
   actualizarUsuario( usuario: User ){

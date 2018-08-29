@@ -218,10 +218,19 @@ export class ReservasComponent implements OnInit {
         posTot++;
       }
     }
+
     if( posIni == 0 ){
-      tramoHora= Hora+':00' + ' - ' + Hora+':'+posTot*10;
+
+      if(posTot == 6){
+        let newHora = Hora+1
+        tramoHora= Hora+':00' + ' - ' + newHora+':00';
+      }else{
+        tramoHora= Hora+':00' + ' - ' + Hora+':'+posTot*10;
+      }
+      
     }else{
       let posFin: number = posIni+posTot;
+
       if(posFin == 6){
           let newHora = Hora+1
           tramoHora = Hora+':'+posIni*10 + ' - ' + newHora+':00';

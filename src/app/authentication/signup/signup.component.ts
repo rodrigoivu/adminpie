@@ -44,14 +44,14 @@ export class SignupComponent implements OnInit {
   		condiciones: new FormControl(false)
   	}, { validators: this.sonIguales( 'password', 'password2') });
 
-  	this.forma.setValue({
-  		nombre:'Test',
-  		correo:'test@test.com',
-  		password:'123456',
-  		password2:'123456',
-  		condiciones: true
+  	// this.forma.setValue({
+  	// 	nombre:'Test',
+  	// 	correo:'test@test.com',
+  	// 	password:'123456',
+  	// 	password2:'123456',
+  	// 	condiciones: true
 
-  	});
+  	// });
   		
  	
   }

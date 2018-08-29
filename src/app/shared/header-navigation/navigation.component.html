@@ -44,7 +44,7 @@
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ============================================================== -->
-                <li class="nav-item hidden-sm-down search-box">
+                <!-- <li class="nav-item hidden-sm-down search-box">
                     <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)">
                         <i class="ti-search"></i>
                     </a>
@@ -54,11 +54,11 @@
                             <i class="ti-close"></i>
                         </a>
                     </form>
-                </li>
+                </li> -->
                 <!-- ============================================================== -->
                 <!-- Comment -->
                 <!-- ============================================================== -->
-                <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
+                <!-- <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
                     <a ngbDropdownToggle class="nav-link text-muted text-muted waves-effect waves-dark" href="javascript:void(0)">
                         <i class="mdi mdi-message"></i>
                         <div class="notify">
@@ -73,7 +73,7 @@
                             </li>
                             <li>
                                 <div class="message-center" [perfectScrollbar]="config">
-                                    <!-- Message -->
+
                                     <a href="#" *ngFor="let notification of notifications">
                                         <div class="round {{notification.round}}">
                                             <i class="{{notification.icon}}"></i>
@@ -94,14 +94,14 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> -->
                 <!-- ============================================================== -->
                 <!-- End Comment -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
                 <!-- Messages -->
                 <!-- ============================================================== -->
-                <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
+                <!-- <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
                     <a ngbDropdownToggle class="nav-link text-muted waves-effect waves-dark" href="javascript:void(0)">
                         <i class="mdi mdi-email"></i>
                         <div class="notify">
@@ -137,14 +137,14 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> -->
                 <!-- ============================================================== -->
                 <!-- End Messages -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
                 <!-- Messages -->
                 <!-- ============================================================== -->
-                <li class="nav-item dropdown mega-dropdown" ngbDropdown [autoClose]="false">
+                <!-- <li class="nav-item dropdown mega-dropdown" ngbDropdown [autoClose]="false">
                     <a ngbDropdownToggle class="nav-link text-muted waves-effect waves-dark" href="javascript:void(0)">
                         <i class="mdi mdi-view-grid"></i>
                     </a>
@@ -152,7 +152,7 @@
                         <ul class="mega-dropdown-menu row">
                             <li class="col-lg-3 col-xlg-2 m-b-30">
                                 <h4 class="m-b-20">CAROUSEL</h4>
-                                <!-- CAROUSEL -->
+
                                 <ngb-carousel>
                                     <ng-template ngbSlide>
                                         <img src="assets/images/big/img1.jpg" class="img-responsive" alt="Random first slide">
@@ -176,12 +176,12 @@
                                         </div>
                                     </ng-template>
                                 </ngb-carousel>
-                                <!-- End CAROUSEL -->
+
 
                             </li>
                             <li class="col-lg-3 m-b-30">
                                 <h4 class="m-b-20">ACCORDION</h4>
-                                <!-- Accordian -->
+
                                 <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" class="accordion nav-accordion">
                                     <ngb-panel title="Simple">
                                         <ng-template ngbPanelContent>
@@ -208,7 +208,7 @@
 
                             <li class="col-lg-3  m-b-30">
                                 <h4 class="m-b-20">CONTACT US</h4>
-                                <!-- Contact -->
+
                                 <form>
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="exampleInputname1" placeholder="Enter Name"> </div>
@@ -222,7 +222,7 @@
                             </li>
                             <li class="col-lg-3 col-xlg-4 m-b-30">
                                 <h4 class="m-b-20">List style</h4>
-                                <!-- List style -->
+
                                 <ul class="list-style-none">
                                     <li>
                                         <a href="javascript:void(0)">
@@ -248,7 +248,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> -->
                 <!-- ============================================================== -->
                 <!-- End Messages -->
                 <!-- ============================================================== -->
@@ -279,7 +279,7 @@
                                 <a routerLink="/pages/profile">
                                     <i class="ti-user"></i> Mi perfil</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="#">
                                     <i class="ti-wallet"></i> My Balance</a>
                             </li>
@@ -291,7 +291,7 @@
                             <li>
                                 <a href="#">
                                     <i class="ti-settings"></i> Account Setting</a>
-                            </li>
+                            </li> -->
                             <li role="separator" class="divider"></li>
                             <li>
                                 <a (click) = "_usuarioService.logout()" class="pointer">

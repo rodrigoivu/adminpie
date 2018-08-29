@@ -58,7 +58,9 @@
             				<th>Rut</th>
             				<th>e-mail</th>
             				<th>T. Fijo/Celular</th>
-            				<th>Dirección</th>
+            				<!-- <th>Dirección</th> -->
+                            <th>Fecha Nac.</th>
+                            <th>Edad</th>
             			</tr>
             		</thead>
             		<tbody>
@@ -68,7 +70,9 @@
             				<td>{{pac.paciente.rut}}</td>
             				<td>{{pac.paciente.email}} </td>
             				<td>{{pac.paciente.fijo}} / {{pac.paciente.celular}} </td>
-            				<td>{{pac.paciente.direccion}} </td>
+            				<!-- <td>{{pac.paciente.direccion}} </td> -->
+                            <td>{{pac.paciente.fechaNacimiento}} </td>
+                            <td>{{pac.edad}} </td>
             				
             				<td>
                                 <a class="btn btn-primary "  [routerLink]="['/pages/fichaspaciente']" (click)="fichasPaciente( pac.paciente )" placement="top" ngbTooltip="Ver Fichas" >Ver Fichas

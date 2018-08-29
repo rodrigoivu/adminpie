@@ -9,7 +9,8 @@ import { ModalCreaPacienteService } from '../../component/modal-crea-paciente/mo
 interface pacienteDataReserva{
   paciente: Paciente,
   hora: string,
-  idhora:number   //para ordenar
+  idhora:number,   //para ordenar
+  edad: number
 }
 
 interface itemHora{
@@ -108,10 +109,12 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     let pacDataReserva: pacienteDataReserva;
     
     for(let pac of this.pacientes){
+        let edad = this.calculateAge(pac.fechaNacimiento);
         pacDataReserva={
               paciente: pac,
               hora: null,
-              idhora:null
+              idhora:null,
+              edad: edad
         };
         this.pacienteDataReserva.push(pacDataReserva);
     }      
@@ -180,12 +183,13 @@ export class PacientesComponent implements AfterViewInit, OnInit {
            this._pacienteService.buscarPaciente(pacienteId)
                  .subscribe((resp: any) =>{
                    let pacDataReserva: pacienteDataReserva;
-                   let itemHora: itemHora=this.indicaHora(res.horaReservado,res.poshora); 
+                   let itemHora: itemHora=this.indicaHora(res.horaReservado,res.poshora);
+                   let edad = this.calculateAge(resp.paciente.fechaNacimiento);
                    pacDataReserva={
                           paciente: resp.paciente,
                           hora: itemHora.tramoHora,
                           idhora:itemHora.id,
-                    };
+                          edad:edad                    };
                     this.pacienteDataReserva.push(pacDataReserva);
                     this.ordenarDataReserva();
                     i++;
@@ -253,6 +257,14 @@ export class PacientesComponent implements AfterViewInit, OnInit {
 
   }
 
+  calculateAge(birthday: string) {
+    let birthday_arr: string[] = birthday.split('-');
+    var birthday_date:Date = new Date(parseInt(birthday_arr[2]), parseInt(birthday_arr[1]) - 1, parseInt(birthday_arr[0]));
+    var ageDifMs = Date.now() - birthday_date.getTime();
+    var ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  }
+
   indicaHora(hora: number, pos: any[]): itemHora{
     let flgIni: boolean = true;
     let posIni: number=0;
@@ -272,7 +284,13 @@ export class PacientesComponent implements AfterViewInit, OnInit {
       }
     }
     if( posIni == 0 ){
-      tramoHora = Hora+':00' + ' - ' + Hora+':'+posTot*10;
+      if(posTot == 6){
+        let newHora = Hora+1
+        tramoHora = Hora+':00' + ' - ' + newHora+':00';
+      }else{
+        tramoHora = Hora+':00' + ' - ' + Hora+':'+posTot*10;
+      }
+      
       idTramoHora = Hora+'00';
       itemHora={
         id: parseInt(idTramoHora) ,

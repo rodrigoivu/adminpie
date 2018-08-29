@@ -13,8 +13,8 @@ export class ProfileComponent implements OnInit {
   usuariogoogle=false; //hay que incorporar usuario.google en el modelo user y en bd si es que se usa la ocion de logearse con google
   
   imagenSubir: File;
-  imagenTemp: string;
-
+  //imagenTemp: string;
+  imagenTemp: any;
 
   constructor(
   	public _usuarioService: UsuarioService

@@ -23,6 +23,19 @@ export class AnamnesisService {
     this.inicializaFicha('','','');
   }
 
+  listaFichas(){
+    let url = URL_SERVICIOS + 'api/lista-fichas-anamnesis' ;
+    return this.http.get( url )
+          .pipe(
+              map( (resp: any) => {
+                return resp;
+              }),
+              catchError( err => {
+                return err ;
+              })
+          );
+  }
+
   cargarFicha( id: string ){
     let url = URL_SERVICIOS + 'api/anamnesis-paciente/' + id ;
     return this.http.get( url )

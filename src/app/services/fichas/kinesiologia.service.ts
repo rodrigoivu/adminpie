@@ -21,6 +21,19 @@ export class KinesiologiaService {
     this.inicializaFicha('','','');
   }
 
+  listaFichas( ){
+    let url = URL_SERVICIOS + 'api/lista-fichas-kinesiologia' ;
+    return this.http.get( url )
+          .pipe(
+              map( (resp: any) => {
+                return resp;
+              }),
+              catchError( err => {
+                return err ;
+              })
+          );
+  }
+
   cargarFicha( id: string ){
     let url = URL_SERVICIOS + 'api/kinesiologia-paciente/' + id ;
     

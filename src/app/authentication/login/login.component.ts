@@ -37,6 +37,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
       $('#loginform').slideUp();
       $('#recoverform').fadeIn();
     });
+
+    $('#ok-recover').on('click', function() {
+      $('#loginform').fadeIn();
+      $('#recoverform').slideUp();
+    });
   }
 
   onLoggedin() {
@@ -44,7 +49,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   //Llamar al servicio de login
-  ingresar( forma: NgForm){
+  ingresar( forma: NgForm ){
 
     var gethash= true; //determina si se pide el Token o no
 
@@ -58,4 +63,34 @@ export class LoginComponent implements OnInit, AfterViewInit {
                   .subscribe( resp => this.router.navigate(['/starter']));
 
   }
+
+  recover( forma: NgForm ){
+    if(!forma.valid || (forma.value.passwordRecover != forma.value.password2Recover)){
+      return;
+    }
+    this._usuarioService.buscaPorMail( forma.value.emailRecover)
+                  .subscribe( (resp: any) => {
+                      this.actualizaPassword(resp,forma.value.passwordRecover);
+                  });
+  }
+
+  actualizaPassword(resp: any, password:string){
+
+      let usuario: User = resp.user;
+      usuario.password=password;
+   
+      this._usuarioService.actualizarUsuarioPassword( usuario )
+                  .subscribe();
+  }
+
+  sonIguales(forma: NgForm){
+
+    if ( forma.value.passwordRecover === forma.value.password2Recover ){
+        return false;
+    }else{
+        return true;
+    }
+
+  }
+
 }
